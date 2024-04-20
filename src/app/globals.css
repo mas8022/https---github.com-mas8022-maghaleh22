@@ -2,32 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  @font-face {
+    font-family: yekBold;
+    src: local(yekBold), url(../../public/fonts/BYekan/BYekan+\ Bold.ttf);
+    font-display: swap;
   }
-}
+  @font-face {
+    font-family: yekRegular;
+    src: local(yekRegular), url(../../public/fonts/Lalezar-Regular.ttf);
+    font-display: swap;
+  }
+  @font-face {
+    font-family: yekThin;
+    src: local(yekRegular), url(../../public/fonts/BYekan/BYekan+.ttf);
+    font-display: swap;
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  * {
+    padding: 0px;
+    margin: 0px;
+    transition: all linear 0.1s;
+  }
+  html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+    font-family: yekBold;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    width: 100%;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @media only screen and (max-width: 500px) {
+    * {
+      cursor: default;
+    }
   }
 }
