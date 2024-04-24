@@ -25,6 +25,7 @@
     transition: all linear 0.15s;
   }
   html {
+    direction: rtl;
     font-size: 10px;
     scroll-behavior: smooth;
     font-family: yekBold;
@@ -35,7 +36,9 @@
   body {
     width: 100%;
   }
-
+.ltr{
+  direction: ltr;
+}
   @media only screen and (max-width: 500px) {
     * {
       cursor: default;

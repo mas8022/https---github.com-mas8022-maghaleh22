@@ -1,5 +1,5 @@
+import Navbar from "./components/template/navbar";
 import "./globals.css";
-
 
 export const metadata = {
   title: "MAGHALEH",
@@ -9,7 +9,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        <div className="w-full h-[5rem] md:h-[8rem]"></div>
+        <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem]">{children}</div>
+        
+      </body>
     </html>
   );
 }
