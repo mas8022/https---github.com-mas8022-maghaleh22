@@ -25,7 +25,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-white">
+    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-white z-[1000]">
       <ul className="gap-3 sm:gap-6 md:gap-7 text-[1.25rem] md:text-[1.6rem]  hidden sm:flex">
         <Link href={"/"}>خانه</Link>
         <Link href={"/cost"}>نرخ ترجمه</Link>
@@ -68,13 +68,15 @@ export default function Navbar() {
           </Link>
         )}
 
-        <Image
-          src={"/images/logo.png"}
-          alt="site logo"
-          width={50}
-          height={50}
-          className="w-[3.5rem] h-[3.5rem] md:w-[5rem] md:h-[5rem] cursor-pointer"
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/images/logo.png"}
+            alt="site logo"
+            width={60}
+            height={60}
+            className="w-[3.5rem] h-[3.5rem] md:w-[5rem] md:h-[5rem] cursor-pointer"
+          />
+        </Link>
       </div>
 
       <div
