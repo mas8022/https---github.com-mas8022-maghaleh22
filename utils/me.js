@@ -21,9 +21,9 @@ async function isMe() {
   const tokenPayload = verifyToken(token);
   const user = await userModel.findOne({ email: tokenPayload?.email }, "_id");
   if (user) {
-    return user;
+    return true;
   } else {
-    return null;
+    return false;
   }
 }
 

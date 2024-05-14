@@ -62,7 +62,7 @@ export default function SignUp() {
   return (
     <>
       <form
-        className="bg-black/20 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] h-[40rem] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center"
+        className="bg-black/20 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] h-[40rem] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center justify-center"
         onSubmit={signUp.handleSubmit}
       >
         <input

@@ -4,7 +4,7 @@ const { sign, verify } = require("jsonwebtoken");
 
 function generateToken(data) {
   const token = sign(data, process.env.privateKey, {
-    expiresIn: "60s",
+    expiresIn: "24h",
   });
   return token;
 }
