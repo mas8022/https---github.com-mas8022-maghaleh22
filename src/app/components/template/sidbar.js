@@ -37,8 +37,8 @@ export default function SidBar() {
       <div
         className={
           sideFlag
-            ? "flex flex-col justify-between p-[4rem] px-[3rem] transition-all ease-in-out duration-[0.4s] sideOpen w-[21rem] h-screen fixed top-0 right-0 shadow-2xl bg-white z-[100]"
-            : "flex flex-col justify-between p-[4rem] px-[3rem] transition-all ease-in-out duration-[0.4s] sideClose w-[21rem] h-screen fixed top-0 right-[-30rem] shadow-2xl bg-white z-[100]"
+            ? "flex flex-col justify-between p-[4rem] px-[3rem] transition-all ease-in-out duration-[0.4s] sideOpen w-[21rem] h-screen fixed top-0 right-0 shadow-2xl bg-first z-[100]"
+            : "flex flex-col justify-between p-[4rem] px-[3rem] transition-all ease-in-out duration-[0.4s] sideClose w-[21rem] h-screen fixed top-0 right-[-30rem] shadow-2xl bg-first/70 z-[100]"
         }
       >
         <ul className="text-[1.4rem] flex flex-col gap-6">

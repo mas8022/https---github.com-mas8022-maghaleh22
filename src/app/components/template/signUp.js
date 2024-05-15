@@ -62,7 +62,7 @@ export default function SignUp() {
   return (
     <>
       <form
-        className="bg-black/20 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] h-[40rem] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center justify-center"
+        className="bg-second/30 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] h-[40rem] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center justify-center"
         onSubmit={signUp.handleSubmit}
       >
         <input
@@ -128,7 +128,7 @@ export default function SignUp() {
         {signUp.touched.check && signUp.errors.check && signUp.errors.check}
         <button
           type="submit"
-          className="w-full rounded-lg border-0 h-[4.5rem] bg-emerald-700/50 text-[1.8rem] active:bg-emerald-700/20 text-white flex items-center justify-center"
+          className="w-full rounded-lg border-0 h-[4.5rem] bg-second/70 text-[1.8rem] active:bg-emerald-700/20 text-first flex items-center justify-center"
         >
           {loading ? (
             <MoonLoader size={20} color="#fff" />
