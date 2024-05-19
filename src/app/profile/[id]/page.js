@@ -9,7 +9,7 @@ const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page({ params }) {
   const [loading, setLoading] = useState(false);
-  const [fileData, setFileData] = useState("")
+  const [fileData, setFileData] = useState("");
   const editProfile = useFormik({
     initialValues: {
       fullName: "",
@@ -55,15 +55,17 @@ export default function page({ params }) {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="w-full flex flex-col items-center mt-12">
-
         <div className="w-[20rem] h-[20rem] rounded-full !z-10">
-          <Uploader className='z-10' label={'ویرایش'} setFileData={setFileData} />
+          <Uploader
+            className="z-10"
+            label={"ویرایش"}
+            setFileData={setFileData}
+          />
         </div>
-
       </div>
 
       <form
-        className="mt-[6rem] bg-black/20 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center"
+        className="mt-[6rem] bg-second/30 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center"
         onSubmit={editProfile.handleSubmit}
       >
         <input
@@ -105,7 +107,7 @@ export default function page({ params }) {
           editProfile.errors.phone}
         <button
           type="submit"
-          className="w-full rounded-lg border-0 h-[4.5rem] bg-emerald-700/50 text-[1.8rem] active:bg-emerald-700/20 text-white flex items-center justify-center"
+          className="w-full rounded-lg border-0 h-[4.5rem] bg-second/60 text-[1.8rem] active:bg-second/50 text-first flex items-center justify-center"
         >
           {loading ? (
             <MoonLoader size={20} color="#fff" />

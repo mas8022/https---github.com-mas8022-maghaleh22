@@ -18,7 +18,7 @@ export default async function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-white z-[1000]">
+    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000]">
       <ul className="gap-3 sm:gap-6 md:gap-7 text-[1.25rem] md:text-[1.6rem]  hidden sm:flex">
         <Link href={"/"}>خانه</Link>
         <Link href={"/cost"}>نرخ ترجمه</Link>

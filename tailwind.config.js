@@ -9,12 +9,11 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      first: "#ffffff",
-      second: "#134e4a",
-    },
-    
     extend: {
+      colors: {
+        first: "#ffffff",
+        second: "#134e4a",
+      },
       fontFamily: {
         bold: "yekBold",
         medium: "yekRegular",

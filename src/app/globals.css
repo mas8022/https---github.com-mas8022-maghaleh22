@@ -39,6 +39,9 @@
 .ltr{
   direction: ltr;
 }
+.shadOne {
+  box-shadow: -1px 0px 3px -2px #000;
+}
 
 
   @media only screen and (max-width: 500px) {
