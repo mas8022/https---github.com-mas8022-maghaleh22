@@ -31,7 +31,7 @@ export default function SideFilter({ active, setActive }) {
           alt="exist"
           width={50}
           height={50}
-          className="w-8 h-w-8 self-end md:hidden"
+          className="w-6 h-8 self-end md:hidden"
         ></Image>
         <RadioGroup
           aria-labelledby="demo-controlled-radio-buttons-group"

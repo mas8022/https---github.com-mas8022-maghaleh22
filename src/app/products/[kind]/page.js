@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import SideFilter from "../../components/template/sideFilter";
+import Image from "next/image";
+import Cart from "../../components/modules/cart";
 
 export default function products({ params }) {
   console.log(params.kind);
@@ -11,6 +13,9 @@ export default function products({ params }) {
       <SideFilter setActive={setActive} active={active} />
 
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
+
+        
+
         <div className=" w-full flex items-center justify-between md:justify-end gap-8">
           <div
             onClick={() => setActive((p) => !p)}
@@ -42,16 +47,40 @@ export default function products({ params }) {
           </div>
         </div>
 
-        <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-8">
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
-          <div className="w-[15rem] h-[10rem] bg-second"></div>
+
+
+
+
+
+
+        <div className="w-full flex justify-center">
+          <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+            <Cart />
+          </div>
         </div>
       </div>
     </div>
