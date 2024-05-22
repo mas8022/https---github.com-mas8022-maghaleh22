@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function Cart() {
@@ -19,9 +20,12 @@ export default function Cart() {
           <span className="text-[13px] text-second/60">استاد همایون حسینی</span>
           <span className="text-[13px] text-second/60">10 ساعت و 18 دقیقه</span>
         </div>
-        <button className="w-32 h-14 flex items-center justify-center text-second active:text-first text-[1.5rem] font-light border-1 bg-first active:bg-second border-second active:border-first rounded-lg">
+        <Link
+          href={"/products/software/sfdsadfdfds"}
+          className="w-32 h-14 flex items-center justify-center text-second active:text-first text-[1.5rem] font-light border-1 bg-first active:bg-second border-second active:border-first rounded-lg"
+        >
           مشاهده
-        </button>
+        </Link>
       </div>
     </div>
   );
