@@ -10,7 +10,7 @@ export default function Cart() {
         alt="product Image"
         width={320}
         height={230}
-        className="w-full h-60 !bg-cover !bg-center mb-5"
+        className="w-full h-60 mb-5 object-cover"
       />
       <h2 className="px-10 text-[15px] font-bold mb-12">
         اموزش زبان انگیسی از صفر تا صد

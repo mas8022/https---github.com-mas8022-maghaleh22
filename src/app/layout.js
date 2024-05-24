@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-first">
         <NextUIProvider>
           <Navbar />
           <div className="w-full h-[5rem] md:h-[8rem]"></div>
