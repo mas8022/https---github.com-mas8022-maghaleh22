@@ -10,7 +10,7 @@
   }
   @font-face {
     font-family: yekRegular;
-    src: local(yekRegular), url(../../public/fonts/Lalezar-Regular.ttf);
+    src: local(yekRegular), url(../../public/fonts/BYekan/BYekan+.ttf);
     font-display: swap;
   }
   @font-face {

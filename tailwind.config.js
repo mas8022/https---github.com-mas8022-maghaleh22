@@ -9,6 +9,21 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      sm: "640px",
+
+      md: "768px",
+
+      dd: "900px",
+
+      lg: "1024px",
+
+      lgg: "1112px",
+
+      xl: "1280px",
+
+      "2xl": "1536px",
+    },
     extend: {
       colors: {
         first: "#ffffff",
@@ -18,19 +33,6 @@ module.exports = {
         bold: "yekBold",
         medium: "yekRegular",
         light: "yekThin",
-      },
-      screens: {
-        sm: "640px",
-
-        md: "768px",
-
-        lg: "1024px",
-
-        lgg: "1112px",
-
-        xl: "1280px",
-
-        "2xl": "1536px",
       },
     },
   },

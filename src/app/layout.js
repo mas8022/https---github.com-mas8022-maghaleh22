@@ -1,3 +1,4 @@
+import Footer from "./components/modules/footer";
 import Scroller from "./components/modules/scroller";
 import Navbar from "./components/template/navbar";
 import "./globals.css";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
             {children}
             <Scroller/>
           </div>
+          <Footer/>
         </NextUIProvider>
       </body>
     </html>
