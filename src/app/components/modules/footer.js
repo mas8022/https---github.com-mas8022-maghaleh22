@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="w-full h-8 flex flex-col items-center">
       <div className="w-full h-auto lg:h-[42rem] bg-second/60 px-6 sm:px-[5rem] lg:px-[10rem] xl:px-[15rem] flex flex-col md:flex-row justify-between py-20 gap-16 lg:gap-8">
-        <div className="w-full lg:w-1/2 h-full flex flex-col justify-between gap-8">
+        <div className="w-full lg:w-1/2 h-full flex flex-col justify-between gap-8 lg:gap-16">
           <div className="flex gap-20">
             <ul>
               <p className="text-[1.7rem] lg:text-[2rem] border-b-1 border-black/50 mb-4">
@@ -68,18 +68,18 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 h-[30rem] lg:h-full flex flex-col justify-between">
+        <div className="w-full lg:w-1/2 h-[30rem] lg:h-full flex flex-col justify-between gap-10">
           <div className="flex flex-col gap-4 item-end">
             <span className="text-[1.4rem] self-end">
               با نظر دادن در مورد سایت مارا همراهی می کنید ممنون میشویم نظر خود
               را بگووید
             </span>
             <textarea
-              className="w-[60%] h-20 max-h-64 p-4 rounded-md text-[1.28rem] self-end bg-first/50 placeholder:text-black/50 focus:outline-none"
+              className="w-[60%] h-20 max-h-64 p-4 rounded-md text-[1.28rem] sm:self-end bg-first/50 placeholder:text-black/50 focus:outline-none"
               type="text"
               placeholder="نظر خود بنویسید..."
             />
-            <button className="w-52 h-14 rounded-xl bg-second/90 text-first text-[1.4rem] font-light self-end active:bg-second/50">
+            <button className="w-32 h-10 sm:w-52 sm:h-14 rounded-xl bg-second/90 text-first text-[1.2rem] sm:text-[1.4rem] font-light sm:self-end active:bg-second/50">
               ارسال نظر
             </button>
           </div>
@@ -102,6 +102,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+
+
       <div className="w-full flex items-center justify-center text-first font-light  bg-second/60 border-t-1">
         تمامی مطالب سایت مقاله محفوظ است
       </div>
