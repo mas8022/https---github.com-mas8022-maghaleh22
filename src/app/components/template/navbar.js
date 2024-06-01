@@ -41,12 +41,12 @@ export default async function Navbar() {
           </svg>
 
           <ul className="w-[23rem] absolute right-0 rounded-xl top-full mt-4 bg-first shadow-md p-6 flex flex-col gap-y-2 border-y-2 border-y-second invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:mt-2 child:cursor-pointer child-hover:bg-second/30 child:rounded-lg child:pr-4">
-            <li>نرم افزار و فناوری اطلاعات</li>
-            <li>اقتصاد و حسابداری</li>
-            <li>کسب و کار</li>
-            <li>کودک و نوجوان</li>
-            <li>اموزش زبان</li>
-            <li>هنر طراحی</li>
+            <Link href={"/products/software"}>نرم افزار و فناوری اطلاعات</Link>
+            <Link href={"/products/economics"}>اقتصاد و حسابداری</Link>
+            <Link href={"/products/business"}>کسب و کار</Link>
+            <Link href={"/products/teenager"}>کودک و نوجوان</Link>
+            <Link href={"/products/language"}>اموزش زبان</Link>
+            <Link href={"/products/art"}>هنر طراحی</Link>
           </ul>
         </ul>
 
