@@ -19,9 +19,21 @@ export default async function Navbar() {
 
   return (
     <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000]">
-      <ul className="gap-3 sm:gap-6 md:gap-7 text-[1.25rem] md:text-[1.6rem]  hidden sm:flex">
+      <ul className="gap-3 sm:gap-6 md:gap-7 text-[1.25rem] md:text-[1.6rem]  hidden ld:flex">
         <Link href={"/"}>خانه</Link>
-        <Link href={"/cost"}>نرخ ترجمه</Link>
+
+        <ul className="relative group">
+          <li>دوره ها</li>
+          <ul className="w-[23rem] absolute right-0 rounded-xl top-full mt-4 bg-first shadow-md p-6 flex flex-col gap-y-2 border-y-2 border-y-second invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:mt-2 child:cursor-pointer child-hover:bg-second/30 child:rounded-lg child:pr-4">
+            <li>نرم افزار و فناوری اطلاعات</li>
+            <li>اقتصاد و حسابداری</li>
+            <li>کسب و کار</li>
+            <li>کودک و نوجوان</li>
+            <li>اموزش زبان</li>
+            <li>هنر طراحی</li>
+          </ul>
+        </ul>
+
         <Link href={"/coWorker"}>همکاری باما</Link>
         <Link href={"/contactUs"}>تماس با ما</Link>
         <Link href={"/aboutUs"}>درباره ما</Link>
@@ -30,6 +42,39 @@ export default async function Navbar() {
       <SidBar />
 
       <div className="flex gap-4 sm:gap-8 md:gap-10 items-center">
+
+
+
+
+
+        <div className="size-16 p-4 py-2 rounded-full bg-second/10 flex items-center justify-center ">
+          <input
+            type="search"
+            placeholder="چه اموزشی..."
+            className="w-0 h-full text-[1.2rem] xm:text-[1.35rem] font-light xm:font-bold focus:outline-none bg-second/0"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-7 xm:size-10 cursor-pointer flex-shrink-0"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+            ></path>
+          </svg>
+        </div>
+
+
+
+
+
+
+
         {log ? (
           <Link href={`/profile/${"cgf5esad"}`}>
             <Image

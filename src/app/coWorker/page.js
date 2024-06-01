@@ -109,7 +109,7 @@ const CoWorker = () => {
             onChange={(e) => setFileData(e.target.files[0])}
           />
         </Button>
-        <div className="w-1/3 h-24 rounded-3xl flex items-center justify-center text-[1.9rem] font-bold bg-second text-first cursor-pointer">
+        <div className="w-1/3 h-24 rounded-3xl flex items-center justify-center text-[1.9rem] font-bold bg-second text-first cursor-pointer active:bg-second/80">
           ارسال مقاله
         </div>
       </div>

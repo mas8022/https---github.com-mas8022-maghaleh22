@@ -63,10 +63,14 @@
   font-size: 1.3rem;
   @apply !font-light
 }
-
 .ck.ck-content{
   min-height: 40rem !important;
 }
+
+
+
+
+
 
   @media only screen and (max-width: 500px) {
     * {

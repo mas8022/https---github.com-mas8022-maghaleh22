@@ -12,10 +12,10 @@ export default function Cart() {
         height={230}
         className="w-full h-60 mb-5 object-cover"
       />
-      <h2 className="px-10 text-[15px] font-bold mb-12">
+      <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1">
         اموزش زبان انگیسی از صفر تا صد
       </h2>
-      <div className="w-full flex justify-between px-10 items-center">
+      <div className="w-full flex justify-between px-10 items-center gap-2">
         <div className="flex flex-col items-center gap-3">
           <span className="text-[13px] text-second/60">استاد همایون حسینی</span>
           <span className="text-[13px] text-second/60">10 ساعت و 18 دقیقه</span>
