@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -85,25 +86,27 @@ const Footer = () => {
           </div>
 
           <div className="flex justify-end gap-4">
-            <Image
-              src={"/images/480687.png"}
-              width={100}
-              height={100}
-              alt="نماد اعتماد الکترونیک"
-              className="size-32 lg:size-40 object-cover rounded-3xl"
-            />
-            <Image
-              src={"/images/1-min.jpg"}
-              width={100}
-              height={100}
-              alt="ساماندهی"
-              className="size-32 lg:size-40 object-cover rounded-3xl"
-            />
+            <Link href={"/"}>
+              <Image
+                src={"/images/480687.png"}
+                width={100}
+                height={100}
+                alt="نماد اعتماد الکترونیک"
+                className="size-32 lg:size-40 object-cover rounded-3xl"
+              />
+            </Link>
+            <Link href={"/"}>
+              <Image
+                src={"/images/1-min.jpg"}
+                width={100}
+                height={100}
+                alt="ساماندهی"
+                className="size-32 lg:size-40 object-cover rounded-3xl"
+              />
+            </Link>
           </div>
         </div>
       </div>
-
-
 
       <div className="w-full flex items-center justify-center text-first font-light  bg-second/60 border-t-1">
         تمامی مطالب سایت مقاله محفوظ است
