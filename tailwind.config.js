@@ -12,21 +12,14 @@ module.exports = {
     extend: {
       screens: {
         xxm: "380px",
-        
         xm: "500px",
-
         sm: "640px",
-
         md: "768px",
-
         ld: "1000px",
-
         lg: "1024px",
-
         lgg: "1112px",
-
         xl: "1280px",
-
+        xxl: "1312px",
         "2xl": "1536px",
       },
       colors: {
