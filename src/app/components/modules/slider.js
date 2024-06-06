@@ -9,11 +9,12 @@ const Sliders = () => {
   return (
     <Swiper
       breakpoints={{
+        100: {slidesPerView: 1},
         800: { slidesPerView: 2 },
         1000: { slidesPerView: 3 },
         1391: { slidesPerView: 4 },
       }}
-      slidesPerView={1}
+      slidesPerView={4}
       spaceBetween={10}
       className="!p-2"
       autoplay={{
