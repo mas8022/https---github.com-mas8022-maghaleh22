@@ -1,4 +1,6 @@
+import Discount from "./components/modules/discount";
 import Footer from "./components/modules/footer";
+import Hr from "./components/modules/hr";
 import Scroller from "./components/modules/scroller";
 import Navbar from "./components/template/navbar";
 import "./globals.css";
@@ -15,12 +17,14 @@ export default function RootLayout({ children }) {
       <body className="bg-first">
         <NextUIProvider>
           <Navbar />
-          <div className="w-full h-[5rem] md:h-[8rem]"></div>
+          <Hr />
           <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem]">
+            <Discount />
+            <Hr />
             {children}
-            <Scroller/>
+            <Scroller />
           </div>
-          <Footer/>
+          <Footer />
         </NextUIProvider>
       </body>
     </html>
