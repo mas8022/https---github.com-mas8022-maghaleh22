@@ -50,6 +50,9 @@ const Footer = () => {
               <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
                 در باره ما
               </li>
+              <Link href={'/regulation'} className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+                قوانین و مقررات
+              </Link>
             </ul>
           </div>
           <div className="flex gap-8">
