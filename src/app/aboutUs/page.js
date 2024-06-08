@@ -4,7 +4,7 @@ import Hr from "../components/modules/hr";
 
 export default function page() {
   return (
-    <div className="w-full flex-col">
+    <div className="w-full flex-col pt-24">
       <div className="about-title-aboutUs w-full flex items-start justify-between gap-40">
         <div className="xl:w-1/2 lg:w-2/3 w-full">
           <p className="lg:text-[3rem] text-[2rem] font-bold">درباره سایت ما</p>

@@ -2,9 +2,11 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Bg from "../modules/bg";
+import useToggle from "@/utils/toggle";
 
 export default function SidBar() {
   const [sideFlag, setSideFlag] = useState(false);
+  const [isOpen, toggleOpen] = useToggle();
 
   useEffect(() => {
     const closeSideBarHandler = (e) => {
@@ -35,7 +37,6 @@ export default function SidBar() {
         />
       </svg>
 
-
       <div
         className={
           sideFlag
@@ -61,23 +62,44 @@ export default function SidBar() {
             </svg>
             خانه
           </Link>
-          <Link href={"/cost"} className="flex gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-8 h-8"
+
+          <ul className="flex flex-col">
+            <div
+              onClick={(e) => toggleOpen(e)}
+              className="flex items-center gap-2"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"
-              />
-            </svg>
-            نرخ ترجمه
-          </Link>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className={`${isOpen ? "rotate-180" : ""} size-6`}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+              <p>دوره ها</p>
+            </div>
+            <ul
+              className={`child:text-[1.27rem] flex flex-col text-black/70 font-light overflow-hidden transition-all duration-200 ${
+                isOpen ? "!h-auto  pt-4 gap-2" : "!h-0"
+              }`}
+            >
+              <Link href={"/products/software"}>
+                نرم افزار و فناوری اطلاعات
+              </Link>
+              <Link href={"/products/economics"}>اقتصاد و حسابداری</Link>
+              <Link href={"/products/business"}>کسب و کار</Link>
+              <Link href={"/products/teenager"}>کودک و نوجوان</Link>
+              <Link href={"/products/language"}>اموزش زبان</Link>
+              <Link href={"/products/art"}>هنر و طراحی</Link>
+            </ul>
+          </ul>
+
           <Link href={"/coWorker"} className="flex gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +115,7 @@ export default function SidBar() {
                 d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
               />
             </svg>
-            تماس باما
+            همکاری باما
           </Link>
           <Link href={"/contactUs"} className="flex gap-2">
             <svg
@@ -110,7 +132,7 @@ export default function SidBar() {
                 d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"
               />
             </svg>
-            همکاری باما
+            تماس باما
           </Link>
           <Link href={"/aboutUs"} className="flex gap-2">
             <svg
@@ -128,6 +150,23 @@ export default function SidBar() {
               />
             </svg>
             درباره ما
+          </Link>
+          <Link href={"/regulation"} className="flex gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              class="size-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z"
+              />
+            </svg>
+            قوانین و مقررات
           </Link>
         </ul>
 

@@ -8,47 +8,80 @@ const Footer = () => {
       <div className="w-full h-auto lg:h-[42rem] bg-second/60 px-6 sm:px-[5rem] lg:px-[10rem] xl:px-[15rem] flex flex-col md:flex-row justify-between py-20 gap-16 lg:gap-8">
         <div className="w-full lg:w-1/2 h-full flex flex-col justify-between gap-8 lg:gap-16">
           <div className="flex gap-20">
-            <ul>
+            <ul className="flex flex-col">
               <p className="text-[1.7rem] lg:text-[2rem] border-b-1 border-black/50 mb-4">
                 دسته بندی ها
               </p>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              <Link
+                href={"/products/software"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 نرم افزار و فناوری اطلاعات
-              </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+              <Link
+                href={"/products/economics"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 اقتصاد و حسابداری
-              </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+              <Link
+                href={"/products/business"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 کسب و کار
-              </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+              <Link
+                href={"/products/teenager"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 کودک و نوجوان
-              </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+              <Link
+                href={"/products/language"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 اموزش زبان
-              </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+              <Link
+                href={"/products/art"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 هنر طراحی
-              </li>
+              </Link>
             </ul>
-            <ul>
+            <ul className="flex flex-col">
               <p className="text-[1.7rem] lg:text-[2rem] border-b-1 border-black/50 mb-4">
                 دسترسی سریع
               </p>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              <Link
+                href={"/"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 خانه
-              </li>
-           
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+
+              <Link
+                href={"/coWorker"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 همکاری با ما
-              </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+              <Link
+                href={"/contactUs"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 تماس با ما
-              </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
-                در باره ما
-              </li>
-              <Link href={'/regulation'} className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
+              </Link>
+              <Link
+                href={"aboutUs"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
+                درباره ما
+              </Link>
+              <Link
+                href={"/regulation"}
+                className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
+              >
                 قوانین و مقررات
               </Link>
             </ul>
@@ -81,7 +114,7 @@ const Footer = () => {
               type="text"
               placeholder="نظر خود بنویسید..."
             />
-            <button className="w-32 h-10 sm:w-52 sm:h-14 rounded-xl bg-second/90 text-first text-[1.2rem] sm:text-[1.4rem] font-light sm:self-end active:bg-second/50">
+            <button className="w-32 h-10 sm:w-52 sm:h-14 rounded-xl bg-blue-700 text-first text-[1.2rem] sm:text-[1.4rem] font-light sm:self-end active:bg-second/50">
               ارسال نظر
             </button>
           </div>

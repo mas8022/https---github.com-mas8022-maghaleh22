@@ -112,7 +112,7 @@ export default function SignUp() {
         <div className="w-full h-[2rem] px-[0.5rem] flex items-center">
           <p className="text-[1.2rem]">
             ایا موافق با
-            <Link href={"/aboutUs"} className="text-blue-600">
+            <Link href={"/regulation"} className="text-blue-600 font-bold text-[1.4rem]">{" "}
               قوانین
             </Link>{" "}
             این سایت هستید

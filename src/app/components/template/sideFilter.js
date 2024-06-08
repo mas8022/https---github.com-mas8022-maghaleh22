@@ -38,7 +38,7 @@ export default function SideFilter({ active, setActive }) {
           name="controlled-radio-buttons-group"
           value={value}
           onChange={handleChange}
-          className="flex flex-col gap-3 w-[12rem] md:w-[20rem]"
+          className="flex flex-col gap-3 w-[12rem] md:w-[20rem] !mr-0"
         >
           <FormControlLabel
             className="mr-0"

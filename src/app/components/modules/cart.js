@@ -17,12 +17,12 @@ export default function Cart() {
       </h2>
       <div className="w-full flex justify-between px-10 items-center gap-2">
         <div className="flex flex-col items-center gap-3">
-          <span className="text-[13px] text-second/60">استاد همایون حسینی</span>
-          <span className="text-[13px] text-second/60">10 ساعت و 18 دقیقه</span>
+          <span className="text-[13px] text-black/60">استاد همایون حسینی</span>
+          <span className="text-[13px] text-black/60">10 ساعت و 18 دقیقه</span>
         </div>
         <Link
           href={"/products/software/sfdsadfdfds"}
-          className="w-32 h-14 flex items-center justify-center text-second active:text-first text-[1.5rem] font-light border-1 bg-first active:bg-second border-second active:border-first rounded-lg"
+          className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg"
         >
           مشاهده
         </Link>

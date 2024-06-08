@@ -10,12 +10,12 @@ const Discount = () => {
     <div
       className={`${
         !active && "hidden"
-      } w-full lgg:h-28 h-32 lg:mt-0 md:mt-8 mt-4`}
+      } w-full lgg:h-28 h-32`}
     >
       <div
         className={`${
           !active && "hidden"
-        } fixed w-full right-0 lgg:h-28 h-32 lg:mt-0 md:mt-8 mt-4 bg-second flex items-center justify-between px-[2.5rem] rounded-bl-full rounded-br-full z-50`}
+        } fixed w-full right-0 lgg:h-28 h-32 lg:mt-0 md:mt-8 mt-4 bg-second/80 flex items-center justify-between px-[2.5rem] rounded-bl-full rounded-br-full z-50`}
       >
         <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] flex items-center justify-between">
           <Image

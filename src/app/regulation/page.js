@@ -4,7 +4,7 @@ import Hr from "../components/modules/hr";
 
 const page = () => {
   return (
-    <div className="w-full flex flex-col gap-20">
+    <div className="w-full flex flex-col gap-20 pt-24">
       <Title title={"قوانین و مقررات"} />
       <div className="flex flex-col gap-6">
         <p className="text-[2rem] font-bold">هدف سایت</p>
@@ -108,6 +108,7 @@ const page = () => {
       <Hr />
     </div>
   );
+  
 };
 
 export default page;

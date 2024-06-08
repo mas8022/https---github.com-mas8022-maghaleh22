@@ -8,7 +8,7 @@ import SelectItem from "../modules/selectItem";
 const ContactUsBoxContainer = () => {
   return (
     <div className="w-full h-auto lgg:h-[50rem] flex flex-col lgg:flex-row items-center justify-between shadow-lg rounded-3xl overflow-hidden">
-      <div className="w-full lgg:w-2/5 h-full bg-second/90 rounded-2xl lgg:rounded-tl-2xl flex flex-col xxm:flex-row lgg:flex-col py-12 px-8 justify-between">
+      <div className="w-full lgg:w-2/5 h-full bg-blue-700 rounded-2xl rounded-bl-none lgg:rounded-tl-2xl flex flex-col xxm:flex-row lgg:flex-col py-12 px-8 justify-between">
         <div className="hidden lgg:block">
           <p className="text-[2.3rem] text-first/90 font-bold">اطلاعات کاربر</p>
           <p className="text-[2rem] font-light text-first/50 tracking-tight">
@@ -103,7 +103,7 @@ const ContactUsBoxContainer = () => {
           placeholder="سوال مورد نظر خود را بنویسید..."
           className="sm:w-full w-[95%] ld:h-[35rem] h-[15rem] rounded-3xl p-9 text-[1.5rem] font-light bg-black/10 focus:outline-1 focus:outline-second/50 transition-all duration-1000 self-center"
         ></textarea>
-        <button className="lgg:w-[13rem] w-[12rem] lgg:h-[6rem] h-[4rem] bg-second/90 text-[1.5rem] text-first font-bold rounded-2xl active:border-1 active:border-second/50 active:text-second/70 tracking-tight sm:ml-0 ml-7 self-center xm:self-end">
+        <button className="lgg:w-[13rem] w-[12rem] lgg:h-[6rem] h-[4rem] bg-blue-700 text-[1.5rem] text-first font-bold rounded-2xl active:border-1 active:border-second/50 active:text-second/70 tracking-tight sm:ml-0 ml-7 self-center xm:self-end">
           ارسال سوال
         </button>
       </div>

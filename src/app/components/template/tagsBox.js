@@ -3,7 +3,7 @@ import React from 'react'
 const TagsBox = () => {
   return (
     <div className="w-full sm:w-1/3">
-   <div className='w-full p-12  flex flex-wrap bg-black/5 rounded-3xl overflow-hidden shadow-md'>
+   <div className='w-full p-12  flex flex-wrap bg-second/5 rounded-3xl overflow-hidden shadow-md'>
        
    <div className="w-full border-b-1 border-second/50 pb-4">
       <p className="text-[2.3rem] font-bold ">بر چسب ها</p>

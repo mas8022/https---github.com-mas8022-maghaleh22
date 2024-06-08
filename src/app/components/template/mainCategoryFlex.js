@@ -8,7 +8,7 @@ export default function MainCategoryFlex() {
     <div className="flex items-center w-full">
       <div className=" grid grid-cols-2 sm:grid-cols-3 gap-8 my-0 mx-auto">
         <Link href={"/products/software"}>
-          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-second/90 flex flex-col items-center justify-center gap-8">
+          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-blue-700 flex flex-col items-center justify-center gap-8">
             <Image
               src={"/images/imac-svgrepo-com.svg"}
               width={120}
@@ -20,7 +20,7 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link href={"/products/economics"}>
-          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-second/90 flex flex-col items-center justify-center gap-8">
+          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-blue-700 flex flex-col items-center justify-center gap-8">
             <Image
               src={"/images/envelope-stats-svgrepo-com.svg"}
               width={120}
@@ -30,7 +30,7 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link href={"/products/business"}>
-          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-second/90 flex flex-col items-center justify-center gap-8">
+          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-blue-700 flex flex-col items-center justify-center gap-8">
             <Image
               src={"/images/job-desktop-svgrepo-com.svg"}
               width={120}
@@ -40,7 +40,7 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link href={"/products/teenager"}>
-          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-second/90 flex flex-col items-center justify-center gap-8">
+          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-blue-700 flex flex-col items-center justify-center gap-8">
             <Image
               src={"/images/birdhouse-svgrepo-com.svg"}
               width={120}
@@ -50,7 +50,7 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link href={"/products/language"}>
-          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-second/90 flex flex-col items-center justify-center gap-8">
+          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-blue-700 flex flex-col items-center justify-center gap-8">
             <Image
               src={"/images/book-write-svgrepo-com.svg"}
               width={120}
@@ -60,7 +60,7 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link href={"/products/art"}>
-          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-second/90 flex flex-col items-center justify-center gap-8">
+          <Button className="p-[4rem] w-60 h-60 md:h-80 lg md:w-80 lg:w-96 bg-blue-700 flex flex-col items-center justify-center gap-8">
             <Image
               src={"/images/art-tools-svgrepo-com.svg"}
               width={120}

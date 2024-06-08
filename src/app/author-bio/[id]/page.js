@@ -5,7 +5,7 @@ import Title from "../../components/template/title";
 
 const page = () => {
   return (
-    <div className="w-full flex flex-col items-center pt-2 gap-20">
+    <div className="w-full flex flex-col items-center pt-24 gap-20">
       <div className="w-full flex flex-col items-center gap-8">
         <Image
           src={"/images/profile.jpg"}

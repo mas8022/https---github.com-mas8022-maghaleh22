@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
           <Hr />
           <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem]">
             <Discount />
-            <Hr />
             {children}
             <Scroller />
           </div>

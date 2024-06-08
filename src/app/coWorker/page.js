@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import Hr from "../components/modules/hr";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -101,7 +102,7 @@ const CoWorker = () => {
           role={undefined}
           variant="contained"
           tabIndex={-1}
-          className="w-2/3 h-24 rounded-3xl flex items-center justify-center text-[1.7rem] font-light  bg-second/60 hover:bg-second/80"
+          className="w-2/3 h-24 !rounded-3xl flex items-center justify-center !text-[1.7rem] !font-light !text-first !bg-second/60 !hover:bg-second/80"
         >
           در صورت علاقه فیلم اموزشی خود را اپلود کنید
           <VisuallyHiddenInput
@@ -113,6 +114,7 @@ const CoWorker = () => {
           ارسال مقاله
         </div>
       </div>
+      <Hr/>
     </div>
   );
 };

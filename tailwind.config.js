@@ -24,7 +24,7 @@ module.exports = {
       },
       colors: {
         first: "#ffffff",
-        second: "#134e4a",
+        second: "#9333ea",
       },
       fontFamily: {
         bold: "yekBold",
