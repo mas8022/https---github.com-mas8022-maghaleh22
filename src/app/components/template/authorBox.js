@@ -22,7 +22,7 @@ const AuthorBox = () => {
             گرافیکی نیز می باشند.
           </span>
 
-          <Link href={"/"} className="text-[1.6rem] text-blue-600 font-bold">
+          <Link href={"/author-bio/sdfdsffg"} className="text-[1.6rem] text-blue-600 font-bold">
             ادامه مطلب...
           </Link>
         </div>
