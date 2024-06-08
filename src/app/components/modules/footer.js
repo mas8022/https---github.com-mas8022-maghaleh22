@@ -38,9 +38,7 @@ const Footer = () => {
               <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
                 خانه
               </li>
-              <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
-                نرخ ترجمه
-              </li>
+           
               <li className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light">
                 همکاری با ما
               </li>
