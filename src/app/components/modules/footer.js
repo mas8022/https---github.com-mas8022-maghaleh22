@@ -114,7 +114,7 @@ const Footer = () => {
               type="text"
               placeholder="نظر خود بنویسید..."
             />
-            <button className="w-32 h-10 sm:w-52 sm:h-14 rounded-xl bg-blue-700 text-first text-[1.2rem] sm:text-[1.4rem] font-light sm:self-end active:bg-second/50">
+            <button className="w-32 h-10 sm:w-52 sm:h-14 rounded-xl bg-second text-first text-[1.2rem] sm:text-[1.4rem] font-light sm:self-end active:bg-second/50">
               ارسال نظر
             </button>
           </div>

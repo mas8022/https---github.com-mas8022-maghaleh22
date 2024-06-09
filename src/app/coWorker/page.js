@@ -96,13 +96,13 @@ const CoWorker = () => {
         </div>
       </form>
       <Editor initialData="<p>در این قسمت مقاله خود را بنویسید</p>" />
-      <div className="w-full flex gap-8">
+      <div className="w-full flex sm:flex-row flex-col items-center gap-8">
         <Button
           component="label"
           role={undefined}
           variant="contained"
           tabIndex={-1}
-          className="w-2/3 h-24 !rounded-3xl flex items-center justify-center !text-[1.7rem] !font-light !text-first !bg-second/60 !hover:bg-second/80"
+          className="xm:w-2/3 w-full h-24 !rounded-3xl flex items-center justify-center !text-[1.4rem] sm:!text-[1.7rem] !font-light !text-first !bg-second/60 !hover:bg-second/80"
         >
           در صورت علاقه فیلم اموزشی خود را اپلود کنید
           <VisuallyHiddenInput
@@ -110,7 +110,7 @@ const CoWorker = () => {
             onChange={(e) => setFileData(e.target.files[0])}
           />
         </Button>
-        <div className="w-1/3 h-24 rounded-3xl flex items-center justify-center text-[1.9rem] font-bold bg-second text-first cursor-pointer active:bg-second/80">
+        <div className="w-1/3 h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second text-first cursor-pointer active:bg-second/80">
           ارسال مقاله
         </div>
       </div>

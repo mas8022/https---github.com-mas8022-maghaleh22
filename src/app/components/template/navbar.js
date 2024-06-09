@@ -73,7 +73,7 @@ export default async function Navbar() {
         ) : (
           <Link
             href={"/login"}
-            className="w-[10rem] md:w-[12rem] h-[3rem] md:h-[4rem] text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 flex items-center justify-center cursor-pointer active:text-emerald-600"
+            className="w-32 xxm:w-[10rem] md:w-[12rem] h-[2.5rem] xxm:h-[3rem] md:h-[4rem] text-[1.2rem]  xxm:text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 flex items-center justify-center cursor-pointer active:text-emerald-600"
           >
             ورود/ثبت نام
           </Link>
