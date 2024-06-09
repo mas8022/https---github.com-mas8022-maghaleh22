@@ -1,24 +1,26 @@
 "use client";
-import React, { useState } from "react";
+import useToggle from "@/utils/toggle";
+import React from "react";
 
 export default function InputSearchNav() {
-  const [active, setActive] = useState(false);
+  const [isOpen, toggleOpen] = useToggle(false);
   return (
     <div
       className={`${
-        active ? "w-[15rem] sm:w-[20rem]" : "size-14 sm:size-16"
+        isOpen ? "w-[15rem] sm:w-[20rem]" : "size-14 sm:size-16"
       } p-4 py-2 rounded-full bg-second/10 flex items-center justify-end overflow-hidden gap-2`}
     >
       <input
+        onClick={(e) => e.stopPropagation()}
         type="search"
         placeholder="چه اموزشی..."
         className={`${
-          active ? "w-full" : "w-0 "
+          isOpen ? "w-full" : "w-0 "
         }h-full text-[1.2rem] xm:text-[1.35rem] font-light xm:font-bold focus:outline-none bg-second/0 transition-all duration-300 ease-in-out overflow-hidden`}
       />
 
       <div
-        onClick={() => setActive((p) => !p)}
+        onClick={(e) => toggleOpen(e)}
         className="h-10 sm:h-12 w-8 bg-second/0 flex items-center justify-center rounded-full"
       >
         <svg

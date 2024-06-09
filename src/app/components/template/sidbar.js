@@ -63,6 +63,11 @@ export default function SidBar() {
             خانه
           </Link>
 
+
+
+
+
+
           <ul className="flex flex-col">
             <div
               onClick={(e) => toggleOpen(e)}
@@ -85,6 +90,8 @@ export default function SidBar() {
               <p>دوره ها</p>
             </div>
             <ul
+              onClick={(e) => e.stopPropagation()}
+
               className={`child:text-[1.27rem] flex flex-col text-black/70 font-light overflow-hidden transition-all duration-200 ${
                 isOpen ? "!h-auto  pt-4 gap-2" : "!h-0"
               }`}
@@ -99,6 +106,12 @@ export default function SidBar() {
               <Link href={"/products/art"}>هنر و طراحی</Link>
             </ul>
           </ul>
+
+
+
+
+
+
 
           <Link href={"/coWorker"} className="flex gap-2">
             <svg

@@ -1,17 +1,13 @@
 "use client";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import Image from "next/image";
 import React from "react";
-import { useState } from "react";
 
 const Discount = () => {
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useLocalStorage("discountBox", true);
 
   return (
-    <div
-      className={`${
-        !active && "hidden"
-      } w-full lgg:h-28 h-32`}
-    >
+    <div className={`${!active && "hidden"} w-full lgg:h-28 h-32`}>
       <div
         className={`${
           !active && "hidden"
