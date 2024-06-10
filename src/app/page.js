@@ -5,11 +5,12 @@ import Title from "./components/template/title";
 import Sliders from "./components/modules/slider";
 import Ad from "./components/template/ad";
 import MainSearch from "./components/template/mainSearch";
+import CommentsSlider from "./components/template/commentsSlider";
 
 export default function Home() {
   return (
     <div className="w-full pt-20">
-      <MainSearch/>
+      <MainSearch />
       <Hr />
       <MainCategoryFlex />
       <Hr />
@@ -22,7 +23,10 @@ export default function Home() {
       <Title title={" محبوب ترین اموزش ها"} />
       <Sliders />
       <Hr />
-      <Ad/>
+      <Ad />
+      <Hr />
+      <Title title={"جدید ترین نظرات"} />
+      <CommentsSlider />
       <Hr />
     </div>
   );
