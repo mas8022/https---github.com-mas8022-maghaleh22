@@ -15,17 +15,28 @@ export default function Cart() {
       <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1">
         اموزش زبان انگیسی از صفر تا صد
       </h2>
+
       <div className="w-full flex justify-between px-10 items-center gap-2">
         <div className="flex flex-col items-center gap-3">
           <span className="text-[13px] text-black/60">استاد همایون حسینی</span>
           <span className="text-[13px] text-black/60">10 ساعت و 18 دقیقه</span>
         </div>
-        <Link
-          href={"/products/software/sfdsadfdfds"}
-          className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg"
-        >
-          مشاهده
-        </Link>
+
+        <div className="flex flex-col items-end gap-4">
+          <p className="text-[1.3rem] text-black/80 font-light">
+            <span className="line-through">230000</span> <span>120000</span>تومان
+          </p>
+          <Link
+            href={"/products/software/sfdsadfdfds"}
+            className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg"
+          >
+            مشاهده
+          </Link>
+        </div>
+
+
+
+
       </div>
     </div>
   );
