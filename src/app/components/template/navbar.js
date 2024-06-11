@@ -2,18 +2,12 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import SidBar from "./sidbar";
-import connectToDb from "@/configs/db";
-import { cookies } from "next/headers";
-import { verifyToken } from "@/utils/auth";
-import userModel from "@/models/user";
 import InputSearchNav from "./inputSearchNav";
+import { isMe } from "@/utils/me";
 
 export default async function Navbar() {
   let log = false;
-  connectToDb();
-  const token = cookies().get("token")?.value;
-  const tokenPayload = verifyToken(token);
-  const user = await userModel.findOne({ email: tokenPayload?.email }, "_id");
+  const user = await isMe();
   if (user) {
     log = true;
   }

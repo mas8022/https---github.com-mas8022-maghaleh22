@@ -14,7 +14,7 @@ export default async function page() {
     >
       {me ? <Login /> : <SignUp />}
       <Image
-        src={"/images/login.jpg.jpg"}
+        src={"/images/login.jpg"}
         width={1000}
         height={1000}
         alt="login image"

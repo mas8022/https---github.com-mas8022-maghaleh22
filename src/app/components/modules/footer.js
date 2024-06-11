@@ -107,7 +107,7 @@ const Footer = () => {
           <div className="flex flex-col gap-4 item-end">
             <span className="text-[1.4rem] self-end">
               با نظر دادن در مورد سایت مارا همراهی می کنید ممنون میشویم نظر خود
-              را بگووید
+              را بگویید
             </span>
             <textarea
               className="w-[60%] h-20 max-h-64 p-4 rounded-md text-[1.28rem] sm:self-end bg-first/50 placeholder:text-black/50 focus:outline-none"

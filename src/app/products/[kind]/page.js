@@ -23,9 +23,14 @@ export default function products({ params }) {
           >
             بر اساس
           </div>
-          <div className="flex h-14 items-center justify-end gap-4 border-1 border-gray-800/20 pl-4 py-1">
+
+
+
+
+
+          <div className="flex h-14 items-center justify-end gap-4 border-1 border-gray-800/20 pl-4 py-1 rounded-md">
             <input
-              className="pr-4 h-full w-[20rem] sm:w-[30rem] text-[1.3rem] pl-2 focus:outline-none"
+              className="pr-4 h-full w-[20rem] sm:w-[30rem] text-[1.3rem] pl-2 focus:outline-none outline-none"
               type="search"
               placeholder="چه اموزشی مد نظرتان است؟..."
             />
@@ -34,17 +39,25 @@ export default function products({ params }) {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="w-10 h-10"
+              className="size-10 active:scale-95 cursor-pointer"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
               />
             </svg>
           </div>
+
+
+
+
+
+
+
+
         </div>
 
 
