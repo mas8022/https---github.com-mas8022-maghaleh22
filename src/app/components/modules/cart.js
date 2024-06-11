@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Cart() {
   return (
-    <div className="w-[32rem] h-[29rem] bg-first flex flex-col shadow-md">
+    <div className="w-[32rem] h-[32.5rem] bg-first flex flex-col shadow-md">
       <Image
         src={"/images/teacher.jpg"}
         alt="product Image"
@@ -23,8 +23,8 @@ export default function Cart() {
         </div>
 
         <div className="flex flex-col items-end gap-4">
-          <p className="text-[1.3rem] text-black/80 font-light">
-            <span className="line-through">230000</span> <span>120000</span>تومان
+          <p className="text-end w-[10rem] text-[1.3rem] text-black/80 font-light">
+            <span className="line-through">230,000</span> <span>120,000</span>تومان
           </p>
           <Link
             href={"/products/software/sfdsadfdfds"}
