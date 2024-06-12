@@ -1,4 +1,5 @@
 import React from "react";
+import CmsUserCart from "../../components/modules/cmsUserCart";
 
 const page = () => {
   return (
@@ -27,7 +28,29 @@ const page = () => {
           </svg>
         </div>
       </div>
-      <span className="text-[3rem]">users</span>
+      <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
+        <div className="w-full flex justify-center">
+          <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+            <CmsUserCart />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
