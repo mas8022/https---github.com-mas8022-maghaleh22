@@ -1,5 +1,6 @@
 import React from "react";
 import Cart from "../components/modules/cart";
+import CmsProductCart from "../components/modules/cmsProductCart";
 
 const cmsProducts = () => {
   return (
@@ -31,22 +32,23 @@ const cmsProducts = () => {
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
         <div className="w-full flex justify-center">
           <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
-            <Cart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
+            <CmsProductCart />
           </div>
         </div>
       </div>
