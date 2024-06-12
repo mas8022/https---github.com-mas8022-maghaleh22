@@ -24,7 +24,8 @@ export default function Cart() {
 
         <div className="flex flex-col items-end gap-4">
           <p className="text-end w-[10rem] text-[1.3rem] text-black/80 font-light">
-            <span className="line-through">230,000</span> <span>120,000</span>تومان
+            <span className="line-through">230,000</span> <span>120,000</span>
+            تومان
           </p>
           <Link
             href={"/products/software/sfdsadfdfds"}
@@ -33,10 +34,6 @@ export default function Cart() {
             مشاهده
           </Link>
         </div>
-
-
-
-
       </div>
     </div>
   );

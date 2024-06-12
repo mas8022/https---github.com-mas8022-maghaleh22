@@ -1,8 +1,8 @@
 import React from "react";
+import Cart from "../../components/modules/cart";
+import AuthorCart from "../../components/modules/authorCart";
 
 const page = () => {
-
-
   return (
     <div>
       <div className="w-full pb-12 border-b-1 border-b-second/50 flex justify-end">
@@ -29,7 +29,24 @@ const page = () => {
           </svg>
         </div>
       </div>
-      <span className="text-[3rem]">authors</span>
+      <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
+        <div className="w-full flex justify-center">
+          <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+            <AuthorCart />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
