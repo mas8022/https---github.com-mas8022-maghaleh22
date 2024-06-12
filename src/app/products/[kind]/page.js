@@ -13,9 +13,6 @@ export default function products({ params }) {
       <SideFilter setActive={setActive} active={active} />
 
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
-
-        
-
         <div className=" w-full flex items-center justify-between md:justify-end gap-8">
           <div
             onClick={() => setActive((p) => !p)}
@@ -23,10 +20,6 @@ export default function products({ params }) {
           >
             بر اساس
           </div>
-
-
-
-
 
           <div className="flex h-14 items-center justify-end gap-4 border-1 border-gray-800/20 pl-4 py-1 rounded-md">
             <input
@@ -50,25 +43,10 @@ export default function products({ params }) {
               />
             </svg>
           </div>
-
-
-
-
-
-
-
-
         </div>
-
-
-
-
-
-
 
         <div className="w-full flex justify-center">
           <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-            
             <Cart />
             <Cart />
             <Cart />
