@@ -1,3 +1,4 @@
+import ContextProvider from "@/utils/context";
 import Discount from "./components/modules/discount";
 import Footer from "./components/modules/footer";
 import Hr from "./components/modules/hr";
@@ -15,16 +16,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-first">
-        <NextUIProvider>
-          <Navbar />
-          <Hr />
-          <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem]">
-            <Discount />
-            {children}
-            <Scroller />
-          </div>
-          <Footer />
-        </NextUIProvider>
+        <ContextProvider>
+          <NextUIProvider>
+            <Navbar />
+            <Hr />
+            <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem]">
+              <Discount />
+              {children}
+              <Scroller />
+            </div>
+            <Footer />
+          </NextUIProvider>
+        </ContextProvider>
       </body>
     </html>
   );

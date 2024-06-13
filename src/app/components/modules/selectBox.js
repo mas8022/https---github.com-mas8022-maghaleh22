@@ -4,7 +4,7 @@ import { HiOutlineChevronDown } from "react-icons/hi2";
 
 const SelectInput = ({ id = "", label: label = "", children }) => {
   const [value, setValue] = useState(null);
-  const [isOpen, toggleOpen] = useToggle();
+  const [isOpen, toggleOpen] = useToggle("selectBox");
 
   const onSelectOption = (event) => {
     const value = event.target.dataset.value;

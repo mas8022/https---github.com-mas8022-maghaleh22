@@ -12,7 +12,7 @@ const CmsSideBar = () => {
   };
 
   return (
-    <div className="sidebar w-1/6 h-screen bg-second shadow-md py-16 px-11 flex flex-col gap-16">
+    <div className="sm:flex hidden sidebar w-[27rem] h-screen bg-second shadow-md py-16 px-11 flex-col gap-16">
       <p className="text-[2.9rem] pb-8 pr-8 text-first font-light border-b-2 border-b-first">
         داشبورد
       </p>

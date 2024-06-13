@@ -4,6 +4,7 @@ import Link from "next/link";
 import SidBar from "./sidbar";
 import InputSearchNav from "./inputSearchNav";
 import { isMe } from "@/utils/me";
+import DarkModBtn from "../modules/darkModBtn";
 
 export default async function Navbar() {
   let log = false;
@@ -53,6 +54,8 @@ export default async function Navbar() {
 
       <div className="flex gap-4 sm:gap-8 md:gap-10 items-center">
         <InputSearchNav />
+
+        <DarkModBtn />
 
         {log ? (
           <Link href={`/profile/${"cgf5esad"}`}>

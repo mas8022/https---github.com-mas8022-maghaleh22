@@ -3,7 +3,7 @@ import useToggle from "@/utils/toggle";
 import React from "react";
 
 export default function InputSearchNav() {
-  const [isOpen, toggleOpen] = useToggle(false);
+  const [isOpen, toggleOpen] = useToggle("inputSearchNavActivation");
   return (
     <div
       className={`${

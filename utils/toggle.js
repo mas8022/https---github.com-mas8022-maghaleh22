@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useLocalStorage } from "@uidotdev/usehooks";
+import React, { useCallback, useEffect } from "react";
 
-const useToggle = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const useToggle = (keyName) => {
+    const [isOpen, setIsOpen] = useLocalStorage(keyName, false);
 
     const toggleOpen = event => {
         event && event.stopPropagation();

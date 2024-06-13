@@ -13,11 +13,13 @@ const CmsUserCart = () => {
         className="size-60 rounded-full shadow-md object-cover mb-2 border-1 border-second/50"
       />
       <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1">
-        استاد حسین احمدی
+        حسن مالکی
       </h2>
 
       <div className="w-full flex flex-col items-end gap-12 px-8">
-        <p className="text-[1.3rem] font-light text-black/60 line-clamp-1 self-center">mahdi@gmail.com</p>
+        <p className="text-[1.3rem] font-light text-black/60 line-clamp-1 self-center">
+          mahdi@gmail.com
+        </p>
         <div className="w-full flex items-center justify-between gap-2 child:shadow-sm">
           <Link
             href={"/products/software/sfdsadfdfds"}
