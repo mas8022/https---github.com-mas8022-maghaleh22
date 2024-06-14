@@ -7,6 +7,7 @@ import Navbar from "./_components/template/navbar";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import ThemeToggle from "./_components/modules/themeToggle";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "MAGHALEH",
@@ -16,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-first">
+      <body className="bg-first dark:bg-[#1e293b]">
         <ThemeToggle />
         <ContextProvider>
           <NextUIProvider>
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
               <Scroller />
             </div>
             <Footer />
+            <Toaster position="bottom-left" reverseOrder={false} />
           </NextUIProvider>
         </ContextProvider>
       </body>

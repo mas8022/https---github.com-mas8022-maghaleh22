@@ -44,15 +44,7 @@
     box-shadow: -1px 0px 3px -2px #000;
   }
 
-  /* .custom-ckeditor .ck-content[dir="rtl"] {
-  direction: rtl !important;
-  text-align: right !important;
-}
 
-.custom-ckeditor .ck-content[dir="ltr"] {
-  direction: ltr !important;
-  text-align: left !important;
-} */
   .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     p {
     font-size: 1.5rem;
@@ -71,6 +63,7 @@
   .ck.ck-content {
     min-height: 40rem !important;
   }
+  
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -87,6 +80,13 @@
     -o-appearance: none;
     appearance: none;
   }
+  .dark .ck.ck-toolbar.ck-toolbar_grouping{
+    background: #f97316;
+  }
+  .dark .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
+    background: #000;
+  }
+
   @media only screen and (max-width: 500px) {
     * {
       cursor: default;

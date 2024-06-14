@@ -16,7 +16,7 @@ const Sliders = () => {
       }}
       slidesPerView={4}
       spaceBetween={10}
-      className="!p-2"
+      className="!p-2 overflow-hidden rounded-xl"
       autoplay={{
         delay: 2500,
         disableOnInteraction: false,

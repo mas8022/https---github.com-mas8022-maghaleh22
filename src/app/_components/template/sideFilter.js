@@ -6,7 +6,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Image from "next/image";
 
 export default function SideFilter({ active, setActive }) {
-  const [value, setValue] = useState("female");
+  const [value, setValue] = useState("all");
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -21,8 +21,8 @@ export default function SideFilter({ active, setActive }) {
       <div
         className={
           active
-            ? "w-[17rem] lg:w-96 gap-12 pl-12 h-screen flex flex-col pt-20 border-l fixed md:relative bg-white"
-            : "w-[17rem] lg:w-96 gap-12 pl-12 h-screen hidden pt-20 border-l relative bg-white md:flex md:flex-col"
+            ? "w-[17rem] lg:w-96 gap-12 pl-12 h-screen flex flex-col pt-20 border-l dark:border-first/20 fixed md:relative bg-white dark:bg-[#1e293b]"
+            : "w-[17rem] lg:w-96 gap-12 pl-12 h-screen hidden pt-20 border-l dark:border-first/20 relative bg-white dark:bg-[#1e293b] md:flex md:flex-col"
         }
       >
         <Image
@@ -40,6 +40,14 @@ export default function SideFilter({ active, setActive }) {
           onChange={handleChange}
           className="flex flex-col gap-3 w-[12rem] md:w-[20rem] !mr-0"
         >
+          <FormControlLabel
+            className="mr-0"
+            value="all"
+            control={<Radio />}
+            label={
+              <span className="text-[1.5rem] font-bold">همه محصولات</span>
+            }
+          />
           <FormControlLabel
             className="mr-0"
             value="bestselling"

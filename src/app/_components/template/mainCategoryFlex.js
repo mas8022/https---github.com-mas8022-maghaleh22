@@ -13,9 +13,11 @@ export default function MainCategoryFlex() {
               src={"/images/imac-svgrepo-com.svg"}
               width={120}
               height={120}
+              className="dark:invert"
               alt="دسته بندی ها"
+              className="dark:invert"
             />
-            <span className="text-black text-[1.35rem] md:text-[1.7rem]">
+            <span className="text-black text-[1.35rem] md:text-[1.7rem] dark:text-first">
               نرم افزار و فناوری اطلاعات
             </span>
           </Button>
@@ -26,9 +28,12 @@ export default function MainCategoryFlex() {
               src={"/images/envelope-stats-svgrepo-com.svg"}
               width={120}
               height={120}
+              className="dark:invert"
               alt="دسته بندی ها"
             />
-            <span className="text-black text-[1.35rem] md:text-[1.7rem]">اقتصاد و حسابداری</span>
+            <span className="text-black text-[1.35rem] md:text-[1.7rem] dark:text-first">
+              اقتصاد و حسابداری
+            </span>
           </Button>
         </Link>
         <Link className=" child:shadow-xl" href={"/products/business"}>
@@ -37,9 +42,12 @@ export default function MainCategoryFlex() {
               src={"/images/job-desktop-svgrepo-com.svg"}
               width={120}
               height={120}
+              className="dark:invert"
               alt="دسته بندی ها"
             />
-            <span className="text-black text-[1.35rem] md:text-[1.7rem]">کسب و کار</span>
+            <span className="text-black text-[1.35rem] md:text-[1.7rem] dark:text-first">
+              کسب و کار
+            </span>
           </Button>
         </Link>
         <Link className=" child:shadow-xl" href={"/products/teenager"}>
@@ -48,9 +56,12 @@ export default function MainCategoryFlex() {
               src={"/images/birdhouse-svgrepo-com.svg"}
               width={120}
               height={120}
+              className="dark:invert"
               alt="دسته بندی ها"
             />
-            <span className="text-black text-[1.35rem] md:text-[1.7rem]">کودک و نوجوان</span>
+            <span className="text-black text-[1.35rem] md:text-[1.7rem] dark:text-first">
+              کودک و نوجوان
+            </span>
           </Button>
         </Link>
         <Link className=" child:shadow-xl" href={"/products/language"}>
@@ -59,9 +70,12 @@ export default function MainCategoryFlex() {
               src={"/images/book-write-svgrepo-com.svg"}
               width={120}
               height={120}
+              className="dark:invert"
               alt="دسته بندی ها"
             />
-            <span className="text-black text-[1.35rem] md:text-[1.7rem]">اموزش زبان</span>
+            <span className="text-black text-[1.35rem] md:text-[1.7rem] dark:text-first">
+              اموزش زبان
+            </span>
           </Button>
         </Link>
         <Link className=" child:shadow-xl" href={"/products/art"}>
@@ -70,9 +84,12 @@ export default function MainCategoryFlex() {
               src={"/images/art-tools-svgrepo-com.svg"}
               width={120}
               height={120}
+              className="dark:invert"
               alt="دسته بندی ها"
             />
-            <span className="text-black text-[1.35rem] md:text-[1.7rem]">هنر و طراحی</span>
+            <span className="text-black text-[1.35rem] md:text-[1.7rem] dark:text-first">
+              هنر و طراحی
+            </span>
           </Button>
         </Link>
       </div>

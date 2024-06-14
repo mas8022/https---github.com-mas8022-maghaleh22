@@ -21,9 +21,9 @@ export default function products({ params }) {
             بر اساس
           </div>
 
-          <div className="flex h-14 items-center justify-end gap-4 border-1 border-gray-800/20 pl-4 py-1 rounded-md">
+          <div className="flex h-16 items-center justify-end gap-4 border-1 border-gray-800/20 dark:border-first/50 pl-4 py-1 rounded-md">
             <input
-              className="pr-4 h-full w-[20rem] sm:w-[30rem] text-[1.3rem] pl-2 focus:outline-none outline-none"
+              className="pr-4 h-full w-[20rem] dark:bg-[#1e293b] sm:w-[30rem] text-[1.4rem] pl-2 focus:outline-none outline-none"
               type="search"
               placeholder="چه اموزشی مد نظرتان است؟..."
             />

@@ -12,15 +12,15 @@ const page = () => {
           width={150}
           height={150}
           alt="author profile image"
-          className="xm:size-[30rem] size-96 rounded-full shadow-lg"
+          className="xm:size-[30rem] size-96 rounded-full shadow-lg dark:shadow-2xl"
         />
-        <p className="text-[1.8rem] text-black/50 font-bold">
+        <p className="text-[1.8rem] text-black/50 dark:text-first font-bold">
           استاد محمد حسین اکبری
         </p>
       </div>
       <div className="w-full flex flex-col gap-8">
         <Title title={"اطلاعات استاد"} />
-        <p className="text-[1.5rem] text-black/60 font-light">
+        <p className="text-[1.5rem] text-black/60 dark:text-first/70 font-light text-justify">
           استاد محمد حسین اکبری یکی از برجسته‌ترین اساتید در رشته مهندسی عمران
           در ایران است. او تحصیلات خود را در مقاطع کارشناسی مهندسی عمران از
           دانشگاه صنعتی شریف، کارشناسی ارشد مهندسی سازه از دانشگاه تهران، و

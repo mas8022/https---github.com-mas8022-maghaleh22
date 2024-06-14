@@ -1,7 +1,6 @@
 "use client";
-// _components/custom-editor.js
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build";
 
@@ -38,12 +37,6 @@ function CustomEditor(props) {
   const language = {
     content: editorLanguage,
   };
-
-  //   const language = useMemo(() => {
-  //     return {
-  //       content: editorLanguage,
-  //     };
-  //   }, [editorLanguage]);
 
   useEffect(() => {
     setEditorLanguage("en");

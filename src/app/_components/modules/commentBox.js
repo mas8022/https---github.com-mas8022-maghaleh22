@@ -3,7 +3,7 @@ import React from "react";
 
 const CommentBox = () => {
   return (
-    <div className="p-12 flex flex-col gap-12 items-center justify-between overflow-hidden rounded-3xl shadow-lg">
+    <div className="p-12 flex flex-col gap-12 items-center justify-between overflow-hidden rounded-3xl shadow-lg dark:shadow-2xl">
       <div className="flex flex-col gap-4 items-center justify-between">
         <Image
           src={"/images/profile.jpg"}
@@ -12,17 +12,17 @@ const CommentBox = () => {
           alt="عکس نظر دهنده"
           className="size-40 object-cover border-2 border-second/70 rounded-full"
         />
-        <span className="text-[1.5rem] font-light text-black/60">
+        <span className="text-[1.5rem] font-light text-black/60 dark:text-first">
           امیر حسین عزیزی
         </span>
       </div>
-      <p className="w-full p-7 bg-black/5 rounded-3xl text-black/90 text-[1.4rem] font-light">
+      <p className="w-full p-7 bg-black/5 dark:bg-black/15 rounded-3xl text-black/90 dark:text-first/70 text-[1.4rem] font-light">
         من چند وقت پیش به دنبال منابعی برای تحقیق دانشگاهیم بودم و این سایت
         واقعاً به من کمک کرد. مقالات علمی و پژوهشی بسیار خوبی در اینجا وجود داره
       </p>
       <div className="w-full flex justify-end gap-6">
-        <div className="bg-black/5 rounded-full flex items-center p-4 gap-2">
-          <span className="text-[1.2rem] font-light text-black/60">2</span>
+        <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
+          <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">2</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -38,8 +38,8 @@ const CommentBox = () => {
             />
           </svg>
         </div>
-        <div className="bg-black/5 rounded-full flex items-center p-4 gap-2">
-          <span className="text-[1.2rem] font-light text-black/60">2</span>
+        <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
+          <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">2</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

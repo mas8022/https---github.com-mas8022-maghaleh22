@@ -10,7 +10,7 @@ export default function SidBar() {
   return (
     <>
       <Side sideBarName={"sidBarActivation"} cls={"ld:hidden"}>
-        <div className="w-full h-full flex flex-col justify-between p-[4rem] px-[3rem]">
+        <div className="w-full h-full flex flex-col justify-between p-[4rem] px-[3rem] dark:bg-[#1e293b]">
           <ul className="text-[1.4rem] flex flex-col gap-6">
             <Link href={"/"} className="flex gap-2">
               <svg
@@ -53,7 +53,7 @@ export default function SidBar() {
               </div>
               <ul
                 onClick={(e) => e.stopPropagation()}
-                className={`child:text-[1.27rem] flex flex-col text-black/70 font-light overflow-hidden transition-all duration-200 ${
+                className={`child:text-[1.27rem] flex flex-col text-black/70 dark:text-first/50 font-light overflow-hidden transition-all duration-200 ${
                   isOpen ? "!h-auto  pt-4 gap-2" : "!h-0"
                 }`}
               >
@@ -138,7 +138,7 @@ export default function SidBar() {
             </Link>
           </ul>
 
-          <div className="py-[1rem] w-full h-[5rem] border-t-[1px] border-t-black/50 flex flex-col items-start">
+          <div className="py-[1rem] w-full h-[5rem] border-t-[1px] border-t-black/50 dark:border-t-first/50 flex flex-col items-start">
             <span className="text-[1.2rem] ltr">+98 911 318 51 37</span>
             <span className="text-[1.2rem] ltr">0111 2302 24 18</span>
           </div>

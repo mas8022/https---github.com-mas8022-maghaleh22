@@ -14,7 +14,7 @@ export default async function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center dark:to-red-700 justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000] gap-4">
+    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md dark:shadow-none dark:border-b-1 dark:border-second/30 dark:shadow-black flex items-center dark:bg-[#1e293b] justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000] gap-4">
       <ul className="gap-3 sm:gap-6 md:gap-7 text-[1.25rem] md:text-[1.6rem]  hidden ld:flex">
         <Link href={"/"}>خانه</Link>
 
@@ -35,7 +35,7 @@ export default async function Navbar() {
             />
           </svg>
 
-          <ul className="w-[23rem] absolute right-0 rounded-xl top-full mt-4 bg-first shadow-md p-6 flex flex-col gap-y-1 border-y-2 border-y-second invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:mt-2 child:cursor-pointer child-hover:bg-second/30 child:rounded-lg child:pr-4 child:h-12 child:flex child:items-center pb-16">
+          <ul className="w-[23rem] absolute right-0 rounded-xl top-full mt-4 bg-first dark:bg-[#1f2937] shadow-md p-6 flex flex-col gap-y-1 border-y-2 border-y-second invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:mt-2 child:cursor-pointer child-hover:bg-second/30 child:rounded-lg child:pr-4 child:h-12 child:flex child:items-center pb-16">
             <Link href={"/products/software"}>نرم افزار و فناوری اطلاعات</Link>
             <Link href={"/products/economics"}>اقتصاد و حسابداری</Link>
             <Link href={"/products/business"}>کسب و کار</Link>
@@ -64,7 +64,7 @@ export default async function Navbar() {
               width={0}
               height={0}
               alt="profile"
-              className="w-[3rem] sm:w-[4rem] h-3rem] sm:h-[4rem] "
+              className="w-[3rem] sm:w-[4rem] h-3rem] sm:h-[4rem] dark:invert"
             ></Image>
           </Link>
         ) : (
@@ -90,7 +90,7 @@ export default async function Navbar() {
             </Link>
             <Link
               href={"/login"}
-              className="sm:flex hidden w-32 xxm:w-[10rem] md:w-[12rem] h-[2.5rem] xxm:h-[3rem] md:h-[4rem] text-[1.2rem]  xxm:text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 items-center justify-center cursor-pointer active:text-emerald-600"
+              className="sm:flex hidden w-32 xxm:w-[10rem] md:w-[12rem] h-[2.5rem] xxm:h-[3rem] md:h-[4rem] text-[1.2rem]  xxm:text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 items-center justify-center cursor-pointer"
             >
               ورود/ثبت نام
             </Link>

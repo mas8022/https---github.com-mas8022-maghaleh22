@@ -30,9 +30,9 @@ export default function page() {
           </p>
         </div>
         <Image
-          src={"/images/aboutUsTitle.jpg"}
-          width={1000}
-          height={1000}
+          src={"/images/aboutUsTitle.png"}
+          width={500}
+          height={500}
           alt="about us title"
           className="xl:w-1/2 w-1/3 object-cover lg:block hidden"
         />
@@ -40,9 +40,9 @@ export default function page() {
       <Hr />
       <div className="about-center-aboutUs w-full flex items-start justify-between gap-32">
         <Image
-          src={"/images/secondAboutUs.jpg"}
-          width={1000}
-          height={1000}
+          src={"/images/secondAboutUs.png"}
+          width={500}
+          height={500}
           alt="about us title"
           className="w-1/3 object-cover lg:block hidden"
         />

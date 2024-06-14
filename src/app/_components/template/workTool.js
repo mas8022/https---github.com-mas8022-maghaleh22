@@ -1,12 +1,10 @@
 "use client";
-import { FormControl, InputLabel } from "@mui/material";
 import React, { useState } from "react";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import dynamic from "next/dynamic";
-import Hr from "../modules/hr";
+import SelectInput from "../modules/selectBox";
+import SelectItem from "../modules/selectItem";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -28,10 +26,6 @@ const WorkTool = () => {
   const [subject, setSubject] = useState("");
   const [fileData, setFileData] = useState("");
 
-  const handleChange = (event) => {
-    setSubject(event.target.value);
-  };
-
   return (
     <div className="w-full py-20 flex flex-col gap-16">
       <div className="describe w-full px-16 py-10 text-[1.6rem] text-first bg-second/70 rounded-3xl text-center">
@@ -45,47 +39,32 @@ const WorkTool = () => {
         می کنیم و به شما اطلاع خواهیم داد
       </div>
       <form className="w-full flex flex-wrap justify-between gap-8">
-        <FormControl
-          className="w-[30rem] child:text-[1.3rem] child:font-light"
-          size="small"
-        >
-          <InputLabel id="demo-select-small-label">موضوع</InputLabel>
-          <Select
-            labelId="demo-select-small-label"
-            id="demo-select-small"
-            value={subject}
-            label="موضوع"
-            onChange={handleChange}
-            className="!child:text-[1.3rem] !child:font-light mui-selector"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={"software"}>نرم افزار و فناوری اطلاعات</MenuItem>
-            <MenuItem value={"economics"}>اقتصاد و حسابداری</MenuItem>
-            <MenuItem value={"business"}>کسب و کار</MenuItem>
-            <MenuItem value={"teenager"}>کودک و نوجوان</MenuItem>
-            <MenuItem value={"language"}>اموزش زبان</MenuItem>
-            <MenuItem value={"art"}>هنر طراحی</MenuItem>
-          </Select>
-        </FormControl>
+        <SelectInput id="دسته بندی" label="دسته بندی">
+          <SelectItem value={"software"}>نرم افزار و فناوری اطلاعات</SelectItem>
+          <SelectItem value={"economics"}>اقتصاد و حسابداری</SelectItem>
+          <SelectItem value={"business"}>کسب و کار</SelectItem>
+          <SelectItem value={"teenager"}>کودک و نوجوان</SelectItem>
+          <SelectItem value={"language"}>اموزش زبان</SelectItem>
+          <SelectItem value={"art"}>هنر طراحی</SelectItem>
+        </SelectInput>
         <input
           type="text"
           required
-          className="w-[30rem] h-14 text-[1.3rem] rounded-md border-1 border-gray-600/30 px-6 focus:outline-none"
+          className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] rounded-md border-1 outline-none border-gray-600/30 px-6 focus:outline-none"
           placeholder="سر تیتر مقاله خود را بنویسید..."
         />
-        <div className="flex flex-col w-[35rem] rounded-md border-1 border-gray-600/30">
-          <div className="w-full h-14">
+        <div className="flex flex-col w-[35rem] dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30 dark:shadow-2xl">
+          <div className="w-full h-[4.2rem]">
             <input
               type="search"
-              className="w-3/4 h-full rounded-md focus:outline-none px-6 border-b-1 border-gray-600/35"
+              placeholder="برچسب های مورد نظر خود را وارد کنید..."
+              className="w-3/4 h-full rounded-md focus:outline-none px-6 border-b-1 border-gray-600/35 text-[1.3rem] dark:bg-[#0d141f]"
             />
             <button className="w-1/4 h-full bg-second/80 active:bg-second/50  rounded-md text-[1.3rem] font-bold text-first">
               اضافه کردن
             </button>
           </div>
-          <div className="w-full flex flex-wrap p-6 gap-5 child:text-[1.2rem] font-light">
+          <div className="w-full flex flex-wrap p-6 gap-5 child:text-[1.2rem] font-light dark:bg-[#121c2c]">
             <span>#مهندس معماری</span>
             <span>#مهندس معماری</span>
             <span>#مهندس معماری</span>

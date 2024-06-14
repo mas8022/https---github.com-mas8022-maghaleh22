@@ -54,22 +54,20 @@ export default function page({ params }) {
   });
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-full flex flex-col items-center mt-12">
-        <div className="w-[20rem] h-[20rem] rounded-full !z-10">
+        <div className="w-[20rem] h-[20rem] rounded-full !z-10 overflow-hidden">
           <Uploader
-            className="z-10"
+            className="z-10 overflow-hidden"
             label={"ویرایش"}
             setFileData={setFileData}
           />
         </div>
-      </div>
 
       <form
-        className="mt-[6rem] bg-second/30 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center"
+        className="mt-[6rem] bg-second/30 dark:bg-black/30 rounded-lg w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center"
         onSubmit={editProfile.handleSubmit}
       >
         <input
-          className="w-full rounded-lg bg-white border-0 h-[3rem] px-[1.5rem] text-[1.3rem] text-black/70"
+          className="w-full rounded-lg bg-white dark:bg-[#1e293b] border-0 h-[3rem] px-[1.5rem] text-[1.3rem] text-black/70"
           id="fullName"
           name="fullName"
           type="text"
@@ -81,7 +79,7 @@ export default function page({ params }) {
           editProfile.errors.fullName &&
           editProfile.errors.fullName}
         <input
-          className="w-full rounded-lg bg-white border-0 h-[3rem] px-[1.5rem] text-[1.3rem] text-black/70"
+          className="w-full rounded-lg bg-white dark:bg-[#1e293b] border-0 h-[3rem] px-[1.5rem] text-[1.3rem] text-black/70"
           id="email"
           name="email"
           type="text"
@@ -94,7 +92,7 @@ export default function page({ params }) {
           editProfile.errors.email}
 
         <input
-          className="w-full rounded-lg bg-white border-0 h-[3rem] px-[1.5rem] text-[1.3rem] text-black/70"
+          className="w-full rounded-lg bg-white dark:bg-[#1e293b] border-0 h-[3rem] px-[1.5rem] text-[1.3rem] text-black/70"
           id="phone"
           name="phone"
           type="text"
@@ -107,7 +105,7 @@ export default function page({ params }) {
           editProfile.errors.phone}
         <button
           type="submit"
-          className="w-full rounded-lg border-0 h-[4.5rem] bg-second/60 text-[1.8rem] active:bg-second/50 text-first flex items-center justify-center"
+          className="w-full rounded-lg border-0 h-[4.5rem] bg-second/80 text-[1.8rem] active:bg-second/50 text-first flex items-center justify-center"
         >
           {loading ? (
             <MoonLoader size={20} color="#fff" />

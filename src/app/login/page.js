@@ -9,12 +9,11 @@ export default async function page() {
 
   return (
     <div
-      src={"/images/abstract-background-pastel-colors_627230-60.avif"}
-      className="w-full flex items-center justify-center lg:justify-start gap-32 lgg:p-0 py-32"
+      className="w-full flex items-center justify-center lg:justify-start gap-32 lgg:p-0 py-32 !pb-36"
     >
       {me ? <Login /> : <SignUp />}
       <Image
-        src={"/images/login.jpg"}
+        src={"/images/login.png"}
         width={1000}
         height={1000}
         alt="login image"

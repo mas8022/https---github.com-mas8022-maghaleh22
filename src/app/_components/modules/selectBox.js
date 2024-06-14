@@ -21,18 +21,18 @@ const SelectInput = ({ id = "", label: label = "", children }) => {
   };
 
   return (
-    <div className="relative !h-16 w-[27rem] sm:w-[24rem] xxl:w-[30rem]">
+    <div className="relative !h-16 w-[27rem] sm:w-[24rem] xxl:w-[30rem] dark:bg-[#0d141f]">
       <input
         onClick={(event) => toggleOpen(event)}
-        className={`select-appearance-none w-full h-full flex items-center justify-between peer p-3 text-sm text-gray-700 outline-none border border-gray-200 rounded-lg hover:border-gray-300 focus:border-blue-600 cursor-pointer caret-transparent`}
+        className={`select-appearance-none w-full h-full flex items-center justify-between peer p-3 text-sm text-gray-700 outline-none border border-gray-200 dark:border-red-50/0 rounded-lg hover:border-gray-300 focus:border-second/50 dark:focus:border-first/0 cursor-pointer caret-transparent dark:bg-[#0d141f]`}
         value={""}
       />
       <label
         htmlFor={id}
-        className={`absolute right-3 h-max top-0 m-auto text-gray-400 peer-focus:text-blue-600 pointer-events-none transition-all ${
+        className={`absolute right-3 h-max top-0 m-auto text-gray-400 peer-focus:text-second dark:peer-focus:text-first pointer-events-none transition-all ${
           isOpen || !!value
-            ? "px-1 bg-white bottom-full text-[1.2rem]"
-            : "text-[1.3rem] bottom-0 cursor-text peer-focus:px-1 peer-focus:bg-white peer-focus:bottom-full peer-focus:text-xs"
+            ? "px-1 bg-white dark:bg-[#1e293b] bottom-full text-[1.2rem]"
+            : "text-[1.3rem] bottom-0 cursor-text peer-focus:px-1 peer-focus:bg-white dark:peer-focus:bg-[#1e293b] peer-focus:bottom-full peer-focus:text-xs"
         }`}
       >
         {label}
@@ -47,7 +47,7 @@ const SelectInput = ({ id = "", label: label = "", children }) => {
         />
       </div>
       <div
-        className={`absolute left-0 right-0 top-full p-2 bg-white border border-gray-200 space-y-1 rounded-lg transition-all z-10 ${
+        className={`absolute left-0 right-0 top-full p-2 bg-white dark:bg-[#121c2c] border border-gray-200 dark:border-first/0 space-y-1 rounded-lg transition-all z-10 ${
           isOpen ? "mt-1 opacity-100 visible" : "mt-2 opacity-0 invisible"
         }`}
         onClick={onSelectOption}

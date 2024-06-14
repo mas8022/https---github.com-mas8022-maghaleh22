@@ -18,7 +18,7 @@ export default function Scroller() {
     <>
       <div
         onClick={() => scrollTo(0, 0)}
-        className="active:scale-95 bg-second/30 w-[4rem] h-[4rem] rounded-[50%] z-10 fixed bottom-[6rem] right-8 sm:right-14 md:right-48 flex items-center justify-center cursor-pointer"
+        className="active:scale-95 bg-second/30 dark:bg-[#1e293b]/50 dark:border-1 dark:border-second w-[4rem] h-[4rem] rounded-[50%] z-10 fixed bottom-[6rem] right-8 sm:right-14 md:right-48 flex items-center justify-center cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
