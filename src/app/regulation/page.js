@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "../components/template/title";
-import Hr from "../components/modules/hr";
+import Title from "../_components/template/title";
+import Hr from "../_components/modules/hr";
 
 const page = () => {
   return (

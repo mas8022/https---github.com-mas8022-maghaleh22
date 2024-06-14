@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
-export default function Side({ children, sideBarName, className }) {
+export default function Side({ children, sideBarName, cls }) {
   const [sideFlag, setSideFlag] = useLocalStorage(sideBarName, false);
 
   useEffect(() => {
@@ -16,6 +16,7 @@ export default function Side({ children, sideBarName, className }) {
     });
     return () => window.removeEventListener("click", closeSideBarHandler);
   }, []);
+
   return (
     <>
       <svg
@@ -25,7 +26,7 @@ export default function Side({ children, sideBarName, className }) {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className={`w-12 h-12 ${className}`}
+        className={`w-12 h-12 ${cls}`}
       >
         <path
           strokeLinecap="round"
@@ -35,11 +36,9 @@ export default function Side({ children, sideBarName, className }) {
       </svg>
 
       <div
-        className={
-          sideFlag
-            ? " transition-all ease-in-out duration-[0.4s] w-[21rem] h-screen fixed top-0 right-0 shadow-2xl bg-first z-[100]"
-            : " transition-all ease-in-out duration-[0.4s] w-[21rem] h-screen fixed top-0 right-[-30rem] shadow-2xl bg-first/70 z-[100]"
-        }
+        className={`w-[21rem] h-screen bg-first shadow-2xl fixed top-0 transition-all ease-in-out duration-[0.4s] z-[1000] ${
+          sideFlag ? "right-0" : "-right-[30rem]"
+        }`}
       >
         {children}
       </div>

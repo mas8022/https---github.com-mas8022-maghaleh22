@@ -1,5 +1,5 @@
 import React from "react";
-import CmsUserCart from "../../components/modules/cmsUserCart";
+import CmsUserCart from "../../_components/modules/cmsUserCart";
 
 const page = () => {
   return (

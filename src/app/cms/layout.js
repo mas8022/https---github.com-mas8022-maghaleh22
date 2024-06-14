@@ -1,6 +1,6 @@
 import React from "react";
-import CmsSideBar from "../components/modules/cmsSideBar";
-import CmsNavbar from "../components/modules/cmsNavbar";
+import CmsSideBar from "../_components/modules/cmsSideBar";
+import CmsNavbar from "../_components/modules/cmsNavbar";
 
 const layout = ({ children }) => {
   return (
@@ -8,7 +8,7 @@ const layout = ({ children }) => {
       <CmsSideBar />
       <div className="sm:w-5/6 w-full h-screen overflow-y-scroll relative">
         <CmsNavbar />
-        <div className="w-full p-12">{children}</div>
+        <div className="w-full sm:p-12 p-6">{children}</div>
       </div>
     </div>
   );

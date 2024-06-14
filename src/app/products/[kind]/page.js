@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import SideFilter from "../../components/template/sideFilter";
+import SideFilter from "../../_components/template/sideFilter";
 import Image from "next/image";
-import Cart from "../../components/modules/cart";
+import Cart from "../../_components/modules/cart";
 
 export default function products({ params }) {
   console.log(params.kind);

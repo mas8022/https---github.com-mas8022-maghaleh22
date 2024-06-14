@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Hr from "../components/modules/hr";
+import Hr from "../_components/modules/hr";
 
 export default function page() {
   return (

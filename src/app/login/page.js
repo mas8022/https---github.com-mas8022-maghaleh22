@@ -1,6 +1,6 @@
 import React from "react";
-import SignUp from "../components/template/signUp";
-import Login from "../components/template/login";
+import SignUp from "../_components/template/signUp";
+import Login from "../_components/template/login";
 import { isMe } from "@/utils/me";
 import Image from "next/image";
 

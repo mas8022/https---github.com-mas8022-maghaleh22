@@ -3,9 +3,8 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { MoonLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
-import Image from "next/image";
-import Uploader from "../../components/modules/uploader";
-import Hr from "../../components/modules/hr";
+import Uploader from "../../_components/modules/uploader";
+import Hr from "../../_components/modules/hr";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page({ params }) {

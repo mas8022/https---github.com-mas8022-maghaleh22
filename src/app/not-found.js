@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import MainSearch from "./components/template/mainSearch";
+import MainSearch from "./_components/template/mainSearch";
 
 const Page = () => {
   return (

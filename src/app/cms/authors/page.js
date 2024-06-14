@@ -1,6 +1,6 @@
 import React from "react";
-import Cart from "../../components/modules/cart";
-import AuthorCart from "../../components/modules/authorCart";
+import Cart from "../../_components/modules/cart";
+import AuthorCart from "../../_components/modules/authorCart";
 
 const page = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import Hr from "../components/modules/hr";
-import ContactUsBoxContainer from "../components/template/contactUsBoxContainer";
+import Hr from "../_components/modules/hr";
+import ContactUsBoxContainer from "../_components/template/contactUsBoxContainer";
 
 export default function ContactUs() {
   return (

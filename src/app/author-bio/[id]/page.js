@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import Hr from "../../components/modules/hr";
-import Title from "../../components/template/title";
+import Hr from "../../_components/modules/hr";
+import Title from "../../_components/template/title";
 
 const page = () => {
   return (

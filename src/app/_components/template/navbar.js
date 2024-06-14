@@ -4,7 +4,7 @@ import Link from "next/link";
 import SidBar from "./sidbar";
 import InputSearchNav from "./inputSearchNav";
 import { isMe } from "@/utils/me";
-import DarkModBtn from "../modules/darkModBtn";
+import ThemeToggle from "../modules/themeToggle";
 
 export default async function Navbar() {
   let log = false;
@@ -14,7 +14,7 @@ export default async function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000] gap-4">
+    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md flex items-center dark:to-red-700 justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000] gap-4">
       <ul className="gap-3 sm:gap-6 md:gap-7 text-[1.25rem] md:text-[1.6rem]  hidden ld:flex">
         <Link href={"/"}>خانه</Link>
 
@@ -55,7 +55,7 @@ export default async function Navbar() {
       <div className="flex gap-4 sm:gap-8 md:gap-10 items-center">
         <InputSearchNav />
 
-        <DarkModBtn />
+        <ThemeToggle />
 
         {log ? (
           <Link href={`/profile/${"cgf5esad"}`}>
@@ -68,12 +68,33 @@ export default async function Navbar() {
             ></Image>
           </Link>
         ) : (
-          <Link
-            href={"/login"}
-            className="w-32 xxm:w-[10rem] md:w-[12rem] h-[2.5rem] xxm:h-[3rem] md:h-[4rem] text-[1.2rem]  xxm:text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 flex items-center justify-center cursor-pointer active:text-emerald-600"
-          >
-            ورود/ثبت نام
-          </Link>
+          <>
+            <Link
+              href={"/login"}
+              className="sm:hidden flex p-4 rounded-full bg-second/10 items-center justify-center cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={"1.4"}
+                stroke="black"
+                className="sm:size-10 size-7 active:scale-95"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
+                />
+              </svg>
+            </Link>
+            <Link
+              href={"/login"}
+              className="sm:flex hidden w-32 xxm:w-[10rem] md:w-[12rem] h-[2.5rem] xxm:h-[3rem] md:h-[4rem] text-[1.2rem]  xxm:text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 items-center justify-center cursor-pointer active:text-emerald-600"
+            >
+              ورود/ثبت نام
+            </Link>
+          </>
         )}
 
         <Link href={"/"}>

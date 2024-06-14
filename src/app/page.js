@@ -1,11 +1,11 @@
 import React from "react";
-import MainCategoryFlex from "./components/template/mainCategoryFlex";
-import Hr from "./components/modules/hr";
-import Title from "./components/template/title";
-import Sliders from "./components/modules/slider";
-import Ad from "./components/template/ad";
-import MainSearch from "./components/template/mainSearch";
-import CommentsSlider from "./components/template/commentsSlider";
+import MainCategoryFlex from "./_components/template/mainCategoryFlex";
+import Hr from "./_components/modules/hr";
+import Title from "./_components/template/title";
+import Sliders from "./_components/modules/slider";
+import Ad from "./_components/template/ad";
+import MainSearch from "./_components/template/mainSearch";
+import CommentsSlider from "./_components/template/commentsSlider";
 
 export default function Home() {
   return (

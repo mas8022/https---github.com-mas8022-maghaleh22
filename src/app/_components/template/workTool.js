@@ -20,7 +20,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const Editor = dynamic(() => import("@/src/app/components/modules/ck"), {
+const Editor = dynamic(() => import("@/src/app/_components/modules/ck"), {
   ssr: false,
 });
 

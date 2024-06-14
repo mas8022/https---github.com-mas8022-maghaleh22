@@ -13,6 +13,7 @@ export default function MainCategoryFlex() {
               src={"/images/imac-svgrepo-com.svg"}
               width={120}
               height={120}
+              alt="دسته بندی ها"
             />
             <span className="text-black text-[1.35rem] md:text-[1.7rem]">
               نرم افزار و فناوری اطلاعات
@@ -25,6 +26,7 @@ export default function MainCategoryFlex() {
               src={"/images/envelope-stats-svgrepo-com.svg"}
               width={120}
               height={120}
+              alt="دسته بندی ها"
             />
             <span className="text-black text-[1.35rem] md:text-[1.7rem]">اقتصاد و حسابداری</span>
           </Button>
@@ -35,6 +37,7 @@ export default function MainCategoryFlex() {
               src={"/images/job-desktop-svgrepo-com.svg"}
               width={120}
               height={120}
+              alt="دسته بندی ها"
             />
             <span className="text-black text-[1.35rem] md:text-[1.7rem]">کسب و کار</span>
           </Button>
@@ -45,6 +48,7 @@ export default function MainCategoryFlex() {
               src={"/images/birdhouse-svgrepo-com.svg"}
               width={120}
               height={120}
+              alt="دسته بندی ها"
             />
             <span className="text-black text-[1.35rem] md:text-[1.7rem]">کودک و نوجوان</span>
           </Button>
@@ -55,6 +59,7 @@ export default function MainCategoryFlex() {
               src={"/images/book-write-svgrepo-com.svg"}
               width={120}
               height={120}
+              alt="دسته بندی ها"
             />
             <span className="text-black text-[1.35rem] md:text-[1.7rem]">اموزش زبان</span>
           </Button>
@@ -65,6 +70,7 @@ export default function MainCategoryFlex() {
               src={"/images/art-tools-svgrepo-com.svg"}
               width={120}
               height={120}
+              alt="دسته بندی ها"
             />
             <span className="text-black text-[1.35rem] md:text-[1.7rem]">هنر و طراحی</span>
           </Button>

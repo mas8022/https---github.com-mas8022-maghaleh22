@@ -1,8 +1,8 @@
 import React from "react";
-import Player from "@/src/app/components/modules/player";
-import Hr from "@/src/app/components/modules/hr";
-import AuthorBox from "@/src/app/components/template/authorBox";
-import CommentsBox from "@/src/app/components/template/commentsBox";
+import Player from "@/src/app/_components/modules/player";
+import Hr from "@/src/app/_components/modules/hr";
+import AuthorBox from "@/src/app/_components/template/authorBox";
+import CommentsBox from "@/src/app/_components/template/commentsBox";
 
 export default function page({ id }) {
   console.log("product id ==>", id);

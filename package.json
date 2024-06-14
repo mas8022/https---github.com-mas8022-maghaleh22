@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-build-classNameic": "^41.4.2",
     "@ckeditor/ckeditor5-react": "^7.0.0",
     "@ckeditor/ckeditor5-watchdog": "^41.4.2",
     "@emotion/react": "^11.11.4",

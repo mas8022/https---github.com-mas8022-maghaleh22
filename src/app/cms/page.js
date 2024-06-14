@@ -1,6 +1,6 @@
 import React from "react";
-import Cart from "../components/modules/cart";
-import CmsProductCart from "../components/modules/cmsProductCart";
+import Cart from "../_components/modules/cart";
+import CmsProductCart from "../_components/modules/cmsProductCart";
 
 const cmsProducts = () => {
   return (

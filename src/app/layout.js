@@ -1,11 +1,12 @@
 import ContextProvider from "@/utils/context";
-import Discount from "./components/modules/discount";
-import Footer from "./components/modules/footer";
-import Hr from "./components/modules/hr";
-import Scroller from "./components/modules/scroller";
-import Navbar from "./components/template/navbar";
+import Discount from "./_components/modules/discount";
+import Footer from "./_components/modules/footer";
+import Hr from "./_components/modules/hr";
+import Scroller from "./_components/modules/scroller";
+import Navbar from "./_components/template/navbar";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
+import ThemeToggle from "./_components/modules/themeToggle";
 
 export const metadata = {
   title: "MAGHALEH",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-first">
+        <ThemeToggle />
         <ContextProvider>
           <NextUIProvider>
             <Navbar />

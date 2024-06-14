@@ -2,14 +2,14 @@
 import Link from "next/link";
 import React from "react";
 import useToggle from "@/utils/toggle";
-import Side from "@/utils/side";
+import Side from "../modules/side";
 
 export default function SidBar() {
   const [isOpen, toggleOpen] = useToggle("sidBarUlActivation");
 
   return (
     <>
-      <Side sideBarName={"sidBarActivation"} className={"ld:hidden"}>
+      <Side sideBarName={"sidBarActivation"} cls={"ld:hidden"}>
         <div className="w-full h-full flex flex-col justify-between p-[4rem] px-[3rem]">
           <ul className="text-[1.4rem] flex flex-col gap-6">
             <Link href={"/"} className="flex gap-2">
@@ -126,7 +126,7 @@ export default function SidBar() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                class="size-8"
+                className="size-8"
               >
                 <path
                   strokeLinecap="round"
