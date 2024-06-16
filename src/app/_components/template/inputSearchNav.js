@@ -16,7 +16,7 @@ export default function InputSearchNav() {
         placeholder="چه اموزشی..."
         className={`${
           isOpen ? "w-full" : "w-0 "
-        }h-full text-[1.2rem] xm:text-[1.35rem] font-light xm:font-bold focus:outline-none bg-second/0 transition-all duration-300 ease-in-out overflow-hidden`}
+        }h-full text-[1.2rem] xm:text-[1.35rem] outline-none font-light xm:font-bold focus:outline-none bg-second/0 transition-all duration-300 ease-in-out overflow-hidden`}
       />
 
       <div

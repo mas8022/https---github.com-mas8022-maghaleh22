@@ -30,7 +30,7 @@ const ThemeToggle = () => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="xm:size-10 size-7 active:scale-95"
+          className="sm:size-10 size-7 active:scale-95"
         >
           <path
             strokeLinecap="round"
@@ -45,7 +45,7 @@ const ThemeToggle = () => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="size-10 active:scale-95"
+          className="sm:size-10 size-7 active:scale-95"
         >
           <path
             strokeLinecap="round"

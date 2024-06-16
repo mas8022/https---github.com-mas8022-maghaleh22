@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import SideFilter from "../../_components/template/sideFilter";
 import Image from "next/image";
 import Cart from "../../_components/modules/cart";
+import SideFilterPc from "../../_components/template/sideFilterPc";
 
 export default function products({ params }) {
   console.log(params.kind);
@@ -10,16 +11,11 @@ export default function products({ params }) {
 
   return (
     <div className="w-full flex">
-      <SideFilter setActive={setActive} active={active} />
+      <SideFilterPc />
 
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
         <div className=" w-full flex items-center justify-between md:justify-end gap-8">
-          <div
-            onClick={() => setActive((p) => !p)}
-            className="text-[1.3rem] text-second md:hidden w-24 h-12 bg-second/10 flex items-center justify-center rounded-md"
-          >
-            بر اساس
-          </div>
+          <SideFilter />
 
           <div className="flex h-16 items-center justify-end gap-4 border-1 border-gray-800/20 dark:border-first/50 pl-4 py-1 rounded-md">
             <input
