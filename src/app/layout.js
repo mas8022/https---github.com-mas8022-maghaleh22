@@ -1,4 +1,4 @@
-import ContextProvider from "@/utils/context";
+import ContextProvider from "../../utils/context";
 import Discount from "./_components/modules/discount";
 import Footer from "./_components/modules/footer";
 import Hr from "./_components/modules/hr";

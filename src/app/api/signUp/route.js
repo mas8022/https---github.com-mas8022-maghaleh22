@@ -1,7 +1,7 @@
-import connectToDb from "@/configs/db";
-import userModel from "@/models/user";
-import { generateToken, hashPassword } from "@/utils/auth";
-import { Me } from "@/utils/me";
+import connectToDb from "../../../../configs/db";
+import userModel from "../../../../models/user";
+import { Me } from "../../../../utils/me";
+import { generateToken, hashPassword } from "../../../../utils/authTools";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export async function POST(req) {
@@ -61,7 +61,6 @@ export async function POST(req) {
       email,
       password: hashedPassword,
       phone,
-      check,
     });
 
     return Response.json(

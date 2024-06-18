@@ -1,4 +1,6 @@
 import { compare, hash } from "bcryptjs";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const { sign, verify } = require("jsonwebtoken");
 
@@ -27,4 +29,23 @@ async function verifyPassword(password, hashedPassword) {
   return isValid;
 }
 
-export { generateToken, hashPassword, verifyToken, verifyPassword };
+function logoutHandler() {
+  fetch("/api/logout", {
+    method: "POST",
+  }).then((res) => {
+    if (res.ok) {
+      toast.success("با موفقیت از حسابتان خارخ شدید");
+    } else {
+      toast.success("عملیات ناموفق بود مجددا امتحان کنید");
+    }
+  });
+  redirect("/");
+}
+
+export {
+  generateToken,
+  hashPassword,
+  verifyToken,
+  verifyPassword,
+  logoutHandler,
+};

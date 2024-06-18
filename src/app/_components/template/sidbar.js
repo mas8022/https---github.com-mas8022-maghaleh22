@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import useToggle from "@/utils/toggle";
+import useToggle from "../../../../utils/toggle";
 import Side from "../modules/side";
 
 export default function SidBar() {

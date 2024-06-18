@@ -1,5 +1,6 @@
-import connectToDb from "@/configs/db";
-import userModel from "@/models/user";
+import connectToDb from "../../../../../configs/db";
+import userModel from "../../../../../models/user";
+import { generateToken } from "../../../../../utils/authTools";
 
 export async function POST(req, { params }) {
   try {

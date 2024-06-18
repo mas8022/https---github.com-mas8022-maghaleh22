@@ -1,5 +1,4 @@
-import connectToDb from "@/configs/db";
-import { isMe } from "@/utils/me";
+import { isMe } from "../../../../utils/me";
 
 export async function GET() {
   try {

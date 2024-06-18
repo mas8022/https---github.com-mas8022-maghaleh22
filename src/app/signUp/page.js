@@ -1,12 +1,12 @@
-"use client";
+"use client"
 import { useFormik } from "formik";
+import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { MoonLoader } from "react-spinners";
-import Link from "next/link";
-import toast from "react-hot-toast";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-export default function SignUp() {
+const page = () => {
   const [loading, setLoading] = useState(false);
   const signUp = useFormik({
     initialValues: {
@@ -58,8 +58,9 @@ export default function SignUp() {
       }, 3000);
     },
   });
+
   return (
-    <>
+    <div className="w-full flex items-center justify-center lg:justify-start gap-32 lgg:p-0 py-32 !pb-36">
       <form
         className="bg-second/30 dark:bg-black/30 dark:shadow-2xl rounded-3xl w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center justify-center child:border-0 child:h-16"
         onSubmit={signUp.handleSubmit}
@@ -111,7 +112,7 @@ export default function SignUp() {
         <div className="w-full h-[2rem] px-[0.5rem] flex items-center gap-4">
           <p className="text-[1.2rem]">
             ایا موافق با
-            <Link
+            {" "}<Link
               href={"/regulation"}
               className="text-blue-600 font-bold text-[1.4rem]"
             >
@@ -124,7 +125,7 @@ export default function SignUp() {
             name="check"
             onChange={signUp.handleChange}
             value={signUp.values.check}
-            className="w-[1.5rem] h-[1.5rem]"
+            className="size-[1.5rem]"
           />
         </div>
         {signUp.touched.check && signUp.errors.check && signUp.errors.check}
@@ -138,7 +139,23 @@ export default function SignUp() {
             <span> ثبت نام</span>
           )}
         </button>
+        <p className="text-[1.4rem] dark:text-first">
+          در صورت داشتن حساب کاربری
+          {" "}<Link href={"/login"} className="text-blue-700">
+             وارد 
+          </Link>{" "}
+          شوید
+        </p>
       </form>
-    </>
+      <Image
+        src={"/images/login.png"}
+        width={1000}
+        height={1000}
+        alt="login image"
+        className="w-1/2 object-cover lg:block hidden"
+      />
+    </div>
   );
-}
+};
+
+export default page;

@@ -1,7 +1,7 @@
-import connectToDb from "@/configs/db";
-import userModel from "@/models/user";
-import { generateToken, verifyPassword } from "@/utils/auth";
+import connectToDb from "../../../../configs/db";
+import userModel from "../../../../models/user";
 import { sign } from "jsonwebtoken";
+import { generateToken, verifyPassword } from "../../../../utils/authTools";
 
 export async function POST(req) {
   try {

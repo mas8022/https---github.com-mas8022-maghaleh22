@@ -1,3 +1,4 @@
+"use client"
 import { useLocalStorage } from "@uidotdev/usehooks";
 import React, { useCallback, useEffect } from "react";
 

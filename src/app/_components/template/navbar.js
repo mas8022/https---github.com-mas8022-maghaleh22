@@ -3,9 +3,9 @@ import React from "react";
 import Link from "next/link";
 import SidBar from "./sidbar";
 import InputSearchNav from "./inputSearchNav";
-import { isMe } from "@/utils/me";
 import ThemeToggle from "../modules/themeToggle";
-
+import ProfileBtn from "./profileBtn";
+import {isMe} from '../../../../utils/me'
 export default async function Navbar() {
   let log = false;
   const user = await isMe();
@@ -58,15 +58,7 @@ export default async function Navbar() {
         <ThemeToggle />
 
         {log ? (
-          <Link href={`/profile/${"cgf5esad"}`}>
-            <Image
-              src="/images/profile.svg"
-              width={0}
-              height={0}
-              alt="profile"
-              className="w-[3rem] sm:w-[4rem] h-3rem] sm:h-[4rem] dark:invert"
-            ></Image>
-          </Link>
+          <ProfileBtn />
         ) : (
           <>
             <Link

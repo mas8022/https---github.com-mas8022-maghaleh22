@@ -1,13 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import SideFilter from "../../_components/template/sideFilter";
-import Image from "next/image";
 import Cart from "../../_components/modules/cart";
 import SideFilterPc from "../../_components/template/sideFilterPc";
 
 export default function products({ params }) {
   console.log(params.kind);
-  const [active, setActive] = useState(false);
 
   return (
     <div className="w-full flex">
