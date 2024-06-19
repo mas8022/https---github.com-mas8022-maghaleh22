@@ -110,7 +110,7 @@ const Footer = () => {
               را بگویید
             </span>
             <textarea
-              className="w-[60%] h-20 max-h-64 p-4 rounded-md text-[1.28rem] sm:self-end bg-first/50 placeholder:text-black/50 focus:outline-none"
+              className="w-[60%] h-20 max-h-64 p-4 rounded-md text-[1.28rem] text-black/70 sm:self-end bg-first/50 placeholder:text-black/50 outline-none focus:outline-none"
               type="text"
               placeholder="نظر خود بنویسید..."
             />

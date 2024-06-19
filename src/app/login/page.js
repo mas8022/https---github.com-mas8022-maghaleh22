@@ -41,7 +41,7 @@ export default function page() {
   return (
     <div className="w-full flex items-center justify-center lg:justify-start gap-32 lgg:p-0 py-32 !pb-36">
       <form
-        className="w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center bg-second/30 dark:bg-black/30 dark:shadow-2xl rounded-3xl child:h-16"
+        className="w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center bg-second/30 dark:bg-black/30 dark:shadow-2xl rounded-3xl child:h-16 child:outline-none child:focus:outline-none"
         onSubmit={login.handleSubmit}
       >
         <input

@@ -39,7 +39,7 @@ function logoutHandler() {
       toast.success("عملیات ناموفق بود مجددا امتحان کنید");
     }
   });
-  redirect("/");
+  
 }
 
 export {
