@@ -22,6 +22,10 @@ const schema = {
     required: true,
     default: false,
   },
+  refreshToken: {
+    type: String,
+    required: true,
+  },
 };
 
 const model = mongoose.models?.User || mongoose.model("User", schema);

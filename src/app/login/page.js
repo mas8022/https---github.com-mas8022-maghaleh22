@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useFormik } from "formik";
 import { MoonLoader } from "react-spinners";
-import { Toaster } from "react-hot-toast";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "../auth";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page() {
@@ -27,14 +25,26 @@ export default function page() {
       return errors;
     },
     onSubmit: async (values, { setSubmitting }) => {
-      const res = await signIn("credentials", {
-        ...values,
-        redirect: false,
-      });
-      if (res.status === 200) {
-        setSubmitting(true);
-        redirect("/");
-      }
+      setLoading(true);
+      setTimeout(async () => {
+        await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }).then((res) => {
+          if (res.ok) {
+            location.pathname = "/";
+          } else {
+            toast.error("اینترنت خود را چک کنید");
+          }
+          setLoading(false);
+        });
+        values.email = "";
+        values.password = "";
+        setSubmitting(false);
+      }, 3000);
     },
   });
 

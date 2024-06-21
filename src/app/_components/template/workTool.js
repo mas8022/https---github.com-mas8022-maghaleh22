@@ -73,7 +73,7 @@ const WorkTool = () => {
           </div>
         </div>
       </form>
-      <Editor initialData="<p>در این قسمت مقاله خود را بنویسید</p>" />
+      <Editor initialData="<p>در این قسمت مقاله خود را بنویسید</p>"/>
       <div className="w-full flex sm:flex-row flex-col items-center gap-8">
         <Button
           component="label"

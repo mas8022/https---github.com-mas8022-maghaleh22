@@ -1,7 +1,10 @@
 import connectToDb from "../../../../configs/db";
 import userModel from "../../../../models/user";
-import { Me } from "../../../../utils/me";
-import { generateToken, hashPassword } from "../../../../utils/authTools";
+import {
+  generateRefreshToken,
+  generateToken,
+  hashPassword,
+} from "../../../../utils/authTools";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export async function POST(req) {
@@ -37,37 +40,30 @@ export async function POST(req) {
     }
 
     const hashedPassword = await hashPassword(password);
-
-    const me = await Me();
-
-    if (me) {
-      await userModel.findOneAndUpdate(
-        { email: me.email },
-        {
-          fullName,
-          email,
-          password: hashedPassword,
-          phone,
-          check,
-        }
-      );
-      return Response.json({ message: "update user" }, { status: 200 });
-    }
-
     const token = generateToken({ email });
+    const refreshToken = generateRefreshToken({ email });
 
     await userModel.create({
       fullName,
       email,
       password: hashedPassword,
       phone,
+      check,
+      refreshToken,
     });
+
+    const headers = new Headers();
+    headers.append("Set-Cookie", `token=${token};path=/;httpOnly=true;`);
+    headers.append(
+      "Set-Cookie",
+      `refresh-token=${refreshToken};path=/;httpOnly=true;`
+    );
 
     return Response.json(
       { message: "signup successfully" },
       {
         status: 201,
-        headers: { "Set-Cookie": `token=${token};path=/;httpOnly=true;` },
+        headers,
       }
     );
   } catch (error) {

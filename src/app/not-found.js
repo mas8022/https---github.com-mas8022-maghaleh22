@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import MainSearch from "./_components/template/mainSearch";
-
+import Hr from './_components/modules/hr'
 const Page = () => {
   return (
-    <div className="w-full h-screen flex flex-col items-center xm:pt-0 pt-20 xm:gap-0 gap-20 ">
+    <div className="w-full flex flex-col items-center xm:gap-0 gap-20 ">
       <div className="w-full flex xm:flex-row flex-col-reverse items-center xm:justify-between">
         <p className="md:text-[3rem] xm:text-[2.3rem] text-[2rem] text-second drop-shadow-sm font-light">
           با عرض پوزش این صفحه وجود ندارد
@@ -18,6 +18,7 @@ const Page = () => {
         />
       </div>
       <MainSearch />
+      <Hr/>
     </div>
   );
 };

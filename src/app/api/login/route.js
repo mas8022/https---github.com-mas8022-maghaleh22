@@ -18,9 +18,7 @@ export async function POST(req) {
       return Response.json({ Message: "password not found" }, { status: 402 });
     }
 
-    const refreshToken = sign({ email }, process.env.refreshPrivateKey, {
-      expiresIn: "15d",
-    });
+    const refreshToken = sign({ email }, process.env.refreshPrivateKey);
 
     await userModel.findOneAndUpdate(
       { email },

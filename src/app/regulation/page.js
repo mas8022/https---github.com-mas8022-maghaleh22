@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Title from "../_components/template/title";
 import Hr from "../_components/modules/hr";
