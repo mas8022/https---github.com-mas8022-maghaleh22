@@ -1,5 +1,6 @@
 "use client";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import useLocalStorage from '../modules/localStore'
+
 import Image from "next/image";
 import React from "react";
 
@@ -11,7 +12,7 @@ const Discount = () => {
       <div
         className={`${
           !active && "hidden"
-        } fixed w-full right-0 lgg:h-28 h-32 lg:mt-0 md:mt-8 mt-4 bg-second/80 flex items-center justify-between px-[2.5rem] rounded-bl-full rounded-br-full z-50`}
+        } fixed w-full right-0 lgg:h-28 h-32 md:mt-12 mt-4 bg-second/80 flex items-center justify-between px-[2.5rem] rounded-bl-full rounded-br-full z-50`}
       >
         <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] flex items-center justify-between">
           <Image

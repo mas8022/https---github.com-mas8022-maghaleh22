@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import useLocalStorage from '../modules/localStore'
 
 export default function Side({ children, sideBarName, cls }) {
   const [sideFlag, setSideFlag] = useLocalStorage(sideBarName, false);

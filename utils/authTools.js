@@ -1,9 +1,5 @@
 import { compare, hash } from "bcryptjs";
-// import { cookies } from "next/headers";
 import toast from "react-hot-toast";
-import userModel from "../models/user";
-import { redirect } from "next/dist/server/api-utils";
-import connectToDb from "../configs/db";
 const { sign, verify } = require("jsonwebtoken");
 
 function generateToken(data) {
@@ -60,40 +56,6 @@ function logoutHandler() {
   });
 }
 
-// async function resetToken() {
-//   const token = cookies().get("token")?.value;
-//   if (token) {
-//     return false;
-//   }
-//   const refreshToken = cookies().get("refresh-token")?.value;
-//   const refreshTokenPayLoad = verifyRefreshToken(refreshToken);
-
-//   if (!refreshTokenPayLoad) {
-//     return redirect("/login");
-//   }
-
-//   connectToDb();
-//   const userEmail = await userModel.findOne({ refreshToken }, "email");
-
-//   if (!userEmail) {
-//     return redirect("/login");
-//   }
-
-//   const newToken = sign({ ...userEmail }, process.env.privateKey, {
-//     expiresIn: "60s",
-//   });
-
-//   return Response.json(
-//     { message: "reset the token" },
-//     {
-//       status: 200,
-//       headers: {
-//         "Set-Cookie": `token=${newToken};path=/;httpOnly=true;`,
-//       },
-//     }
-//   );
-// }
-
 export {
   generateToken,
   generateRefreshToken,
@@ -102,5 +64,4 @@ export {
   verifyRefreshToken,
   verifyPassword,
   logoutHandler,
-  // resetToken,
 };

@@ -1,5 +1,5 @@
 "use client";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import useLocalStorage from '../modules/localStore'
 import { useEffect } from "react";
 
 const ThemeToggle = () => {

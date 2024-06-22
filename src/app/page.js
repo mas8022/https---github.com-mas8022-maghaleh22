@@ -9,25 +9,29 @@ import CommentsSlider from "./_components/template/commentsSlider";
 
 export default function Home() {
   return (
-    <div className="w-full pt-20">
-      <MainSearch />
+    <>
+      {" "}
+      <div className="w-full pt-20">
+        <MainSearch />
+        <Hr />
+        <MainCategoryFlex />
+        <Hr />
+        <Title title={"دوره های رایگان"} />
+        <Sliders />
+        <Hr />
+        <Title title={"جدید ترین اموزش ها"} />
+        <Sliders />
+        <Hr />
+        <Title title={" محبوب ترین اموزش ها"} />
+        <Sliders />
+        <Hr />
+        <Ad />
+        <Hr />
+        <Title title={"جدید ترین نظرات"} />
+        <CommentsSlider />
+        <Hr />
+      </div>
       <Hr />
-      <MainCategoryFlex />
-      <Hr />
-      <Title title={"دوره های رایگان"} />
-      <Sliders />
-      <Hr />
-      <Title title={"جدید ترین اموزش ها"} />
-      <Sliders />
-      <Hr />
-      <Title title={" محبوب ترین اموزش ها"} />
-      <Sliders />
-      <Hr />
-      <Ad />
-      <Hr />
-      <Title title={"جدید ترین نظرات"} />
-      <CommentsSlider />
-      <Hr />
-    </div>
+    </>
   );
 }

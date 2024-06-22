@@ -22,9 +22,8 @@ export default function RootLayout({ children }) {
         <ContextProvider>
           <NextUIProvider>
             <Navbar />
-            <Hr />
-            <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem]">
-              <Discount />
+            <Discount />
+            <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] sm:pt-16 md:pt-24 lg:pt-28 lgg:pt-32">
               {children}
               <Scroller />
             </div>

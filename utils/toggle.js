@@ -1,28 +1,29 @@
-"use client"
-import { useLocalStorage } from "@uidotdev/usehooks";
+"use client";
+import useLocalStorage from '../src/app/_components/modules/localStore'
 import React, { useCallback, useEffect } from "react";
 
 const useToggle = (keyName) => {
-    const [isOpen, setIsOpen] = useLocalStorage(keyName, false);
+  const [isOpen, setIsOpen] = useLocalStorage(keyName, false);
 
-    const toggleOpen = event => {
-        event && event.stopPropagation();
-        setIsOpen((isOpen) => !isOpen);
-    };
 
-    const close = useCallback(() => setIsOpen(false), []);
+  const toggleOpen = (event) => {
+    event && event.stopPropagation();
+    setIsOpen((isOpen) => !isOpen);
+  };
 
-    useEffect(() => {
-        if (isOpen) {
-            window.addEventListener("click", close);
-        } else {
-            window.removeEventListener("click", close);
-        }
-    }, [isOpen]);
+  const close = useCallback(() => setIsOpen(false), []);
 
-    const toggleProps = [isOpen, toggleOpen];
+  useEffect(() => {
+    if (isOpen) {
+      window.addEventListener("click", close);
+    } else {
+      window.removeEventListener("click", close);
+    }
+  }, [isOpen]);
 
-    return toggleProps;
+  const toggleProps = [isOpen, toggleOpen];
+
+  return toggleProps;
 };
 
 export default useToggle;

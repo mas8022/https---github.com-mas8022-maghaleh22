@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import dynamic from "next/dynamic";
 import SelectInput from "../modules/selectBox";
 import SelectItem from "../modules/selectItem";
+import WorkToolNav from "./workToolNav";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -27,7 +28,8 @@ const WorkTool = () => {
   const [fileData, setFileData] = useState("");
 
   return (
-    <div className="w-full py-20 flex flex-col gap-16">
+    <div className="w-full pb-20 pt-5 flex flex-col gap-16">
+      <WorkToolNav />
       <div className="describe w-full px-16 py-10 text-[1.6rem] text-first bg-second/70 rounded-3xl text-center">
         سلام خوش امدین به سایت مقاله در این قسمت شما میتوانید مقاله خود را ارسال
         کنید شما ابتدا باید فورم های زیر را پر کرده سپس مقاله خود را توسط ادیتور
@@ -73,7 +75,7 @@ const WorkTool = () => {
           </div>
         </div>
       </form>
-      <Editor initialData="<p>در این قسمت مقاله خود را بنویسید</p>"/>
+      <Editor initialData="<p>در این قسمت مقاله خود را بنویسید</p>" />
       <div className="w-full flex sm:flex-row flex-col items-center gap-8">
         <Button
           component="label"
