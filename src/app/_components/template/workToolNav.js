@@ -4,13 +4,13 @@ import React from "react";
 
 const WorkToolNav = ({ pageName, setPageName }) => {
   return (
-    <div className="WorkToolNav w-full h-auto px-9 xm:py-4 py-10 gap-20 flex xm:flex-row flex-col-reverse items-center justify-between bg-second/5 dark:bg-[#111827]/60 border-y-1 border-y-second/50 rounded-lg">
-      <div className="h-full flex items-center gap-8 xm:child:text-[1.4rem] child:text-[1.3rem] child:font-light child:cursor-pointer active:child:border-b-1">
+    <div className="WorkToolNav w-full h-auto mb-16 px-9 xm:py-4 py-10 gap-20 flex xm:flex-row flex-col-reverse items-center justify-between bg-second/5 dark:bg-[#111827]/60 border-y-1 border-y-second/50 rounded-lg">
+      <div className="h-full flex items-center gap-8 xm:child:text-[1.4rem] child:text-[1.3rem] child:font-light child:cursor-pointer child:dark:border-b-first/80 child:border-b-black/80">
         <div
           onClick={() => setPageName("newProject")}
           className={pageName === "newProject" ? "border-b-1" : ""}
         >
-          پروژه های جدید
+          پروژه جدید
         </div>
         <div
           onClick={() => setPageName("draftedProject")}
