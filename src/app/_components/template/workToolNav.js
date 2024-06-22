@@ -1,14 +1,29 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
-const WorkToolNav = () => {
+const WorkToolNav = ({ pageName, setPageName }) => {
   return (
-    <div className="w-full h-32 px-9 flex items-center justify-between bg-second/5 dark:bg-[#111827]/60 border-y-1 border-y-second/50 rounded-lg">
-      <div className="h-full flex items-center gap-6 child:text-[1.4rem] child:font-light">
-        <Link href={"/coWorker/myProject"}>پروژ های من</Link>
-        <Link href={"/coWorker/draftedProject"}>پیش نویس ها</Link>
-        <Link href={"/coWorker"}>پروژه های جدید</Link>
+    <div className="WorkToolNav w-full h-auto px-9 xm:py-4 py-10 gap-20 flex xm:flex-row flex-col-reverse items-center justify-between bg-second/5 dark:bg-[#111827]/60 border-y-1 border-y-second/50 rounded-lg">
+      <div className="h-full flex items-center gap-8 xm:child:text-[1.4rem] child:text-[1.3rem] child:font-light child:cursor-pointer active:child:border-b-1">
+        <div
+          onClick={() => setPageName("newProject")}
+          className={pageName === "newProject" ? "border-b-1" : ""}
+        >
+          پروژه های جدید
+        </div>
+        <div
+          onClick={() => setPageName("draftedProject")}
+          className={pageName === "draftedProject" ? "border-b-1" : ""}
+        >
+          پیش نویس ها
+        </div>
+        <div
+          onClick={() => setPageName("myProject")}
+          className={pageName === "myProject" ? "border-b-1" : ""}
+        >
+          پروژ های من
+        </div>
       </div>
       <div className="h-full flex items-center gap-8">
         <button className="sm:size-20 size-14 bg-second/10 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first/5 transition-all duration-200">
@@ -32,7 +47,7 @@ const WorkToolNav = () => {
           width={100}
           height={100}
           alt="عکس نویسنده"
-          className="size-24 object-cover border-1 border-second/50 rounded-full"
+          className="size-24 object-cover border-2 border-second/50 rounded-full cursor-pointer"
         />
       </div>
     </div>

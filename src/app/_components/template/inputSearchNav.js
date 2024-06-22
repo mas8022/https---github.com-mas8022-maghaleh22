@@ -29,7 +29,7 @@ export default function InputSearchNav() {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="size-7 xm:size-10 cursor-pointer flex-shrink-0"
+          className="cursor-pointer sm:size-10 size-7 active:scale-95"
         >
           <path
             strokeLinecap="round"
