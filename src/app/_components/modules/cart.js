@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function Cart() {
+export default function Cart({ studentCount, btnMode }) {
   return (
     <div className="w-[32rem] h-[32.5rem] bg-first dark:bg-[#374151] flex flex-col shadow-md rounded-xl overflow-hidden">
       <Image
@@ -18,8 +18,24 @@ export default function Cart() {
 
       <div className="w-full flex justify-between px-10 items-center gap-2">
         <div className="flex flex-col items-center gap-3">
-          <span className="text-[13px] text-black/60 dark:text-first/60">استاد همایون حسینی</span>
-          <span className="text-[13px] text-black/60 dark:text-first/60">10 ساعت و 18 دقیقه</span>
+          <span className="text-[13px] text-black/60 dark:text-first/60">
+            استاد همایون حسینی
+          </span>
+          <span className="text-[13px] text-black/60 dark:text-first/60 mt-2">
+            10 ساعت و 18 دقیقه
+          </span>
+          {studentCount && (
+            <div className="flex items-end justify-start gap-2 self-start">
+              <Image
+                src={"/images/student.svg"}
+                width={50}
+                height={50}
+                alt="تعداد دانشجو"
+                className="size-10 object-cover dark:invert"
+              />
+              <span className="text-[1.4rem] font-light">57</span>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col items-end gap-4">
@@ -27,12 +43,21 @@ export default function Cart() {
             <span className="line-through">230,000</span> <span>120,000</span>
             تومان
           </p>
-          <Link
-            href={"/products/software/sfdsadfdfds"}
-            className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 dark:border-second bg-second active:bg-first dark:active:bg-first/0 active:border-second active:text-second rounded-lg"
-          >
-            مشاهده
-          </Link>
+          {btnMode === "draft" ? (
+            <Link
+              href={"/coWorker/fgffsd"}
+              className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 dark:border-second bg-second active:bg-first dark:active:bg-first/0 active:border-second active:text-second rounded-lg"
+            >
+              ادامه
+            </Link>
+          ) : (
+            <Link
+              href={"/products/software/sfdsadfdfds"}
+              className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 dark:border-second bg-second active:bg-first dark:active:bg-first/0 active:border-second active:text-second rounded-lg"
+            >
+              مشاهده
+            </Link>
+          )}
         </div>
       </div>
     </div>

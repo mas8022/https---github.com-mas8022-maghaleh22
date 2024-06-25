@@ -1,9 +1,10 @@
+"use client";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import dynamic from "next/dynamic";
-import SelectInput from "../modules/selectBox";
-import SelectItem from "../modules/selectItem";
+import SelectInput from "../../_components/modules/selectBox";
+import SelectItem from "../../_components/modules/selectItem";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -25,17 +26,8 @@ const NewProject = () => {
   const [fileData, setFileData] = useState("");
 
   return (
-    <div className="w-full pb-20 pt-5 flex flex-col gap-16">
-      <div className="describe w-full px-16 py-10 text-[1.6rem] text-first bg-second/70 rounded-3xl text-center">
-        سلام خوش امدین به سایت مقاله در این قسمت شما میتوانید مقاله خود را ارسال
-        کنید شما ابتدا باید فورم های زیر را پر کرده سپس مقاله خود را توسط ادیتور
-        که در همین صفحه تعویه شده نوشته و حتی با بستن سایت هم اطلاعات شما ذخیره
-        میشود و می توانید بعدا ادامه مقاله خود را بنویسید و همچنین میتوانید غیر
-        از مقاله فیلم اموزشی خود را نیز اپلود کنید حتی اگر تنها فیلم اموزشی
-        دارید باز هم میتوانید بدون مقاله و تنها با فیلم اموزشی خود مقاله خود را
-        جهت بررسی برای ما بفرستید و درصورت تایید از سمت ما ان را در سایت منتشر
-        می کنیم و به شما اطلاع خواهیم داد
-      </div>
+    <div className="w-full pb-20 sm:pt-5 pt-24 flex flex-col gap-16">
+
       <form className="w-full flex flex-wrap justify-between gap-8">
         <SelectInput id="دسته بندی" label="دسته بندی">
           <SelectItem value={"software"}>نرم افزار و فناوری اطلاعات</SelectItem>
@@ -87,7 +79,7 @@ const NewProject = () => {
           />
         </Button>
         <div className="w-1/3 h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second text-first cursor-pointer active:bg-second/80">
-          ارسال مقاله
+          بارگذاری
         </div>
       </div>
     </div>

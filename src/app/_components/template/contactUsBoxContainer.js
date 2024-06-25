@@ -101,7 +101,7 @@ const ContactUsBoxContainer = () => {
         </div>
         <textarea
           placeholder="سوال مورد نظر خود را بنویسید..."
-          className="sm:w-full w-[95%] ld:h-[30rem] h-[15rem] rounded-3xl p-9 text-[1.5rem] font-light bg-black/10 focus:outline-1 focus:outline-second/50 transition-all duration-1000 self-center"
+          className="sm:w-full w-[95%] ld:h-[30rem] h-[15rem] rounded-3xl p-9 text-[1.5rem] font-light bg-black/5 dark:bg-black/30 focus:outline-1 focus:outline-second/50 transition-all duration-1000 self-center"
         ></textarea>
         <button className="lgg:w-[13rem] w-[12rem] lgg:h-[6rem] h-[4rem] bg-second/90 active:bg-second/60 text-[1.5rem] text-first font-bold rounded-2xl tracking-tight sm:ml-0 ml-7 self-center xm:self-end">
           ارسال سوال

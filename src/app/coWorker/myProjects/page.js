@@ -1,6 +1,6 @@
 import React from 'react'
-import Cart from '../modules/cart'
-import Title from './title'
+import Title from '../../_components/template/title'
+import Cart from '../../_components/modules/cart'
 
 const MyProject = () => {
   return (
