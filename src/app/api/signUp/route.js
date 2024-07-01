@@ -67,7 +67,6 @@ export async function POST(req) {
       }
     );
   } catch (error) {
-    console.log("=====>", error);
 
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
   }

@@ -25,9 +25,6 @@ export default function SideFilter() {
     setValue(event.target.value);
   };
 
-  useEffect(() => {
-    console.log("value filter ==>", value);
-  });
 
   return (
     <>

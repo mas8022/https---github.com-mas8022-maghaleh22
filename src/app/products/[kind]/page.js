@@ -6,7 +6,6 @@ import SideFilterPc from "../../_components/template/sideFilterPc";
 import Hr from "../../_components/modules/hr";
 
 export default function products({ params }) {
-  console.log(" ===>", params.kind);
 
   return (
     <>

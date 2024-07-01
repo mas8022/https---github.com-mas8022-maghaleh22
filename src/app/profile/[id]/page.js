@@ -29,7 +29,6 @@ export default function page({ params }) {
       return errors;
     },
     onSubmit: (values, { setSubmitting }) => {
-      console.log(values);
       setLoading(true);
       setTimeout(async () => {
         await fetch(`/api/editProfile/${params.id}`, {

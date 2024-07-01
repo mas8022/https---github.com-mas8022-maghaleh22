@@ -9,7 +9,7 @@ const CoWorker = async () => {
 
   return (
     <>
-      <div className="w-full">{!user ? <WorkTool /> : <Employment />}</div>
+      <div className="w-full">{user ? <WorkTool /> : <Employment />}</div>
       <Hr />
     </>
   );

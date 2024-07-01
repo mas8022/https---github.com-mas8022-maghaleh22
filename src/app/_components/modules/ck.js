@@ -42,7 +42,6 @@ function CustomEditor(props) {
     setEditorLanguage("en");
   }, []);
 
-  console.log({ ...editorConfiguration, language });
 
   return (
     <div className="w-full min-h-[35rem] shadow-xl">
@@ -54,7 +53,6 @@ function CustomEditor(props) {
         className="custom-ckeditor"
         onChange={(event, editor) => {
           const data = editor.getData();
-          console.log(data);
         }}
       />
     </div>

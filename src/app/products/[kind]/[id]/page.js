@@ -5,7 +5,6 @@ import AuthorBox from "../../../_components/template/authorBox";
 import CommentsBox from "../../../_components/template/commentsBox";
 
 export default function page({ id }) {
-  console.log("product id ==>", id);
   return (
     <>
       <div>

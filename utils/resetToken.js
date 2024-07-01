@@ -9,9 +9,13 @@ async function resetToken() {
   if (token) {
     return false;
   }
-  const refreshToken = cookies().get("refresh-token")?.value;
-  const refreshTokenPayLoad = verifyRefreshToken(refreshToken);
 
+  const refreshToken = cookies().get("refresh-token")?.value;
+  if (!refreshToken) {
+    return redirect("/login");
+  }
+
+  const refreshTokenPayLoad = verifyRefreshToken(refreshToken);
   if (!refreshTokenPayLoad) {
     return redirect("/login");
   }

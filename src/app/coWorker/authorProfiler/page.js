@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { MoonLoader } from "react-spinners";
 import toast from "react-hot-toast";
 import Uploader from "../../_components/modules/uploader";
+import { logoutHandler } from "@/utils/authTools";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page({ params }) {
@@ -27,7 +28,6 @@ export default function page({ params }) {
       return errors;
     },
     onSubmit: (values, { setSubmitting }) => {
-      console.log(values);
       setLoading(true);
       setTimeout(async () => {
         // await fetch(`/api/editProfile/${params.id}`, {
@@ -52,9 +52,6 @@ export default function page({ params }) {
     },
   });
 
-  const logoutHandler = () => {
-    console.log("log out the author");
-  };
 
   return (
     <div className="flex flex-col items-center justify-center">
