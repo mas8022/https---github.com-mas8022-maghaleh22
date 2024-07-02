@@ -16,13 +16,20 @@ async function Me() {
 }
 
 async function isMe() {
-  connectToDb();
-  const token = cookies().get("token")?.value;
-  const tokenPayload = verifyToken(token);
-  const user = await userModel.findOne({ email: tokenPayload?.email }, "_id");
-  if (user) {
-    return true;
-  } else {
+  try {
+    connectToDb();
+    const token = cookies().get("token")?.value;
+    const tokenPayload = verifyToken(token);
+    if (!tokenPayload) {
+      return false;
+    }
+    const user = await userModel.findOne({ email: tokenPayload?.email }, "_id");
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
     return false;
   }
 }

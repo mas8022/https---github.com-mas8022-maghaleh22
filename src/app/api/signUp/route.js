@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import connectToDb from "../../../../configs/db";
 import userModel from "../../../../models/user";
 import {
@@ -52,22 +53,24 @@ export async function POST(req) {
       refreshToken,
     });
 
-    const headers = new Headers();
-    headers.append("Set-Cookie", `token=${token};path=/;httpOnly=true;`);
-    headers.append(
-      "Set-Cookie",
-      `refresh-token=${refreshToken};path=/;httpOnly=true;`
-    );
+    cookies().set("token", token, {
+      httpOnly: true,
+      path: "/",
+      expires: new Date().getTime() + 60000,
+    });
+    cookies().set("refresh-token", token, {
+      httpOnly: true,
+      path: "/",
+      expires: (new Date().getTime() + 60000) * 60 * 24 * 15,
+    });
 
     return Response.json(
       { message: "signup successfully" },
       {
         status: 201,
-        headers,
       }
     );
   } catch (error) {
-
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

@@ -13,13 +13,12 @@ const ProfileBtn = () => {
     fetch("/api/resetToken")
       .then((res) => {
         if (res.ok) {
-          return true
+          return true;
         }
-        setIsPendingMe(true)
-        return false
+        setIsPendingMe(true);
+        return false;
       })
       .then((result) => {
-        console.log(result);
         setMe(result);
       });
   }, []);

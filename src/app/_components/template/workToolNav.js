@@ -2,17 +2,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import { usePathname } from "next/navigation";
 const WorkToolNav = () => {
+  const path = usePathname();
+  let deActiveNav = false;
+  if ((path === "/coWorker")) {
+    deActiveNav = true;
+  }
+
   return (
-    <div className="WorkToolNav w-full h-auto mb-16 px-9 xm:py-4 py-10 gap-20 flex xm:flex-row flex-col-reverse items-center justify-between bg-second/5 dark:bg-[#111827]/60 border-y-1 border-y-second/50 rounded-lg">
+    <div
+      className={`WorkToolNav w-full h-auto mb-16 px-9 xm:py-4 py-10 gap-20 flex xm:flex-row flex-col-reverse items-center justify-between bg-second/5 dark:bg-[#111827]/60 border-y-1 border-y-second/50 rounded-lg ${
+        deActiveNav && "hidden"
+      }`}
+    >
       <div className="h-full flex items-center gap-8 xm:child:text-[1.4rem] child:text-[1.3rem] child:font-light child:cursor-pointer child:dark:border-b-first/80 child:border-b-black/80">
         <Link href={"/coWorker"}>پروژه جدید</Link>
         <Link href={"/coWorker/draftedProject"}>پیش نویس ها</Link>
         <Link href={"/coWorker/myProjects"}>پروژ های من</Link>
       </div>
       <div className="h-full flex items-center gap-8">
-        <Link href={'/coWorker/authorNotification'} className="sm:size-20 size-14 bg-second/10 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first/5 transition-all duration-200">
+        <Link
+          href={"/coWorker/authorNotification"}
+          className="sm:size-20 size-14 bg-second/10 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first/5 transition-all duration-200"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -28,7 +41,7 @@ const WorkToolNav = () => {
             />
           </svg>
         </Link>
-        <Link href={'/coWorker/authorProfiler'}>
+        <Link href={"/coWorker/authorProfiler"}>
           <Image
             src={"/images/profile.jpg"}
             width={100}

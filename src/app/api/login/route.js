@@ -31,15 +31,22 @@ export async function POST(req) {
 
     const newAccessToken = generateToken({ email });
 
-    const headers = new Headers();
+    cookies().set("token", token, {
+      httpOnly: true,
+      path: "/",
+      expires: new Date().getTime() + 60000,
+    });
+    cookies().set("refresh-token", newAccessToken, {
+      httpOnly: true,
+      path: "/",
+      expires: (new Date().getTime() + 60000) * 60 * 24 * 15,
+    });
 
-    headers.append(
-      "Set-Cookie",
-      `token=${newAccessToken};path=/;httpOnly=true;`
-    );
-    headers.append(
-      "Set-Cookie",
-      `refresh-token=${refreshToken};path=/;httpOnly=true;`
+    return Response.json(
+      { message: "signup successfully" },
+      {
+        status: 201,
+      }
     );
 
     return Response.json(

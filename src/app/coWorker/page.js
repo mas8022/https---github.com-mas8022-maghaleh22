@@ -1,18 +1,16 @@
 import React from "react";
+import { isMe } from "@/utils/me";
 import Employment from "../_components/template/employment";
-import WorkTool from "../_components/template/workTool";
-import Hr from "../_components/modules/hr";
-import { isMe } from "../../../utils/me";
+import { redirect } from "next/navigation";
 
-const CoWorker = async () => {
+const page = async () => {
   const user = await isMe();
 
-  return (
-    <>
-      <div className="w-full">{user ? <WorkTool /> : <Employment />}</div>
-      <Hr />
-    </>
-  );
+  if (user) {
+    return redirect("coWorker/workTool");
+  }
+
+  return <Employment />;
 };
 
-export default CoWorker;
+export default page;
