@@ -1,12 +1,14 @@
-import { isMe } from "@/utils/me";
-const { default: resetToken } = require("@/utils/resetToken");
+import { isMe } from "../../../../utils/me";
+import resetToken from "../../../../utils/resetToken"
 
-export async function GET(params) {
+export async function GET() {
   try {
     await resetToken();
+
     const valid = await isMe();
     return Response.json(valid);
   } catch (error) {
+    console.log(error);
     return Response.json({ Message: "Internal Server Error" }, { status: 500 });
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Bg from "../modules/bg";
 import { logoutHandler } from "../../../../utils/authTools";
 
@@ -129,7 +129,9 @@ const ProfileBtn = () => {
         <>
           <Link
             href={"/login"}
-            className="sm:hidden flex p-4 rounded-full bg-second/10 items-center justify-center cursor-pointer"
+            className={`sm:hidden flex p-4 rounded-full bg-second/10 items-center justify-center cursor-pointer ${
+              isPending ? "" : "pointer-events-none"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

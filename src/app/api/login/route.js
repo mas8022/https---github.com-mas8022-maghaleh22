@@ -1,7 +1,10 @@
 import connectToDb from "../../../../configs/db";
 import userModel from "../../../../models/user";
-import { sign } from "jsonwebtoken";
-import { generateToken, verifyPassword } from "../../../../utils/authTools";
+import {
+  generateRefreshToken,
+  generateToken,
+  verifyPassword,
+} from "../../../../utils/authTools";
 
 export async function POST(req) {
   try {
@@ -18,7 +21,7 @@ export async function POST(req) {
       return Response.json({ Message: "password not found" }, { status: 402 });
     }
 
-    const refreshToken = sign({ email }, process.env.refreshPrivateKey);
+    const refreshToken = generateRefreshToken({ email });
 
     await userModel.findOneAndUpdate(
       { email },
@@ -31,15 +34,14 @@ export async function POST(req) {
 
     const newAccessToken = generateToken({ email });
 
-    cookies().set("token", token, {
+    cookies().set("token", newAccessToken, {
       httpOnly: true,
       path: "/",
-      expires: new Date().getTime() + 60000,
     });
-    cookies().set("refresh-token", newAccessToken, {
+    cookies().set("refresh-token", refreshToken, {
       httpOnly: true,
       path: "/",
-      expires: (new Date().getTime() + 60000) * 60 * 24 * 15,
+      expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
     return Response.json(
@@ -47,11 +49,6 @@ export async function POST(req) {
       {
         status: 201,
       }
-    );
-
-    return Response.json(
-      { Message: "login successfully" },
-      { status: 200, headers }
     );
   } catch (error) {
     return Response.json({ Message: "Internal Server Error" }, { status: 500 });

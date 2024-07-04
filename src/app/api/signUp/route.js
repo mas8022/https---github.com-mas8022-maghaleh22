@@ -56,12 +56,11 @@ export async function POST(req) {
     cookies().set("token", token, {
       httpOnly: true,
       path: "/",
-      expires: new Date().getTime() + 60000,
     });
-    cookies().set("refresh-token", token, {
+    cookies().set("refresh-token", refreshToken, {
       httpOnly: true,
       path: "/",
-      expires: (new Date().getTime() + 60000) * 60 * 24 * 15,
+      expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
     return Response.json(

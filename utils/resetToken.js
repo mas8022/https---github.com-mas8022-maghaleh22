@@ -1,15 +1,11 @@
 import { cookies } from "next/headers";
-import verifyRefreshToken from "./authTools";
+import { verifyRefreshToken, generateToken } from "./authTools";
 import { redirect } from "next/navigation";
 import userModel from "../models/user";
-import { sign } from "jsonwebtoken";
+import connectToDb from "@/configs/db";
 
 async function resetToken() {
-  const token = cookies().get("token")?.value;
-  if (token) {
-    return false;
-  }
-
+  
   const refreshToken = cookies().get("refresh-token")?.value;
   if (!refreshToken) {
     return redirect("/login");
@@ -20,26 +16,21 @@ async function resetToken() {
     return redirect("/login");
   }
 
-  connectToDb();
+  await connectToDb();
   const userEmail = await userModel.findOne({ refreshToken }, "email");
 
   if (!userEmail) {
     return redirect("/login");
   }
 
-  const newToken = sign({ ...userEmail }, process.env.privateKey, {
-    expiresIn: "60s",
-  });
+  const newToken = generateToken({ userEmail });
 
-  return Response.json(
-    { message: "reset the token" },
-    {
-      status: 200,
-      headers: {
-        "Set-Cookie": `token=${newToken};path=/;httpOnly=true;`,
-      },
-    }
-  );
+  await cookies().delete("token");
+
+  cookies().set("token", newToken, {
+    httpOnly: true,
+    path: "/",
+  });
 }
 
 export default resetToken;
