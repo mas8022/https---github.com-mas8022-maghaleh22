@@ -1,11 +1,17 @@
 import { cookies } from "next/headers";
-import { verifyRefreshToken, generateToken } from "./authTools";
+import { verifyRefreshToken, generateToken, verifyToken } from "./authTools";
 import { redirect } from "next/navigation";
 import userModel from "../models/user";
 import connectToDb from "@/configs/db";
 
 async function resetToken() {
-  
+  const token = cookies().get("token")?.value;
+  const tokenPayLoad = verifyToken(token);
+
+  if (tokenPayLoad) {
+    return true;
+  }
+
   const refreshToken = cookies().get("refresh-token")?.value;
   if (!refreshToken) {
     return redirect("/login");
