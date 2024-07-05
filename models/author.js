@@ -1,39 +1,46 @@
 import mongoose, { Schema } from "mongoose";
 
 const schema = new Schema({
-  masterName: {
+  name: {
     type: String,
     required: true,
   },
-  masterEmail: {
+  email: {
     type: String,
     required: true,
   },
-  masterPhone: {
+  phone: {
     type: String,
     required: true,
   },
-  masterPassword: {
+  password: {
     type: String,
     required: true,
   },
-  masterObligation: {
+  ruleImage: {
     type: String,
     required: true,
   },
-  masterJob: {
+  job: {
     type: String,
     required: true,
   },
-  masterBio: {
+  bio: {
     type: String,
     required: true,
+    default: "",
   },
-  masterProfile: {
+  profile: {
     type: String,
+    default: "",
+  },
+  permission: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
 });
 
-const model = mongoose.models?.Master || mongoose.model("Master", schema);
+const model = mongoose.models?.Author || mongoose.model("Author", schema);
 
 export default model;

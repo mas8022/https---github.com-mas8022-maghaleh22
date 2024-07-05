@@ -2,7 +2,6 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { MoonLoader } from "react-spinners";
-import toast from "react-hot-toast";
 import Uploader from "../../_components/modules/uploader";
 import { logoutHandler } from "@/utils/authTools";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
