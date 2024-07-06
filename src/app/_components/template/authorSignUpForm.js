@@ -73,7 +73,7 @@ const AuthorSignUpForm = ({ setFormMode }) => {
         پس از قبول شرایط، فرم ثبت‌نام را پر کنید. همچنین لازم است یک عکس واضح از
         خودتان ارسال کنید که در آن کارت ملی خود را در دست راست و متنی از{" "}
         <Link
-          href={"/authorSignUpRule"}
+          href={"/employmentRule"}
           className="text-[1.5rem] font-bold text-blue-600"
         >
           قوانین سایت

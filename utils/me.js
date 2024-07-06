@@ -6,7 +6,7 @@ import { verifyToken } from "./authTools";
 async function Me() {
   connectToDb();
   const token = cookies().get("token")?.value;
-  const tokenPayload = verifyToken(token);
+  const tokenPayload = verifyToken(token, process.env.privateKey);
   const user = await userModel.findOne({ email: tokenPayload?.email }, "-__v");
   if (user) {
     return user;
@@ -19,7 +19,7 @@ async function isMe() {
   try {
     connectToDb();
     const token = cookies().get("token")?.value;
-    const tokenPayload = verifyToken(token);
+    const tokenPayload = verifyToken(token, process.env.privateKey);
     if (!tokenPayload) {
       return false;
     }

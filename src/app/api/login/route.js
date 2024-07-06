@@ -13,12 +13,17 @@ export async function POST(req) {
 
     const user = await userModel.findOne({ email });
     if (!user) {
-      return Response.json({ Message: "email not found" }, { status: 401 });
+      return Response.json(
+        { message: "شما از قبل ثبت نام نکردید" },
+        { status: 401 }
+      );
     }
-
     const isValidPassword = verifyPassword(password, user.password);
     if (!isValidPassword) {
-      return Response.json({ Message: "password not found" }, { status: 402 });
+      return Response.json(
+        { message: "رمز عبور شما نا معتبر است" },
+        { status: 401 }
+      );
     }
 
     const refreshToken = generateRefreshToken({ email });
@@ -34,10 +39,13 @@ export async function POST(req) {
 
     const newAccessToken = generateToken({ email });
 
+    await cookies().delete("token");
     cookies().set("token", newAccessToken, {
       httpOnly: true,
       path: "/",
     });
+
+    await cookies().delete("refresh-token");
     cookies().set("refresh-token", refreshToken, {
       httpOnly: true,
       path: "/",
@@ -51,6 +59,6 @@ export async function POST(req) {
       }
     );
   } catch (error) {
-    return Response.json({ Message: "Internal Server Error" }, { status: 500 });
+    return Response.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

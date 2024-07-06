@@ -39,6 +39,10 @@ const schema = new Schema({
     required: true,
     default: false,
   },
+  refreshToken: {
+    type: String,
+    required: true,
+  },
 });
 
 const model = mongoose.models?.Author || mongoose.model("Author", schema);

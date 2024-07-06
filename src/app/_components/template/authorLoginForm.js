@@ -20,13 +20,15 @@ const AuthorLoginForm = ({ setFormMode }) => {
     },
     onSubmit: async (values, { setSubmitting }) => {
       setLoading(true);
+      const formData = new FormData();
+
+      formData.append("email", values.email);
+      formData.append("password", values.password);
+
       setTimeout(async () => {
         await fetch("/api/authorLogin", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
+          body: formData,
         }).then((res) => {
           if (res.ok) {
             location.pathname = "/";

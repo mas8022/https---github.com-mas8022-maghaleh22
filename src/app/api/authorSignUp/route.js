@@ -1,7 +1,9 @@
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
-import { hashPassword } from "../../../../utils/authTools";
+import { generateRefreshToken, generateToken, hashPassword } from "../../../../utils/authTools";
 import authorModel from "../../../../models/author";
 import CloudStoringFile from "../../../../utils/cloudStoringFile";
+import { cookies } from "next/headers";
+import connectToDb from "../../../../configs/db";
 
 export async function POST(req, { params }) {
   try {
@@ -34,6 +36,20 @@ export async function POST(req, { params }) {
     const hashedPassword = await hashPassword(password);
     const fileAddress = await CloudStoringFile(ruleImage);
 
+    const token = generateToken({ email });
+    const refreshToken = generateRefreshToken({ email });
+
+    cookies().set("author-token", token, {
+      httpOnly: true,
+      path: "/",
+    });
+    cookies().set("author-refresh-token", refreshToken, {
+      httpOnly: true,
+      path: "/",
+      expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
+    });
+
+    connectToDb()
     await authorModel.create({
       name,
       email,
@@ -44,6 +60,7 @@ export async function POST(req, { params }) {
       bio: " ",
       profile: " ",
       permission: false,
+      refreshToken,
     });
 
     return Response.json(
@@ -52,6 +69,6 @@ export async function POST(req, { params }) {
     );
   } catch (error) {
     console.log(error);
-    return Response.json({ Message: "Internal Server Error" }, { status: 500 });
+    return Response.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

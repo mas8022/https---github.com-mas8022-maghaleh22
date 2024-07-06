@@ -21,18 +21,19 @@ async function hashPassword(password) {
   return hashedPassword;
 }
 
-function verifyToken(token) {
+function verifyToken(token, processEnvKey) {
   try {
-    const validationToken = verify(token, process.env.privateKey);
+    const validationToken = verify(token, processEnvKey);
     return validationToken;
   } catch (error) {
     return false;
   }
 }
 
-function verifyRefreshToken(refreshToken) {
+
+function verifyRefreshToken(refreshToken, processEnvKey) {
   try {
-    const validationToken = verify(refreshToken, process.env.refreshPrivateKey);
+    const validationToken = verify(refreshToken, processEnvKey);
     return validationToken;
   } catch (error) {
     return false;
