@@ -17,6 +17,6 @@ export async function GET() {
       status: 200,
     });
   } catch (error) {
-    return Response.json({ message: "Internal Server Error", status: 500 });
+    return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

@@ -16,33 +16,36 @@ export async function POST(req) {
     if (!fullName.trim() || !isNaN(fullName)) {
       return Response.json(
         { message: "نام تان را به درستی وارد کنید" },
-        { status: 400 }
+        { status: 403 }
       );
     } else if (!emailRegex.test(email)) {
       return Response.json(
         { message: "ایمیل تان را به درستی وارد کنید" },
-        { status: 401 }
+        { status: 403 }
       );
     } else if (password.length > 15 || password.length < 8) {
-      return Response.json(
-        { message: "رمز عبور شما باید بین 8 تا 15 کاراکتر داشته باشد" },
-        { status: 402 }
-      );
+      return Response.json({
+        message: "رمز عبور شما باید بین 8 تا 15 کاراکتر داشته باشد",
+        status: 403,
+      });
     } else if (isNaN(phone)) {
-      return Response.json(
-        { message: "شماره موبایل تان را به درستی وارد کنید" },
-        { status: 403 }
-      );
+      return Response.json({
+        message: "شماره موبایل تان را به درستی وارد کنید",
+        status: 403,
+      });
     } else if (!check) {
-      return Response.json(
-        { message: "تیک تایید قوانین سایت را بزنید" },
-        { status: 403 }
-      );
+      return Response.json({
+        message: "تیک تایید قوانین سایت را بزنید",
+        status: 403,
+      });
     }
 
     const hashedPassword = await hashPassword(password);
     const token = generateToken({ email }, process.env.privateKey);
-    const refreshToken = generateRefreshToken({ email }, process.env.refreshPrivateKey);
+    const refreshToken = generateRefreshToken(
+      { email },
+      process.env.refreshPrivateKey
+    );
 
     await userModel.create({
       fullName,
@@ -63,13 +66,9 @@ export async function POST(req) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
-    return Response.json(
-      { message: "signup successfully" },
-      {
-        status: 201,
-      }
-    );
+    return Response.json({ message: "ثبت نام شما با موفقیت انجام شد", status: 201 });
   } catch (error) {
-    return Response.json({ message: "Internal Server Error" }, { status: 500 });
+    return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
+    
   }
 }

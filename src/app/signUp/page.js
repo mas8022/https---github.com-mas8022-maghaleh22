@@ -42,14 +42,21 @@ const page = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(values),
-        }).then((res) => {
-          if (res.ok) {
-            location.pathname = "/";
-          } else {
-            toast.error("اینترنت خود را چک کنید");
-          }
-          setLoading(false);
-        });
+        })
+          .then((res) => {
+            setLoading(false);
+            return res.json();
+          })
+          .then((result) => {
+            if (result.status === 201) {
+              toast.success(result.message);
+             setTimeout(() => {
+               location.pathname = "/"
+             }, 2000);
+            } else {
+              toast.error(result.message);
+            }
+          });
         values.fullName = "";
         values.email = "";
         values.password = "";
@@ -112,8 +119,8 @@ const page = () => {
         {signUp.touched.phone && signUp.errors.phone && signUp.errors.phone}
         <div className="w-full h-[2rem] px-[0.5rem] flex items-center gap-4">
           <p className="text-[1.2rem]">
-            ایا موافق با
-            {" "}<Link
+            ایا موافق با{" "}
+            <Link
               href={"/regulation"}
               className="text-blue-600 font-bold text-[1.4rem]"
             >
@@ -141,9 +148,9 @@ const page = () => {
           )}
         </button>
         <p className="text-[1.4rem] dark:text-first">
-          در صورت داشتن حساب کاربری
-          {" "}<Link href={"/login"} className="text-blue-700">
-             وارد 
+          در صورت داشتن حساب کاربری{" "}
+          <Link href={"/login"} className="text-blue-700">
+            وارد
           </Link>{" "}
           شوید
         </p>

@@ -30,7 +30,6 @@ function verifyToken(token, processEnvKey) {
   }
 }
 
-
 function verifyRefreshToken(refreshToken, processEnvKey) {
   try {
     const validationToken = verify(refreshToken, processEnvKey);
@@ -48,13 +47,20 @@ async function verifyPassword(password, hashedPassword) {
 function logoutHandler() {
   fetch("/api/logout", {
     method: "POST",
-  }).then((res) => {
-    if (res.ok) {
-      toast.success("با موفقیت از حسابتان خارخ شدید");
-    } else {
-      toast.success("عملیات ناموفق بود مجددا امتحان کنید");
-    }
-  });
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((result) => {
+      if (result.status === 200) {
+        toast.success(result.message);
+        setTimeout(() => {
+          location.pathname = "/"
+        }, 2000);
+      } else {
+        toast.error(result.message);
+      }
+    });
 }
 
 export {

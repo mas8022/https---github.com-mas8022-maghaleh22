@@ -6,7 +6,6 @@ async function isAuthor() {
   try {
     const token = cookies().get("author-token")?.value;
 
-
     const tokenPayload = verifyToken(token, process.env.authorPrivateKey);
     if (!tokenPayload) {
       return false;
@@ -14,22 +13,18 @@ async function isAuthor() {
 
     connectToDb();
     const author = await authorModel.findOne(
-      { $or: [
-        {email: tokenPayload.email },
-        {email: tokenPayload.email.email },
-      ] },
+      {
+        $or: [
+          { email: tokenPayload.email },
+          { email: tokenPayload.email.email },
+        ],
+      },
       "_id"
     );
 
-    
-
-
     if (author) {
-      console.log("yes");
       return true;
     } else {
-      console.log("no");
-
       return false;
     }
   } catch (error) {

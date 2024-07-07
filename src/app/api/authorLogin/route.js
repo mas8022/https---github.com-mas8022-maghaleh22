@@ -78,6 +78,6 @@ export async function POST(req, { params }) {
 
     return Response.json({ message: "با موفقیت وارد شدید", status: 200 });
   } catch (error) {
-    return Response.json({ message: "Internal Server Error", status: 500 });
+    return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

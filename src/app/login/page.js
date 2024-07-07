@@ -34,14 +34,22 @@ export default function page() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(values),
-        }).then((res) => {
-          if (res.ok) {
-            location.pathname = "/";
-          } else {
-            toast.error("اینترنت خود را چک کنید");
-          }
-          setLoading(false);
-        });
+        })
+          .then((res) => {
+            setLoading(false);
+            return res.json();
+          })
+          .then((result) => {
+            if (result.status === 200) {
+              toast.success(result.message);
+
+              setTimeout(() => {
+                location.pathname = "/";
+              }, 2000);
+            } else {
+              toast.error(result.message);
+            }
+          });
         values.email = "";
         values.password = "";
         setSubmitting(false);
