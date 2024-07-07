@@ -2,15 +2,15 @@ import { compare, hash } from "bcryptjs";
 import toast from "react-hot-toast";
 const { sign, verify } = require("jsonwebtoken");
 
-function generateToken(data) {
-  const token = sign(data, process.env.privateKey, {
+function generateToken(data, processEnvKey) {
+  const token = sign(data, processEnvKey, {
     expiresIn: "60s",
   });
   return token;
 }
 
-function generateRefreshToken(data) {
-  const refreshToken = sign(data, process.env.refreshPrivateKey, {
+function generateRefreshToken(data, processEnvRefreshKey) {
+  const refreshToken = sign(data, processEnvRefreshKey, {
     expiresIn: "15d",
   });
   return refreshToken;

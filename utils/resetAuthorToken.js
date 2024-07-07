@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { generateToken, verifyRefreshToken, verifyAuthorToken } from "./authTools";
+import { generateToken, verifyRefreshToken, verifyToken } from "./authTools";
 import { redirect } from "next/navigation";
 import connectToDb from "../configs/db";
 import authorModel from "../models/author";
@@ -7,33 +7,34 @@ import authorModel from "../models/author";
 async function ResetAuthorToken() {
   const token = cookies().get("author-token")?.value;
   if (token) {
-    const validationToken = verifyRefreshToken(token, process.env.authorPrivateKey);
+    const validationToken = verifyToken(token, process.env.authorPrivateKey);
     if (validationToken) {
-      return true;
+      return true
     }
   }
 
+
+
   const refreshToken = cookies().get("author-refresh-token")?.value;
   if (!refreshToken) {
-    return redirect("/login");
+    return redirect("coWorker/employment");
   }
 
   const refreshTokenPayLoad = verifyRefreshToken(refreshToken, process.env.authorRefreshPrivateKey);
   if (!refreshTokenPayLoad) {
-    return redirect("/login");
+    return redirect("coWorker/employment");
   }
 
   await connectToDb();
-  const userEmail = await authorModel.findOne({ refreshToken }, "email");
+  const email = await authorModel.findOne({ refreshToken }, "email");
 
-  if (!userEmail) {
-    return redirect("/login");
+  if (!email) {
+    return redirect("coWorker/employment");
   }
 
-  const newToken = generateToken({ userEmail });
+  const newToken = generateToken({ email }, process.env.authorPrivateKey);
 
   await cookies().delete("author-token");
-
   cookies().set("author-token", newToken, {
     httpOnly: true,
     path: "/",

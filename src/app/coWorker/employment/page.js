@@ -1,9 +1,9 @@
 "use client";
+import { useState } from "react";
+import AuthorSignUpForm from "../../_components/template/authorSignUpForm";
+import AuthorLoginForm from "../../_components/template/authorLoginForm";
 import Image from "next/image";
-import React, { useState } from "react";
-import Hr from "../modules/hr";
-import AuthorSignUpForm from "./authorSignUpForm";
-import AuthorLoginForm from "./authorLoginForm";
+import Hr from "../../_components/modules/hr";
 
 const authorSignUp = () => {
   const [formMode, setFormMode] = useState("loginForm");

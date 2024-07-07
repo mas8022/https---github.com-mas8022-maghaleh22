@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import { MoonLoader } from "react-spinners";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page() {

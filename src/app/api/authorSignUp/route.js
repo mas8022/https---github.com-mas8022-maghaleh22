@@ -36,8 +36,8 @@ export async function POST(req, { params }) {
     const hashedPassword = await hashPassword(password);
     const fileAddress = await CloudStoringFile(ruleImage);
 
-    const token = generateToken({ email });
-    const refreshToken = generateRefreshToken({ email });
+    const token = generateToken({ email }, process.env.authorPrivateKey);
+    const refreshToken = generateRefreshToken({ email }, process.env.authorRefreshPrivateKey);
 
     cookies().set("author-token", token, {
       httpOnly: true,
@@ -68,7 +68,6 @@ export async function POST(req, { params }) {
       { status: 201 }
     );
   } catch (error) {
-    console.log(error);
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

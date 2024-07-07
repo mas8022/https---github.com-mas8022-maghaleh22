@@ -52,7 +52,7 @@ const AuthorSignUpForm = ({ setFormMode }) => {
           body: formData,
         }).then((res) => {
           if (res.ok) {
-            location.pathname = "/";
+            location.pathname = "/coWorker";
           } else {
             toast.error("اینترنت خود را چک کنید");
           }

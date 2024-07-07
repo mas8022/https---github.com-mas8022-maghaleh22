@@ -24,13 +24,13 @@ async function resetToken() {
   }
 
   await connectToDb();
-  const userEmail = await userModel.findOne({ refreshToken }, "email");
+  const email = await userModel.findOne({ refreshToken }, "email");
 
-  if (!userEmail) {
+  if (!email) {
     return redirect("/login");
   }
 
-  const newToken = generateToken({ userEmail });
+  const newToken = generateToken({ email }, process.env.privateKey);
 
   await cookies().delete("token");
 

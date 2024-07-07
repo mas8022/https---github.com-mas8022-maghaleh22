@@ -26,7 +26,7 @@ export async function POST(req) {
       );
     }
 
-    const refreshToken = generateRefreshToken({ email });
+    const refreshToken = generateRefreshToken({ email }, process.env.refreshPrivateKey);
 
     await userModel.findOneAndUpdate(
       { email },
@@ -37,7 +37,7 @@ export async function POST(req) {
       }
     );
 
-    const newAccessToken = generateToken({ email });
+    const newAccessToken = generateToken({ email }, process.env.privateKey);
 
     await cookies().delete("token");
     cookies().set("token", newAccessToken, {

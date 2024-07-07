@@ -12,7 +12,7 @@ const useLocalStorage = (key, initialValue) => {
   useEffect(() => {
     const value = JSON.parse(localStorage.getItem(key));
 
-    if (value === null) {
+    if (value === null || value === undefined) {
       localStorage.setItem(key, JSON.stringify(initialValue));
     }
 

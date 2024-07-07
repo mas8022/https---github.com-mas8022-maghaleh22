@@ -8,7 +8,7 @@ export async function POST(req, { params }) {
     const { fullName, email, phone } = await req.json();
 
     await userModel.findOneAndUpdate({ email }, { fullName, email, phone });
-    const newAccessToken = generateToken({ email });
+    const newAccessToken = generateToken({ email }, process.env.privateKey);
 
     return Response.json(
       { Message: "edit user successfully" },

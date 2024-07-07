@@ -1,16 +1,28 @@
-import React from "react";
-import { isMe } from "@/utils/me";
-import Employment from "../_components/template/employment";
-import { redirect } from "next/navigation";
+"use client";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import NewProject from "../_components/template/workTool";
+import { useRouter } from "next/navigation";
+const page = () => {
+  const router = useRouter();
+  const [isAuthor, setIsAuthor] = useState(false);
 
-const page = async () => {
-  const user = await isMe();
+  useEffect(() => {
+    fetch("/api/resetAuthorToken")
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          setIsAuthor(true);
+          
+        } else {
+          router.replace("/coWorker/employment");
+        }
+      });
+  }, []);
 
-  if (user) {
-    return redirect("coWorker/workTool");
-  }
-
-  return <Employment />;
+  return isAuthor ? <NewProject /> : null;
 };
 
 export default page;

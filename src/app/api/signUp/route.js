@@ -41,8 +41,8 @@ export async function POST(req) {
     }
 
     const hashedPassword = await hashPassword(password);
-    const token = generateToken({ email });
-    const refreshToken = generateRefreshToken({ email });
+    const token = generateToken({ email }, process.env.privateKey);
+    const refreshToken = generateRefreshToken({ email }, process.env.refreshPrivateKey);
 
     await userModel.create({
       fullName,

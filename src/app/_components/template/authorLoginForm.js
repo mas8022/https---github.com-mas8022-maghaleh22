@@ -1,7 +1,11 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
-
+import toast from "react-hot-toast";
+import { MoonLoader } from "react-spinners";
+const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
+import { useRouter } from "next/navigation";
 const AuthorLoginForm = ({ setFormMode }) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const authorLogin = useFormik({
@@ -29,14 +33,19 @@ const AuthorLoginForm = ({ setFormMode }) => {
         await fetch("/api/authorLogin", {
           method: "POST",
           body: formData,
-        }).then((res) => {
-          if (res.ok) {
-            location.pathname = "/";
-          } else {
-            toast.error("اینترنت خود را چک کنید");
-          }
-          setLoading(false);
-        });
+        })
+          .then((res) => {
+            setLoading(false);
+            return res.json();
+          })
+          .then((result) => {
+            if (result.status === 200) {
+              toast.success(result.message);
+              router.replace("/coWorker");
+            } else {
+              toast.error(result.message);
+            }
+          });
         values.email = "";
         values.password = "";
         setSubmitting(false);
@@ -58,8 +67,8 @@ const AuthorLoginForm = ({ setFormMode }) => {
         placeholder="ایمیل"
       />
       {authorLogin.touched.email &&
-        authorSignUp.errors.email &&
-        authorSignUp.errors.email}
+        authorLogin.errors.email &&
+        authorLogin.errors.email}
 
       <input
         className="w-full rounded-lg border-0 px-[1.5rem] text-[1.3rem] bg-white dark:bg-[#1e293b] text-black/70 dark:text-[#e2e8f0]"
@@ -71,8 +80,8 @@ const AuthorLoginForm = ({ setFormMode }) => {
         placeholder="رمز عبور"
       />
       {authorLogin.touched.password &&
-        authorSignUp.errors.password &&
-        authorSignUp.errors.password}
+        authorLogin.errors.password &&
+        authorLogin.errors.password}
 
       <button
         type="submit"

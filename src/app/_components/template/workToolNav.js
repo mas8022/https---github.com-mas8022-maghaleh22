@@ -1,16 +1,35 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 const WorkToolNav = () => {
+  const router = useRouter();
+
+  const [isAuthor, setIsAuthor] = useState(false);
+
   const path = usePathname();
   let deActiveNav = false;
-  if ((path === "/coWorker")) {
+  if (path === "/coWorker/employment") {
     deActiveNav = true;
   }
 
-  return (
+  useEffect(() => {
+    fetch("/api/resetAuthorToken")
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          setIsAuthor(true);
+          
+        } else {
+          router.replace("/coWorker/employment");
+        }
+      });
+  }, []);
+
+  return isAuthor ? (
     <div
       className={`WorkToolNav w-full h-auto mb-16 px-9 xm:py-4 py-10 gap-20 flex xm:flex-row flex-col-reverse items-center justify-between bg-second/5 dark:bg-[#111827]/60 border-y-1 border-y-second/50 rounded-lg ${
         deActiveNav && "hidden"
@@ -52,7 +71,7 @@ const WorkToolNav = () => {
         </Link>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default WorkToolNav;
