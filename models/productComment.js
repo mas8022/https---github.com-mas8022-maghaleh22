@@ -18,6 +18,6 @@ const schema = new Schema(
 );
 
 const model =
-  mongoose.models?.CourseComment || mongoose.model("CourseComment", schema);
+  mongoose.models?.ProductComment || mongoose.model("ProductComment", schema);
 
 export default model;

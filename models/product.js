@@ -1,33 +1,55 @@
 import mongoose, { Schema } from "mongoose";
 
 const schema = new Schema({
-  productTitle: {
+  group: {
+    type: String,
+    required: true,
+  },
+  title: {
     type: String,
     required: true,
   },
   price: {
     type: Number,
     required: true,
+    default: 0,
   },
-  time: {
+  videoTime: {
     type: Number,
     default: 0,
   },
-  master: {
+  author: {
     type: mongoose.Types.ObjectId,
-    ref: "Master",
+    ref: "Author",
     required: true,
   },
   articleText: {
     type: String,
   },
-  courseComments: {
-    type: mongoose.Types.ObjectId,
-    ref: "CourseComment",
+  articleVideo: {
+    type: [String],
+  },
+  comments: {
+    type: [mongoose.Types.ObjectId],
+    ref: "ProductComment",
   },
   tags: {
     type: [String],
     required: true,
+  },
+  publish: {
+    type: boolean,
+    required: true,
+  },
+  sellCount: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  discount: {
+    type: Number,
+    required: true,
+    default: 0,
   },
 });
 

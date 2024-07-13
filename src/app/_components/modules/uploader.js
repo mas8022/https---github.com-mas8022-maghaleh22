@@ -1,36 +1,28 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Button from "@mui/material/Button";
+import React from "react";
+import { useState } from "react";
 
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
-
-export default function Uploader({ label, cover, setFileData }) {
+export default function Uploader({
+  name = "",
+  cover,
+  fileData = "",
+  setFileData,
+}) {
+  const [fileData, setFileData] = useState(fileData);
   return (
-    <Button
-      className={
+    <label
+      className={`w-full h-full !bg-cover !bg-center ${
         cover
-          ? `w-full h-full !bg-cover !bg-center bg-['url(${cover})']`
-          : "w-full h-full !bg-cover !bg-center bg-[url('/images/360_F_64672736_U5kpdGs9keUll8CRQ3p3YaEv2M6qkVY5.jpg')]"
-      }
-      component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
+          ? `bg-['url(${cover})']`
+          : " bg-[url('/images/360_F_64672736_U5kpdGs9keUll8CRQ3p3YaEv2M6qkVY5.jpg')]"
+      }`}
     >
-      <VisuallyHiddenInput
+      <input
         type="file"
-        onChange={(e) => setFileData(e.target.files[0])}
+        name={name}
+        onChange={(e) => setFileData(e.currentTarget.files[0])}
+        id="fileData"
+        hidden
       />
-    </Button>
+    </label>
   );
 }

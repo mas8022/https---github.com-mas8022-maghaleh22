@@ -29,9 +29,6 @@ export async function POST(req, { params }) {
       });
     }
 
-    // console.log("isValidPassword: ", isValidPassword);
-
-
     const refreshToken = generateRefreshToken(
       { email },
       process.env.refreshPrivateKey

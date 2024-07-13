@@ -1,58 +1,98 @@
-"use client";
+// components/custom-editor.js
+"use client"; // only in App Router
 
-import React, { useEffect, useRef, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import Editor from "ckeditor5-custom-build";
+import {
+  ClassicEditor,
+  Undo,
+  Redo,
+  Heading,
+  Fontfamily,
+  Fontsize,
+  FontColor,
+  FontBackgroundColor,
+  Bold,
+  Italic,
+  Strikethrough,
+  Subscript,
+  Superscript,
+  Code,
+  Link,
+  UploadImage,
+  BlockQuote,
+  CodeBlock,
+  BulletedList,
+  NumberedList,
+  TodoList,
+  Outdent,
+  Indent,
+} from "ckeditor5";
 
-const editorConfiguration = {
-  toolbar: [
-    "heading",
-    "|",
-    "bold",
-    "italic",
-    "link",
-    "bulletedList",
-    "numberedList",
-    "|",
-    "outdent",
-    "indent",
-    "|",
-    "imageUpload",
-    "blockQuote",
-    "insertTable",
-    "mediaEmbed",
-    "undo",
-    "redo",
-    "language",
-    "alignment",
-    "direction",
-  ],
-  additionalLanguages: "all",
-};
-
-function CustomEditor(props) {
-  const editorRef = useRef(null);
-  const [editorLanguage, setEditorLanguage] = useState("fa");
-
-  const language = {
-    content: editorLanguage,
-  };
-
-  useEffect(() => {
-    setEditorLanguage("en");
-  }, []);
-
-
+import "ckeditor5/ckeditor5.css";
+function CustomEditor() {
   return (
-    <div className="w-full min-h-[35rem] shadow-xl">
+    <div className="h-60 shadow-md">
       <CKEditor
-        ref={editorRef}
-        editor={Editor}
-        config={{ ...editorConfiguration, language }}
-        data={props.initialData}
-        className="custom-ckeditor"
-        onChange={(event, editor) => {
-          const data = editor.getData();
+        editor={ClassicEditor}
+        config={{
+          toolbar: {
+            items: [
+              "undo",
+              "redo",
+              "|",
+              "heading",
+              "|",
+              "fontfamily",
+              "fontsize",
+              "fontColor",
+              "fontBackgroundColor",
+              "|",
+              "bold",
+              "italic",
+              "strikethrough",
+              "subscript",
+              "superscript",
+              "code",
+              "-", // break point
+              "|",
+              "alignment",
+              "link",
+              "uploadImage",
+              "blockQuote",
+              "codeBlock",
+              "|",
+              "bulletedList",
+              "numberedList",
+              "todoList",
+              "outdent",
+              "indent",
+            ],
+          },
+          plugins: [
+            Undo,
+            Redo,
+            Heading,
+            Fontfamily,
+            Fontsize,
+            FontColor,
+            FontBackgroundColor,
+            Bold,
+            Italic,
+            Strikethrough,
+            Subscript,
+            Superscript,
+            Code,
+            Link,
+            UploadImage,
+            BlockQuote,
+            CodeBlock,
+            BulletedList,
+            NumberedList,
+            TodoList,
+            Outdent,
+            Indent,
+          ],
+          initialData: "<p>Hello from CKEditor 5 in React!</p>",
         }}
       />
     </div>

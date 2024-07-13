@@ -31,5 +31,34 @@ async function isAuthor() {
     return false;
   }
 }
+async function Author() {
+  try {
+    const token = cookies().get("author-token")?.value;
 
-export { isAuthor };
+    const tokenPayload = verifyToken(token, process.env.authorPrivateKey);
+    if (!tokenPayload) {
+      return false;
+    }
+
+    connectToDb();
+    const author = await authorModel.findOne(
+      {
+        $or: [
+          { email: tokenPayload.email },
+          { email: tokenPayload.email.email },
+        ],
+      },
+      "-__v"
+    );
+
+    if (author) {
+      return author;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return false;
+  }
+}
+
+export { isAuthor, Author };

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Input from "../modules/Input";
 import SelectInput from "../modules/selectBox";
 import SelectItem from "../modules/selectItem";
+import SelectBox from "../modules/selectBox";
 
 const ContactUsBoxContainer = () => {
   return (
@@ -87,16 +88,7 @@ const ContactUsBoxContainer = () => {
         <div className="w-full flex flex-wrap gap-16 justify-center lgg:justify-end mb-12 lgg:mb-0">
           <Input id={"name"} label={"نام و نام خانوادگی"} />
           <Input id={"email"} label={"ایمیل"} />{" "}
-          <SelectInput id="دسته بندی" label="دسته بندی">
-            <SelectItem value={"software"}>
-              نرم افزار و فناوری اطلاعات
-            </SelectItem>
-            <SelectItem value={"economics"}>اقتصاد و حسابداری</SelectItem>
-            <SelectItem value={"business"}>کسب و کار</SelectItem>
-            <SelectItem value={"teenager"}>کودک و نوجوان</SelectItem>
-            <SelectItem value={"language"}>اموزش زبان</SelectItem>
-            <SelectItem value={"art"}>هنر طراحی</SelectItem>
-          </SelectInput>
+          <SelectBox formikInstance={sdfdsdcsdsdsddsFormik}/>
           <Input id={"phone"} label={"شماره همراه"} />
         </div>
         <textarea

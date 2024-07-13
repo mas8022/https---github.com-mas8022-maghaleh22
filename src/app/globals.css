@@ -43,26 +43,30 @@
   .shadOne {
     box-shadow: -1px 0px 3px -2px #000;
   }
-
-
-  .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
-    p {
-    font-size: 1.5rem;
-    font-weight: 100;
-  }
-  .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
-    p
-    > strong {
-    font-size: 1.6rem !important;
-    font-weight: 600 !important;
-  }
   .mui-selector > * {
     font-size: 1.3rem;
     @apply !font-light;
   }
-  .ck.ck-content {
+  option{
+    @apply font-light;
+  }
+
+
+  /* .ck.ck-content {
     min-height: 40rem !important;
   }
+  .dark .ck.ck-toolbar.ck-toolbar_grouping{
+    background: #f97316;
+  }
+  .dark .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
+    background: #000;
+  } */
+
+
+
+
+
+
   
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -90,12 +94,7 @@
     -o-appearance: none;
     appearance: none;
   }
-  .dark .ck.ck-toolbar.ck-toolbar_grouping{
-    background: #f97316;
-  }
-  .dark .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
-    background: #000;
-  }
+
 
   @media only screen and (max-width: 500px) {
     * {

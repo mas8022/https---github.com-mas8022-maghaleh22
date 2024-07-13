@@ -1,8 +1,10 @@
+"use client"
 import React from "react";
 import Player from "../../..//_components/modules/player";
 import Hr from "../../../_components/modules/hr";
 import AuthorBox from "../../../_components/template/authorBox";
 import CommentsBox from "../../../_components/template/commentsBox";
+import ContentArticle from "../../../_components/modules/contentArticle";
 
 export default function page({ id }) {
   return (
@@ -15,7 +17,7 @@ export default function page({ id }) {
           }
         />
         <Hr />
-        {/* ck editor  result */}
+        <ContentArticle />
         <Hr />
 
         <AuthorBox />
