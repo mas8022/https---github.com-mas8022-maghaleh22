@@ -19,7 +19,6 @@ export async function POST(req, { params }) {
     const tags = formData.get("tags");
     const discount = formData.get("discount");
 
-    console.log(group, title, price, articleText, articleVideo, tags, discount);
 
     // // validation
 

@@ -35,7 +35,6 @@ const NewProject = () => {
       discount: 0,
     },
     validate: (values) => {
-      console.log("values.articleVideo", values.articleVideo);
       const errors = {};
       return errors;
     },

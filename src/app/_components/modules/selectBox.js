@@ -10,7 +10,7 @@ const SelectBox = ({ formikInstance }) => {
         onChange={formikInstance.handleChange}
         onBlur={formikInstance.handleBlur}
         value={formikInstance.values.group? formikInstance.values.group : ""}
-        className="w-[30rem] h-[4.2rem] text-black/50 dark:text-first/60 dark:bg-[#0d141f] text-[1.3rem] rounded-md border-1 outline-none border-gray-600/30 px-6 focus:outline-none"
+        className="xxl:w-[30rem] w-[24.3rem] h-[4.2rem] text-black/50 shadow-lg dark:text-first/60 dark:bg-[#0d141f] text-[1.3rem] rounded-lg border-1 outline-none border-gray-600/30 px-6 focus:outline-none"
       >
         <option value="" label="دسته بندی" hidden/>
         <option

@@ -1,7 +1,6 @@
 import React from "react";
 import Hr from "../_components/modules/hr";
-import ContactUsBoxContainer from "../_components/template/contactUsBoxContainer";
-
+import ContactUsBoxForm from "../_components/template/contactUsBoxForm";
 export default function ContactUs() {
   return (
     <>
@@ -10,7 +9,7 @@ export default function ContactUs() {
         <p className="text-[1.7rem] text-gray-700/70 dark:text-first/50 font-bold mb-10">
           هر سوال یا نظری دارید؟ برای ما پیام بنویسید
         </p>
-        <ContactUsBoxContainer />
+        <ContactUsBoxForm />
         <Hr />
       </div>
       <Hr />
