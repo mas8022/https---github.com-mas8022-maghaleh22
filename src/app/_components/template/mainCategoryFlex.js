@@ -7,7 +7,12 @@ export default function MainCategoryFlex() {
   return (
     <div className="flex items-center w-full">
       <div className=" grid grid-cols-2 xm:grid-cols-3 lgg:grid-cols-6 gap-8 my-0 mx-auto child:rounded-3xl">
-        <Link className=" child:shadow-xl" href={"/products/software"}>
+        <Link
+          data-aos="fade-left"
+           data-aos-duration="2000"
+          className="child:shadow-xl"
+          href={"/products/software"}
+        >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
             <Image
               src={"/images/imac-svgrepo-com.svg"}
@@ -22,7 +27,12 @@ export default function MainCategoryFlex() {
             </span>
           </Button>
         </Link>
-        <Link className=" child:shadow-xl" href={"/products/economics"}>
+        <Link
+          data-aos="fade-left"
+           data-aos-duration="1500"
+          className="child:shadow-xl"
+          href={"/products/economics"}
+        >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
             <Image
               src={"/images/envelope-stats-svgrepo-com.svg"}
@@ -36,7 +46,12 @@ export default function MainCategoryFlex() {
             </span>
           </Button>
         </Link>
-        <Link className=" child:shadow-xl" href={"/products/business"}>
+        <Link
+          data-aos="fade-left"
+           data-aos-duration="1000"
+          className="child:shadow-xl"
+          href={"/products/business"}
+        >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
             <Image
               src={"/images/job-desktop-svgrepo-com.svg"}
@@ -50,7 +65,12 @@ export default function MainCategoryFlex() {
             </span>
           </Button>
         </Link>
-        <Link className=" child:shadow-xl" href={"/products/teenager"}>
+        <Link
+          data-aos="fade-right"
+           data-aos-duration="1000"
+          className="child:shadow-xl"
+          href={"/products/teenager"}
+        >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
             <Image
               src={"/images/birdhouse-svgrepo-com.svg"}
@@ -64,7 +84,12 @@ export default function MainCategoryFlex() {
             </span>
           </Button>
         </Link>
-        <Link className=" child:shadow-xl" href={"/products/language"}>
+        <Link
+          data-aos="fade-right"
+           data-aos-duration="1500"
+          className="child:shadow-xl"
+          href={"/products/language"}
+        >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
             <Image
               src={"/images/book-write-svgrepo-com.svg"}
@@ -78,7 +103,12 @@ export default function MainCategoryFlex() {
             </span>
           </Button>
         </Link>
-        <Link className=" child:shadow-xl" href={"/products/art"}>
+        <Link
+          data-aos="fade-right"
+           data-aos-duration="2000"
+          className="child:shadow-xl"
+          href={"/products/art"}
+        >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
             <Image
               src={"/images/art-tools-svgrepo-com.svg"}

@@ -8,6 +8,7 @@ import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import ThemeToggle from "./_components/modules/themeToggle";
 import { Toaster } from "react-hot-toast";
+import AosInit from "../../utils/aosInit";
 
 export const metadata = {
   title: "MAGHALEH",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-first dark:bg-[#1e293b]">
+        <AosInit />
         <ThemeToggle />
         <ContextProvider>
           <NextUIProvider>

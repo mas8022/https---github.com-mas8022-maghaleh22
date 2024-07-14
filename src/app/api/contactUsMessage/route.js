@@ -5,7 +5,7 @@ export async function POST(req, { params }) {
   try {
     const formData = await req.formData();
 
-    const name = formData.get("name");
+    const fullName = formData.get("fullName");
     const email = formData.get("email");
     const group = formData.get("group");
     const phone = formData.get("phone");
@@ -15,7 +15,7 @@ export async function POST(req, { params }) {
 
     connectToDb();
     await ContactUsMessageModel.create({
-      name,
+      fullName,
       email,
       group,
       phone,

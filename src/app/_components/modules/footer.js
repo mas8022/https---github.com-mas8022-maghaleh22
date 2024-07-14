@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import FooterCommentBox from "../template/footerCommentBox";
 
 const Footer = () => {
   return (
@@ -104,20 +105,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full lg:w-1/2 h-[30rem] lg:h-full flex flex-col justify-between gap-10">
-          <div className="flex flex-col gap-4 item-end">
-            <span className="text-[1.4rem] self-end dark:text-[#1e293b]">
-              با نظر دادن در مورد سایت مارا همراهی می کنید ممنون میشویم نظر خود
-              را بگویید
-            </span>
-            <textarea
-              className="w-[60%] h-20 max-h-64 p-4 rounded-md text-[1.28rem] text-black/70 sm:self-end bg-first/50 placeholder:text-black/50 outline-none focus:outline-none"
-              type="text"
-              placeholder="نظر خود بنویسید..."
-            />
-            <button className="w-32 h-10 sm:w-52 sm:h-14 rounded-xl bg-second text-first text-[1.2rem] sm:text-[1.4rem] font-light sm:self-end dark:bg-[#334155] active:bg-second/60 active:dark:bg-[#334155]/60">
-              ارسال نظر
-            </button>
-          </div>
+         <FooterCommentBox/>
 
           <div className="flex justify-end gap-4">
             <Link href={"/"}>

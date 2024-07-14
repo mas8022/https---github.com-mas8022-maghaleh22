@@ -13,7 +13,7 @@ const ContactUsBoxForm = () => {
 
   const contactForm = useFormik({
     initialValues: {
-      name: "",
+      fullName: "",
       email: "",
       group: "",
       phone: "",
@@ -22,7 +22,7 @@ const ContactUsBoxForm = () => {
     validate: (values) => {
       console.log(values);
       const errors = {};
-      if (!values.name.trim() || !isNaN(values.name)) {
+      if (!values.fullName.trim() || !isNaN(values.fullName)) {
         errors.name = "نام و نام خانوادگی را به درستی وارد کنید";
       } else if (!values.email.trim() || !emailRegex.test(values.email)) {
         errors.email = "ایمیل تان را به درستی وارد کنید";
@@ -38,7 +38,7 @@ const ContactUsBoxForm = () => {
 
       const formData = new FormData();
 
-      formData.append("name", values.name);
+      formData.append("fullName", values.fullName);
       formData.append("email", values.email);
       formData.append("group", values.group);
       formData.append("phone", values.phone);
@@ -68,7 +68,7 @@ const ContactUsBoxForm = () => {
             }
           });
         setSubmitting(false);
-        values.name = "";
+        values.fullName = "";
         values.email = "";
         values.group = "";
         values.phone = "";
@@ -162,14 +162,14 @@ const ContactUsBoxForm = () => {
           <div className="flex flex-col gap-1">
             <Input
               formHandler={contactForm}
-              value={contactForm.values.name}
-              name="name"
-              id={"name"}
+              value={contactForm.values.fullName}
+              name="fullName"
+              id="fullName"
               label={"نام و نام خانوادگی"}
             />
-            {contactForm.touched.name &&
-              contactForm.errors.name &&
-              contactForm.errors.name}
+            {contactForm.touched.fullName &&
+              contactForm.errors.fullName &&
+              contactForm.errors.fullName}
           </div>
           <div className="flex flex-col gap-1">
             <Input
