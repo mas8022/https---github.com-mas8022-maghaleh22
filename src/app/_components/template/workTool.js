@@ -33,9 +33,9 @@ const NewProject = () => {
     initialValues: {
       group: "",
       title: "",
-      price: null,
+      price: "",
       articleVideo: "",
-      discount: null,
+      discount: "",
       cover: "",
     },
     validate: (values) => {

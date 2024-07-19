@@ -12,14 +12,16 @@ const ProfileBtn = () => {
   useEffect(() => {
     fetch("/api/resetToken")
       .then((res) => {
-        if (res.ok) {
-          return true;
-        }
         setIsPendingMe(true);
-        return false;
+        return res.json();
       })
       .then((result) => {
-        setMe(result);
+        console.log(result);
+        if (result.status === 200) {
+          setMe(true);
+        } else {
+          setMe(false);
+        }
       });
   }, []);
 
