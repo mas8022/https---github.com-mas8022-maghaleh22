@@ -1,25 +1,23 @@
 import React from "react";
-import { useState } from "react";
+import { MoonLoader } from "react-spinners";
 
 export default function Uploader({
   name = "",
-  cover,
-  fileData = "",
-  setFileData,
+  label = "",
+  customClass = "",
+  loader = false,
+  formHandler,
 }) {
-  const [fileData, setFileData] = useState(fileData);
   return (
-    <label
-      className={`w-full h-full !bg-cover !bg-center ${
-        cover
-          ? `bg-['url(${cover})']`
-          : " bg-[url('/images/360_F_64672736_U5kpdGs9keUll8CRQ3p3YaEv2M6qkVY5.jpg')]"
-      }`}
-    >
+    <label className={customClass}>
+      {loader ? <MoonLoader size={20} color="#fff" /> : <span>{label}</span>}
+
       <input
         type="file"
         name={name}
-        onChange={(e) => setFileData(e.currentTarget.files[0])}
+        onChange={(e) =>
+          formHandler.setFieldValue(name, e.currentTarget.files[0])
+        }
         id="fileData"
         hidden
       />

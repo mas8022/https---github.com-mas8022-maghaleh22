@@ -1,102 +1,58 @@
-// components/custom-editor.js
-"use client"; // only in App Router
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import {
-  ClassicEditor,
-  Undo,
-  Redo,
-  Heading,
-  Fontfamily,
-  Fontsize,
-  FontColor,
-  FontBackgroundColor,
-  Bold,
-  Italic,
-  Strikethrough,
-  Subscript,
-  Superscript,
-  Code,
-  Link,
-  UploadImage,
-  BlockQuote,
-  CodeBlock,
-  BulletedList,
-  NumberedList,
-  TodoList,
-  Outdent,
-  Indent,
-} from "ckeditor5";
+export default function Editor({ articleText, setArticleText }) {
+  const [editorLoaded, setEditorLoaded] = useState(false);
 
-import "ckeditor5/ckeditor5.css";
-function CustomEditor() {
+  const editorRef = useRef();
+  const { CKEditor, ClassicEditor } = editorRef.current || {};
+
+  useEffect(() => {
+    setEditorLoaded(true);
+
+    editorRef.current = {
+      CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, // v3+
+      ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
+    };
+  }, []);
+
   return (
-    <div className="h-60 shadow-md">
-      <CKEditor
-        editor={ClassicEditor}
-        config={{
-          toolbar: {
-            items: [
-              "undo",
-              "redo",
+    <>
+      {editorLoaded ? (
+        <CKEditor
+          type=""
+          name={name}
+          editor={ClassicEditor}
+          configs={{
+            toolbar: [
+              "ckbox",
+              "imageUpload",
               "|",
               "heading",
               "|",
-              "fontfamily",
-              "fontsize",
-              "fontColor",
-              "fontBackgroundColor",
+              "undo",
+              "redo",
               "|",
               "bold",
               "italic",
-              "strikethrough",
-              "subscript",
-              "superscript",
-              "code",
-              "-", // break point
               "|",
-              "alignment",
-              "link",
-              "uploadImage",
               "blockQuote",
-              "codeBlock",
+              "indent",
+              "link",
               "|",
               "bulletedList",
               "numberedList",
-              "todoList",
-              "outdent",
-              "indent",
             ],
-          },
-          plugins: [
-            Undo,
-            Redo,
-            Heading,
-            Fontfamily,
-            Fontsize,
-            FontColor,
-            FontBackgroundColor,
-            Bold,
-            Italic,
-            Strikethrough,
-            Subscript,
-            Superscript,
-            Code,
-            Link,
-            UploadImage,
-            BlockQuote,
-            CodeBlock,
-            BulletedList,
-            NumberedList,
-            TodoList,
-            Outdent,
-            Indent,
-          ],
-          initialData: "<p>Hello from CKEditor 5 in React!</p>",
-        }}
-      />
-    </div>
+          }}
+          data={articleText}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            setArticleText(data);
+          }}
+        />
+      ) : (
+        <div>Editor loading</div>
+      )}
+    </>
   );
 }
-
-export default CustomEditor;

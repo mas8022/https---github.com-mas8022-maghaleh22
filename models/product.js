@@ -14,10 +14,6 @@ const schema = new Schema({
     required: true,
     default: 0,
   },
-  videoTime: {
-    type: Number,
-    default: 0,
-  },
   author: {
     type: mongoose.Types.ObjectId,
     ref: "Author",
@@ -38,7 +34,7 @@ const schema = new Schema({
     required: true,
   },
   publish: {
-    type: boolean,
+    type: Boolean,
     required: true,
   },
   sellCount: {
@@ -47,6 +43,15 @@ const schema = new Schema({
     default: 0,
   },
   discount: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  cover: {
+    type: String,
+    required: true,
+  },
+  duration: {
     type: Number,
     required: true,
     default: 0,

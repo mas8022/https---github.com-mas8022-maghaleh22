@@ -52,6 +52,7 @@ const AuthorLoginForm = ({ setFormMode }) => {
       }, 3000);
     },
   });
+  
   return (
     <form
       className="lgg:w-full ld:w-3/5 xm:w-4/5 w-full flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center bg-second/30 dark:bg-black/30 dark:shadow-2xl rounded-3xl child:h-16 child:outline-none child:focus:outline-none"

@@ -1,54 +1,65 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import SelectItem from "../modules/selectItem";
-import SelectInput from "../modules/selectBox";
 import { useFormik } from "formik";
 import swal from "sweetalert";
 import SelectBox from "../modules/selectBox";
+import Uploader from "../modules/uploader";
+import Button from "../modules/Button";
+import GetVideoDuration from "../../_components/modules/getVideoDuration";
 
-// const Editor = dynamic(() => import("../../_components/modules/ck"), {
-//   ssr: false,
-// });
+const Editor = dynamic(() => import("../../_components/modules/ck"), {
+  ssr: false,
+});
 
 const NewProject = () => {
   const [isReadAblePrice, setIsReadAblePrice] = useState(false);
   const [isReadAbleDiscount, setIsReadAbleDiscount] = useState(false);
+  const [articleText, setArticleText] = useState("");
   const [tag, setTag] = useState("");
   const [tags, setTags] = useState([]);
-  const [tagError, setTagError] = useState(false);
-  // const [articleText, setArticleText] = useState("");
+  const [loader, setLoader] = useState(false);
+  const [file, setFile] = useState(null);
+  const [duration, setDuration] = useState(0);
 
   const addTag = () => {
     if (tag.trim()) {
-      setTags((p) => [...p, `#${tag.trim()}`]);
+      setTags((p) => [...p, tag]);
+      setTag("");
     }
   };
 
-  const generateProduct = useFormik({
+  const generateProductFormik = useFormik({
     initialValues: {
       group: "",
       title: "",
-      price: 0,
-      articleText: "",
+      price: null,
       articleVideo: "",
-      discount: 0,
+      discount: null,
+      cover: "",
     },
     validate: (values) => {
+      
       const errors = {};
-      return errors;
-    },
-    onSubmit: async (values, { setSubmitting }) => {
-      setLoading(true);
-
-      if (tags.length === 0) {
-        return setTagError(true);
-      } else if (!articleText.trim() && !articleVideo.trim()) {
-        return swal({
+      if (!values.group) {
+        errors.group = "یک دسته برای محتوا خود انتخاب کنید";
+      } else if (!values.title.trim()) {
+        errors.title = "عنوان محتوا را وارد کن";
+      } else if (!values.cover) {
+        errors.cover = "عکس کاور محتوا را بارگذاری کنید";
+      } else if (!tags?.length) {
+        errors.tags = "هی�� تگی برای محتوا انتخاب نشده ا��ت";
+      } else if (!articleText.trim() && !values.articleVideo) {
+        swal({
           icon: "error",
           text: "ابتدا محتوا اموزشی خود را تولید کنید",
         });
       }
+      setFile(values?.articleVideo);
+      return errors;
+    },
+    onSubmit: async (values, { setSubmitting }) => {
+      setLoader(true);
 
       const formData = new FormData();
 
@@ -56,10 +67,11 @@ const NewProject = () => {
       formData.append("title", values.title);
       formData.append("price", values.price);
       formData.append("articleText", articleText);
-      formData.append("articleText", "<div>testy text</div>");
       formData.append("articleVideo", values.articleVideo);
-      formData.append("tags", tags);
+      formData.append("tags", JSON.stringify(tags));
       formData.append("discount", values.discount);
+      formData.append("cover", values.cover);
+      formData.append("duration", duration);
 
       setTimeout(async () => {
         await fetch("/api/product", {
@@ -67,7 +79,7 @@ const NewProject = () => {
           body: formData,
         })
           .then((res) => {
-            setLoading(false);
+            setLoader(false);
             return res.json();
           })
           .then((result) => {
@@ -84,8 +96,6 @@ const NewProject = () => {
               });
             }
           });
-        values.email = "";
-        values.password = "";
         setSubmitting(false);
       }, 3000);
     },
@@ -104,174 +114,191 @@ const NewProject = () => {
         می کنیم و به شما اطلاع خواهیم داد
       </div>
       <form
-        onSubmit={generateProduct.handleSubmit}
+        onSubmit={generateProductFormik.handleSubmit}
         className="flex flex-col gap-16"
       >
         <div className="w-full flex flex-wrap justify-between gap-8">
           <div className="flex flex-col gap-12">
             <div className="flex flex-wrap gap-10">
-         
-
-              <SelectBox formikInstance={generateProduct} />
-
-              <input
-                type="text"
-                name="title"
-                value={generateProduct.values.title}
-                onChange={generateProduct.handleChange}
-                required
-                className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] rounded-md border-1 outline-none border-gray-600/30 px-6 focus:outline-none"
-                placeholder="سر تیتر مقاله خود را بنویسید..."
-              />
-              {generateProduct.touched.title &&
-                generateProduct.errors.title &&
-                generateProduct.errors.title}
+              <div className="flex flex-col flex-wrap gap-2">
+                <SelectBox formikInstance={generateProductFormik} />
+                {generateProductFormik.touched.group &&
+                  generateProductFormik.errors.group &&
+                  generateProductFormik.errors.group}
+              </div>
+              <div className="flex flex-col flex-wrap gap-2">
+                <input
+                  type="text"
+                  name="title"
+                  value={generateProductFormik.values.title}
+                  onChange={generateProductFormik.handleChange}
+                  className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] rounded-md border-1 outline-none border-gray-600/30 px-6 focus:outline-none"
+                  placeholder="سر تیتر مقاله خود را بنویسید..."
+                />
+                {generateProductFormik.touched.title &&
+                  generateProductFormik.errors.title &&
+                  generateProductFormik.errors.title}
+              </div>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="priceProduct" className="text-xl">
                 قیمت مقاله به تومان:
               </label>
-              <div
-                id="priceProduct"
-                className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30"
-              >
-                <input
-                  type="number"
-                  name="price"
-                  value={generateProduct.values.price}
-                  onChange={generateProduct.handleChange}
-                  min="0"
-                  className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] ${
-                    isReadAblePrice && "text-first/55"
-                  }`}
-                  placeholder="قیمت مقاله خود را به ریال بنویسید (مانند: 150000)"
-                  readOnly={isReadAblePrice}
-                />
-                <div className="flex gap-6 h-full py-2">
-                  <div
-                    onClick={() => setIsReadAblePrice(false)}
-                    className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/60 rounded-lg active:"
-                  >
-                    ویرایش
-                  </div>
-                  <div
-                    onClick={() => setIsReadAblePrice(true)}
-                    className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/80 rounded-lg active:"
-                  >
-                    تایید
+
+              <div className="flex flex-col flex-wrap gap-2">
+                <div
+                  id="priceProduct"
+                  className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30"
+                >
+                  <input
+                    type="number"
+                    name="price"
+                    value={generateProductFormik.values.price}
+                    onChange={generateProductFormik.handleChange}
+                    min="0"
+                    className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] ${
+                      isReadAblePrice && "text-first/55"
+                    }`}
+                    placeholder="قیمت مقاله خود را به ریال بنویسید (مانند: 150000)"
+                    readOnly={isReadAblePrice}
+                  />
+                  <div className="flex gap-6 h-full py-2">
+                    <div
+                      onClick={() => setIsReadAblePrice(false)}
+                      className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/60 rounded-lg active:"
+                    >
+                      ویرایش
+                    </div>
+                    <div
+                      onClick={() => setIsReadAblePrice(true)}
+                      className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/80 rounded-lg active:"
+                    >
+                      تایید
+                    </div>
                   </div>
                 </div>
+                {generateProductFormik.touched.price &&
+                  generateProductFormik.errors.price &&
+                  generateProductFormik.errors.price}
               </div>
             </div>
-            {generateProduct.touched.group &&
-              generateProduct.errors.group &&
-              generateProduct.errors.group}
 
             <div className="flex flex-col gap-2">
               <label htmlFor="discountProduct" className="text-xl">
                 تخفیف مقاله به درصد:
               </label>
-              <div
-                id="discountProduct"
-                className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30"
-              >
-                <input
-                  type="number"
-                  name="discount"
-                  value={generateProduct.values.discount}
-                  onChange={generateProduct.handleChange}
-                  min="0"
-                  max="100"
-                  className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] ${
-                    isReadAbleDiscount && "text-first/55"
-                  }`}
-                  placeholder="از 0 تا 100 مقدار تخفیف برای مقاله خود در نظر بگیرید"
-                  readOnly={isReadAbleDiscount}
-                />
+              <div className="flex flex-col flex-wrap gap-2">
+                <div
+                  id="discountProduct"
+                  className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30"
+                >
+                  <input
+                    type="number"
+                    name="discount"
+                    value={generateProductFormik.values.discount}
+                    onChange={generateProductFormik.handleChange}
+                    min="0"
+                    max="100"
+                    className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] ${
+                      isReadAbleDiscount && "text-first/55"
+                    }`}
+                    placeholder="از 0 تا 100 مقدار تخفیف برای مقاله خود در نظر بگیرید"
+                    readOnly={isReadAbleDiscount}
+                  />
 
-                <div className="flex gap-6 h-full py-2">
-                  <div
-                    onClick={() => setIsReadAbleDiscount(false)}
-                    className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/60 rounded-lg active:"
-                  >
-                    ویرایش
-                  </div>
-                  <div
-                    onClick={() => setIsReadAbleDiscount(true)}
-                    className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/80 rounded-lg active:"
-                  >
-                    تایید
+                  <div className="flex gap-6 h-full py-2">
+                    <div
+                      onClick={() => setIsReadAbleDiscount(false)}
+                      className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/60 rounded-lg active:"
+                    >
+                      ویرایش
+                    </div>
+                    <div
+                      onClick={() => setIsReadAbleDiscount(true)}
+                      className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/80 rounded-lg active:"
+                    >
+                      تایید
+                    </div>
                   </div>
                 </div>
+                {generateProductFormik.touched.discount &&
+                  generateProductFormik.errors.discount &&
+                  generateProductFormik.errors.discount}
               </div>
             </div>
-
-            {generateProduct.touched.group &&
-              generateProduct.errors.group &&
-              generateProduct.errors.group}
           </div>
 
-          <div className="flex flex-col w-[50rem] dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30 dark:shadow-2xl">
-            <div className="w-full h-[4.2rem]">
-              <input
-                type="search"
-                value={setTag}
-                onChange={(e) => setTag(e.target.value)}
-                placeholder="برچسب های مورد نظر خود را وارد کنید..."
-                className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-1 border-gray-600/35 text-[1.3rem] dark:bg-[#0d141f]"
-              />
-              <button
-                onClick={addTag}
-                type="button"
-                className="w-1/4 h-full bg-second/80 active:bg-second/50 rounded-md text-[1.3rem] font-bold text-first"
-              >
-                اضافه کردن
-              </button>
-            </div>
+          <div className="flex flex-col flex-wrap gap-2 w-[50rem] dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30 dark:shadow-2xl">
+            <div className="flex flex-col">
+              <div className="w-full h-[4.2rem] flex">
+                <input
+                  type="search"
+                  value={tag}
+                  onChange={(e) => setTag(e.target.value)}
+                  placeholder="برچسب های مورد نظر خود را وارد کنید..."
+                  className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-1 border-gray-600/35 text-[1.3rem] dark:bg-[#0d141f]"
+                />
+                <div
+                  onClick={addTag}
+                  type="button"
+                  className="w-1/4 h-full flex items-center justify-center bg-second/80 active:bg-second/50 rounded-md text-[1.3rem] font-bold text-first"
+                >
+                  اضافه کردن
+                </div>
+              </div>
 
-            <div className="w-full h-auto flex flex-wrap p-6 gap-5 child:text-[1.2rem] font-light bg-black/0">
-              {tags && tags.length > 0
-                ? tags.map((item) => <span>{item}</span>)
-                : null}
+              <div className="w-full h-auto flex flex-wrap p-6 gap-5 child:text-[1.2rem] font-light bg-black/0">
+                {tags?.length
+                  ? tags.map((item, index) => <span key={index}>{item}</span>)
+                  : null}
+              </div>
             </div>
+            {!tags?.length && (
+              <span className="self-center">حداقل یک برچسب بنویسید</span>
+            )}
           </div>
-          {tagError && "حداقل یک برچسب بنویسید"}
         </div>
-        {/* <Editor
+        <Editor
           setArticleText={setArticleText}
-          articleText={articleText}
-          initialData="<p>در این قسمت مقاله خود را بنویسید</p>"
-        /> */}
+          articleText={
+            articleText
+              ? articleText
+              : "<p>در این قسمت مقاله خود را بنویسید</p>"
+          }
+        />
         <div className="w-full flex sm:flex-row flex-col items-center gap-8">
-          <label
-            htmlFor="articleVideo"
-            className="xm:w-2/3 w-full h-24 cursor-pointer !rounded-3xl flex items-center justify-center !text-[1.4rem] sm:!text-[1.7rem] !font-light !text-first !bg-second/60 !hover:bg-second/80"
-          >
-            در صورت علاقه فیلم اموزشی خود را اپلود کنید
-            <input
-              type="file"
-              name="articleVideo"
-              onChange={(e) =>
-                generateProduct.setFieldValue(
-                  "articleVideo",
-                  e.currentTarget.files[0]
-                )
-              }
-              id="articleVideo"
-              hidden
+          <Uploader
+            formHandler={generateProductFormik}
+            label="در صورت علاقه فیلم اموزشی خود را اپلود کنید"
+            name="articleVideo"
+            customClass="xm:w-2/3 w-full h-24 !rounded-3xl flex items-center justify-center !text-[1.4rem] sm:!text-[1.7rem] !font-light cursor-pointer !text-first !bg-second/60 !hover:bg-second/80"
+          />
+          <div className="w-1/3 flex flex-col gap-2 items-center">
+            <Uploader
+              formHandler={generateProductFormik}
+              label="کاور مقاله"
+              name="cover"
+              customClass="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/70 text-first cursor-pointer active:bg-second/80"
             />
-          </label>
-          <button
-            type="submit"
-            className="w-1/3 h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/80 text-first cursor-pointer active:bg-second/80"
-          >
-            ذخیره کردن
-          </button>
+            {generateProductFormik.touched.cover &&
+              generateProductFormik.errors.cover &&
+              generateProductFormik.errors.cover}
+          </div>
         </div>
+
+        <Button
+          buttonType="submit"
+          label="ذخیره کردن"
+          loader={loader}
+          customClass="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/80 text-first cursor-pointer active:bg-second/80"
+        >
+          ذخیره کردن
+        </Button>
         <div className="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second text-first cursor-pointer active:bg-second/80">
           ارسال مقاله
         </div>
       </form>
+      <GetVideoDuration file={file} setDuration={setDuration} />
     </div>
   );
 };

@@ -20,7 +20,6 @@ const ContactUsBoxForm = () => {
       message: "",
     },
     validate: (values) => {
-      console.log(values);
       const errors = {};
       if (!values.fullName.trim() || !isNaN(values.fullName)) {
         errors.name = "نام و نام خانوادگی را به درستی وارد کنید";

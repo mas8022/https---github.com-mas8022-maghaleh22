@@ -9,10 +9,12 @@ const MyProject = () => {
 
     <div className="w-full flex justify-center">
       <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-        <Cart />
-        <Cart />
-        <Cart />
-        <Cart />
+      <Cart btnMode={"edit"}/>
+      <Cart btnMode={"edit"}/>
+      <Cart btnMode={"edit"}/>
+      <Cart btnMode={"edit"}/>
+      <Cart btnMode={"edit"}/>
+
       </div>
     </div>
   </div>

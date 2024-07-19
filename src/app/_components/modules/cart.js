@@ -45,10 +45,17 @@ export default function Cart({ studentCount, btnMode }) {
           </p>
           {btnMode === "draft" ? (
             <Link
-              href={"/coWorker/fgffsd"}
+              href={"/coWorker/draftedProject/fsdsdds"}
               className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 dark:border-second bg-second active:bg-first dark:active:bg-first/0 active:border-second active:text-second rounded-lg"
             >
               ادامه
+            </Link>
+          ) : btnMode === "edit" ? (
+            <Link
+              href={"/coWorker/myProjects/fsdsdds"}
+              className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 dark:border-second bg-second active:bg-first dark:active:bg-first/0 active:border-second active:text-second rounded-lg"
+            >
+              ویرایش
             </Link>
           ) : (
             <Link

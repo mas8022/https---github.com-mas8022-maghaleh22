@@ -4,8 +4,6 @@ export async function POST(req) {
   try {
     const meId = await MeId();
 
-    console.log("meId", meId);
-
     if (!meId) {
       return Response.json({
         message: "برای ارسال نظر باید در سایت ثبت نام کرده باشید",
@@ -25,7 +23,6 @@ export async function POST(req) {
       status: 201,
     });
   } catch (error) {
-    console.log("=======", error);
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

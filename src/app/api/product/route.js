@@ -1,50 +1,51 @@
-import { Author } from "../../../../utils/author";
+import { GetAuthorId } from "../../../../utils/author";
 import connectToDb from "../../../../configs/db";
 import productModel from "../../../../models/product";
-import { redirect } from "next/navigation";
+import CloudStoringFile from "../../../../utils/cloudStoringFile";
+
 export async function POST(req, { params }) {
   try {
-    const author = await Author();
-    if (!author.email) {
-      return redirect("coWorker/employment");
+    const author = await GetAuthorId();
+    if (!author) {
+      return Response.json({ message: "لطفا مجددا تلاش فرمایید", status: 400 });
     }
+
+
 
     const formData = await req.formData();
 
     const group = formData.get("group");
     const title = formData.get("title");
     const price = formData.get("price");
+    let tags = formData.get("tags");
+    const discount = formData.get("discount");
+    const cover = formData.get("cover");
     const articleText = formData.get("articleText");
     const articleVideo = formData.get("articleVideo");
-    const tags = formData.get("tags");
-    const discount = formData.get("discount");
+    const duration = formData.get("duration");
 
+    tags = JSON.parse(tags);
 
-    // // validation
+    const coverSrc = await CloudStoringFile(cover);
 
-    // function calcVideoTime(articleVideo) {
-    //   //    const time =  // calcVideoTime
+    const articleVideoSrc = await CloudStoringFile(articleVideo);
 
-    //   return time;
-    // }
-
-    // const videoTime = calcVideoTime(articleVideo);
-
-    // connectToDb();
-    // await productModel.create({
-    //   group,
-    //   title,
-    //   price,
-    //   videoTime,
-    //   author,
-    //   articleText,
-    //   articleVideo,
-    //   comments: [],
-    //   tags,
-    //   publish: false,
-    //   sellCount: 0,
-    //   discount: 0,
-    // });
+    connectToDb();
+    await productModel.create({
+      group,
+      title,
+      price: price ? price : 0,
+      author,
+      articleText,
+      comments: [],
+      publish: false,
+      sellCount: 0,
+      discount: discount? discount : 0,
+      tags,
+      cover: coverSrc,
+      articleVideo: articleVideoSrc,
+      duration,
+    });
 
     return Response.json({
       message:
@@ -52,6 +53,7 @@ export async function POST(req, { params }) {
       status: 201,
     });
   } catch (error) {
+    console.log("error api =======> ", error);
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

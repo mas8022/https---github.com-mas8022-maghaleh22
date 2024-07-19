@@ -2,7 +2,7 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { MoonLoader } from "react-spinners";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Uploader from "../../_components/modules/uploader";
 import Hr from "../../_components/modules/hr";
 import { logoutHandler } from "../../../../utils/authTools";
