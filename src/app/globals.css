@@ -18,6 +18,7 @@
     src: local(yekRegular), url(../../public/fonts/BYekan/BYekan+.ttf);
     font-display: swap;
   }
+  @import 'aos/dist/aos.css';
 
   * {
     padding: 0px;

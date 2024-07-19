@@ -72,7 +72,6 @@ async function GetAuthorId() {
     if (!tokenPayload) {
       return false;
     }
-    console.log("yse");
 
     connectToDb();
     const author = await authorModel.findOne(

@@ -53,7 +53,6 @@ export async function POST(req, { params }) {
       status: 201,
     });
   } catch (error) {
-    console.log("error api =======> ", error);
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

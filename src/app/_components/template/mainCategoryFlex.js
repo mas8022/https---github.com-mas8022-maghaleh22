@@ -1,16 +1,19 @@
+"use client";
 import React from "react";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
+import Aos from "../modules/aos";
 
 export default function MainCategoryFlex() {
   return (
     <div className="flex items-center w-full">
+      <Aos />
       <div className=" grid grid-cols-2 xm:grid-cols-3 lgg:grid-cols-6 gap-8 my-0 mx-auto child:rounded-3xl">
         <Link
+          // className="child:shadow-xl"
           data-aos="fade-left"
-           data-aos-duration="2000"
-          className="child:shadow-xl"
+          data-aos-duration="2000"
           href={"/products/software"}
         >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
@@ -28,9 +31,9 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link
+          // className="child:shadow-xl"
           data-aos="fade-left"
-           data-aos-duration="1500"
-          className="child:shadow-xl"
+          data-aos-duration="1500"
           href={"/products/economics"}
         >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
@@ -47,9 +50,9 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link
+          // className="child:shadow-xl"
           data-aos="fade-left"
-           data-aos-duration="1000"
-          className="child:shadow-xl"
+          data-aos-duration="1000"
           href={"/products/business"}
         >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
@@ -66,9 +69,9 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link
+          // className="child:shadow-xl"
           data-aos="fade-right"
-           data-aos-duration="1000"
-          className="child:shadow-xl"
+          data-aos-duration="1000"
           href={"/products/teenager"}
         >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
@@ -85,9 +88,9 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link
+          // className="child:shadow-xl"
           data-aos="fade-right"
-           data-aos-duration="1500"
-          className="child:shadow-xl"
+          data-aos-duration="1500"
           href={"/products/language"}
         >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">
@@ -104,9 +107,9 @@ export default function MainCategoryFlex() {
           </Button>
         </Link>
         <Link
+          // className="child:shadow-xl"
           data-aos="fade-right"
-           data-aos-duration="2000"
-          className="child:shadow-xl"
+          data-aos-duration="2000"
           href={"/products/art"}
         >
           <Button className="w-60 h-60 p-[4rem] flex flex-col items-center justify-center gap-8 rounded-[30px]">

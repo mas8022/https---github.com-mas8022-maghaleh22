@@ -1,14 +1,12 @@
 import ContextProvider from "../../utils/context";
 import Discount from "./_components/modules/discount";
 import Footer from "./_components/modules/footer";
-import Hr from "./_components/modules/hr";
 import Scroller from "./_components/modules/scroller";
 import Navbar from "./_components/template/navbar";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import ThemeToggle from "./_components/modules/themeToggle";
 import { Toaster } from "react-hot-toast";
-import AosInit from "../../utils/aosInit";
 
 export const metadata = {
   title: "MAGHALEH",
@@ -19,7 +17,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-first dark:bg-[#1e293b]">
-        <AosInit />
         <ThemeToggle />
         <ContextProvider>
           <NextUIProvider>

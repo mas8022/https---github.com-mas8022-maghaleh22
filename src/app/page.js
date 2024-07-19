@@ -10,7 +10,6 @@ import CommentsSlider from "./_components/template/commentsSlider";
 export default function Home() {
   return (
     <>
-      {" "}
       <div className="w-full pt-20">
         <MainSearch />
         <Hr />
