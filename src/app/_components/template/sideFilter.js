@@ -5,8 +5,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import useLocalStorage from "../modules/localStore";
 
-export default function SideFilter() {
-  const [filter, setFilter] = useLocalStorage("sidebarFilterValue", "all");
+export default function SideFilterMobile({ filter, setFilter }) {
   const [sideFlag, setSideFlag] = useLocalStorage("sidebarFilterFlag", false);
 
   useEffect(() => {
@@ -47,7 +46,8 @@ export default function SideFilter() {
           <div
             onClick={() => setFilter("bestSellers")}
             className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-              filter === "bestSellers" && " bg-blue-600/10 rounded-xl cursor-pointer "
+              filter === "bestSellers" &&
+              " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
           >
             پر فروش ترینّ
@@ -55,7 +55,8 @@ export default function SideFilter() {
           <div
             onClick={() => setFilter("cheapest")}
             className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-              filter === "cheapest" && " bg-blue-600/10 rounded-xl cursor-pointer "
+              filter === "cheapest" &&
+              " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
           >
             ارزان ترین
@@ -63,7 +64,8 @@ export default function SideFilter() {
           <div
             onClick={() => setFilter("mostVisited")}
             className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-              filter === "mostVisited" && " bg-blue-600/10 rounded-xl cursor-pointer "
+              filter === "mostVisited" &&
+              " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
           >
             پر بازدید ترین
@@ -71,7 +73,8 @@ export default function SideFilter() {
           <div
             onClick={() => setFilter("expensive")}
             className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-              filter === "expensive" && " bg-blue-600/10 rounded-xl cursor-pointer "
+              filter === "expensive" &&
+              " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
           >
             گران ترین
@@ -79,7 +82,8 @@ export default function SideFilter() {
           <div
             onClick={() => setFilter("favorites")}
             className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-              filter === "favorites" && " bg-blue-600/10 rounded-xl cursor-pointer "
+              filter === "favorites" &&
+              " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
           >
             محبوب ترین

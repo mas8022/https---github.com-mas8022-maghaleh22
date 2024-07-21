@@ -1,4 +1,3 @@
-import ContextProvider from "../../utils/context";
 import Discount from "./_components/modules/discount";
 import Footer from "./_components/modules/footer";
 import Scroller from "./_components/modules/scroller";
@@ -17,16 +16,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-first dark:bg-[#1e293b]">
         <ThemeToggle />
-        <ContextProvider>
-            <Navbar />
-            <Discount />
-            <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] sm:pt-16 md:pt-24 lg:pt-28 lgg:pt-32">
-              {children}
-              <Scroller />
-            </div>
-            <Footer />
-            <Toaster position="bottom-left" reverseOrder={false} />
-        </ContextProvider>
+        <Navbar />
+        <Discount />
+        <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] sm:pt-16 md:pt-24 lg:pt-28 lgg:pt-32">
+          {children}
+          <Scroller />
+        </div>
+        <Footer />
+        <Toaster position="bottom-left" reverseOrder={false} />
       </body>
     </html>
   );

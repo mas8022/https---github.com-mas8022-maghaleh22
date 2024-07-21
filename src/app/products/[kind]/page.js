@@ -1,20 +1,22 @@
 "use client";
 import React from "react";
-import SideFilter from "../../_components/template/sideFilter";
+import SideFilterMobile from "../../_components/template/sideFilter";
 import Cart from "../../_components/modules/cart";
-import SideFilterPc from "../../_components/template/sideFilterPc";
+import SideFilterPC from "../../_components/template/sideFilterPc";
 import Hr from "../../_components/modules/hr";
+import useLocalStorage from "../../_components/modules/localStore";
 
 export default function products({ params }) {
+  const [filter, setFilter] = useLocalStorage("sideFilterValue", "all");
 
   return (
     <>
       <div className="w-full flex">
-        <SideFilterPc />
+        <SideFilterPC setFilter={setFilter} filter={filter} />
 
         <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
           <div className=" w-full flex items-center justify-between md:justify-end gap-8">
-            <SideFilter />
+            <SideFilterMobile setFilter={setFilter} filter={filter} />
 
             <div className="flex h-16 items-center justify-end gap-4 border-1 border-gray-800/20 dark:border-first/50 pl-4 py-1 rounded-md">
               <input
