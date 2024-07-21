@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import useLocalStorage from '../modules/localStore'
+import useLocalStorage from "../modules/localStore";
 
 export default function SideFilter() {
-  const [value, setValue] = useState("all");
-  const [sideFlag, setSideFlag] = useLocalStorage("sidebarFilter", false);
+  const [filter, setFilter] = useLocalStorage("sidebarFilterValue", "all");
+  const [sideFlag, setSideFlag] = useLocalStorage("sidebarFilterFlag", false);
 
   useEffect(() => {
     const closeSideBarHandler = (e) => {
@@ -21,11 +21,6 @@ export default function SideFilter() {
     return () => window.removeEventListener("click", closeSideBarHandler);
   }, []);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-
   return (
     <>
       <div
@@ -36,67 +31,62 @@ export default function SideFilter() {
       </div>
 
       <div
-        className={`w-[21rem] h-screen bg-first dark:bg-[#1e293b] shadow-2xl fixed top-0 transition-all ease-in-out duration-[0.4s] z-[1000] ${
+        className={`w-[21rem] lg:w-96 h-screen bg-first dark:bg-[#1e293b] shadow-2xl text-2xl text-black font-light fixed top-0 transition-all ease-in-out duration-[0.4s] z-[1000] ${
           sideFlag ? "right-0" : "-right-[30rem]"
         }`}
       >
-        <div className="w-[17rem] lg:w-96 gap-12 pl-12 h-screen flex flex-col pt-20 fixed md:relative bg-white dark:bg-[#1e293b]">
-          <RadioGroup
-            aria-labelledby="demo-controlled-radio-buttons-group"
-            name="controlled-radio-buttons-group"
-            value={value}
-            onChange={handleChange}
-            className="flex flex-col gap-3 w-[12rem] md:w-[20rem] !mr-0"
+        <div className="w-full lg:w-96 gap-6 p-12 h-screen flex flex-col pt-20 bg-white dark:bg-[#1e293b]">
+          <div
+            onClick={() => setFilter("all")}
+            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+              filter === "all" && " bg-blue-600/10 rounded-xl cursor-pointer "
+            }`}
           >
-            <FormControlLabel
-              className="mr-0"
-              value="all"
-              control={<Radio />}
-              label={
-                <span className="text-[1.5rem] font-bold">همه محصولات</span>
-              }
-            />
-            <FormControlLabel
-              className="mr-0"
-              value="bestselling"
-              control={<Radio />}
-              label={
-                <span className="text-[1.5rem] font-bold">پر فروش ترین</span>
-              }
-            />
-            <FormControlLabel
-              className="mr-0"
-              value="cheapest"
-              control={<Radio />}
-              label={
-                <span className="text-[1.5rem] font-bold">ارزان ترین</span>
-              }
-            />
-            <FormControlLabel
-              value="mostVisited"
-              className="mr-0"
-              control={<Radio />}
-              label={
-                <span className="text-[1.5rem] font-bold">پر بازدید ترین</span>
-              }
-            />
-            <FormControlLabel
-              className="mr-0"
-              value="expensive"
-              control={<Radio />}
-              label={<span className="text-[1.5rem] font-bold">گران ترین</span>}
-            />
-            <FormControlLabel
-              className="mr-0"
-              value="popular"
-              control={<Radio />}
-              label={
-                <span className="text-[1.5rem] font-bold">محبوب ترین</span>
-              }
-            />
-          </RadioGroup>
+            همه محصولات
+          </div>
+          <div
+            onClick={() => setFilter("bestSellers")}
+            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+              filter === "bestSellers" && " bg-blue-600/10 rounded-xl cursor-pointer "
+            }`}
+          >
+            پر فروش ترینّ
+          </div>
+          <div
+            onClick={() => setFilter("cheapest")}
+            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+              filter === "cheapest" && " bg-blue-600/10 rounded-xl cursor-pointer "
+            }`}
+          >
+            ارزان ترین
+          </div>
+          <div
+            onClick={() => setFilter("mostVisited")}
+            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+              filter === "mostVisited" && " bg-blue-600/10 rounded-xl cursor-pointer "
+            }`}
+          >
+            پر بازدید ترین
+          </div>
+          <div
+            onClick={() => setFilter("expensive")}
+            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+              filter === "expensive" && " bg-blue-600/10 rounded-xl cursor-pointer "
+            }`}
+          >
+            گران ترین
+          </div>
+          <div
+            onClick={() => setFilter("favorites")}
+            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+              filter === "favorites" && " bg-blue-600/10 rounded-xl cursor-pointer "
+            }`}
+          >
+            محبوب ترین
+          </div>
         </div>
       </div>
+
       <div
         className={
           sideFlag

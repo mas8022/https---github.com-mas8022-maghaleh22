@@ -4,7 +4,6 @@ import Footer from "./_components/modules/footer";
 import Scroller from "./_components/modules/scroller";
 import Navbar from "./_components/template/navbar";
 import "./globals.css";
-import { NextUIProvider } from "@nextui-org/react";
 import ThemeToggle from "./_components/modules/themeToggle";
 import { Toaster } from "react-hot-toast";
 
@@ -19,7 +18,6 @@ export default function RootLayout({ children }) {
       <body className="bg-first dark:bg-[#1e293b]">
         <ThemeToggle />
         <ContextProvider>
-          <NextUIProvider>
             <Navbar />
             <Discount />
             <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] sm:pt-16 md:pt-24 lg:pt-28 lgg:pt-32">
@@ -28,7 +26,6 @@ export default function RootLayout({ children }) {
             </div>
             <Footer />
             <Toaster position="bottom-left" reverseOrder={false} />
-          </NextUIProvider>
         </ContextProvider>
       </body>
     </html>
