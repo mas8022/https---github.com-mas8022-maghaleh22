@@ -1,5 +1,4 @@
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 
 const SideFilterPC = ({ filter, setFilter }) => {
   return (

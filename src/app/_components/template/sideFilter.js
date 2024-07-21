@@ -1,8 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import React, { useEffect } from "react";
 import useLocalStorage from "../modules/localStore";
 
 export default function SideFilterMobile({ filter, setFilter }) {
