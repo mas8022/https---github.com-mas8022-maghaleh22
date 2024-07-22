@@ -6,7 +6,7 @@ const CommentsBox = () => {
   return (
     <div className="w-full flex flex-col sm:flex-row items-center sm:items-start gap-10">
       <div className="w-full sm:w-2/3 flex flex-col justify-between gap-8 items-center px-12 py-8 pb-12 rounded-3xl overflow-hidden shadow-lg dark:shadow-2xl">
-        <div className="w-full h-20 flex justify-between gap-8 items-center border-b-1 border-second/50">
+        <div className="w-full h-20 flex justify-between gap-8 items-center border-b-[1px] border-second/50">
           <div className="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"

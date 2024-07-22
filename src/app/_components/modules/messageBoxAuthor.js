@@ -3,7 +3,7 @@ import React from "react";
 const MessageBoxAuthor = () => {
   return (
     <div className="w-full px-12 py-8 flex flex-col gap-4 bg-white dark:bg-[#1e293b] rounded-xl">
-      <p className="w-full pb-2 border-b-1 flex items-center justify-between">
+      <p className="w-full pb-2 border-b-[1px] flex items-center justify-between">
         <span className="text-[1.8rem]">از طرف مدیر</span>
         <div className="flex items-center gap-6">
           <div className="flex gap-2">

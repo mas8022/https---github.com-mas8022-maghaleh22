@@ -5,7 +5,7 @@ import CmsProductCart from "../_components/modules/cmsProductCart";
 const cmsProducts = () => {
   return (
     <div className="w-full">
-      <div className="w-full pb-12 border-b-1 border-b-second/50 flex justify-end">
+      <div className="w-full pb-12 border-b-[1px] border-b-second/50 flex justify-end">
         <div className="navbar flex h-14 items-center justify-end gap-4 border-1 border-gray-800/20 pl-4 py-1 rounded-md">
           <input
             className="pr-4 h-full w-[20rem] sm:w-[30rem] text-[1.3rem] pl-2 focus:outline-none outline-none"

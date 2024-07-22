@@ -8,7 +8,7 @@ import ProfileBtn from "./profileBtn";
 
 export default async function Navbar() {
   return (
-    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md dark:shadow-none dark:border-b-1 dark:border-second/30 dark:shadow-black flex items-center dark:bg-[#1e293b] justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000] gap-4">
+    <div className="fixed top-0 left-0 w-full h-[5rem] md:h-[8rem] shadow-md dark:shadow-none dark:border-b-[1px] dark:border-second/30 dark:shadow-black flex items-center dark:bg-[#1e293b] justify-between px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] bg-first z-[1000] gap-4">
       <ul className="gap-3 sm:gap-6 md:gap-7 text-[1.25rem] md:text-[1.6rem]  hidden ld:flex">
         <Link href={"/"}>خانه</Link>
 

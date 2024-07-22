@@ -52,7 +52,7 @@ const ProfileBtn = () => {
                 alt="عکس پروفایل"
                 className="size-52 object-cover border-1 border-second rounded-full"
               />
-              <div className="w-full flex flex-col gap-6 font-light child:text-[1.4rem] child:font-light child:pb-2 child:text-black/70 dark:child:text-first bg-white/0 child:flex child:items-center child:justify-between child:border-b-1 child:border-b-black/10 dark:child:border-b-[#cbd5e1]/40 child:rounded-b-md child:px-2">
+              <div className="w-full flex flex-col gap-6 font-light child:text-[1.4rem] child:font-light child:pb-2 child:text-black/70 dark:child:text-first bg-white/0 child:flex child:items-center child:justify-between child:border-b-[1px] child:border-b-black/10 dark:child:border-b-[#cbd5e1]/40 child:rounded-b-md child:px-2">
                 <Link href={`/profile/${"cgf5esad"}`}>
                   پروفایل
                   <svg
@@ -153,7 +153,7 @@ const ProfileBtn = () => {
             href={"/login"}
             className={`${
               isPending ? "" : "pointer-events-none"
-            } sm:flex hidden w-32 xxm:w-[10rem] md:w-[12rem] h-[2.5rem] xxm:h-[3rem] md:h-[4rem] text-[1.2rem]  xxm:text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 items-center justify-center cursor-pointer`}
+            } sm:flex hidden w-32 xxm:w-[10rem] md:w-[12rem] h-[2.5rem] xxm:h-[3rem] md:h-[4rem] text-black dark:text-first text-[1.2rem]  xxm:text-[1.3rem] md:text-[1.7rem] rounded-md bg-second/15 active:bg-slate-500/20 items-center justify-center cursor-pointer`}
           >
             ورود/ثبت نام
           </Link>

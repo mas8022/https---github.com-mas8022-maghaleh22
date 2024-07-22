@@ -17,7 +17,7 @@ const CmsNavbar = () => {
       <div className="flex items-center gap-4">
         <Side cls={"sm:hidden"} sideBarName={"cmsSideBar"}>
           <div className="w-full h-full bg-second shadow-md py-16 px-11 flex flex-col gap-16">
-            <p className="sm:text-[2.9rem] text-[2.2rem] sm:pb-6 pb-3 sm:pr-6 pr-3 text-first font-light sm:border-b-2 border-b-1 border-b-first">
+            <p className="sm:text-[2.9rem] text-[2.2rem] sm:pb-6 pb-3 sm:pr-6 pr-3 text-first font-light sm:border-b-2 border-b-[1px] border-b-first">
               داشبورد
             </p>
             <ul className="flex flex-col sm:gap-4 gap-2 sm:child:text-[1.8rem] child:text-[1.4rem] child:text-first sm:child:px-6 child:px-4 sm:child:py-3 child:py-2 child:cursor-pointer child:flex child:rounded-lg child:gap-2 child:items-center">

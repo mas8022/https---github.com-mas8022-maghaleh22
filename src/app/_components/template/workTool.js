@@ -236,7 +236,7 @@ const NewProject = () => {
                   value={tag}
                   onChange={(e) => setTag(e.target.value)}
                   placeholder="برچسب های مورد نظر خود را وارد کنید..."
-                  className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-1 border-gray-600/35 text-[1.3rem] dark:bg-[#0d141f]"
+                  className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-[1px] border-gray-600/35 text-[1.3rem] dark:bg-[#0d141f]"
                 />
                 <div
                   onClick={addTag}

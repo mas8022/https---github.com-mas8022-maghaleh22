@@ -3,7 +3,7 @@ import React from "react";
 
 const Ad = () => {
   return (
-    <div className="w-full py-9 lg:flex sm:grid sm:grid-cols-2 hidden items-center justify-between border-b-1 px-4 border-b-second rounded-3xl">
+    <div className="w-full py-9 lg:flex sm:grid sm:grid-cols-2 hidden items-center justify-between border-b-[1px] px-4 border-b-second rounded-3xl">
       <div className="flex flex-col items-center justify-center gap-6">
         <Image
           src={"/images/ad2.png"}

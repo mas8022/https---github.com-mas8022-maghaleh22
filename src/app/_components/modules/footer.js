@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="w-full lg:w-1/2 h-full flex flex-col justify-between gap-8 lg:gap-16">
           <div className="flex gap-20">
             <ul className="flex flex-col">
-              <p className="text-[1.7rem] lg:text-[2rem] border-b-1 border-black/50 mb-4 dark:text-[#1e293b]">
+              <p className="text-[1.7rem] lg:text-[2rem] border-b-[1px] border-black/50 mb-4 dark:text-[#1e293b]">
                 دسته بندی ها
               </p>
               <Link
@@ -51,7 +51,7 @@ const Footer = () => {
               </Link>
             </ul>
             <ul className="flex flex-col">
-              <p className="text-[1.7rem] lg:text-[2rem] border-b-1 border-black/50 mb-4 dark:text-[#1e293b]">
+              <p className="text-[1.7rem] lg:text-[2rem] border-b-[1px] border-black/50 mb-4 dark:text-[#1e293b]">
                 دسترسی سریع
               </p>
               <Link
