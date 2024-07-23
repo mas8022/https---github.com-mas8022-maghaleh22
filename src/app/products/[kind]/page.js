@@ -18,9 +18,9 @@ export default function products({ params }) {
           <div className=" w-full flex items-center justify-between md:justify-end gap-8">
             <SideFilterMobile setFilter={setFilter} filter={filter} />
 
-            <div className="flex h-16 items-center justify-end gap-4 border-1 border-gray-800/20 dark:border-first/50 pl-4 py-1 rounded-md">
+            <div className="flex h-16 items-center justify-end gap-4 border-[1px] border-gray-800/20 dark:border-first/50 pl-4 py-1 rounded-md">
               <input
-                className="pr-4 h-full w-[20rem] dark:bg-[#1e293b] sm:w-[30rem] text-[1.4rem] pl-2 focus:outline-none outline-none"
+                className="pr-4 h-full w-[20rem] dark:bg-[#1e293b] sm:w-[30rem] text-[1.4rem] text-black dark:text-first pl-2 focus:outline-none outline-none"
                 type="search"
                 placeholder="چه اموزشی مد نظرتان است؟..."
               />
@@ -31,7 +31,7 @@ export default function products({ params }) {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="size-10 active:scale-95 cursor-pointer"
+                className="size-10 active:scale-95 cursor-pointer dark:invert"
               >
                 <path
                   strokeLinecap="round"

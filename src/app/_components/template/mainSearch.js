@@ -8,7 +8,7 @@ const MainSearch = () => {
         <button className="ld:w-1/6 w-2/6 h-full bg-second text-first xxm:text-[1.5rem] text-[1.4rem] font-light active:bg-second/50">
           جستجو
         </button>
-        <input type="search" className="w-full sm:px-8 px-5 text-[1.5rem] font-light focus:outline-none outline-none dark:bg-first/30"/>
+        <input type="search" className="w-full sm:px-8 px-5 text-[1.5rem] text-black dark:text-first font-light focus:outline-none outline-none dark:bg-first/30"/>
       </div>
     </div>
   );

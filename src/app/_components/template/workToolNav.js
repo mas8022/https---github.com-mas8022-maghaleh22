@@ -35,7 +35,7 @@ const WorkToolNav = () => {
         deActiveNav && "hidden"
       }`}
     >
-      <div className="h-full flex items-center gap-8 xm:child:text-[1.4rem] child:text-[1.3rem] child:font-light child:cursor-pointer child:dark:border-b-first/80 child:border-b-black/80">
+      <div className="h-full flex items-center gap-8 xm:child:text-[1.4rem] child:text-[1.3rem] child:text-black child:dark:text-first child:font-light child:cursor-pointer child:dark:border-b-first/80 child:border-b-black/80">
         <Link href={"/coWorker"}>پروژه جدید</Link>
         <Link href={"/coWorker/draftedProject"}>پیش نویس ها</Link>
         <Link href={"/coWorker/myProjects"}>پروژ های من</Link>
@@ -51,7 +51,7 @@ const WorkToolNav = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="sm:size-10 size-8"
+            className="sm:size-10 size-8 dark:invert"
           >
             <path
               strokeLinecap="round"

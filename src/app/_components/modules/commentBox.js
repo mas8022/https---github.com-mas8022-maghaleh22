@@ -29,7 +29,7 @@ const CommentBox = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-7 active:scale-95 cursor-pointer"
+            className="size-7 active:scale-95 cursor-pointer dark:invert"
           >
             <path
               strokeLinecap="round"
@@ -46,7 +46,7 @@ const CommentBox = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-7 active:scale-95 cursor-pointer"
+            className="size-7 active:scale-95 cursor-pointer dark:invert"
           >
             <path
               strokeLinecap="round"

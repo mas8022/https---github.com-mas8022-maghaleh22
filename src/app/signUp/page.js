@@ -118,7 +118,7 @@ const page = () => {
         />
         {signUp.touched.phone && signUp.errors.phone && signUp.errors.phone}
         <div className="w-full h-[2rem] px-[0.5rem] flex items-center gap-4">
-          <p className="text-[1.2rem]">
+          <p className="text-[1.2rem] dark:text-first">
             ایا موافق با{" "}
             <Link
               href={"/regulation"}

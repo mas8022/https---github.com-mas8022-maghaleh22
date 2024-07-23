@@ -12,11 +12,11 @@ const Comment = () => {
           alt="commenter Image"
           className="size-14 sm:size-20 object-cover rounded-full"
         />
-        <p className="w-full text-[1.2rem] sm:text-[1.4rem] text-bold border-b-[1px] border-black/20 dark:border-first/50 font-light sm:font-medium">استاد ممنون بابت تدریستان</p>
+        <p className="w-full text-[1.2rem] sm:text-[1.4rem] dark:text-first text-bold border-b-[1px] border-black/20 dark:border-first/50 font-light sm:font-medium">استاد ممنون بابت تدریستان</p>
       </div>
       <div className="w-full flex items-center justify-between">
       <span className="self-end text-black/50 dark:text-first/50 text-[1rem] sm:text-[1.2rem] font-light sm:font-medium">aliAhmadi22@gmail.com</span>
-      <span className="self-end text-[1rem] sm:text-[1.3rem] font-light sm:font-medium">1403/02/06</span>
+      <span className="self-end text-[1rem] sm:text-[1.3rem] dark:text-first font-light sm:font-medium">1403/02/06</span>
       </div>
     </div>
   );

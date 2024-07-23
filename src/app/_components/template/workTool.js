@@ -39,7 +39,6 @@ const NewProject = () => {
       cover: "",
     },
     validate: (values) => {
-      
       const errors = {};
       if (!values.group) {
         errors.group = "یک دسته برای محتوا خود انتخاب کنید";
@@ -122,9 +121,11 @@ const NewProject = () => {
             <div className="flex flex-wrap gap-10">
               <div className="flex flex-col flex-wrap gap-2">
                 <SelectBox formikInstance={generateProductFormik} />
-                {generateProductFormik.touched.group &&
-                  generateProductFormik.errors.group &&
-                  generateProductFormik.errors.group}
+                <span className="text-[1.2rem] font-light text-red-500">
+                  {generateProductFormik.touched.group &&
+                    generateProductFormik.errors.group &&
+                    generateProductFormik.errors.group}
+                </span>
               </div>
               <div className="flex flex-col flex-wrap gap-2">
                 <input
@@ -132,23 +133,28 @@ const NewProject = () => {
                   name="title"
                   value={generateProductFormik.values.title}
                   onChange={generateProductFormik.handleChange}
-                  className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] rounded-md border-1 outline-none border-gray-600/30 px-6 focus:outline-none"
+                  className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] text-black dark:text-first rounded-md border-[1px] outline-none border-gray-600/30 px-6 focus:outline-none"
                   placeholder="سر تیتر مقاله خود را بنویسید..."
                 />
-                {generateProductFormik.touched.title &&
-                  generateProductFormik.errors.title &&
-                  generateProductFormik.errors.title}
+                <span className="text-[1.2rem] text-red-500">
+                  {generateProductFormik.touched.title &&
+                    generateProductFormik.errors.title &&
+                    generateProductFormik.errors.title}
+                </span>
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="priceProduct" className="text-xl">
+              <label
+                htmlFor="priceProduct"
+                className="text-xl text-black dark:text-first"
+              >
                 قیمت مقاله به تومان:
               </label>
 
               <div className="flex flex-col flex-wrap gap-2">
                 <div
                   id="priceProduct"
-                  className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30"
+                  className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-[1px] border-gray-600/30"
                 >
                   <input
                     type="number"
@@ -156,7 +162,7 @@ const NewProject = () => {
                     value={generateProductFormik.values.price}
                     onChange={generateProductFormik.handleChange}
                     min="0"
-                    className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] ${
+                    className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
                       isReadAblePrice && "text-first/55"
                     }`}
                     placeholder="قیمت مقاله خود را به ریال بنویسید (مانند: 150000)"
@@ -177,20 +183,25 @@ const NewProject = () => {
                     </div>
                   </div>
                 </div>
-                {generateProductFormik.touched.price &&
-                  generateProductFormik.errors.price &&
-                  generateProductFormik.errors.price}
+                <span className="text-[1.2rem] text-red-500">
+                  {generateProductFormik.touched.price &&
+                    generateProductFormik.errors.price &&
+                    generateProductFormik.errors.price}
+                </span>
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="discountProduct" className="text-xl">
+              <label
+                htmlFor="discountProduct"
+                className="text-xl text-black dark:text-first"
+              >
                 تخفیف مقاله به درصد:
               </label>
               <div className="flex flex-col flex-wrap gap-2">
                 <div
                   id="discountProduct"
-                  className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30"
+                  className="xxl:w-[62.5rem] md:w-[56.5rem] px-5 xm:w-[40rem] w-[32rem] h-[4.2rem] flex items-center dark:bg-[#0d141f] rounded-md border-[1px] border-gray-600/30"
                 >
                   <input
                     type="number"
@@ -199,7 +210,7 @@ const NewProject = () => {
                     onChange={generateProductFormik.handleChange}
                     min="0"
                     max="100"
-                    className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] ${
+                    className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
                       isReadAbleDiscount && "text-first/55"
                     }`}
                     placeholder="از 0 تا 100 مقدار تخفیف برای مقاله خود در نظر بگیرید"
@@ -221,14 +232,16 @@ const NewProject = () => {
                     </div>
                   </div>
                 </div>
-                {generateProductFormik.touched.discount &&
-                  generateProductFormik.errors.discount &&
-                  generateProductFormik.errors.discount}
+                <span className="text-[1.2rem] text-red-500">
+                  {generateProductFormik.touched.discount &&
+                    generateProductFormik.errors.discount &&
+                    generateProductFormik.errors.discount}
+                </span>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col flex-wrap gap-2 w-[50rem] dark:bg-[#0d141f] rounded-md border-1 border-gray-600/30 dark:shadow-2xl">
+          <div className="flex flex-col flex-wrap gap-2 w-[50rem] dark:bg-[#0d141f] rounded-md border-[1px] border-gray-600/30 dark:shadow-2xl">
             <div className="flex flex-col">
               <div className="w-full h-[4.2rem] flex">
                 <input
@@ -236,7 +249,7 @@ const NewProject = () => {
                   value={tag}
                   onChange={(e) => setTag(e.target.value)}
                   placeholder="برچسب های مورد نظر خود را وارد کنید..."
-                  className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-[1px] border-gray-600/35 text-[1.3rem] dark:bg-[#0d141f]"
+                  className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-[1px] border-gray-600/35 text-[1.3rem] text-black dark:text-first dark:bg-[#0d141f]"
                 />
                 <div
                   onClick={addTag}
@@ -249,12 +262,18 @@ const NewProject = () => {
 
               <div className="w-full h-auto flex flex-wrap p-6 gap-5 child:text-[1.2rem] font-light bg-black/0">
                 {tags?.length
-                  ? tags.map((item, index) => <span key={index}>{item}</span>)
+                  ? tags.map((item, index) => (
+                      <span key={index} className="text-black dark:text-first">
+                        {item}
+                      </span>
+                    ))
                   : null}
               </div>
             </div>
             {!tags?.length && (
-              <span className="self-center">حداقل یک برچسب بنویسید</span>
+              <span className="self-center text-[1.2rem] text-red-500">
+                حداقل یک برچسب بنویسید
+              </span>
             )}
           </div>
         </div>
@@ -280,9 +299,11 @@ const NewProject = () => {
               name="cover"
               customClass="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/70 text-first cursor-pointer active:bg-second/80"
             />
-            {generateProductFormik.touched.cover &&
-              generateProductFormik.errors.cover &&
-              generateProductFormik.errors.cover}
+            <span className="text-[1.2rem] text-red-500">
+              {generateProductFormik.touched.cover &&
+                generateProductFormik.errors.cover &&
+                generateProductFormik.errors.cover}
+            </span>
           </div>
         </div>
 

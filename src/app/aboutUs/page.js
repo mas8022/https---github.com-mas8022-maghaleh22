@@ -6,7 +6,7 @@ export default function page() {
   return (
     <div className="w-full flex-col pt-24">
       <div className="about-title-aboutUs w-full flex items-start justify-between gap-40">
-        <div className="xl:w-1/2 lg:w-2/3 w-full">
+        <div className="xl:w-1/2 lg:w-2/3 w-full child:text-black child:dark:text-first">
           <p className="lg:text-[3rem] text-[2rem] font-bold">درباره سایت ما</p>
           <p className="text-[1.7rem] font-light mb-16">
             به مقاله خوش آمدید، مقصد نهایی شما برای محتوای آموزشی با کیفیت! هدف
@@ -46,7 +46,7 @@ export default function page() {
           alt="about us title"
           className="w-1/3 object-cover lg:block hidden"
         />
-        <div className="lg:w-2/3 w-full">
+        <div className="lg:w-2/3 w-full child:text-black child:dark:text-first">
           <p className="lg:text-[3rem] text-[2rem] font-bold">محتوای ما</p>
           <p className="text-[1.7rem] font-light mb-16">
             ما بر ایجاد محتوای ویدیویی با کیفیت بالا و جذاب که موضوعات و مباحث

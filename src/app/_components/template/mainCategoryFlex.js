@@ -13,7 +13,7 @@ export default function MainCategoryFlex() {
           data-aos="fade-left"
           data-aos-duration="2000"
           href={"/products/software"}
-          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 bg-gray-700/70 rounded-[30px]"
+          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
             src={"/images/imac-svgrepo-com.svg"}
@@ -31,7 +31,7 @@ export default function MainCategoryFlex() {
           data-aos="fade-left"
           data-aos-duration="2000"
           href={"/products/economics"}
-          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 bg-gray-700/70 rounded-[30px]"
+          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
             src={"/images/envelope-stats-svgrepo-com.svg"}
@@ -49,7 +49,7 @@ export default function MainCategoryFlex() {
           data-aos="fade-left"
           data-aos-duration="1000"
           href={"/products/business"}
-          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 bg-gray-700/70 rounded-[30px]"
+          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
             src={"/images/job-desktop-svgrepo-com.svg"}
@@ -67,7 +67,7 @@ export default function MainCategoryFlex() {
           data-aos="fade-right"
           data-aos-duration="1000"
           href={"/products/teenager"}
-          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 bg-gray-700/70 rounded-[30px]"
+          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
             src={"/images/birdhouse-svgrepo-com.svg"}
@@ -85,7 +85,7 @@ export default function MainCategoryFlex() {
           data-aos="fade-right"
           data-aos-duration="1500"
           href={"/products/language"}
-          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 bg-gray-700/70 rounded-[30px]"
+          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
             src={"/images/book-write-svgrepo-com.svg"}
@@ -103,7 +103,7 @@ export default function MainCategoryFlex() {
           data-aos="fade-right"
           data-aos-duration="2000"
           href={"/products/art"}
-          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 bg-gray-700/70 rounded-[30px]"
+          className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
             src={"/images/art-tools-svgrepo-com.svg"}

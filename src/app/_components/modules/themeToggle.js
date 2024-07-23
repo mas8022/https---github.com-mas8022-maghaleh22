@@ -45,7 +45,7 @@ const ThemeToggle = () => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="sm:size-10 size-7 active:scale-95"
+          className="sm:size-10 size-7 active:scale-95 dark:invert"
         >
           <path
             strokeLinecap="round"

@@ -11,7 +11,7 @@ const Input = ({ id = "", label = "", formHandler, value, name }) => {
         name={name}
         value={value}
         onChange={formHandler.handleChange}
-        className={`w-[27rem] sm:w-[24rem] xxl:w-[30rem] h-16 peer p-3 text-[1.4rem] text-gray-700 dark:text-first/70 outline-none border border-gray-200 dark:border-none dark:bg-[#0d141f] rounded-lg hover:border-gray-300 focus:border-second`}
+        className={`w-[27rem] sm:w-[24rem] xxl:w-[30rem] h-16 peer p-3 text-[1.4rem] text-gray-700 dark:text-first/70 outline-none border-[2px] border-gray-200 dark:border-none dark:bg-[#0d141f] rounded-lg hover:border-gray-300 focus:border-second`}
       />
       <label
         htmlFor={id}

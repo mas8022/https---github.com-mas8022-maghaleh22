@@ -129,11 +129,12 @@ const ContactUsBoxForm = () => {
         </div>
 
         <div className="lgg:w-full flex items-center gap-6">
+          {" "}
           <Image
-            src={"/images/telegram-svgrepo-com.svg"}
+            src={"/images/instagram-svgrepo-com.svg"}
             width={100}
             height={100}
-            alt="telegram"
+            alt="instagram"
             className="size-10 xm:size-14"
           />
           <Image
@@ -144,10 +145,10 @@ const ContactUsBoxForm = () => {
             className="size-9 xm:size-12"
           />
           <Image
-            src={"/images/instagram-svgrepo-com.svg"}
+            src={"/images/telegram-svgrepo-com.svg"}
             width={100}
             height={100}
-            alt="instagram"
+            alt="telegram"
             className="size-10 xm:size-14"
           />
         </div>
@@ -207,7 +208,7 @@ const ContactUsBoxForm = () => {
             value={contactForm.values.message}
             onChange={contactForm.handleChange}
             placeholder="سوال مورد نظر خود را بنویسید..."
-            className="sm:w-full w-[95%] ld:h-[30rem] h-[15rem] rounded-3xl p-9 text-[1.5rem] font-light bg-black/5 dark:bg-black/30 focus:outline-1 focus:outline-second/50 transition-all duration-1000 self-center"
+            className="sm:w-full w-[95%] ld:h-[30rem] h-[15rem] rounded-3xl p-9 text-[1.5rem] text-black dark:text-first font-light bg-black/5 dark:bg-black/30 focus:outline-1 focus:outline-second/50 transition-all duration-1000 self-center"
           ></textarea>
           {contactForm.touched.message &&
             contactForm.errors.message &&

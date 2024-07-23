@@ -2,7 +2,7 @@ import React from "react";
 
 const SideFilterPC = ({ filter, setFilter }) => {
   return (
-    <div className="md:flex hidden w-full h-screen lg:w-96 gap-6 flex-col pt-20 bg-white dark:bg-[#1e293b]">
+    <div className="md:flex hidden w-full h-screen lg:w-96 gap-3 flex-col pt-20 bg-white dark:bg-[#1e293b]">
       <div
         onClick={() => setFilter("all")}
         className={`w-full h-14 border-b-[1px] border-b-first text-2xl dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${

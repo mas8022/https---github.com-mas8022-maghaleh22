@@ -92,7 +92,7 @@ export default function page() {
           {loading ? (
             <MoonLoader size={20} color="#fff" />
           ) : (
-            <span> ثبت نام</span>
+            <span>ورود</span>
           )}
         </button>
         <p className="text-[1.4rem] dark:text-first">

@@ -4,10 +4,9 @@ const MessageBoxAuthor = () => {
   return (
     <div className="w-full px-12 py-8 flex flex-col gap-4 bg-white dark:bg-[#1e293b] rounded-xl">
       <p className="w-full pb-2 border-b-[1px] flex items-center justify-between">
-        <span className="text-[1.8rem]">از طرف مدیر</span>
+        <span className="text-[2rem] text-black dark:text-first">از طرف مدیر</span>
         <div className="flex items-center gap-6">
           <div className="flex gap-2">
-            {" "}
             <div className="p-3 bg-second/5 dark:bg-[#0f172a] rounded-full cursor-pointer active:scale-95 transition-all duration-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +14,7 @@ const MessageBoxAuthor = () => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                class="size-8"
+                className="size-8 dark:invert"
               >
                 <path
                   strokeLinecap="round"
@@ -31,7 +30,7 @@ const MessageBoxAuthor = () => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                class="size-8"
+                className="size-8 dark:invert"
               >
                 <path
                   strokeLinecap="round"
@@ -41,10 +40,10 @@ const MessageBoxAuthor = () => {
               </svg>
             </div>
           </div>
-          <span className="text-[1.5rem] font-light">1403/04/01</span>
+          <span className="text-[1.5rem] font-light text-black dark:text-first">1403/04/01</span>
         </div>
       </p>
-      <p className="text-[1.5rem]">
+      <p className="text-[1.5rem] text-black dark:text-first">
         با سلام، لطفاً تا پایان امروز گزارش عملکرد هفتگی را ارسال فرمایید. با
         تشکر، مدیر سایت
       </p>

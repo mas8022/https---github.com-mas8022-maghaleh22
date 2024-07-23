@@ -31,10 +31,10 @@ export default function SideFilterMobile({ filter, setFilter }) {
           sideFlag ? "right-0" : "-right-[30rem]"
         }`}
       >
-        <div className="w-full lg:w-96 gap-6 p-12 h-screen flex flex-col pt-20 bg-white dark:bg-[#1e293b]">
+        <div className="w-full lg:w-96 gap-2 p-12 h-screen flex flex-col pt-20 bg-white dark:bg-[#1e293b]">
           <div
             onClick={() => setFilter("all")}
-            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
               filter === "all" && " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
           >
@@ -42,7 +42,7 @@ export default function SideFilterMobile({ filter, setFilter }) {
           </div>
           <div
             onClick={() => setFilter("bestSellers")}
-            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
               filter === "bestSellers" &&
               " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
@@ -51,7 +51,7 @@ export default function SideFilterMobile({ filter, setFilter }) {
           </div>
           <div
             onClick={() => setFilter("cheapest")}
-            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
               filter === "cheapest" &&
               " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
@@ -60,7 +60,7 @@ export default function SideFilterMobile({ filter, setFilter }) {
           </div>
           <div
             onClick={() => setFilter("mostVisited")}
-            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
               filter === "mostVisited" &&
               " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
@@ -69,7 +69,7 @@ export default function SideFilterMobile({ filter, setFilter }) {
           </div>
           <div
             onClick={() => setFilter("expensive")}
-            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
               filter === "expensive" &&
               " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
@@ -78,7 +78,7 @@ export default function SideFilterMobile({ filter, setFilter }) {
           </div>
           <div
             onClick={() => setFilter("favorites")}
-            className={`w-full h-14 border-b-[1px] border-b-first dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
               filter === "favorites" &&
               " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}

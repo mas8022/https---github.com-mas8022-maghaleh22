@@ -29,20 +29,20 @@ export default function page({ params }) {
     onSubmit: (values, { setSubmitting }) => {
       setLoading(true);
       setTimeout(async () => {
-        // await fetch(`/api/editProfile/${params.id}`, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(values),
-        // }).then((res) => {
-        //   if (res.ok) {
-        //     location.pathname = "/";
-        //   } else {
-        //     toast.error("اینترنت خود را چک کنید");
-        //   }
-        //   setLoading(false);
-        // });
+        await fetch(`/api/editProfile/${params.id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }).then((res) => {
+          if (res.ok) {
+            location.pathname = "/";
+          } else {
+            toast.error("اینترنت خود را چک کنید");
+          }
+          setLoading(false);
+        });
         values.fullName = "";
         values.email = "";
         values.phone = "";
@@ -51,16 +51,13 @@ export default function page({ params }) {
     },
   });
 
-
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-[20rem] h-[20rem] rounded-full !z-10 overflow-hidden">
         <Uploader
-          className="z-10 overflow-hidden"
+          customClass="size-[20rem] rounded-full !z-10 overflow-hidden bg-[url('/images/profile.jpg')] bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer"
           label={"ویرایش"}
           setFileData={setFileData}
         />
-      </div>
       <div className="mt-[6rem] bg-second/30 dark:bg-black/30 rounded-2xl w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] flex flex-col gap-8 items-center">
         <form
           onSubmit={editProfile.handleSubmit}
@@ -122,7 +119,6 @@ export default function page({ params }) {
           خروج از حساب
         </button>
       </div>
-
     </div>
   );
 }

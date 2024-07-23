@@ -26,7 +26,7 @@ export default function Side({ children, sideBarName, cls }) {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className={`w-12 h-12 ${cls}`}
+        className={`w-12 h-12 dark:invert ${cls}`}
       >
         <path
           strokeLinecap="round"

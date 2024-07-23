@@ -54,15 +54,16 @@ export default function page({ params }) {
   });
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-[20rem] h-[20rem] rounded-full !z-10 overflow-hidden">
         <Uploader
-          className="z-10 overflow-hidden"
+          customClass="size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-[url('/images/profile.jpg')] bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer"
           label={"ویرایش"}
           setFileData={setFileData}
         />
-      </div>
       <div className="mt-[6rem] bg-second/30 dark:bg-black/30 rounded-2xl w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] flex flex-col gap-8 items-center">
-        <form onSubmit={editProfile.handleSubmit} className="w-full flex flex-col items-center gap-7 bg-black/0 child:text-[1.4rem] child:text-black/60 dark:child:text-first/80 child:outline-none child:focus:outline-none">
+        <form
+          onSubmit={editProfile.handleSubmit}
+          className="w-full flex flex-col items-center gap-7 bg-black/0 child:text-[1.4rem] child:text-black/60 dark:child:text-first/80 child:outline-none child:focus:outline-none"
+        >
           <input
             className="w-full rounded-lg bg-white dark:bg-[#1e293b] border-0 h-16 px-[1.5rem] text-[1.3rem] text-black/70"
             id="fullName"

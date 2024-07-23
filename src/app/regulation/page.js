@@ -5,16 +5,16 @@ import Hr from "../_components/modules/hr";
 
 const page = () => {
   return (
-    <div className="w-full flex flex-col gap-20 pt-24">
+    <div className="w-full flex flex-col gap-20 pt-24 child:dark:text-first">
       <Title title={"قوانین و مقررات"} />
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">هدف سایت</p>
         <p className="text-[1.6rem] font-light">
           این سایت با هدف ارائه مقالات و ویدیوهای آموزشی در زمینه‌های مختلف برای
           یادگیری و ارتقاء دانش کاربران ایجاد شده است.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">تألیف و نشر محتوا</p>
         <p className="text-[1.6rem] font-light">
           تمامی مقالات و ویدیوهای آموزشی باید توسط نویسندگان و تولیدکنندگان
@@ -24,7 +24,7 @@ const page = () => {
           غیرقانونی خودداری شود.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">اعتبار منابع</p>
         <p className="text-[1.6rem] font-light">
           نویسندگان موظفند منابع معتبر و موثق را در تهیه مقالات و ویدیوهای خود
@@ -32,7 +32,7 @@ const page = () => {
           ارجاع دهند.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">حقوق مالکیت فکری</p>
         <p className="text-[1.6rem] font-light">
           کلیه حقوق مالکیت فکری مطالب منتشر شده در سایت، متعلق به نویسندگان و
@@ -40,7 +40,7 @@ const page = () => {
           کتبی نویسنده ممنوع است.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">مسئولیت استفاده از محتوا</p>
         <p className="text-[1.6rem] font-light">
           استفاده از مطالب سایت برای مقاصد آموزشی و شخصی آزاد است، اما کاربران
@@ -49,7 +49,7 @@ const page = () => {
           است.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">پیشنهادات و انتقادات</p>
         <p className="text-[1.6rem] font-light">
           کاربران می‌توانند پیشنهادات و انتقادات خود را از طریق بخش تماس با ما
@@ -63,7 +63,7 @@ const page = () => {
       </p>
       <Hr />
       <Title title={"سلب مسئولیت و مقررات سایت"} />
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">مسئولیت محتوا</p>
         <p className="text-[1.6rem] font-light">
           مقالات و ویدیوهای آموزشی منتشر شده در این سایت توسط نویسندگان و
@@ -72,7 +72,7 @@ const page = () => {
           این سایت یا مالکان آن نیستند.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">عدم ارائه مشاوره حرفه‌ای</p>
         <p className="text-[1.6rem] font-light">
           محتوای ارائه شده در این سایت صرفاً برای اهداف اطلاعاتی است. این محتوا
@@ -81,7 +81,7 @@ const page = () => {
           دهد.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">دقت اطلاعات</p>
         <p className="text-[1.6rem] font-light">
           ما تلاش می‌کنیم تا اطلاعات ارائه شده در این سایت دقیق و به‌روز باشند،
@@ -90,7 +90,7 @@ const page = () => {
           اتکایی که به این اطلاعات می‌کنید، صرفاً به عهده خودتان است.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">لینک‌های خارجی</p>
         <p className="text-[1.6rem] font-light">
           این سایت ممکن است حاوی لینک‌هایی به سایت‌های خارجی باشد که توسط ما
@@ -98,7 +98,7 @@ const page = () => {
           وجود لینک‌ها به معنای تایید یا توصیه نظرات بیان شده در آن‌ها نیست.
         </p>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 child:dark:text-first">
         <p className="text-[2rem] font-bold">محدودیت مسئولیت</p>
         <p className="text-[1.6rem] font-light">
           تا حداکثر حد مجاز توسط قانون، ما هرگونه مسئولیت برای هرگونه از دست
