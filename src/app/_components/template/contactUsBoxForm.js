@@ -35,6 +35,7 @@ const ContactUsBoxForm = () => {
     onSubmit: async (values, { setSubmitting }) => {
       setLoading(true);
 
+      console.log(values);
       const formData = new FormData();
 
       formData.append("fullName", values.fullName);
@@ -56,7 +57,7 @@ const ContactUsBoxForm = () => {
             if (result.status === 201) {
               swal({
                 icon: "success",
-                title: "با موفقیت ازسال شد",
+                title: "با موفقیت ارسال شد",
                 text: result.message,
               });
             } else {
