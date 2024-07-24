@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="root">
       <body className="bg-first dark:bg-[#1e293b]">
         <ThemeToggle />
         <Navbar />

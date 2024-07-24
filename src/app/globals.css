@@ -18,13 +18,11 @@
     src: local(yekRegular), url(../../public/fonts/BYekan/BYekan+.ttf);
     font-display: swap;
   }
-  /* @import 'aos/dist/aos.css'; */
 
   * {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    transition: all linear 0.15s;
   }
   html {
     direction: rtl;
@@ -48,27 +46,117 @@
     font-size: 1.3rem;
     @apply !font-light;
   }
-  option{
+  option {
     @apply font-light;
   }
 
+  /* ck editor css */
 
-  .ck.ck-content {
-    min-height: 40rem !important;
+  /* Custom styles for CKEditor 5 */
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+    @apply text-black p-10;
   }
-  .dark .ck.ck-toolbar.ck-toolbar_grouping{
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    h2 {
+    @apply text-[3rem] text-blue-600;
+  }
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    h3 {
+    @apply text-[2.6rem] text-blue-500;
+  }
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    h4 {
+    @apply text-[2rem] text-blue-500;
+  }
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    p {
+    @apply text-[1.7rem] font-light;
+  }
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    a {
+    @apply text-blue-600 cursor-pointer;
+  }
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    ol
+    li {
+    @apply mr-6;
+  }
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    ol
+    li::marker {
+    @apply text-[1.4rem] font-light text-black/60 mr-8;
+  }
+  .root
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    ol
+    li
+    span {
+    @apply text-[1.4rem] font-light text-black/60;
+  }
+  /* //////////////////// */
+
+  .dark .ck.ck-toolbar.ck-toolbar_grouping {
     background: #f97316;
   }
-  .dark .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
-    background: #000;
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+    @apply text-first bg-black p-10;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    h2 {
+    @apply text-[3rem] text-blue-600;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    h3 {
+    @apply text-[2.6rem] text-blue-500;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    h4 {
+    @apply text-[2rem] text-blue-500;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    p {
+    @apply text-[1.7rem] font-light;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    a {
+    @apply text-blue-600 cursor-pointer;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    ol
+    li {
+    @apply mr-6;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    ol
+    li::marker {
+    @apply text-[1.4rem] font-light text-first/70 mr-8;
+  }
+  .dark
+    .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
+    ol
+    li
+    span {
+    @apply text-[1.4rem] font-light text-first/70;
   }
 
+  /* ck editor css */
 
-
-
-
-
-  
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -78,7 +166,7 @@
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: inset 0 0 20px 20px #fff;
   }
-  
+
   .dark input:-webkit-autofill,
   .dark input:-webkit-autofill:hover,
   .dark input:-webkit-autofill:focus,
@@ -95,7 +183,6 @@
     -o-appearance: none;
     appearance: none;
   }
-
 
   @media only screen and (max-width: 500px) {
     * {

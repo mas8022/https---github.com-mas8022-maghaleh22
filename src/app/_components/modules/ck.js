@@ -21,27 +21,20 @@ export default function Editor({ articleText, setArticleText }) {
       {editorLoaded ? (
         <CKEditor
           type=""
+          id="editor"
           name={name}
           editor={ClassicEditor}
-          configs={{
+          config={{
+            language: { ui: "en", content: "fa" },
             toolbar: [
-              "ckbox",
-              "imageUpload",
-              "|",
               "heading",
-              "|",
               "undo",
               "redo",
-              "|",
-              "bold",
               "italic",
-              "|",
               "blockQuote",
-              "indent",
               "link",
-              "|",
-              "bulletedList",
               "numberedList",
+              "imageUpload",
             ],
           }}
           data={articleText}
