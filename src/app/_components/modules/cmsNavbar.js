@@ -4,21 +4,22 @@ import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import React from "react";
 import Side from "./side";
+import ThemeToggle from "./themeToggle";
 
 const CmsNavbar = () => {
   const segment = useSelectedLayoutSegment();
 
   const isActive = (path = null) => {
-    return segment === path ? "bg-black/10" : "";
+    return segment === path ? "bg-black/10 dark:bg-first/5" : "";
   };
 
   return (
-    <div className="nav w-full h-28 bg-first shadow-xl flex items-center justify-between py-4 sm:px-12 px-6">
+    <div className="nav w-full h-28 bg-first dark:bg-[#0d141f] shadow-xl flex items-center justify-between py-4 sm:px-12 px-6">
       <div className="flex items-center gap-4">
         <Side cls={"sm:hidden"} sideBarName={"cmsSideBar"}>
-          <div className="w-full h-full bg-second shadow-md py-16 px-11 flex flex-col gap-16">
+          <div className="w-full h-full bg-second dark:bg-[#0d141f] shadow-2xl py-16 px-11 flex flex-col gap-16">
             <p className="sm:text-[2.9rem] text-[2.2rem] sm:pb-6 pb-3 sm:pr-6 pr-3 text-first font-light sm:border-b-2 border-b-[1px] border-b-first">
-              داشبورد
+              پیشخوان
             </p>
             <ul className="flex flex-col sm:gap-4 gap-2 sm:child:text-[1.8rem] child:text-[1.4rem] child:text-first sm:child:px-6 child:px-4 sm:child:py-3 child:py-2 child:cursor-pointer child:flex child:rounded-lg child:gap-2 child:items-center">
               <Link
@@ -91,14 +92,14 @@ const CmsNavbar = () => {
           </div>
         </Side>
 
-        <button className="sm:size-20 size-14 bg-black/10 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first transition-all duration-200">
+        <button className="sm:size-20 size-14 bg-black/10 dark:bg-first/5 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first transition-all duration-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="sm:size-10 size-8"
+            className="sm:size-10 size-8 dark:invert"
           >
             <path
               strokeLinecap="round"
@@ -107,14 +108,15 @@ const CmsNavbar = () => {
             />
           </svg>
         </button>
+        <ThemeToggle />
       </div>
 
       <div className="flex items-center gap-6">
         <div className="flex flex-col items-end gap-1">
-          <p className="sm:text-[1.5rem] text-[1.37rem] text-black/80">
+          <p className="sm:text-[1.5rem] text-[1.37rem] text-black/80 dark:text-first">
             علی قاسمی
           </p>
-          <p className="sm:text-[1.3rem] text-[1.1rem] font-light text-black/60">
+          <p className="sm:text-[1.3rem] text-[1.1rem] font-light text-black/60 dark:text-first/50">
             aliGhasemi@gmail.com
           </p>
         </div>
@@ -123,7 +125,7 @@ const CmsNavbar = () => {
           width={100}
           height={100}
           alt="عکس ادمین"
-          className="sm:size-24 size-20 rounded-full"
+          className="sm:size-20 size-16 rounded-full"
         />
       </div>
     </div>

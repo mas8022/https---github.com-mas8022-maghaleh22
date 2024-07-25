@@ -1,14 +1,14 @@
 import React from "react";
-import Cart from "../../_components/modules/cart";
+
 import AuthorCart from "../../_components/modules/authorCart";
 
 const page = () => {
   return (
     <div>
       <div className="w-full pb-12 border-b-[1px] border-b-second/50 flex justify-end">
-        <div className="navbar flex h-14 items-center justify-end gap-4 border-1 border-gray-800/20 pl-4 py-1 rounded-md">
+        <div className="navbar flex h-14 items-center justify-end gap-4 border-[2px] border-gray-800/20 dark:border-first/60 dark:border-[1px] pl-4 py-1 rounded-md">
           <input
-            className="pr-4 h-full w-[20rem] sm:w-[30rem] text-[1.3rem] pl-2 focus:outline-none outline-none"
+            className="pr-4 h-full w-[20rem] sm:w-[30rem] bg-black/0 text-[1.3rem] pl-2 focus:outline-none outline-none dark:text-first font-light"
             type="search"
             placeholder="دنبال کدام نویسنده ای هستین؟..."
           />
@@ -19,7 +19,7 @@ const page = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-10 active:scale-95 cursor-pointer"
+            className="size-10 active:scale-95 cursor-pointer dark:invert"
           >
             <path
               strokeLinecap="round"

@@ -4,20 +4,20 @@ import React from "react";
 
 const AuthorCart = () => {
   return (
-    <div className="w-[32rem] h-[32.5rem] bg-first flex flex-col items-center shadow-md">
+    <div className="w-[32rem] h-[32.5rem] pt-14 bg-first dark:bg-[#0d141f]/50 flex flex-col items-center shadow-md rounded-xl overflow-hidden">
       <Image
         src={"/images/profile.jpg"}
         alt="product Image"
         width={320}
         height={230}
-        className="size-60 rounded-full shadow-md object-cover mb-2 border-1 border-second/50"
+        className="size-52 rounded-full shadow-md object-cover mb-2 border-1 border-second/50"
       />
-      <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1">
+      <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1 dark:text-first">
         استاد حسین احمدی
       </h2>
 
       <div className="w-full flex flex-col items-end gap-12 px-8">
-        <p className="text-[1.3rem] font-light text-black/60 line-clamp-1 self-center">مدرس علوم پایه و نرم افزار</p>
+        <p className="text-[1.3rem] font-light text-black/60 line-clamp-1 self-center dark:text-first/80">مدرس علوم پایه و نرم افزار</p>
         <div className="w-full flex items-center justify-between gap-2 child:shadow-sm">
           <Link
             href={"/products/software/sfdsadfdfds"}

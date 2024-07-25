@@ -8,13 +8,13 @@ const CmsSideBar = () => {
   const segment = useSelectedLayoutSegment();
 
   const isActive = (path = null) => {
-    return segment === path ? "bg-black/10" : "";
+    return segment === path ? "bg-black/10 dark:bg-first/5" : "";
   };
 
   return (
-    <div className="sm:flex hidden sidebar w-[27rem] h-screen bg-second shadow-md py-16 px-11 flex-col gap-16">
+    <div className="sm:flex hidden sidebar w-[27rem] h-screen bg-second dark:bg-[#0d141f] shadow-md py-16 px-11 flex-col gap-16">
       <p className="text-[2.9rem] pb-8 pr-8 text-first font-light border-b-2 border-b-first">
-        داشبورد
+        پیشخوان
       </p>
       <ul className="flex flex-col gap-4 child:text-[1.8rem] child:text-first child:px-6 child:py-3 child:cursor-pointer child:flex child:rounded-xl child:gap-2 child:items-center">
         <Link href="/cms/" className={`active:bg-black/10 ${isActive(null)}`}>

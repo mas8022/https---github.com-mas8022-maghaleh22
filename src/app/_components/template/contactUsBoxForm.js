@@ -130,7 +130,6 @@ const ContactUsBoxForm = () => {
         </div>
 
         <div className="lgg:w-full flex items-center gap-6">
-          {" "}
           <Image
             src={"/images/instagram-svgrepo-com.svg"}
             width={100}
