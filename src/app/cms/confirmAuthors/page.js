@@ -1,15 +1,15 @@
 import React from "react";
-import CmsAwaitingConfirmationProductCart from "../../_components/modules/cmsAwaitingConfirmationProductCart";
+import AuthorNotVerified from "../../_components/modules/authorCart";
 
-const cmsProducts = () => {
+const page = () => {
   return (
-    <div className="w-full">
+    <div>
       <div className="w-full pb-12 border-b-[1px] border-b-second/50 flex justify-end">
         <div className="navbar flex h-14 items-center justify-end gap-4 border-[2px] border-gray-800/20 dark:border-first/60 dark:border-[1px] pl-4 py-1 rounded-md">
           <input
             className="pr-4 h-full w-[20rem] sm:w-[30rem] bg-black/0 text-[1.3rem] pl-2 focus:outline-none outline-none dark:text-first font-light"
             type="search"
-            placeholder="دنبال چه دوره ای هستین؟..."
+            placeholder="دنبال چه کاربر ای هستین؟..."
           />
 
           <svg
@@ -31,10 +31,9 @@ const cmsProducts = () => {
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
         <div className="w-full flex justify-center">
           <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-            <CmsAwaitingConfirmationProductCart />
-            <CmsAwaitingConfirmationProductCart />
-            <CmsAwaitingConfirmationProductCart />
-            <CmsAwaitingConfirmationProductCart />
+           <AuthorNotVerified/>
+           <AuthorNotVerified/>
+           <AuthorNotVerified/>
           </div>
         </div>
       </div>
@@ -42,4 +41,4 @@ const cmsProducts = () => {
   );
 };
 
-export default cmsProducts;
+export default page;

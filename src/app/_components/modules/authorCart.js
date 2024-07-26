@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const AuthorCart = () => {
+const AuthorNotVerified = () => {
   return (
     <div className="w-[32rem] h-[32.5rem] pt-14 bg-first dark:bg-[#0d141f]/50 flex flex-col items-center shadow-md rounded-xl overflow-hidden">
       <Image
@@ -43,4 +43,4 @@ const AuthorCart = () => {
   );
 };
 
-export default AuthorCart;
+export default AuthorNotVerified;
