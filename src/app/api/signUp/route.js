@@ -47,6 +47,8 @@ export async function POST(req) {
       process.env.refreshPrivateKey
     );
 
+    const users = await userModel.find({}, "_id");
+
     await userModel.create({
       fullName,
       email,
@@ -54,6 +56,7 @@ export async function POST(req) {
       phone,
       check,
       refreshToken,
+      roll: users?.length ? "USER" : "ADMIN",
     });
 
     cookies().set("token", token, {
@@ -66,9 +69,11 @@ export async function POST(req) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
-    return Response.json({ message: "ثبت نام شما با موفقیت انجام شد", status: 201 });
+    return Response.json({
+      message: "ثبت نام شما با موفقیت انجام شد",
+      status: 201,
+    });
   } catch (error) {
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
-    
   }
 }

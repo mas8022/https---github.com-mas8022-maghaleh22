@@ -35,7 +35,6 @@ const ContactUsBoxForm = () => {
     onSubmit: async (values, { setSubmitting }) => {
       setLoading(true);
 
-      console.log(values);
       const formData = new FormData();
 
       formData.append("fullName", values.fullName);

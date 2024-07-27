@@ -1,10 +1,14 @@
 import { cookies } from "next/headers";
-import { verifyRefreshToken, generateToken, verifyToken } from "./authTools";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import userModel from "../models/user";
+import {
+  generateToken,
+  verifyRefreshToken,
+  verifyToken,
+} from "@/utils/authTools";
 import connectToDb from "@/configs/db";
 
-async function ResetToken() {
+async function VerifyManager() {
   const refreshToken = cookies().get("refresh-token")?.value;
   if (!refreshToken) {
     return redirect("/login");
@@ -21,6 +25,9 @@ async function ResetToken() {
   await connectToDb();
   const user = await userModel.findOne({ refreshToken }, "email, roll");
   const userRoll = user?.roll;
+  if (userRoll !== "ADMIN") {
+    return notFound();
+  }
 
   const token = cookies().get("token")?.value;
   if (token) {
@@ -36,11 +43,11 @@ async function ResetToken() {
   }
 
   const newToken = generateToken({ userEmail }, process.env.privateKey);
-  await cookies().delete("token");
+  cookies().delete("token");
   cookies().set("token", newToken, {
     httpOnly: true,
     path: "/",
   });
 }
 
-export default ResetToken;
+export default VerifyManager;

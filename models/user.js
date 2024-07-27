@@ -26,6 +26,10 @@ const schema = {
     type: String,
     required: true,
   },
+  roll: {
+    type: String,
+    required: true,
+  },
 };
 
 const model = mongoose.models?.User || mongoose.model("User", schema);
