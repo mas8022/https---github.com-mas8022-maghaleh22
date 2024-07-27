@@ -57,7 +57,7 @@ const ProfileBtn = () => {
               />
               <div className="w-full flex flex-col gap-6 font-light child:text-[1.4rem] child:font-light child:pb-2 child:text-black/70 dark:child:text-first bg-white/0 child:flex child:items-center child:justify-between child:border-b-[1px] child:border-b-black/10 dark:child:border-b-[#cbd5e1]/40 child:rounded-b-md child:px-2">
                 {roll === "ADMIN" ? (
-                  <Link href="/cms">
+                  <Link href="/cms" onClick={() => setSlideProfile(false)}>
                     پیشخوان مدیریت
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
