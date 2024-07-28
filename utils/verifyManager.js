@@ -23,7 +23,7 @@ async function VerifyManager() {
   }
 
   await connectToDb();
-  const user = await userModel.findOne({ refreshToken }, "email, roll");
+  const user = await userModel.findOne({ refreshToken }, "email roll");
   const userRoll = user?.roll;
   if (userRoll !== "ADMIN") {
     return notFound();

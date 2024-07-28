@@ -5,11 +5,12 @@ import userModel from "../models/user";
 import connectToDb from "@/configs/db";
 
 async function ResetToken() {
+
   const refreshToken = cookies().get("refresh-token")?.value;
   if (!refreshToken) {
     return redirect("/login");
   }
-
+  
   const refreshTokenPayLoad = verifyRefreshToken(
     refreshToken,
     process.env.refreshPrivateKey
@@ -17,11 +18,16 @@ async function ResetToken() {
   if (!refreshTokenPayLoad) {
     return redirect("/login");
   }
-
-  await connectToDb();
-  const user = await userModel.findOne({ refreshToken }, "email, roll");
+  
+  connectToDb();
+  const user = await userModel.findOne({ refreshToken }, "email roll");
+  
+  const userEmail = user?.email;
+  if (!userEmail) {
+    return redirect("/login");
+  }
+  
   const userRoll = user?.roll;
-
   const token = cookies().get("token")?.value;
   if (token) {
     const validationToken = verifyToken(token, process.env.privateKey);
@@ -30,17 +36,14 @@ async function ResetToken() {
     }
   }
 
-  const userEmail = user?.email;
-  if (!userEmail) {
-    return redirect("/login");
-  }
-
   const newToken = generateToken({ userEmail }, process.env.privateKey);
-  await cookies().delete("token");
+  cookies().delete("token");
   cookies().set("token", newToken, {
     httpOnly: true,
     path: "/",
   });
+
+ 
 }
 
 export default ResetToken;
