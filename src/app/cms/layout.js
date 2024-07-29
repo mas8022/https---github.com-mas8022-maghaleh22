@@ -1,11 +1,11 @@
 import React from "react";
 import CmsSideBar from "../_components/modules/cmsSideBar";
 import CmsNavbar from "../_components/modules/cmsNavbar";
-// import VerifyManager from "@/utils/verifyManager";
+import CmsScroller from "../_components/template/cmsScroller";
+import VerifyManager from "@/utils/verifyManager";
 
 const layout = async ({ children }) => {
-
-  // await VerifyManager();
+  await VerifyManager();
 
   return (
     <>
@@ -15,6 +15,7 @@ const layout = async ({ children }) => {
           <CmsNavbar />
           <div className="w-full sm:p-12 p-6">{children}</div>
         </div>
+        <CmsScroller />
       </div>
     </>
   );
