@@ -56,7 +56,7 @@ export default function page({ params }) {
   return (
     <div className="flex flex-col items-center justify-center">
       <Uploader
-        customClass="size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-[url('/images/profile.jpg')] bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer"
+        customclassName="size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-[url('/images/profile.jpg')] bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer"
         label={"ویرایش"}
         setFileData={setFileData}
       />

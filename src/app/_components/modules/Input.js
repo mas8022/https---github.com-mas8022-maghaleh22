@@ -1,7 +1,5 @@
 "use client";
 
-const { useState } = require("react");
-
 const Input = ({ id = "", label = "", formHandler, value, name }) => {
   return (
     <div className="relative">
@@ -15,7 +13,7 @@ const Input = ({ id = "", label = "", formHandler, value, name }) => {
       />
       <label
         htmlFor={id}
-        className={`absolute right-3 h-max top-0 m-auto  text-gray-400 peer-focus:text-second dark:peer-focus:text-first pointer-events-none transition-all ${
+        className={`absolute right-3 h-max top-0 m-auto rounded-full text-gray-400 peer-focus:text-second dark:peer-focus:text-first pointer-events-none transition-all ${
           !!value.length
             ? "px-1 bg-white dark:bg-[#1e293b] bottom-full text-[1.35rem]"
             : "text-[1.35rem] bottom-0 cursor-text peer-focus:px-1 peer-focus:bg-white dark:peer-focus:bg-[#1e293b] peer-focus:bottom-full peer-focus:text-[1.1rem]"

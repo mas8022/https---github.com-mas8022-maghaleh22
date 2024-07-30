@@ -5,6 +5,7 @@ import CmsScroller from "../_components/template/cmsScroller";
 import VerifyManager from "@/utils/verifyManager";
 
 const layout = async ({ children }) => {
+  
   await VerifyManager();
 
   return (

@@ -45,13 +45,11 @@ export async function POST(req, { params }) {
 
     const newAccessToken = generateToken({ email }, process.env.privateKey);
 
-    await cookies().delete("token");
     cookies().set("token", newAccessToken, {
       httpOnly: true,
       path: "/",
     });
 
-    await cookies().delete("refresh-token");
     cookies().set("refresh-token", refreshToken, {
       httpOnly: true,
       path: "/",

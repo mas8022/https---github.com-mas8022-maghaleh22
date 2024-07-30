@@ -6,6 +6,7 @@ const ThemeToggle = () => {
   const [theme, setTheme] = useLocalStorage("theme", "light");
 
   useEffect(() => {
+    console.log(document.documentElement.classList);
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {

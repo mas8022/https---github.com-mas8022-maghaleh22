@@ -290,14 +290,14 @@ const NewProject = () => {
             formHandler={generateProductFormik}
             label="در صورت علاقه فیلم اموزشی خود را اپلود کنید"
             name="articleVideo"
-            customClass="xm:w-2/3 w-full h-24 !rounded-3xl flex items-center justify-center !text-[1.4rem] sm:!text-[1.7rem] !font-light cursor-pointer !text-first !bg-second/60 !hover:bg-second/80"
+            customclassName="xm:w-2/3 w-full h-24 !rounded-3xl flex items-center justify-center !text-[1.4rem] sm:!text-[1.7rem] !font-light cursor-pointer !text-first !bg-second/60 !hover:bg-second/80"
           />
           <div className="w-1/3 flex flex-col gap-2 items-center">
             <Uploader
               formHandler={generateProductFormik}
               label="کاور مقاله"
               name="cover"
-              customClass="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/70 text-first cursor-pointer active:bg-second/80"
+              customclassName="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/70 text-first cursor-pointer active:bg-second/80"
             />
             <span className="text-[1.2rem] text-red-500">
               {generateProductFormik.touched.cover &&
@@ -311,7 +311,7 @@ const NewProject = () => {
           buttonType="submit"
           label="ذخیره کردن"
           loader={loader}
-          customClass="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/80 text-first cursor-pointer active:bg-second/80"
+          customclassName="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/80 text-first cursor-pointer active:bg-second/80"
         >
           ذخیره کردن
         </Button>

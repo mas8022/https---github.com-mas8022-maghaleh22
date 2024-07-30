@@ -4,12 +4,12 @@ import { MoonLoader } from "react-spinners";
 export default function Uploader({
   name = "",
   label = "",
-  customClass = "",
+  customclassName = "",
   loader = false,
   formHandler,
 }) {
   return (
-    <label className={customClass}>
+    <label className={customclassName}>
       {loader ? <MoonLoader size={20} color="#fff" /> : <span>{label}</span>}
 
       <input

@@ -4,7 +4,7 @@ import authorModel from "../../../../models/author";
 import connectToDb from "../../../../configs/db";
 import { cookies } from "next/headers";
 
-export async function POST(req, { params }) {
+export async function POST(req) {
   try {
     const formData = await req.formData();
 

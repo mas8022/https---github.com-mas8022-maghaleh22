@@ -5,7 +5,7 @@ import CloudStoringFile from "../../../../utils/cloudStoringFile";
 import { cookies } from "next/headers";
 import connectToDb from "../../../../configs/db";
 
-export async function POST(req, { params }) {
+export async function POST(req) {
   try {
     const formData = await req.formData();
 

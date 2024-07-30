@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import MainSearch from "./_components/template/mainSearch";
 import Hr from './_components/modules/hr'
+
 const Page = () => {
   return (
     <div className="w-full flex flex-col items-center xm:gap-0 gap-20 ">
