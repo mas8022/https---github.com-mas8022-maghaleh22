@@ -179,7 +179,10 @@ const CmsNavbar = () => {
           </div>
         </Side>
 
-        <Link href='/cms/cmsNotif' className="sm:size-20 size-14 bg-black/10 dark:bg-first/5 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first transition-all duration-200">
+        <Link
+          href="/cms/cmsNotif"
+          className="sm:size-20 size-14 bg-black/10 dark:bg-first/5 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first transition-all duration-200"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -207,13 +210,15 @@ const CmsNavbar = () => {
             aliGhasemi@gmail.com
           </p>
         </div>
-        <Image
-          src={"/images/profile.jpg"}
-          width={100}
-          height={100}
-          alt="عکس ادمین"
-          className="sm:size-20 size-16 rounded-full"
-        />
+        <Link href="/cms/profiler">
+          <Image
+            src={"/images/profile.jpg"}
+            width={100}
+            height={100}
+            alt="عکس ادمین"
+            className="sm:size-20 size-16 rounded-full"
+          />
+        </Link>
       </div>
     </div>
   );
