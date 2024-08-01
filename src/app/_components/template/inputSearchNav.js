@@ -1,22 +1,29 @@
 "use client";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 import useToggle from "../../../../utils/toggle";
-import React from "react";
+import React, { useState } from "react";
 
 export default function InputSearchNav() {
   const [isOpen, toggleOpen] = useToggle("inputSearchNavActivation");
+  const [search, setSearch] = useState("")
+
   return (
     <div
       className={`${
-        isOpen ? "w-[15rem] sm:w-[20rem]" : "size-14 sm:size-16"
-      } p-4 py-2 rounded-full bg-second/10 flex items-center justify-end overflow-hidden gap-2`}
+        isOpen ? "w-[15rem] sm:w-[20rem] justify-end gap-2" : "size-14 sm:size-16 justify-center"
+      } p-4 py-2 rounded-full bg-second/10 flex items-center overflow-hidden`}
     >
       <input
         onClick={(e) => e.stopPropagation()}
         type="search"
+        value={search}
+        onChange={(e) => {
+          setSearch(useSanitizeInput(e.target.value));
+        }}
         placeholder="چه اموزشی..."
         className={`${
-          isOpen ? "w-full" : "w-0 "
-        }h-full text-[1.2rem] xm:text-[1.35rem] dark:text-first outline-none font-light xm:font-bold focus:outline-none bg-second/0 transition-all duration-300 ease-in-out overflow-hidden`}
+          isOpen ? "w-full" : "w-0"
+        } h-full text-[1.2rem] xm:text-[1.35rem] dark:text-first outline-none font-light xm:font-bold focus:outline-none bg-second/0 transition-all duration-300 ease-in-out overflow-hidden`}
       />
 
       <div

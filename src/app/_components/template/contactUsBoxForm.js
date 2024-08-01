@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Input from "../modules/Input";
+import CustomInput from "../modules/customInput";
 import SelectBox from "../modules/selectBox";
 import { useFormik } from "formik";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
@@ -159,7 +159,7 @@ const ContactUsBoxForm = () => {
       >
         <div className="w-full flex flex-wrap gap-16 justify-center lgg:justify-end mb-12 lgg:mb-0">
           <div className="flex flex-col gap-1">
-            <Input
+            <CustomInput
               formHandler={contactForm}
               value={contactForm.values.fullName}
               name="fullName"
@@ -171,7 +171,7 @@ const ContactUsBoxForm = () => {
               contactForm.errors.fullName}
           </div>
           <div className="flex flex-col gap-1">
-            <Input
+            <CustomInput
               formHandler={contactForm}
               value={contactForm.values.email}
               name="email"
@@ -189,7 +189,7 @@ const ContactUsBoxForm = () => {
               contactForm.errors.group}
           </div>
           <div className="flex flex-col gap-1">
-            <Input
+            <CustomInput
               formHandler={contactForm}
               value={contactForm.values.phone}
               name="phone"
