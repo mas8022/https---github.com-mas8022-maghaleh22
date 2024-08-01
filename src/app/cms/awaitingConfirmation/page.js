@@ -1,7 +1,16 @@
 import React from "react";
 import CmsAwaitingConfirmationProductCart from "../../_components/modules/cmsAwaitingConfirmationProductCart";
+import connectToDb from "@/configs/db";
+import productModel from "@/models/product";
+import "@/models/author";
 
-const cmsProducts = () => {
+const page = async () => {
+  connectToDb();
+  const products = await productModel
+    .find({ publish: false }, "title price discount cover duration")
+    .populate("author", "name")
+    .lean();
+
   return (
     <div className="w-full">
       <div className="w-full pb-12 border-b-[1px] border-b-second/50 flex justify-end">
@@ -31,10 +40,14 @@ const cmsProducts = () => {
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
         <div className="w-full flex justify-center">
           <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-            <CmsAwaitingConfirmationProductCart />
-            <CmsAwaitingConfirmationProductCart />
-            <CmsAwaitingConfirmationProductCart />
-            <CmsAwaitingConfirmationProductCart />
+            {products?.length
+              ? products.map((item) => (
+                  <CmsAwaitingConfirmationProductCart
+                    key={item._id}
+                    item={item}
+                  />
+                ))
+              : null}
           </div>
         </div>
       </div>
@@ -42,4 +55,4 @@ const cmsProducts = () => {
   );
 };
 
-export default cmsProducts;
+export default page;

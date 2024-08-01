@@ -43,7 +43,6 @@ async function VerifyManager() {
   }
 
   const newToken = generateToken({ userEmail }, process.env.privateKey);
-  cookies().delete("token");
   cookies().set("token", newToken, {
     httpOnly: true,
     path: "/",
