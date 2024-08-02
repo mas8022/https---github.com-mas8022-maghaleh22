@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import TagsBox from "./tagsBox";
 import Comment from "./comment";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 
 const CommentsBox = () => {
+  const [comment, setComment] = useState("");
+
   return (
-    <div className="w-full flex flex-col sm:flex-row items-center sm:items-start gap-10">
-      <div className="w-full sm:w-2/3 flex flex-col justify-between gap-8 items-center px-12 py-8 pb-12 rounded-3xl overflow-hidden shadow-lg dark:shadow-2xl">
+    <div className="w-full flex flex-col ld:flex-row items-center sm:items-start gap-10">
+      <div className="w-full ld:w-2/3 flex flex-col justify-between gap-8 items-center px-12 py-8 pb-12 rounded-3xl overflow-hidden shadow-lg dark:shadow-2xl">
         <div className="w-full h-20 flex justify-between gap-8 items-center border-b-[1px] border-second/50">
           <div className="flex items-center gap-2">
             <svg
@@ -24,7 +27,9 @@ const CommentsBox = () => {
             </svg>
             <span className="text-[2rem] font-bold dark:text-first">نظرات</span>
           </div>
-          <span className="text-[1.4rem] dark:text-first">تعداد نظرات (21)</span>
+          <span className="text-[1.4rem] dark:text-first">
+            تعداد نظرات (21)
+          </span>
         </div>
 
         <Comment />
@@ -33,7 +38,23 @@ const CommentsBox = () => {
         <Comment />
       </div>
 
-      <TagsBox />
+      <div className="w-full ld:w-1/3 flex flex-col gap-16">
+        <div className="w-full p-12 flex flex-col gap-5 bg-second/5 dark:bg-black/15 rounded-3xl overflow-hidden shadow-md dark:shadow-lg dark:child:text-first/50">
+          <p className="text-2xl dark:text-first pb-2 border-b-2 border-b-second/50">
+            نظر یا پرسشی دارید بیان کنید
+          </p>
+          <textarea
+            type="text"
+            value={comment}
+            onChange={(e) => {
+              setComment(useSanitizeInput(e.target.value));
+            }}
+            className="w-full h-56 py-4 px-6 text-2xl dark:!text-first dark:bg-[#0d141f]/35 rounded-xl"
+            placeholder="ایجاد پرسش یا نظر جدید..."
+          />
+        </div>
+        <TagsBox />
+      </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 import { MoonLoader } from "react-spinners";
 import swal from "sweetalert";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 
 const ContactUsBoxForm = () => {
   const [loading, setLoading] = useState(false);
@@ -205,7 +206,10 @@ const ContactUsBoxForm = () => {
           <textarea
             name="message"
             value={contactForm.values.message}
-            onChange={contactForm.handleChange}
+            onChange={(e) => {
+              const sanitizedValue = useSanitizeInput(e.target.value);
+              contactForm.setFieldValue("message", sanitizedValue);
+            }}
             placeholder="سوال مورد نظر خود را بنویسید..."
             className="sm:w-full w-[95%] ld:h-[30rem] h-[15rem] rounded-3xl p-9 text-[1.5rem] text-black dark:text-first font-light bg-black/5 dark:bg-black/30 focus:outline-1 focus:outline-second/50 transition-all duration-1000 self-center"
           ></textarea>

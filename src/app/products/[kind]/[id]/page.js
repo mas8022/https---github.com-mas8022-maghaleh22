@@ -6,7 +6,7 @@ import AuthorBox from "../../../_components/template/authorBox";
 import CommentsBox from "../../../_components/template/commentsBox";
 import ContentArticle from "../../../_components/modules/contentArticle";
 import Title from "../../../_components/template/title";
-export default function page({ id }) {
+export default function page() {
   return (
     <>
       <div>

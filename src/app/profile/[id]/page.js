@@ -6,11 +6,13 @@ import toast from "react-hot-toast";
 import Uploader from "../../_components/modules/uploader";
 import Hr from "../../_components/modules/hr";
 import { logoutHandler } from "../../../../utils/authTools";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page({ params }) {
   const [loading, setLoading] = useState(false);
   const [fileData, setFileData] = useState("");
+
   const editProfile = useFormik({
     initialValues: {
       fullName: "",
@@ -70,7 +72,10 @@ export default function page({ params }) {
             id="fullName"
             name="fullName"
             type="text"
-            onChange={editProfile.handleChange}
+            onChange={(e) => {
+              const sanitizedValue = useSanitizeInput(e.target.value);
+              editProfile.setFieldValue("fullName", sanitizedValue);
+            }}
             value={editProfile.values.fullName}
             placeholder="نام و نام خانوادگی"
           />
@@ -82,7 +87,10 @@ export default function page({ params }) {
             id="email"
             name="email"
             type="text"
-            onChange={editProfile.handleChange}
+            onChange={(e) => {
+              const sanitizedValue = useSanitizeInput(e.target.value);
+              editProfile.setFieldValue("email", sanitizedValue);
+            }}
             value={editProfile.values.email}
             placeholder="ایمیل"
           />
@@ -95,7 +103,10 @@ export default function page({ params }) {
             id="phone"
             name="phone"
             type="text"
-            onChange={editProfile.handleChange}
+            onChange={(e) => {
+              const sanitizedValue = useSanitizeInput(e.target.value);
+              editProfile.setFieldValue("phone", sanitizedValue);
+            }}
             value={editProfile.values.phone}
             placeholder="شماره موبایل"
           />

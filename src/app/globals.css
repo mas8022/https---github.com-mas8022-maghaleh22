@@ -51,9 +51,9 @@
     @apply font-light;
   }
 
-  /* ck editor css */
 
-  /* Custom styles for CKEditor 5 */
+  /* ck editor css start */
+
   .root
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
     @apply text-black p-10;
@@ -109,7 +109,7 @@
   }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
-    @apply text-first bg-black p-10;
+    @apply text-first bg-[#1e293b] p-10;
   }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
@@ -156,7 +156,7 @@
     @apply text-[1.4rem] font-light text-first/70;
   }
 
-  /* ck editor css */
+  /* ck editor css end */
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

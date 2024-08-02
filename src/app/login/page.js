@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import { MoonLoader } from "react-spinners";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page() {
@@ -67,7 +68,10 @@ export default function page() {
           id="email"
           name="email"
           type="text"
-          onChange={login.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            login.setFieldValue("email", sanitizedValue);
+          }}
           value={login.values.email}
           placeholder="ایمیل"
         />
@@ -77,7 +81,10 @@ export default function page() {
           id="password"
           name="password"
           type="text"
-          onChange={login.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            login.setFieldValue("password", sanitizedValue);
+          }}
           value={login.values.password}
           placeholder="رمز عبور"
         />
@@ -89,11 +96,7 @@ export default function page() {
           type="submit"
           className="w-full rounded-lg border-0 h-[4.5rem] text-[1.8rem] bg-second active:bg-second/70 text-white flex items-center justify-center"
         >
-          {loading ? (
-            <MoonLoader size={20} color="#fff" />
-          ) : (
-            <span>ورود</span>
-          )}
+          {loading ? <MoonLoader size={20} color="#fff" /> : <span>ورود</span>}
         </button>
         <p className="text-[1.4rem] dark:text-first">
           در صورت نداشتن حساب کاربری{" "}

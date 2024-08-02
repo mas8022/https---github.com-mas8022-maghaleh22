@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 const FooterCommentBox = () => {
   const [comment, setComment] = useState("");
 
@@ -41,7 +42,9 @@ const FooterCommentBox = () => {
       <textarea
         type="text"
         value={comment}
-        onChange={(e) => setComment(e.target.value)}
+        onChange={(e) => {
+          setComment(useSanitizeInput(e.target.value));
+        }}
         placeholder="نظر خود بنویسید..."
         className="w-[60%] h-20 max-h-64 p-4 rounded-md text-[1.28rem] text-black/70 sm:self-end bg-first/50 placeholder:text-black/50 outline-none focus:outline-none"
       />

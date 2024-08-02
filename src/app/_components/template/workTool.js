@@ -7,6 +7,7 @@ import SelectBox from "../modules/selectBox";
 import Uploader from "../modules/uploader";
 import Button from "../modules/Button";
 import GetVideoDuration from "../../_components/modules/getVideoDuration";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 
 const Editor = dynamic(() => import("../../_components/modules/ck"), {
   ssr: false,
@@ -132,7 +133,10 @@ const NewProject = () => {
                   type="text"
                   name="title"
                   value={generateProductFormik.values.title}
-                  onChange={generateProductFormik.handleChange}
+                  onChange={(e) => {
+                    const sanitizedValue = useSanitizeInput(e.target.value);
+                    formHandler.setFieldValue("title", sanitizedValue);
+                  }}
                   className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] text-black dark:text-first rounded-md border-[1px] outline-none border-gray-600/30 px-6 focus:outline-none"
                   placeholder="سر تیتر مقاله خود را بنویسید..."
                 />
@@ -160,7 +164,10 @@ const NewProject = () => {
                     type="number"
                     name="price"
                     value={generateProductFormik.values.price}
-                    onChange={generateProductFormik.handleChange}
+                    onChange={(e) => {
+                      const sanitizedValue = useSanitizeInput(e.target.value);
+                      formHandler.setFieldValue("price", sanitizedValue);
+                    }}
                     min="0"
                     className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
                       isReadAblePrice && "text-first/55"
@@ -207,7 +214,10 @@ const NewProject = () => {
                     type="number"
                     name="discount"
                     value={generateProductFormik.values.discount}
-                    onChange={generateProductFormik.handleChange}
+                    onChange={(e) => {
+                      const sanitizedValue = useSanitizeInput(e.target.value);
+                      formHandler.setFieldValue("discount", sanitizedValue);
+                    }}
                     min="0"
                     max="100"
                     className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
@@ -247,7 +257,9 @@ const NewProject = () => {
                 <input
                   type="search"
                   value={tag}
-                  onChange={(e) => setTag(e.target.value)}
+                  onChange={(e) => {
+                    setTag(useSanitizeInput(e.target.value));
+                  }}
                   placeholder="برچسب های مورد نظر خود را وارد کنید..."
                   className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-[1px] border-gray-600/35 text-[1.3rem] text-black dark:text-first dark:bg-[#0d141f]"
                 />

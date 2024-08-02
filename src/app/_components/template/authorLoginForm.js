@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { MoonLoader } from "react-spinners";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 import { useRouter } from "next/navigation";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 const AuthorLoginForm = ({ setFormMode }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -52,7 +53,7 @@ const AuthorLoginForm = ({ setFormMode }) => {
       }, 3000);
     },
   });
-  
+
   return (
     <form
       className="lgg:w-full ld:w-3/5 xm:w-4/5 w-full flex flex-col gap-7 p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] items-center bg-second/30 dark:bg-black/30 dark:shadow-2xl rounded-3xl child:h-16 child:outline-none child:focus:outline-none"
@@ -63,7 +64,10 @@ const AuthorLoginForm = ({ setFormMode }) => {
         id="email"
         name="email"
         type="text"
-        onChange={authorLogin.handleChange}
+        onChange={(e) => {
+          const sanitizedValue = useSanitizeInput(e.target.value);
+          authorLogin.setFieldValue("email", sanitizedValue);
+        }}
         value={authorLogin.values.email}
         placeholder="ایمیل"
       />
@@ -76,7 +80,10 @@ const AuthorLoginForm = ({ setFormMode }) => {
         id="password"
         name="password"
         type="text"
-        onChange={authorLogin.handleChange}
+        onChange={(e) => {
+          const sanitizedValue = useSanitizeInput(e.target.value);
+          authorLogin.setFieldValue("password", sanitizedValue);
+        }}
         value={authorLogin.values.password}
         placeholder="رمز عبور"
       />

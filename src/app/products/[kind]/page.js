@@ -1,13 +1,15 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import SideFilterMobile from "../../_components/template/sideFilter";
 import Cart from "../../_components/modules/cart";
 import SideFilterPC from "../../_components/template/sideFilterPc";
 import Hr from "../../_components/modules/hr";
 import useLocalStorage from "../../_components/modules/localStore";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 
-export default function products({ params }) {
+export default function products() {
   const [filter, setFilter] = useLocalStorage("sideFilterValue", "all");
+  const [search, setSearch] = useState("");
 
   return (
     <>
@@ -20,9 +22,13 @@ export default function products({ params }) {
 
             <div className="flex h-16 items-center justify-end gap-4 border-[1px] border-gray-800/20 dark:border-first/50 pl-4 py-1 rounded-md">
               <input
-                className="pr-4 h-full w-[20rem] dark:bg-[#1e293b] sm:w-[30rem] text-[1.4rem] text-black dark:text-first pl-2 focus:outline-none outline-none"
                 type="search"
+                value={search}
+                onChange={(e) => {
+                  setSearch(useSanitizeInput(e.target.value));
+                }}
                 placeholder="چه اموزشی مد نظرتان است؟..."
+                className="pr-4 h-full w-[20rem] dark:bg-[#1e293b] sm:w-[30rem] text-[1.4rem] text-black dark:text-first pl-2 focus:outline-none outline-none"
               />
 
               <svg

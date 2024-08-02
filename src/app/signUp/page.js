@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 import { useFormik } from "formik";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,7 @@ const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 const page = () => {
   const [loading, setLoading] = useState(false);
+
   const signUp = useFormik({
     initialValues: {
       fullName: "",
@@ -50,9 +52,9 @@ const page = () => {
           .then((result) => {
             if (result.status === 201) {
               toast.success(result.message);
-             setTimeout(() => {
-               location.pathname = "/"
-             }, 2000);
+              setTimeout(() => {
+                location.pathname = "/";
+              }, 2000);
             } else {
               toast.error(result.message);
             }
@@ -78,7 +80,10 @@ const page = () => {
           id="fullName"
           name="fullName"
           type="text"
-          onChange={signUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            signUp.setFieldValue("fullName", sanitizedValue);
+          }}
           value={signUp.values.fullName}
           placeholder="نام و نام خانوادگی"
         />
@@ -90,7 +95,10 @@ const page = () => {
           id="email"
           name="email"
           type="text"
-          onChange={signUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            signUp.setFieldValue("email", sanitizedValue);
+          }}
           value={signUp.values.email}
           placeholder="ایمیل"
         />
@@ -100,7 +108,10 @@ const page = () => {
           id="password"
           name="password"
           type="text"
-          onChange={signUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            signUp.setFieldValue("password", sanitizedValue);
+          }}
           value={signUp.values.password}
           placeholder="رمز عبور"
         />
@@ -112,7 +123,10 @@ const page = () => {
           id="phone"
           name="phone"
           type="text"
-          onChange={signUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            signUp.setFieldValue("phone", sanitizedValue);
+          }}
           value={signUp.values.phone}
           placeholder="شماره موبایل"
         />

@@ -1,3 +1,4 @@
+import useSanitizeInput from "@/utils/useSanitizeInput";
 import { useFormik } from "formik";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -90,7 +91,10 @@ const AuthorSignUpForm = ({ setFormMode }) => {
           id="name"
           name="name"
           type="text"
-          onChange={authorSignUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            authorSignUp.setFieldValue("name", sanitizedValue);
+          }}
           value={authorSignUp.values.name}
           placeholder="نام و نام خانوادگی"
         />
@@ -102,7 +106,10 @@ const AuthorSignUpForm = ({ setFormMode }) => {
           id="email"
           name="email"
           type="text"
-          onChange={authorSignUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            authorSignUp.setFieldValue("email", sanitizedValue);
+          }}
           value={authorSignUp.values.email}
           placeholder="ایمیل"
         />
@@ -114,7 +121,10 @@ const AuthorSignUpForm = ({ setFormMode }) => {
           id="phone"
           name="phone"
           type="text"
-          onChange={authorSignUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            authorSignUp.setFieldValue("phone", sanitizedValue);
+          }}
           value={authorSignUp.values.phone}
           placeholder="شماره همراه"
         />
@@ -126,7 +136,10 @@ const AuthorSignUpForm = ({ setFormMode }) => {
           id="password"
           name="password"
           type="text"
-          onChange={authorSignUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            authorSignUp.setFieldValue("password", sanitizedValue);
+          }}
           value={authorSignUp.values.password}
           placeholder="رمز عبور"
         />
@@ -139,7 +152,10 @@ const AuthorSignUpForm = ({ setFormMode }) => {
           id="job"
           name="job"
           type="text"
-          onChange={authorSignUp.handleChange}
+          onChange={(e) => {
+            const sanitizedValue = useSanitizeInput(e.target.value);
+            authorSignUp.setFieldValue("job", sanitizedValue);
+          }}
           value={authorSignUp.values.job}
           placeholder="نام تخصص"
         />
