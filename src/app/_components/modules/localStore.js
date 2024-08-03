@@ -16,7 +16,6 @@ const useLocalStorage = (key, initialValue) => {
     try {
       value = storedValue ? JSON.parse(storedValue) : null;
     } catch (e) {
-      console.error("Error parsing JSON from localStorage", e);
       value = null;
     }
 

@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 
-const Bg = memo(() => {
+const Bg = memo(({active, setActive}) => {
   useEffect(() => {
     const closeSideBarHandler = (e) => {
       if (e.target.contains(document.querySelector(".bgActive"))) {

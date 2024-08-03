@@ -1,5 +1,9 @@
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
-import { generateRefreshToken, generateToken, hashPassword } from "../../../../utils/authTools";
+import {
+  generateRefreshToken,
+  generateToken,
+  hashPassword,
+} from "../../../../utils/authTools";
 import authorModel from "../../../../models/author";
 import CloudStoringFile from "../../../../utils/cloudStoringFile";
 import { cookies } from "next/headers";
@@ -37,7 +41,10 @@ export async function POST(req) {
     const fileAddress = await CloudStoringFile(ruleImage);
 
     const token = generateToken({ email }, process.env.authorPrivateKey);
-    const refreshToken = generateRefreshToken({ email }, process.env.authorRefreshPrivateKey);
+    const refreshToken = generateRefreshToken(
+      { email },
+      process.env.authorRefreshPrivateKey
+    );
 
     cookies().set("author-token", token, {
       httpOnly: true,
@@ -49,7 +56,7 @@ export async function POST(req) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
-    connectToDb()
+    connectToDb();
     await authorModel.create({
       name,
       email,
@@ -64,10 +71,13 @@ export async function POST(req) {
     });
 
     return Response.json(
-      { Message: "author signup successfully" },
+      { message: "author signup successfully" },
       { status: 201 }
     );
   } catch (error) {
-    return Response.json({ message: "اینترنت خود را چک کنید" }, { status: 500 });
+    return Response.json(
+      { message: "اینترنت خود را چک کنید" },
+      { status: 500 }
+    );
   }
 }
