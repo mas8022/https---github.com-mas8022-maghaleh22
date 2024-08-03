@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import NewProject from '../_components/template/workTool'
-const page = () => {
+import NewProject from "../_components/template/workTool";
+const page = memo(() => {
   const router = useRouter();
   const [isAuthor, setIsAuthor] = useState(false);
 
@@ -15,7 +15,6 @@ const page = () => {
       .then((result) => {
         if (result.status === 200) {
           setIsAuthor(true);
-          
         } else {
           router.replace("/coWorker/employment");
         }
@@ -23,6 +22,6 @@ const page = () => {
   }, []);
 
   return isAuthor && <NewProject />;
-};
+});
 
 export default page;

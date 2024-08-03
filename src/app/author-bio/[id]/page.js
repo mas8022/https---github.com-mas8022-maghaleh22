@@ -1,9 +1,9 @@
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 import Hr from "../../_components/modules/hr";
 import Title from "../../_components/template/title";
 
-const page = () => {
+const page =  memo(() => {
   return (
     <div className="w-full flex flex-col items-center pt-24 gap-20">
       <div className="w-full flex flex-col items-center gap-8">
@@ -45,6 +45,6 @@ const page = () => {
       <Hr />
     </div>
   );
-};
+});
 
 export default page;

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import Hr from "../_components/modules/hr";
 
-export default function page() {
+const page = memo(() => {
   return (
     <div className="w-full flex-col pt-24">
       <div className="about-title-aboutUs w-full flex items-start justify-between gap-40">
@@ -20,7 +20,9 @@ export default function page() {
             ما بر این باوریم که آموزش کلید باز کردن استعدادهاست و تلاش می‌کنیم
             منابعی ارائه دهیم که هم آموزنده و هم الهام‌بخش باشند.
           </p>
-          <p className="lg:text-[3rem] text-[2rem] font-bold ">چه کاری انجام می‌دهیم</p>
+          <p className="lg:text-[3rem] text-[2rem] font-bold ">
+            چه کاری انجام می‌دهیم
+          </p>
           <p className="text-[1.7rem] font-light">
             پلتفرم ما مجموعه‌ای گسترده از ویدیوهای آموزشی را ارائه می‌دهد که
             برای نیازهای آموزشی متنوع طراحی شده‌اند. چه دانش‌آموزی باشید که به
@@ -62,7 +64,9 @@ export default function page() {
             طریق آموزش است، تا به آن‌ها در رسیدن به اهداف شخصی و حرفه‌ای‌شان کمک
             کنیم.
           </p>
-          <p className="lg:text-[3rem] text-[2rem] font-bold ">به ما بپیوندید</p>
+          <p className="lg:text-[3rem] text-[2rem] font-bold ">
+            به ما بپیوندید
+          </p>
           <p className="text-[1.7rem] font-light">
             ما شما را دعوت می‌کنیم تا به کتابخانه گسترده ویدیوهای آموزشی ما
             بپیوندید و بخشی از جامعه مقاله شوید. با هم می‌توانیم یادگیری را به
@@ -72,8 +76,10 @@ export default function page() {
           </p>
         </div>
       </div>
-      <Hr/>
-      <Hr/>
+      <Hr />
+      <Hr />
     </div>
   );
-}
+});
+
+export default page;

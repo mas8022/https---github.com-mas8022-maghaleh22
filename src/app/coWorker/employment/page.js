@@ -1,11 +1,10 @@
 "use client";
-import { useState } from "react";
+import { memo, useState } from "react";
 import AuthorSignUpForm from "../../_components/template/authorSignUpForm";
 import AuthorLoginForm from "../../_components/template/authorLoginForm";
 import Image from "next/image";
 import Hr from "../../_components/modules/hr";
-
-const authorSignUp = () => {
+const page = memo(() => {
   const [formMode, setFormMode] = useState("loginForm");
 
   return (
@@ -29,6 +28,6 @@ const authorSignUp = () => {
       <Hr />
     </>
   );
-};
+});
 
-export default authorSignUp;
+export default page;

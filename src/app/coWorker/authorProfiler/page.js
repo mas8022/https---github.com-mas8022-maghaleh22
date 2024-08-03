@@ -1,16 +1,18 @@
 "use client";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import Uploader from "../../_components/modules/uploader";
 import { logoutHandler } from "@/utils/authTools";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-export default function page({ params }) {
+import React from "react";
+
+const page = memo(() => {
   const [loading, setLoading] = useState(false);
   const [fileData, setFileData] = useState("");
-  
+
   const editProfile = useFormik({
     initialValues: {
       fullName: "",
@@ -132,4 +134,6 @@ export default function page({ params }) {
       </div>
     </div>
   );
-}
+});
+
+export default page;

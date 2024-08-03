@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { memo } from "react";
 
-const page = () => {
-  return (
-    <div></div>
-  )
-}
+const page = memo(() => {
+  return <div></div>;
+});
 
-export default page
+export default page;

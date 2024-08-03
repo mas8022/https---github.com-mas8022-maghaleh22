@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import Title from "../../_components/template/title";
 import MessageBoxAuthor from "../../_components/modules/messageBoxAuthor";
 
-const page = () => {
+const page = memo(() => {
   return (
     <div className="w-full">
       <Title title={"پیام های شما از طرف سایت"} />
@@ -13,6 +13,6 @@ const page = () => {
       </div>
     </div>
   );
-};
+});
 
 export default page;
