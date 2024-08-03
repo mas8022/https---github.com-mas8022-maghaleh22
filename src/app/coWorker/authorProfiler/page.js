@@ -1,13 +1,11 @@
 "use client";
-import { useFormik } from "formik";
 import React, { memo, useState } from "react";
+import { useFormik } from "formik";
 import { MoonLoader } from "react-spinners";
 import Uploader from "../../_components/modules/uploader";
 import { logoutHandler } from "@/utils/authTools";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
-
-import React from "react";
 
 const page = memo(() => {
   const [loading, setLoading] = useState(false);

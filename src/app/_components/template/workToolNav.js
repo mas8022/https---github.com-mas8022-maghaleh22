@@ -1,13 +1,23 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { memo, useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import React, { memo, useEffect, useMemo, useState } from "react";
+import {
+  usePathname,
+  useRouter,
+  useSelectedLayoutSegment,
+} from "next/navigation";
 
 const WorkToolNav = memo(() => {
   const router = useRouter();
 
   const [isAuthor, setIsAuthor] = useState(false);
+
+  const segment = useSelectedLayoutSegment();
+
+  const selectSegment = (pathName = null) => {
+    return segment === pathName ? "border-b-2 dark:border-b-first pb-1" : "";
+  };
 
   const path = usePathname();
   let deActiveNav = false;
@@ -36,9 +46,21 @@ const WorkToolNav = memo(() => {
       }`}
     >
       <div className="h-full flex items-center gap-8 xm:child:text-[1.4rem] child:text-[1.3rem] child:text-black child:dark:text-first child:font-light child:cursor-pointer child:dark:border-b-first/80 child:border-b-black/80">
-        <Link href={"/coWorker"}>پروژه جدید</Link>
-        <Link href={"/coWorker/draftedProject"}>پیش نویس ها</Link>
-        <Link href={"/coWorker/myProjects"}>پروژ های من</Link>
+        <Link href={"/coWorker"} className={selectSegment(null)}>
+          پروژه جدید
+        </Link>
+        <Link
+          href={"/coWorker/draftedProject"}
+          className={selectSegment("draftedProject")}
+        >
+          پیش نویس ها
+        </Link>
+        <Link
+          href={"/coWorker/myProjects"}
+          className={selectSegment("myProjects")}
+        >
+          پروژ های من
+        </Link>
       </div>
       <div className="h-full flex items-center gap-8">
         <Link

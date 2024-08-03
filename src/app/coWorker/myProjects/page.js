@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Title from "../../_components/template/title";
 import Cart from "../../_components/modules/cart";
 
