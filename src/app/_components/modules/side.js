@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
-import useLocalStorage from '../modules/localStore'
-
-export default function Side({ children, sideBarName, cls }) {
+import React, { memo, useEffect } from "react";
+import useLocalStorage from "../modules/localStore";
+const Side = memo(({ children, sideBarName, cls }) => {
   const [sideFlag, setSideFlag] = useLocalStorage(sideBarName, false);
 
   useEffect(() => {
@@ -51,4 +50,6 @@ export default function Side({ children, sideBarName, cls }) {
       ></div>
     </>
   );
-}
+});
+
+export default Side;

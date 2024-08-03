@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const SideFilterPC = ({ filter, setFilter }) => {
+const SideFilterPC = memo(({ filter, setFilter }) => {
   return (
     <div className="md:flex hidden w-full h-screen lg:w-96 gap-3 flex-col pt-20 bg-white dark:bg-[#1e293b]">
       <div
@@ -55,6 +55,6 @@ const SideFilterPC = ({ filter, setFilter }) => {
       </div>
     </div>
   );
-};
+});
 
 export default SideFilterPC;

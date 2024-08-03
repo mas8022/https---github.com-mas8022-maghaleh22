@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 
-const CmsCommentSendedCart = () => {
+const CmsCommentSendedCart = memo(() => {
   return (
     <div className="w-[32rem] py-10 bg-first dark:bg-[#0d141f]/50 flex flex-col items-center shadow-md">
       <Image
@@ -33,6 +33,5 @@ const CmsCommentSendedCart = () => {
       </div>
     </div>
   );
-};
-
+});
 export default CmsCommentSendedCart;

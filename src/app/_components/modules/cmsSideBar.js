@@ -1,10 +1,9 @@
 "use client";
-
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
 
-const CmsSideBar = () => {
+const CmsSideBar = memo(() => {
   const segment = useSelectedLayoutSegment();
 
   const isActive = (path = null) => {
@@ -168,6 +167,5 @@ const CmsSideBar = () => {
       </ul>
     </div>
   );
-};
-
+});
 export default CmsSideBar;

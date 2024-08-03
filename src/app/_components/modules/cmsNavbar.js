@@ -2,11 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import React from "react";
+import React, { memo } from "react";
 import Side from "./side";
 import ThemeToggle from "./themeToggle";
 
-const CmsNavbar = () => {
+const CmsNavbar = memo(() => {
   const segment = useSelectedLayoutSegment();
 
   const isActive = (path = null) => {
@@ -222,6 +222,5 @@ const CmsNavbar = () => {
       </div>
     </div>
   );
-};
-
+});
 export default CmsNavbar;

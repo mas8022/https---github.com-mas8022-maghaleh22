@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import CommentBox from "../modules/commentBox";
 
-const CommentsSlider = () => {
+const CommentsSlider = memo(() => {
   return (
     <Swiper
       breakpoints={{
@@ -38,6 +38,6 @@ const CommentsSlider = () => {
       </SwiperSlide>
     </Swiper>
   );
-};
+});
 
 export default CommentsSlider;

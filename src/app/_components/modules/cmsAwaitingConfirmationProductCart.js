@@ -3,11 +3,10 @@ import useConvertTime from "@/utils/useConvertTime";
 import useDiscountPrice from "@/utils/useDiscountPrice";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { memo } from "react";
 
-const CmsAwaitingConfirmationProductCart = ({ item }) => {
-  const { _id, title, price, author, discount, cover, duration } =
-    item;
+const CmsAwaitingConfirmationProductCart = memo(({ item }) => {
+  const { _id, title, price, author, discount, cover, duration } = item;
 
   const { hour, minute } = useConvertTime(duration);
 
@@ -52,6 +51,5 @@ const CmsAwaitingConfirmationProductCart = ({ item }) => {
       </div>
     </div>
   );
-};
-
+});
 export default CmsAwaitingConfirmationProductCart;

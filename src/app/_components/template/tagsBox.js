@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const TagsBox = () => {
+const TagsBox = memo(() => {
   return (
     <div className="w-full">
       <div className="w-full p-12  flex flex-wrap bg-second/5 dark:bg-black/15 rounded-3xl overflow-hidden shadow-md dark:shadow-lg dark:child:text-first/50">
@@ -52,6 +52,6 @@ const TagsBox = () => {
       </div>
     </div>
   );
-};
+});
 
 export default TagsBox;

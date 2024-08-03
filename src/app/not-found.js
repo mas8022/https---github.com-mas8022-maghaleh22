@@ -1,9 +1,9 @@
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 import MainSearch from "./_components/template/mainSearch";
-import Hr from './_components/modules/hr'
+import Hr from "./_components/modules/hr";
 
-const Page = () => {
+const Page = memo(() => {
   return (
     <div className="w-full flex flex-col items-center xm:gap-0 gap-20 ">
       <div className="w-full flex xm:flex-row flex-col-reverse items-center xm:justify-between">
@@ -19,9 +19,9 @@ const Page = () => {
         />
       </div>
       <MainSearch />
-      <Hr/>
+      <Hr />
     </div>
   );
-};
+});
 
 export default Page;

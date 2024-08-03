@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import toast from "react-hot-toast";
 import { MoonLoader } from "react-spinners";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 import { useRouter } from "next/navigation";
 import useSanitizeInput from "@/utils/useSanitizeInput";
-const AuthorLoginForm = ({ setFormMode }) => {
+
+const AuthorLoginForm = memo(({ setFormMode }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -113,6 +114,6 @@ const AuthorLoginForm = ({ setFormMode }) => {
       </p>
     </form>
   );
-};
+});
 
 export default AuthorLoginForm;

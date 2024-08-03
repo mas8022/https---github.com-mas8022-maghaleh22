@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
 import useSanitizeInput from "@/utils/useSanitizeInput";
-const FooterCommentBox = () => {
+
+const FooterCommentBox = memo(() => {
   const [comment, setComment] = useState("");
 
   const SendComment = () => {
@@ -56,6 +57,6 @@ const FooterCommentBox = () => {
       </button>
     </div>
   );
-};
+});
 
 export default FooterCommentBox;

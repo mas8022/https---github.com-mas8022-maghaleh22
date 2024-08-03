@@ -1,7 +1,7 @@
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 
-const Ad = () => {
+const Ad = memo(() => {
   return (
     <div className="w-full py-9 lg:flex sm:grid sm:grid-cols-2 hidden items-center justify-between border-b-[1px] px-4 border-b-second rounded-3xl">
       <div className="flex flex-col items-center justify-center gap-6">
@@ -54,6 +54,6 @@ const Ad = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Ad;

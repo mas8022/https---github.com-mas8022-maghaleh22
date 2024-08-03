@@ -1,8 +1,8 @@
 "use client";
-import useLocalStorage from '../modules/localStore'
-import { useEffect } from "react";
+import useLocalStorage from "../modules/localStore";
+import { memo, useEffect } from "react";
 
-const ThemeToggle = () => {
+const ThemeToggle = memo(() => {
   const [theme, setTheme] = useLocalStorage("theme", "light");
 
   useEffect(() => {
@@ -56,6 +56,6 @@ const ThemeToggle = () => {
       )}
     </button>
   );
-};
+});
 
 export default ThemeToggle;

@@ -1,7 +1,7 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 
-export default function Editor({ articleText, setArticleText }) {
+const Editor = memo(({ articleText, setArticleText }) => {
   const [editorLoaded, setEditorLoaded] = useState(false);
 
   const editorRef = useRef();
@@ -48,4 +48,6 @@ export default function Editor({ articleText, setArticleText }) {
       )}
     </>
   );
-}
+});
+
+export default Editor;

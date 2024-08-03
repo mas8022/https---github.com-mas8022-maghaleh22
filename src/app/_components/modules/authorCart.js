@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 
-const AuthorNotVerified = () => {
+const AuthorNotVerified = memo(() => {
   return (
     <div className="w-[32rem] h-[32.5rem] pt-14 bg-first dark:bg-[#0d141f]/50 flex flex-col items-center shadow-md rounded-xl overflow-hidden">
       <Image
@@ -17,7 +17,9 @@ const AuthorNotVerified = () => {
       </h2>
 
       <div className="w-full flex flex-col items-end gap-12 px-8">
-        <p className="text-[1.3rem] font-light text-black/60 line-clamp-1 self-center dark:text-first/80">مدرس علوم پایه و نرم افزار</p>
+        <p className="text-[1.3rem] font-light text-black/60 line-clamp-1 self-center dark:text-first/80">
+          مدرس علوم پایه و نرم افزار
+        </p>
         <div className="w-full flex items-center justify-between gap-2 child:shadow-sm">
           <Link
             href={"/products/software/sfdsadfdfds"}
@@ -41,6 +43,6 @@ const AuthorNotVerified = () => {
       </div>
     </div>
   );
-};
+});
 
 export default AuthorNotVerified;

@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
-export default function Scroller() {
+const Scroller = memo(() => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -37,4 +37,6 @@ export default function Scroller() {
       </div>
     </>
   ) : null;
-}
+});
+
+export default Scroller;

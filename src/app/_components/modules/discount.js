@@ -1,10 +1,9 @@
 "use client";
-import useLocalStorage from '../modules/localStore'
-
+import useLocalStorage from "../modules/localStore";
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 
-const Discount = () => {
+const Discount = memo(() => {
   const [active, setActive] = useLocalStorage("discountBox", true);
 
   return (
@@ -41,6 +40,5 @@ const Discount = () => {
       </div>
     </div>
   );
-};
-
+});
 export default Discount;

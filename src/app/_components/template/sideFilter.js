@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import useLocalStorage from "../modules/localStore";
 
-export default function SideFilterMobile({ filter, setFilter }) {
+const SideFilterMobile = memo(({ filter, setFilter }) => {
   const [sideFlag, setSideFlag] = useLocalStorage("sidebarFilterFlag", false);
 
   useEffect(() => {
@@ -97,4 +97,5 @@ export default function SideFilterMobile({ filter, setFilter }) {
       ></div>
     </>
   );
-}
+});
+export default SideFilterMobile;

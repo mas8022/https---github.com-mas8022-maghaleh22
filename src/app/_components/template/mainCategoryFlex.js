@@ -1,10 +1,10 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Aos from "../modules/aos";
 
-export default function MainCategoryFlex() {
+const MainCategoryFlex = memo(() => {
   return (
     <div className="flex items-center w-full">
       <Aos />
@@ -119,4 +119,5 @@ export default function MainCategoryFlex() {
       </div>
     </div>
   );
-}
+});
+export default MainCategoryFlex;

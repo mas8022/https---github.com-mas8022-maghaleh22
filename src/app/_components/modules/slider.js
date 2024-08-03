@@ -1,15 +1,15 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import Cart from "./cart";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
-const Sliders = () => {
+const Sliders = memo(() => {
   return (
     <Swiper
       breakpoints={{
-        100: {slidesPerView: 1},
+        100: { slidesPerView: 1 },
         800: { slidesPerView: 2 },
         1000: { slidesPerView: 3 },
         1391: { slidesPerView: 4 },
@@ -45,6 +45,6 @@ const Sliders = () => {
       </SwiperSlide>
     </Swiper>
   );
-};
+});
 
 export default Sliders;

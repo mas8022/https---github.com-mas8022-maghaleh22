@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const AuthorBox = () => {
+const AuthorBox = memo(() => {
   return (
     <div className="w-full rounded-3xl bg-first dark:bg-[#1e293b] py-8 flex items-center justify-center gap-8 shadow-lg dark:shadow-2xl relative">
       <div className="w-40 h-full rounded-tl-full rounded-bl-full bg-second/50 dark:bg-second/70 absolute right-0 top-0 hidden sm:block"></div>
@@ -22,7 +22,10 @@ const AuthorBox = () => {
             گرافیکی نیز می باشند.
           </span>
 
-          <Link href={"/author-bio/sdfdsffg"} className="text-[1.6rem] text-blue-600 font-bold">
+          <Link
+            href={"/author-bio/sdfdsffg"}
+            className="text-[1.6rem] text-blue-600 font-bold"
+          >
             ادامه مطلب...
           </Link>
         </div>
@@ -39,6 +42,6 @@ const AuthorBox = () => {
       <div className="w-40 h-full rounded-tr-full rounded-br-full bg-second/50 dark:bg-second/70 absolute left-0 top-0 hidden sm:block"></div>
     </div>
   );
-};
+});
 
 export default AuthorBox;

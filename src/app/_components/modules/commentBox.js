@@ -1,7 +1,7 @@
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 
-const CommentBox = () => {
+const CommentBox = memo(() => {
   return (
     <div className="p-12 flex flex-col gap-12 items-center justify-between overflow-hidden rounded-3xl shadow-lg dark:shadow-2xl">
       <div className="flex flex-col gap-4 items-center justify-between">
@@ -22,7 +22,9 @@ const CommentBox = () => {
       </p>
       <div className="w-full flex justify-end gap-6">
         <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
-          <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">2</span>
+          <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
+            2
+          </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -39,7 +41,9 @@ const CommentBox = () => {
           </svg>
         </div>
         <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
-          <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">2</span>
+          <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
+            2
+          </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -58,6 +62,5 @@ const CommentBox = () => {
       </div>
     </div>
   );
-};
-
+});
 export default CommentBox;

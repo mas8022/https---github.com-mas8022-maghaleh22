@@ -1,12 +1,12 @@
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import { useFormik } from "formik";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import toast from "react-hot-toast";
 import { MoonLoader } from "react-spinners";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-const AuthorSignUpForm = ({ setFormMode }) => {
+const AuthorSignUpForm = memo(({ setFormMode }) => {
   const [loading, setLoading] = useState(false);
 
   const authorSignUp = useFormik({
@@ -206,6 +206,6 @@ const AuthorSignUpForm = ({ setFormMode }) => {
       </form>
     </>
   );
-};
+});
 
 export default AuthorSignUpForm;

@@ -1,16 +1,18 @@
 "use client";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import useToggle from "../../../../utils/toggle";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
-export default function InputSearchNav() {
+const InputSearchNav = memo(() => {
   const [isOpen, toggleOpen] = useToggle("inputSearchNavActivation");
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   return (
     <div
       className={`${
-        isOpen ? "w-[15rem] sm:w-[20rem] justify-end gap-2" : "size-14 sm:size-16 justify-center"
+        isOpen
+          ? "w-[15rem] sm:w-[20rem] justify-end gap-2"
+          : "size-14 sm:size-16 justify-center"
       } p-4 py-2 rounded-full bg-second/10 flex items-center overflow-hidden`}
     >
       <input
@@ -47,4 +49,5 @@ export default function InputSearchNav() {
       </div>
     </div>
   );
-}
+});
+export default InputSearchNav;

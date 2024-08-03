@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 
-const CmsProductCart = () => {
+const CmsProductCart = memo(() => {
   return (
     <div className="w-[32rem] bg-first dark:bg-[#0d141f]/50 flex flex-col shadow-md pb-9 rounded-xl overflow-hidden">
       <Image
@@ -18,8 +18,12 @@ const CmsProductCart = () => {
 
       <div className="w-full flex justify-between px-10 items-center gap-2 mb-12">
         <div className="flex flex-col items-center gap-3">
-          <span className="text-[13px] text-black/60 dark:text-first/60">استاد همایون حسینی</span>
-          <span className="text-[13px] text-black/60 dark:text-first/60">10 ساعت و 18 دقیقه</span>
+          <span className="text-[13px] text-black/60 dark:text-first/60">
+            استاد همایون حسینی
+          </span>
+          <span className="text-[13px] text-black/60 dark:text-first/60">
+            10 ساعت و 18 دقیقه
+          </span>
         </div>
 
         <p className="text-end w-[10rem] text-[1.3rem] text-black/80 dark:text-first/80 font-light">
@@ -49,6 +53,5 @@ const CmsProductCart = () => {
       </div>
     </div>
   );
-};
-
+});
 export default CmsProductCart;

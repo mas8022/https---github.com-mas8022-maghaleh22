@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import Image from "next/image";
 import CustomInput from "../modules/customInput";
 import SelectBox from "../modules/selectBox";
@@ -9,7 +9,7 @@ import { MoonLoader } from "react-spinners";
 import swal from "sweetalert";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 
-const ContactUsBoxForm = () => {
+const ContactUsBoxForm = memo(() => {
   const [loading, setLoading] = useState(false);
 
   const contactForm = useFormik({
@@ -230,6 +230,6 @@ const ContactUsBoxForm = () => {
       </form>
     </div>
   );
-};
+});
 
 export default ContactUsBoxForm;

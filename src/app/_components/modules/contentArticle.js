@@ -1,9 +1,8 @@
 "use client";
-
-import React from "react";
+import React, { memo } from "react";
 import DOMPurify from "dompurify";
 
-const ContentArticle = () => {
+const ContentArticle = memo(() => {
   return (
     <div
       className="w-full"
@@ -12,6 +11,5 @@ const ContentArticle = () => {
       }}
     ></div>
   );
-};
-
+});
 export default ContentArticle;

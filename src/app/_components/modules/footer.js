@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 import FooterCommentBox from "../template/footerCommentBox";
 
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <div className="w-full h-8 flex flex-col items-center">
       <div className="w-full h-auto lg:h-[42rem] bg-second/60 dark:bg-[#fb923c] px-6 sm:px-[5rem] lg:px-[10rem] xl:px-[15rem] flex flex-col md:flex-row justify-between py-20 gap-16 lg:gap-8">
@@ -105,7 +105,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full lg:w-1/2 h-[30rem] lg:h-full flex flex-col justify-between gap-10">
-         <FooterCommentBox/>
+          <FooterCommentBox />
 
           <div className="flex justify-end gap-4">
             <Link href={"/"}>
@@ -135,6 +135,5 @@ const Footer = () => {
       </div>
     </div>
   );
-};
-
+});
 export default Footer;

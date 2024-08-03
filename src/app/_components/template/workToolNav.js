@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-const WorkToolNav = () => {
+
+const WorkToolNav = memo(() => {
   const router = useRouter();
 
   const [isAuthor, setIsAuthor] = useState(false);
@@ -22,7 +23,6 @@ const WorkToolNav = () => {
       .then((result) => {
         if (result.status === 200) {
           setIsAuthor(true);
-          
         } else {
           router.replace("/coWorker/employment");
         }
@@ -72,6 +72,6 @@ const WorkToolNav = () => {
       </div>
     </div>
   ) : null;
-};
+});
 
 export default WorkToolNav;

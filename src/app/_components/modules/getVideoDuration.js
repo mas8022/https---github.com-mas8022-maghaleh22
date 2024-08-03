@@ -1,8 +1,7 @@
 "use client";
+import { useRef, useEffect, memo } from "react";
 
-import { useRef, useEffect } from "react";
-
-export default function GetVideoDuration({ setDuration, file }) {
+const GetVideoDuration = memo(({ setDuration, file }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -29,4 +28,6 @@ export default function GetVideoDuration({ setDuration, file }) {
   }, [file, setDuration]);
 
   return file && <video ref={videoRef} className="hidden"></video>;
-}
+});
+
+export default GetVideoDuration;

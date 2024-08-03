@@ -1,8 +1,9 @@
 "use client";
 import Plyr from "plyr-react";
 import "plyr-react/plyr.css";
+import { memo } from "react";
 
-export default function Player({ url, auto }) {
+const Player = memo(({ url, auto }) => {
   const plyrProps = {
     source: {
       type: "video",
@@ -25,4 +26,5 @@ export default function Player({ url, auto }) {
       <Plyr {...plyrProps} />
     </div>
   );
-}
+});
+export default Player;

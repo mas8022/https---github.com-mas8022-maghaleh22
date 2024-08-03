@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import useSanitizeInput from "@/utils/useSanitizeInput";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
-const MainSearch = () => {
+const MainSearch = memo(() => {
   const [search, setSearch] = useState("");
 
   return (
@@ -25,6 +25,6 @@ const MainSearch = () => {
       </div>
     </div>
   );
-};
+});
 
 export default MainSearch;

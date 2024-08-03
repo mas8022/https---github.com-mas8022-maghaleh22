@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useFormik } from "formik";
 import swal from "sweetalert";
@@ -13,7 +13,7 @@ const Editor = dynamic(() => import("../../_components/modules/ck"), {
   ssr: false,
 });
 
-const NewProject = () => {
+const NewProject = memo(() => {
   const [isReadAblePrice, setIsReadAblePrice] = useState(false);
   const [isReadAbleDiscount, setIsReadAbleDiscount] = useState(false);
   const [articleText, setArticleText] = useState("");
@@ -334,6 +334,6 @@ const NewProject = () => {
       <GetVideoDuration file={file} setDuration={setDuration} />
     </div>
   );
-};
+});
 
 export default NewProject;

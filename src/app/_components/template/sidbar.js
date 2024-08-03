@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 import useToggle from "../../../../utils/toggle";
 import Side from "../modules/side";
 
-export default function SidBar() {
+const SidBar = memo(() => {
   const [isOpen, toggleOpen] = useToggle("sidBarUlActivation");
 
   return (
@@ -69,8 +69,7 @@ export default function SidBar() {
             </ul>
 
             <Link href={"/coWorker"} className="flex gap-2">
-              
-            <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -147,4 +146,5 @@ export default function SidBar() {
       </Side>
     </>
   );
-}
+});
+export default SidBar;

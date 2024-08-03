@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Bg from "../modules/bg";
 import { logoutHandler } from "../../../../utils/authTools";
 
-const ProfileBtn = () => {
+const ProfileBtn = memo(() => {
   const [slideProfile, setSlideProfile] = useState(false);
   const [me, setMe] = useState(false);
   const [isPending, setIsPendingMe] = useState(false);
@@ -183,6 +183,6 @@ const ProfileBtn = () => {
       )}
     </>
   );
-};
+});
 
 export default ProfileBtn;

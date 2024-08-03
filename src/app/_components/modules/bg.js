@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 
-export default function Bg({ active, setActive }) {
+const Bg = memo(() => {
   useEffect(() => {
     const closeSideBarHandler = (e) => {
       if (e.target.contains(document.querySelector(".bgActive"))) {
@@ -22,4 +22,6 @@ export default function Bg({ active, setActive }) {
       }
     ></div>
   );
-}
+});
+
+export default Bg;
