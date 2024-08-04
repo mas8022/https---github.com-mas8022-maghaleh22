@@ -5,6 +5,7 @@ import Navbar from "./_components/template/navbar";
 import "./globals.css";
 import ThemeToggle from "./_components/modules/themeToggle";
 import { Toaster } from "react-hot-toast";
+import BreadCrumb from "./_components/modules/breadCrumb";
 
 export const metadata = {
   title: "MAGHALEH",
@@ -19,6 +20,8 @@ export default function RootLayout({ children }) {
         <Navbar />
         <Discount />
         <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] sm:pt-16 md:pt-24 lg:pt-28 lgg:pt-32">
+          <BreadCrumb />
+
           {children}
           <Scroller />
         </div>
