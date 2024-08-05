@@ -2,7 +2,8 @@
 import React, { memo, useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import NewProject from "../_components/template/workTool";
+import NewProject from "../_components/template/newProject";
+
 const page = memo(() => {
   const router = useRouter();
   const [isAuthor, setIsAuthor] = useState(false);

@@ -31,6 +31,7 @@ const pathDataRoute = [
 const BreadCrumb = memo(() => {
   let pathes = useSelectedLayoutSegments();
   let pathNames = [];
+
   useMemo(() => {
     pathDataRoute.filter((route) => {
       pathes.forEach((pathName) => {

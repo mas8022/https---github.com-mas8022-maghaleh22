@@ -6,10 +6,10 @@ import swal from "sweetalert";
 import SelectBox from "../modules/selectBox";
 import Uploader from "../modules/uploader";
 import Button from "../modules/Button";
-import GetVideoDuration from "../../_components/modules/getVideoDuration";
+import GetVideoDuration from "../modules/getVideoDuration";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 
-const Editor = dynamic(() => import("../../_components/modules/ck"), {
+const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
