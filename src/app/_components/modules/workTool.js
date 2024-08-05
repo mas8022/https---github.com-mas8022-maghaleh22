@@ -1,5 +1,5 @@
 "use client";
-import React, { memo, useState } from "react";
+import React, { memo, useReducer, useState } from "react";
 import dynamic from "next/dynamic";
 import { useFormik } from "formik";
 import swal from "sweetalert";
@@ -13,22 +13,54 @@ const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
-const NewProject = memo(() => {
-  const [isReadAblePrice, setIsReadAblePrice] = useState(false);
-  const [isReadAbleDiscount, setIsReadAbleDiscount] = useState(false);
+const NewProject = memo(({ apiPath }) => {
   const [articleText, setArticleText] = useState("");
-  const [tag, setTag] = useState("");
-  const [tags, setTags] = useState([]);
-  const [loader, setLoader] = useState(false);
-  const [file, setFile] = useState(null);
   const [duration, setDuration] = useState(0);
 
-  const addTag = () => {
-    if (tag.trim()) {
-      setTags((p) => [...p, tag]);
-      setTag("");
+  const [states, dispatch] = useReducer(
+    (states, action) => {
+      switch (action.type) {
+        case "readAblePriceClose":
+          return { ...states, isReadAblePrice: false };
+        case "readAblePriceOpen":
+          return { ...states, isReadAblePrice: true };
+        case "readAbleDiscountClose":
+          return { ...states, isReadAbleDiscount: false };
+        case "readAbleDiscountOpen":
+          return { ...states, isReadAbleDiscount: true };
+        case "setTag":
+          return { ...states, tag: action.value };
+        case "clearTag":
+          return { ...states, tag: "" };
+        case "setLoaderClose":
+          return { ...states, loader: false };
+        case "setLoaderOpen":
+          return { ...states, loader: true };
+        case "setTags":
+          return states.tag.trim()
+            ? { ...states, tags: [...states.tags, states.tag] }
+            : states;
+        case "addTag":
+          if (states.tag.trim()) {
+            return { ...states, tags: [...states.tags, states.tag], tag: "" };
+          }
+          return states;
+        case "setFile":
+          return { ...states, file: action.value };
+        default:
+          throw new Error(`Unhandled action type: ${action.type}`);
+      }
+    },
+    {
+      isReadAblePrice: false,
+      isReadAbleDiscount: false,
+      articleText: "",
+      tag: "",
+      tags: [],
+      loader: false,
+      file: null,
     }
-  };
+  );
 
   const generateProductFormik = useFormik({
     initialValues: {
@@ -47,7 +79,7 @@ const NewProject = memo(() => {
         errors.title = "عنوان محتوا را وارد کن";
       } else if (!values.cover) {
         errors.cover = "عکس کاور محتوا را بارگذاری کنید";
-      } else if (!tags?.length) {
+      } else if (!states.tags?.length) {
         errors.tags = "هی�� تگی برای محتوا انتخاب نشده ا��ت";
       } else if (!articleText.trim() && !values.articleVideo) {
         swal({
@@ -55,11 +87,11 @@ const NewProject = memo(() => {
           text: "ابتدا محتوا اموزشی خود را تولید کنید",
         });
       }
-      setFile(values?.articleVideo);
+      dispatch({ type: "setFile", value: values?.articleVideo });
       return errors;
     },
     onSubmit: async (values, { setSubmitting }) => {
-      setLoader(true);
+      dispatch({ type: "setLoaderOpen" });
 
       const formData = new FormData();
 
@@ -68,18 +100,18 @@ const NewProject = memo(() => {
       formData.append("price", values.price);
       formData.append("articleText", articleText);
       formData.append("articleVideo", values.articleVideo);
-      formData.append("tags", JSON.stringify(tags));
+      formData.append("tags", JSON.stringify(states.tags));
       formData.append("discount", values.discount);
       formData.append("cover", values.cover);
       formData.append("duration", duration);
 
       setTimeout(async () => {
-        await fetch("/api/product", {
+        await fetch(`/api/product/${apiPath}`, {
           method: "POST",
           body: formData,
         })
           .then((res) => {
-            setLoader(false);
+            dispatch({ type: "setLoaderClose" });
             return res.json();
           })
           .then((result) => {
@@ -103,16 +135,6 @@ const NewProject = memo(() => {
 
   return (
     <div className="w-full pb-20 pt-5 flex flex-col gap-16">
-      <div className="describe w-full px-16 py-10 text-[1.6rem] text-first bg-second/70 rounded-3xl text-center">
-        سلام خوش امدین به سایت مقاله در این قسمت شما میتوانید مقاله خود را ارسال
-        کنید شما ابتدا باید فورم های زیر را پر کرده سپس مقاله خود را توسط ادیتور
-        که در همین صفحه تعویه شده نوشته و حتی با بستن سایت هم اطلاعات شما ذخیره
-        میشود و می توانید بعدا ادامه مقاله خود را بنویسید و همچنین میتوانید غیر
-        از مقاله فیلم اموزشی خود را نیز اپلود کنید حتی اگر تنها فیلم اموزشی
-        دارید باز هم میتوانید بدون مقاله و تنها با فیلم اموزشی خود مقاله خود را
-        جهت بررسی برای ما بفرستید و درصورت تایید از سمت ما ان را در سایت منتشر
-        می کنیم و به شما اطلاع خواهیم داد
-      </div>
       <form
         onSubmit={generateProductFormik.handleSubmit}
         className="flex flex-col gap-16"
@@ -170,20 +192,20 @@ const NewProject = memo(() => {
                     }}
                     min="0"
                     className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
-                      isReadAblePrice && "text-first/55"
+                      states.isReadAblePrice && "text-first/55"
                     }`}
                     placeholder="قیمت مقاله خود را به ریال بنویسید (مانند: 150000)"
-                    readOnly={isReadAblePrice}
+                    readOnly={states.isReadAblePrice}
                   />
                   <div className="flex gap-6 h-full py-2">
                     <div
-                      onClick={() => setIsReadAblePrice(false)}
+                      onClick={() => dispatch({ type: "readAblePriceClose" })}
                       className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/60 rounded-lg active:"
                     >
                       ویرایش
                     </div>
                     <div
-                      onClick={() => setIsReadAblePrice(true)}
+                      onClick={() => dispatch({ type: "readAblePriceOpen" })}
                       className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/80 rounded-lg active:"
                     >
                       تایید
@@ -221,21 +243,23 @@ const NewProject = memo(() => {
                     min="0"
                     max="100"
                     className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
-                      isReadAbleDiscount && "text-first/55"
+                      states.isReadAbleDiscount && "text-first/55"
                     }`}
                     placeholder="از 0 تا 100 مقدار تخفیف برای مقاله خود در نظر بگیرید"
-                    readOnly={isReadAbleDiscount}
+                    readOnly={states.isReadAbleDiscount}
                   />
 
                   <div className="flex gap-6 h-full py-2">
                     <div
-                      onClick={() => setIsReadAbleDiscount(false)}
+                      onClick={() =>
+                        dispatch({ type: "readAbleDiscountClose" })
+                      }
                       className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/60 rounded-lg active:"
                     >
                       ویرایش
                     </div>
                     <div
-                      onClick={() => setIsReadAbleDiscount(true)}
+                      onClick={() => dispatch({ type: "readAbleDiscountOpen" })}
                       className="px-6 py-3 flex items-center justify-center text-[1.4rem] text-first font-light bg-second/80 rounded-lg active:"
                     >
                       تایید
@@ -256,15 +280,18 @@ const NewProject = memo(() => {
               <div className="w-full h-[4.2rem] flex">
                 <input
                   type="search"
-                  value={tag}
-                  onChange={(e) => {
-                    setTag(useSanitizeInput(e.target.value));
-                  }}
+                  value={states.tag}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "setTag",
+                      value: useSanitizeInput(e.target.value),
+                    })
+                  }
                   placeholder="برچسب های مورد نظر خود را وارد کنید..."
                   className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-[1px] border-gray-600/35 text-[1.3rem] text-black dark:text-first dark:bg-[#0d141f]"
                 />
                 <div
-                  onClick={addTag}
+                  onClick={dispatch({ type: "addTag" })}
                   type="button"
                   className="w-1/4 h-full flex items-center justify-center bg-second/80 active:bg-second/50 rounded-md text-[1.3rem] font-bold text-first"
                 >
@@ -273,8 +300,8 @@ const NewProject = memo(() => {
               </div>
 
               <div className="w-full h-auto flex flex-wrap p-6 gap-5 child:text-[1.2rem] font-light bg-black/0">
-                {tags?.length
-                  ? tags.map((item, index) => (
+                {states.tags?.length
+                  ? states.tags.map((item, index) => (
                       <span key={index} className="text-black dark:text-first">
                         {item}
                       </span>
@@ -282,7 +309,7 @@ const NewProject = memo(() => {
                   : null}
               </div>
             </div>
-            {!tags?.length && (
+            {!states.tags?.length && (
               <span className="self-center text-[1.2rem] text-red-500">
                 حداقل یک برچسب بنویسید
               </span>
@@ -322,7 +349,7 @@ const NewProject = memo(() => {
         <Button
           buttonType="submit"
           label="ذخیره کردن"
-          loader={loader}
+          loader={states.loader}
           customclassName="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/80 text-first cursor-pointer active:bg-second/80"
         >
           ذخیره کردن
@@ -331,7 +358,7 @@ const NewProject = memo(() => {
           ارسال مقاله
         </div>
       </form>
-      <GetVideoDuration file={file} setDuration={setDuration} />
+      <GetVideoDuration file={states.file} setDuration={setDuration} />
     </div>
   );
 });
