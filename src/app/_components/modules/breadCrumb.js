@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
-import React, { memo, useEffect, useMemo } from "react";
+import React, { memo, useMemo } from "react";
 
 const pathDataRoute = [
   { path: "products", valuePath: "محصولات", href: "/products/software" },
@@ -23,6 +23,9 @@ const pathDataRoute = [
   { path: "contactUs", valuePath: "تماس با ما", href: "/contactUs" },
   { path: "aboutUs", valuePath: "درباره ما", href: "/aboutUs" },
   { path: "author-bio", valuePath: "اطلاعات استاد", href: "/author-bio" },
+  { path: "profile", valuePath: "پروفایل", href: "/profile" },
+  { path: "myCourses", valuePath: "دوره های من", href: "/myCourses" },
+  { path: "favorites", valuePath: "علاقه مندی ها", href: "/favorites" },
 ];
 
 const BreadCrumb = memo(() => {
@@ -39,7 +42,7 @@ const BreadCrumb = memo(() => {
   }, [pathes]);
 
   return pathNames?.length ? (
-    <div className="w-full h-16 px-8 bg-black/5 dark:bg-first/10 rounded-full flex items-center gap-1 sm:gap-4 child:text-xl child:text-black/40 dark:child:text-first/60 ltr mt-10 sm:mt-0">
+    <div className="w-full h-16 px-8 mb-4 bg-black/5 dark:bg-first/10 rounded-full flex items-center gap-1 sm:gap-4 child:text-xl child:text-black/40 dark:child:text-first/60 ltr mt-10 sm:mt-0">
       <Link href="/">خانه</Link>
 
       {pathNames?.length
