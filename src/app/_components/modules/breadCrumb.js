@@ -36,11 +36,9 @@ const BreadCrumb = memo(() => {
         }
       });
     });
-
-    console.log(pathNames);
   }, [pathes]);
 
-  return (
+  return pathNames?.length ? (
     <div className="w-full h-16 px-8 bg-black/5 dark:bg-first/10 rounded-full flex items-center gap-1 sm:gap-4 child:text-xl child:text-black/40 dark:child:text-first/60 ltr mt-10 sm:mt-0">
       <Link href="/">خانه</Link>
 
@@ -66,7 +64,7 @@ const BreadCrumb = memo(() => {
           ))
         : null}
     </div>
-  );
+  ) : null;
 });
 
 export default BreadCrumb;
