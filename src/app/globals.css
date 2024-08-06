@@ -51,7 +51,6 @@
     @apply font-light;
   }
 
-
   /* ck editor css start */
 
   .root
@@ -157,6 +156,47 @@
   }
 
   /* ck editor css end */
+
+  /* Ue css start */
+
+  .loading-box {
+    background-image: linear-gradient(
+      to right,
+      #eee 0%,
+      #fafafa 20%,
+      #eee 100%
+    );
+    animation: shimmer 1s infinite linear;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0px 0;
+    }
+    100% {
+      background-position: 600px 0;
+    }
+  }
+  .dark .loading-box {
+    background-image: linear-gradient(
+      to right,
+      #001122 0%,
+      #0b2034 20%,
+      #001122 100%
+    );
+    animation: shimmer 1s infinite linear;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0px 0;
+    }
+    100% {
+      background-position: 600px 0;
+    }
+  }
+
+  /* Ue css end */
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
