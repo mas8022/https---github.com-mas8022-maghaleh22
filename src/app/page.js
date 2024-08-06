@@ -6,7 +6,7 @@ import Sliders from "./_components/modules/slider";
 import Ad from "./_components/template/ad";
 import MainSearch from "./_components/template/mainSearch";
 import CommentsSlider from "./_components/template/commentsSlider";
-import Le from "./_components/modules/Ue";
+import Ue from "./_components/modules/Ue";
 
 export default function Home() {
   return (
@@ -30,14 +30,14 @@ export default function Home() {
         <Title title={"جدید ترین نظرات"} />
         <CommentsSlider />
         <Hr />
-        {/* 
-        <Le classes={"w-full h-40 bg-first/5"}>
-          <span>
+
+        <Ue classes={"w-full h-60 bg-first/5 p-10 flex item-center"}>
+          <span className="text-first">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
             dignissimos pariatur nam sapiente et at quas illum perspiciatis
             commodi. Asperiores!
           </span>
-        </Le> */}
+        </Ue>
       </div>
       <Hr />
     </>
