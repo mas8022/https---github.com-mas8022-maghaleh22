@@ -30,14 +30,14 @@ export default function Home() {
         <Title title={"جدید ترین نظرات"} />
         <CommentsSlider />
         <Hr />
-
+        {/* 
         <Le classes={"w-full h-40 bg-first/5"}>
           <span>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
             dignissimos pariatur nam sapiente et at quas illum perspiciatis
             commodi. Asperiores!
           </span>
-        </Le>
+        </Le> */}
       </div>
       <Hr />
     </>
