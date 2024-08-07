@@ -1,6 +1,62 @@
 "use client";
-import React, { memo, useState, useEffect, Suspense } from "react";
-import { useInView } from "react-intersection-observer";
+import React, {
+  memo,
+  useState,
+  useEffect,
+  Suspense,
+  useRef,
+  useCallback,
+} from "react";
+
+const useInView = ({
+  threshold = 0,
+  root = null,
+  rootMargin = "0%",
+  triggerOnce = false,
+} = {}) => {
+  const [inView, setInView] = useState(false);
+  const [entry, setEntry] = useState();
+  const nodeRef = useRef(null);
+  const observer = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && nodeRef.current) {
+      observer.current = new IntersectionObserver(
+        (entries) => {
+          const [entry] = entries;
+          setInView(entry.isIntersecting);
+          setEntry(entry);
+          if (entry.isIntersecting && triggerOnce) {
+            observer.current.disconnect();
+          }
+        },
+        {
+          threshold,
+          root,
+          rootMargin,
+        }
+      );
+      observer.current.observe(nodeRef.current);
+    }
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [nodeRef.current]);
+
+  const ref = useCallback((node) => {
+    if (node) {
+      nodeRef.current = node;
+      if (observer.current) {
+        observer.current.observe(node);
+      }
+    }
+  }, []);
+
+  return { ref, inView, entry };
+};
 
 const Loader = () => (
   <div className="size-full bg-black/0">
@@ -8,7 +64,7 @@ const Loader = () => (
   </div>
 );
 
-const Ue = memo(({ classes, children }) => {
+const Ue = memo(({ className: classes, children }) => {
   const [loaded, setLoaded] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
@@ -38,4 +94,4 @@ const Ue = memo(({ classes, children }) => {
   );
 });
 
-export default Ue;
+export { Ue };

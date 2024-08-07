@@ -31,7 +31,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
-    "react-intersection-observer": "^9.13.0",
     "react-spinners": "^0.13.8",
     "sharp": "^0.33.4",
     "sweetalert": "^2.1.2",

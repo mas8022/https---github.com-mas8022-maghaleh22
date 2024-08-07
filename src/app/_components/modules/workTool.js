@@ -13,7 +13,7 @@ const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
-const NewProject = memo(({ apiPath }) => {
+const WorkTool = memo(({ apiPath }) => {
   const [articleText, setArticleText] = useState("");
   const [duration, setDuration] = useState(0);
 
@@ -363,4 +363,4 @@ const NewProject = memo(({ apiPath }) => {
   );
 });
 
-export default NewProject;
+export default WorkTool;
