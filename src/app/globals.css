@@ -159,6 +159,15 @@
 
   /* Ue css start */
 
+  @keyframes shimmer {
+    0% {
+      background-position: 0px 0;
+    }
+    100% {
+      background-position: 600px 0;
+    }
+  }
+
   .loading-box {
     background-image: linear-gradient(
       to right,
@@ -168,15 +177,7 @@
     );
     animation: shimmer 1s infinite linear;
   }
-
-  @keyframes shimmer {
-    0% {
-      background-position: 0px 0;
-    }
-    100% {
-      background-position: 600px 0;
-    }
-  }
+  
   .dark .loading-box {
     background-image: linear-gradient(
       to right,
@@ -185,15 +186,6 @@
       #001122 100%
     );
     animation: shimmer 1s infinite linear;
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: 0px 0;
-    }
-    100% {
-      background-position: 600px 0;
-    }
   }
 
   /* Ue css end */
