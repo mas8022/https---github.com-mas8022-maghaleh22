@@ -1,16 +1,14 @@
-import { GetAuthorId } from "../../../../utils/author";
-import connectToDb from "../../../../configs/db";
-import productModel from "../../../../models/product";
-import CloudStoringFile from "../../../../utils/cloudStoringFile";
+import connectToDb from "@/configs/db";
+import { GetAuthorId } from "@/utils/author";
+import CloudStoringFile from "@/utils/cloudStoringFile";
+import productModel from '@/models/product'
 
-export async function POST(req, { params }) {
+export async function POST(req) {
   try {
     const author = await GetAuthorId();
     if (!author) {
       return Response.json({ message: "لطفا مجددا تلاش فرمایید", status: 400 });
     }
-
-
 
     const formData = await req.formData();
 
@@ -40,7 +38,7 @@ export async function POST(req, { params }) {
       comments: [],
       publish: false,
       sellCount: 0,
-      discount: discount? discount : 0,
+      discount: discount ? discount : 0,
       tags,
       cover: coverSrc,
       articleVideo: articleVideoSrc,

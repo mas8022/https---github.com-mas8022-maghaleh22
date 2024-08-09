@@ -1,10 +1,12 @@
-// import WorkTool from "@/src/app/_components/modules/workTool";
-import React, { memo } from "react";
+import WorkTool from "@/src/app/_components/modules/workTool";
+import React from "react";
 
-const page = memo(() => {
-  <div>
-    {/* <WorkTool /> */}
-  </div>;
-});
+const page = () => {
+  return (
+    <div className="w-full">
+      <WorkTool apiPath={"draftedProject"} />
+    </div>
+  );
+};
 
 export default page;

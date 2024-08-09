@@ -1,21 +1,24 @@
 "use client";
-import React, { memo, useReducer, useState } from "react";
-import dynamic from "next/dynamic";
 import { useFormik } from "formik";
-import swal from "sweetalert";
-import SelectBox from "../modules/selectBox";
-import Uploader from "../modules/uploader";
-import Button from "../modules/Button";
-import GetVideoDuration from "../modules/getVideoDuration";
+import { memo, useReducer, useState } from "react";
+import SelectBox from "./selectBox";
 import useSanitizeInput from "@/utils/useSanitizeInput";
+import Uploader from "./uploader";
+import Button from "./Button";
+import GetVideoDuration from "./getVideoDuration";
+import dynamic from "next/dynamic";
 
 const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
-const WorkTool = memo(({ apiPath }) => {
-  const [articleText, setArticleText] = useState("");
-  const [duration, setDuration] = useState(0);
+const WorkTool = memo(({ apiPath, initialValues = null }) => {
+  const [articleText, setArticleText] = useState(
+    initialValues ? initialValues.articleText : ""
+  );
+  const [duration, setDuration] = useState(
+    initialValues ? initialValues.duration : 0
+  );
 
   const [states, dispatch] = useReducer(
     (states, action) => {
@@ -54,22 +57,21 @@ const WorkTool = memo(({ apiPath }) => {
     {
       isReadAblePrice: false,
       isReadAbleDiscount: false,
-      articleText: "",
-      tag: "",
-      tags: [],
-      loader: false,
-      file: null,
+      tag: initialValues ? initialValues.tag : "",
+      tags: initialValues ? initialValues.tags : [],
+      loader: initialValues ? initialValues.loader : false,
+      file: initialValues ? initialValues.file : null,
     }
   );
 
   const generateProductFormik = useFormik({
     initialValues: {
-      group: "",
-      title: "",
-      price: "",
-      articleVideo: "",
-      discount: "",
-      cover: "",
+      group: initialValues ? initialValues.group : "",
+      title: initialValues ? initialValues.title : "",
+      price: initialValues ? initialValues.price : "",
+      articleVideo: initialValues ? initialValues.articleVideo : "",
+      discount: initialValues ? initialValues.discount : "",
+      cover: initialValues ? initialValues.cover : "",
     },
     validate: (values) => {
       const errors = {};
@@ -157,7 +159,7 @@ const WorkTool = memo(({ apiPath }) => {
                   value={generateProductFormik.values.title}
                   onChange={(e) => {
                     const sanitizedValue = useSanitizeInput(e.target.value);
-                    formHandler.setFieldValue("title", sanitizedValue);
+                    generateProductFormik.setFieldValue("title", sanitizedValue);
                   }}
                   className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] text-black dark:text-first rounded-md border-[1px] outline-none border-gray-600/30 px-6 focus:outline-none"
                   placeholder="سر تیتر مقاله خود را بنویسید..."
@@ -188,7 +190,7 @@ const WorkTool = memo(({ apiPath }) => {
                     value={generateProductFormik.values.price}
                     onChange={(e) => {
                       const sanitizedValue = useSanitizeInput(e.target.value);
-                      formHandler.setFieldValue("price", sanitizedValue);
+                      generateProductFormik.setFieldValue("price", sanitizedValue);
                     }}
                     min="0"
                     className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
@@ -238,7 +240,7 @@ const WorkTool = memo(({ apiPath }) => {
                     value={generateProductFormik.values.discount}
                     onChange={(e) => {
                       const sanitizedValue = useSanitizeInput(e.target.value);
-                      formHandler.setFieldValue("discount", sanitizedValue);
+                      generateProductFormik.setFieldValue("discount", sanitizedValue);
                     }}
                     min="0"
                     max="100"
@@ -291,7 +293,7 @@ const WorkTool = memo(({ apiPath }) => {
                   className="w-3/4 h-full rounded-md outline-none focus:outline-none px-6 border-b-[1px] border-gray-600/35 text-[1.3rem] text-black dark:text-first dark:bg-[#0d141f]"
                 />
                 <div
-                  onClick={dispatch({ type: "addTag" })}
+                  onClick={() => dispatch({ type: "addTag" })}
                   type="button"
                   className="w-1/4 h-full flex items-center justify-center bg-second/80 active:bg-second/50 rounded-md text-[1.3rem] font-bold text-first"
                 >
@@ -326,14 +328,14 @@ const WorkTool = memo(({ apiPath }) => {
         />
         <div className="w-full flex sm:flex-row flex-col items-center gap-8">
           <Uploader
-            formHandler={generateProductFormik}
+            generateProductFormik={generateProductFormik}
             label="در صورت علاقه فیلم اموزشی خود را اپلود کنید"
             name="articleVideo"
             customclassName="xm:w-2/3 w-full h-24 !rounded-3xl flex items-center justify-center !text-[1.4rem] sm:!text-[1.7rem] !font-light cursor-pointer !text-first !bg-second/60 !hover:bg-second/80"
           />
           <div className="w-1/3 flex flex-col gap-2 items-center">
             <Uploader
-              formHandler={generateProductFormik}
+              generateProductFormik={generateProductFormik}
               label="کاور مقاله"
               name="cover"
               customclassName="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/70 text-first cursor-pointer active:bg-second/80"
