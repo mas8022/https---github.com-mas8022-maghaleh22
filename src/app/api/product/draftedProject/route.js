@@ -1,7 +1,7 @@
 import connectToDb from "@/configs/db";
 import { GetAuthorId } from "@/utils/author";
 import CloudStoringFile from "@/utils/cloudStoringFile";
-import productModel from '@/models/product'
+import productModel from "@/models/product";
 
 export async function POST(req) {
   try {
@@ -12,6 +12,7 @@ export async function POST(req) {
 
     const formData = await req.formData();
 
+    const id = formData.get("id");
     const group = formData.get("group");
     const title = formData.get("title");
     const price = formData.get("price");
@@ -28,6 +29,8 @@ export async function POST(req) {
 
     const articleVideoSrc = await CloudStoringFile(articleVideo);
 
+    const product = await productModel.findOne({ _id: id });
+
     connectToDb();
     await productModel.create({
       group,
@@ -35,13 +38,13 @@ export async function POST(req) {
       price: price ? price : 0,
       author,
       articleText,
-      comments: [],
+      comments: product ? product.comments : [],
       publish: false,
       sellCount: 0,
       discount: discount ? discount : 0,
       tags,
       cover: coverSrc,
-      articleVideo: articleVideoSrc,
+      articleVideo: product ? [...product.articleVideo] : articleVideoSrc,
       duration,
     });
 

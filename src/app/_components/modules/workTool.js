@@ -97,6 +97,7 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
 
       const formData = new FormData();
 
+      formData.append("id", initialValues ? initialValues._id : "");
       formData.append("group", values.group);
       formData.append("title", values.title);
       formData.append("price", values.price);
@@ -159,7 +160,10 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
                   value={generateProductFormik.values.title}
                   onChange={(e) => {
                     const sanitizedValue = useSanitizeInput(e.target.value);
-                    generateProductFormik.setFieldValue("title", sanitizedValue);
+                    generateProductFormik.setFieldValue(
+                      "title",
+                      sanitizedValue
+                    );
                   }}
                   className="w-[30rem] h-[4.2rem] dark:bg-[#0d141f] text-[1.3rem] text-black dark:text-first rounded-md border-[1px] outline-none border-gray-600/30 px-6 focus:outline-none"
                   placeholder="سر تیتر مقاله خود را بنویسید..."
@@ -190,7 +194,10 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
                     value={generateProductFormik.values.price}
                     onChange={(e) => {
                       const sanitizedValue = useSanitizeInput(e.target.value);
-                      generateProductFormik.setFieldValue("price", sanitizedValue);
+                      generateProductFormik.setFieldValue(
+                        "price",
+                        sanitizedValue
+                      );
                     }}
                     min="0"
                     className={`w-full bg-black/0 pl-6 focus:outline-none outline-none text-[1.3rem] text-black dark:text-first ${
@@ -240,7 +247,10 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
                     value={generateProductFormik.values.discount}
                     onChange={(e) => {
                       const sanitizedValue = useSanitizeInput(e.target.value);
-                      generateProductFormik.setFieldValue("discount", sanitizedValue);
+                      generateProductFormik.setFieldValue(
+                        "discount",
+                        sanitizedValue
+                      );
                     }}
                     min="0"
                     max="100"
