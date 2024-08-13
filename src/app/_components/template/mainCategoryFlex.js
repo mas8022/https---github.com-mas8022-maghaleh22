@@ -12,7 +12,7 @@ const MainCategoryFlex = memo(() => {
         <Link
           data-aos="fade-left"
           data-aos-duration="2000"
-          href={"/products/software"}
+          href={"/products/نرم افزار و فناوری اطلاعات"}
           className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
@@ -30,7 +30,7 @@ const MainCategoryFlex = memo(() => {
         <Link
           data-aos="fade-left"
           data-aos-duration="2000"
-          href={"/products/economics"}
+          href={"/products/اقتصاد و حسابداری"}
           className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
@@ -48,7 +48,7 @@ const MainCategoryFlex = memo(() => {
         <Link
           data-aos="fade-left"
           data-aos-duration="1000"
-          href={"/products/business"}
+          href={"/products/کسب و کار"}
           className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
@@ -66,7 +66,7 @@ const MainCategoryFlex = memo(() => {
         <Link
           data-aos="fade-right"
           data-aos-duration="1000"
-          href={"/products/teenager"}
+          href={"/products/کودک و نوجوان"}
           className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
@@ -84,7 +84,7 @@ const MainCategoryFlex = memo(() => {
         <Link
           data-aos="fade-right"
           data-aos-duration="1500"
-          href={"/products/language"}
+          href={"/products/اموزش زبان"}
           className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
@@ -102,7 +102,7 @@ const MainCategoryFlex = memo(() => {
         <Link
           data-aos="fade-right"
           data-aos-duration="2000"
-          href={"/products/art"}
+          href={"/products/هنر و طراحی"}
           className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image

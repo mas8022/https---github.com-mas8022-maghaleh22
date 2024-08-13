@@ -7,6 +7,8 @@ import Uploader from "./uploader";
 import Button from "./Button";
 import GetVideoDuration from "./getVideoDuration";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import Image from "next/image";
 
 const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
@@ -369,6 +371,36 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
         <div className="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second text-first cursor-pointer active:bg-second/80">
           ارسال مقاله
         </div>
+
+        {initialValues?.articleVideo?.length ? (
+          <div className="w-full">
+            {initialValues.articleVideo.map((item) => (
+              <Link
+                href={`/preview/${item}`}
+                className="px-8 py-5 rounded-lg flex flex-col ld:flex-row items-center gap-8 justify-between border-2 border-black/40 dark:border-first/40"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-12 dark:invert opacity-80"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
+                  />
+                </svg>
+                <span className="w-full text-xl text-black/70 dark:text-first/70 overflow-hidden">
+                  {item}
+                </span>
+              </Link>
+            ))}
+            
+          </div>
+        ) : null}
       </form>
       <GetVideoDuration file={states.file} setDuration={setDuration} />
     </div>

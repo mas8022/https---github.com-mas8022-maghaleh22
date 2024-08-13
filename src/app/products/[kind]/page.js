@@ -7,7 +7,7 @@ import Hr from "../../_components/modules/hr";
 import useLocalStorage from "../../_components/modules/localStore";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 
-export default function products() {
+export default function products({ kind }) {
   const [filter, setFilter] = useLocalStorage("sideFilterValue", "all");
   const [search, setSearch] = useState("");
 
@@ -50,22 +50,11 @@ export default function products() {
 
           <div className="w-full flex justify-center">
             <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
+              {/* <Cart />
               <Cart />
               <Cart />
               <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
-              <Cart />
+              <Cart /> */}
             </div>
           </div>
         </div>

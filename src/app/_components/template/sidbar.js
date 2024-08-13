@@ -57,14 +57,16 @@ const SidBar = memo(() => {
                   isOpen ? "!h-auto  pt-4 gap-2" : "!h-0"
                 }`}
               >
-                <Link href={"/products/software"}>
+                <Link href={"/products/نرم افزار و فناوری اطلاعات"}>
                   نرم افزار و فناوری اطلاعات
                 </Link>
-                <Link href={"/products/economics"}>اقتصاد و حسابداری</Link>
-                <Link href={"/products/business"}>کسب و کار</Link>
-                <Link href={"/products/teenager"}>کودک و نوجوان</Link>
-                <Link href={"/products/language"}>اموزش زبان</Link>
-                <Link href={"/products/art"}>هنر و طراحی</Link>
+                <Link href={"/products/اقتصاد و حسابداری"}>
+                  اقتصاد و حسابداری
+                </Link>
+                <Link href={"/products/کسب و کار"}>کسب و کار</Link>
+                <Link href={"/products/کودک و نوجوان"}>کودک و نوجوان</Link>
+                <Link href={"/products/اموزش زبان"}>اموزش زبان</Link>
+                <Link href={"/products/هنر طراحی"}>هنر طراحی</Link>
               </ul>
             </ul>
 

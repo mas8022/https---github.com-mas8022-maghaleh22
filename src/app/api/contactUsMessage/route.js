@@ -1,7 +1,7 @@
 import connectToDb from "../../../../configs/db";
 import ContactUsMessageModel from "../../../../models/contactUsMessage";
 
-export async function POST(req, { params }) {
+export async function POST(req) {
   try {
     const formData = await req.formData();
 

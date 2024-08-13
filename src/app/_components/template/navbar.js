@@ -30,12 +30,12 @@ const Navbar = memo(() => {
           </svg>
 
           <ul className="w-[23rem] absolute right-0 rounded-xl top-full mt-4 bg-first dark:bg-[#1f2937] shadow-md p-6 flex flex-col gap-y-1 border-y-2 border-y-second invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:mt-2 child:cursor-pointer child-hover:bg-second/30 child:rounded-lg child:pr-4 child:h-12 child:flex child:items-center pb-16 delay-100 child:dark:text-first">
-            <Link href={"/products/software"}>نرم افزار و فناوری اطلاعات</Link>
-            <Link href={"/products/economics"}>اقتصاد و حسابداری</Link>
-            <Link href={"/products/business"}>کسب و کار</Link>
-            <Link href={"/products/teenager"}>کودک و نوجوان</Link>
-            <Link href={"/products/language"}>اموزش زبان</Link>
-            <Link href={"/products/art"}>هنر طراحی</Link>
+            <Link href={"/products/نرم افزار و فناوری اطلاعات"}>نرم افزار و فناوری اطلاعات</Link>
+            <Link href={"/products/اقتصاد و حسابداری"}>اقتصاد و حسابداری</Link>
+            <Link href={"/products/کسب و کار"}>کسب و کار</Link>
+            <Link href={"/products/کودک و نوجوان"}>کودک و نوجوان</Link>
+            <Link href={"/products/اموزش زبان"}>اموزش زبان</Link>
+            <Link href={"/products/هنر طراحی"}>هنر طراحی</Link>
           </ul>
         </ul>
 

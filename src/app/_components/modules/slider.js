@@ -1,11 +1,12 @@
 "use client";
-import React, { memo } from "react";
+import React from "react";
 import Cart from "./cart";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
-const Sliders = memo(() => {
+const Sliders = ({ productsData }) => {
+  
+
   return (
     <Swiper
       breakpoints={{
@@ -25,26 +26,18 @@ const Sliders = memo(() => {
       modules={[Autoplay]}
       loop={true}
     >
-      <SwiperSlide className="!flex items-center justify-center">
-        <Cart />
-      </SwiperSlide>
-      <SwiperSlide className="!flex items-center justify-center">
-        <Cart />
-      </SwiperSlide>
-      <SwiperSlide className="!flex items-center justify-center">
-        <Cart />
-      </SwiperSlide>
-      <SwiperSlide className="!flex items-center justify-center">
-        <Cart />
-      </SwiperSlide>
-      <SwiperSlide className="!flex items-center justify-center">
-        <Cart />
-      </SwiperSlide>
-      <SwiperSlide className="!flex items-center justify-center">
-        <Cart />
-      </SwiperSlide>
+      {productsData?.length
+        ? productsData.map((item) => (
+            <SwiperSlide
+              key={item._id}
+              className="!flex items-center justify-center"
+            >
+              <Cart productData={item} />
+            </SwiperSlide>
+          ))
+        : null}
     </Swiper>
   );
-});
+};
 
 export default Sliders;

@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { memo } from "react";
 
-const Cart = memo(({ productsData, btnMode }) => {
-  const { _id, title, cover, duration, sellCount, price, discount, author } =
-    productsData;
+const Cart = memo(({ productData, btnMode }) => {
+  const { _id, group, title, cover, duration, sellCount, price, discount, author } =
+    productData;
 
   const { hour, minute } = useConvertTime(duration);
   const discountPrice = useDiscountPrice(price, discount);
@@ -14,7 +14,7 @@ const Cart = memo(({ productsData, btnMode }) => {
   return (
     <div className="w-[32rem] h-[32.5rem] bg-first dark:bg-[#374151] flex flex-col shadow-md rounded-xl overflow-hidden">
       <Image
-        src={"/images/teacher.jpg"}
+        src={cover ? String(cover) : "/images/teacher.jpg"}
         alt="product Image"
         width={320}
         height={230}
@@ -70,7 +70,7 @@ const Cart = memo(({ productsData, btnMode }) => {
             </Link>
           ) : (
             <Link
-              href={`/coWorker/software/${_id}`}
+              href={`/products/${group}/${_id}`}
               className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 dark:border-second bg-second active:bg-first dark:active:bg-first/0 active:border-second active:text-second rounded-lg"
             >
               مشاهده
