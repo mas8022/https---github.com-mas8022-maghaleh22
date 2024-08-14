@@ -51,6 +51,12 @@
     @apply font-light;
   }
 
+  img {
+    width: 100%; /* or any specific value */
+    height: auto;
+    object-fit: contain; /* or cover, depending on your needs */
+}
+
   /* ck editor css start */
 
   .root

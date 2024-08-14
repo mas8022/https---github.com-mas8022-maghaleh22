@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { comment } from "postcss";
 import React, { memo } from "react";
 
 const CommentBox = memo(({ commentData }) => {

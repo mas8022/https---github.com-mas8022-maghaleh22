@@ -5,8 +5,17 @@ import Link from "next/link";
 import React, { memo } from "react";
 
 const Cart = memo(({ productData, btnMode }) => {
-  const { _id, group, title, cover, duration, sellCount, price, discount, author } =
-    productData;
+  const {
+    _id,
+    group,
+    title,
+    cover,
+    duration,
+    sellCount,
+    price,
+    discount,
+    author,
+  } = productData;
 
   const { hour, minute } = useConvertTime(duration);
   const discountPrice = useDiscountPrice(price, discount);
@@ -14,7 +23,7 @@ const Cart = memo(({ productData, btnMode }) => {
   return (
     <div className="w-[32rem] h-[32.5rem] bg-first dark:bg-[#374151] flex flex-col shadow-md rounded-xl overflow-hidden">
       <Image
-        src={cover ? String(cover) : "/images/teacher.jpg"}
+        src={cover ? cover : "/images/teacher.jpg"}
         alt="product Image"
         width={320}
         height={230}
