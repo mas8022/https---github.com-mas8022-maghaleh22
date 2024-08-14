@@ -5,7 +5,7 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import CommentBox from "../modules/commentBox";
 
-const CommentsSlider = memo(() => {
+const CommentsSlider = memo(({ comments }) => {
   return (
     <Swiper
       breakpoints={{
@@ -24,18 +24,13 @@ const CommentsSlider = memo(() => {
       loop={true}
       className="!p-2"
     >
-      <SwiperSlide>
-        <CommentBox />
-      </SwiperSlide>
-      <SwiperSlide>
-        <CommentBox />
-      </SwiperSlide>
-      <SwiperSlide>
-        <CommentBox />
-      </SwiperSlide>
-      <SwiperSlide>
-        <CommentBox />
-      </SwiperSlide>
+      {comments?.length
+        ? comments.map((item) => (
+            <SwiperSlide key={item._id}>
+              <CommentBox commentData={item} />
+            </SwiperSlide>
+          ))
+        : null}
     </Swiper>
   );
 });

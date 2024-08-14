@@ -30,6 +30,9 @@ const schema = {
     type: String,
     required: true,
   },
+  profile: {
+    type: String,
+  },
 };
 
 const model = mongoose.models?.User || mongoose.model("User", schema);

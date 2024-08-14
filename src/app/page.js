@@ -9,13 +9,27 @@ import CommentsSlider from "./_components/template/commentsSlider";
 import "@/models/author";
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
-
+import siteImprovementCommentsModel from "@/models/siteImprovementComments";
 const Home = async () => {
   connectToDb();
   const freeProducts = await productModel
     .find({ price: 0 }, "title cover duration sellCount price discount group")
     .populate("author", "name")
     .sort({ _id: -1 });
+  const newProducts = await productModel
+    .find({}, "title cover duration sellCount price discount group")
+    .populate("author", "name")
+    .sort({ _id: -1 })
+    .limit(6);
+  const popularProducts = await productModel
+    .find({}, "title cover duration sellCount price discount group")
+    .populate("author", "name")
+    .sort({ sellCount: -1 })
+    .limit(6);
+
+  const siteImprovementComments = await siteImprovementCommentsModel
+    .find({ publish: true }, "comment like disLike")
+    .populate("user", "fullName profile");
 
   return (
     <>
@@ -28,16 +42,18 @@ const Home = async () => {
         <Sliders productsData={JSON.parse(JSON.stringify(freeProducts))} />
 
         <Hr />
-        {/* <Title title={"جدید ترین اموزش ها"} />
-        <Sliders />
+        <Title title={"جدید ترین اموزش ها"} />
+        <Sliders productsData={JSON.parse(JSON.stringify(newProducts))} />
         <Hr />
         <Title title={" محبوب ترین اموزش ها"} />
-        <Sliders /> */}
+        <Sliders productsData={JSON.parse(JSON.stringify(popularProducts))} />
         <Hr />
         <Ad />
         <Hr />
         <Title title={"جدید ترین نظرات"} />
-        <CommentsSlider />
+        <CommentsSlider
+          comments={JSON.parse(JSON.stringify(siteImprovementComments))}
+        />
         <Hr />
       </div>
       <Hr />

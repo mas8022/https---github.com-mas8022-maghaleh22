@@ -15,6 +15,7 @@ export async function POST(req) {
     await siteImprovementCommentModel.create({
       user: meId,
       comment,
+      publish: false,
     });
 
     return Response.json({

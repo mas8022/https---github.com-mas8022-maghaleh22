@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import "@/models/user";
 
 const schema = new Schema(
   {
@@ -10,6 +11,21 @@ const schema = new Schema(
     comment: {
       type: String,
       required: true,
+    },
+    publish: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    like: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    disLike: {
+      type: Number,
+      required: true,
+      default: 0,
     },
   },
   {
