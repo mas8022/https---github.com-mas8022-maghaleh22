@@ -4,21 +4,38 @@ import { useSelectedLayoutSegments } from "next/navigation";
 import React, { memo, useMemo } from "react";
 
 const pathDataRoute = [
-  { path: "products", valuePath: "محصولات", href: "/products/software" },
   {
-    path: "software",
+    path: "products",
+    valuePath: "همه محصولات",
+    href: "/products",
+  },
+  {
+    path: "نرم افزار و فناوری اطلاعات",
     valuePath: "نرم افزار و فناوری اطلاعات",
-    href: "/products/software",
+    href: "/products/نرم افزار و فناوری اطلاعات",
   },
   {
-    path: "economics",
+    path: "اقتصاد و حسابداری",
     valuePath: "اقتصاد و حسابداری",
-    href: "/products/economics",
+    href: "/products/اقتصاد و حسابداری",
   },
-  { path: "business", valuePath: "کسب و کار", href: "/products/business" },
-  { path: "teenager", valuePath: "کودک و نوجوان", href: "/products/teenager" },
-  { path: "language", valuePath: "اموزش زبان", href: "/products/language" },
-  { path: "art", valuePath: "هنر و طراحی", href: "/products/art" },
+  {
+    path: "کسب و کار",
+    valuePath: "کسب و کار",
+    href: "/products/business/کسب و کار",
+  },
+  {
+    path: "کودک و نوجوان",
+    valuePath: "کودک و نوجوان",
+    href: "/products/کودک و نوجوان",
+  },
+  { path: "اموزش زبان", valuePath: "اموزش زبان", href: "/products/اموزش زبان" },
+  {
+    path: "هنر طراحی",
+    valuePath: "هنر طراحی",
+    href: "/products/هنر طراحی",
+  },
+
   { path: "coWorker", valuePath: "همکاری باما", href: "/coWorker" },
   { path: "contactUs", valuePath: "تماس با ما", href: "/contactUs" },
   { path: "aboutUs", valuePath: "درباره ما", href: "/aboutUs" },
@@ -35,7 +52,7 @@ const BreadCrumb = memo(() => {
   useMemo(() => {
     pathDataRoute.filter((route) => {
       pathes.forEach((pathName) => {
-        if (pathName.includes(route.path)) {
+        if (decodeURIComponent(pathName) === decodeURIComponent(route.path)) {
           pathNames.push(route);
         }
       });
@@ -63,7 +80,7 @@ const BreadCrumb = memo(() => {
                   d="m8.25 4.5 7.5 7.5-7.5 7.5"
                 />
               </svg>
-              <Link href={path.href}>{path.valuePath}</Link>
+              <Link href={path.href}>{decodeURIComponent(path.valuePath)}</Link>
             </div>
           ))
         : null}

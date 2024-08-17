@@ -16,6 +16,8 @@ export async function POST(req) {
       user: meId,
       comment,
       publish: false,
+      like: 0,
+      disLike: 0,
     });
 
     return Response.json({

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import MainCategoryFlex from "./_components/template/mainCategoryFlex";
 import Hr from "./_components/modules/hr";
 import Title from "./_components/template/title";
@@ -10,6 +10,7 @@ import "@/models/author";
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import siteImprovementCommentsModel from "@/models/siteImprovementComments";
+
 const Home = async () => {
   connectToDb();
   const freeProducts = await productModel
@@ -29,7 +30,9 @@ const Home = async () => {
 
   const siteImprovementComments = await siteImprovementCommentsModel
     .find({ publish: true }, "comment like disLike")
-    .populate("user", "fullName profile");
+    .populate("user", "fullName profile")
+    .sort({ _id: -1 })
+    .limit(6);
 
   return (
     <>

@@ -364,7 +364,7 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
           buttonType="submit"
           label="ذخیره کردن"
           loader={states.loader}
-          customclassName="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/80 text-first cursor-pointer active:bg-second/80"
+          customclass="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/80 text-first cursor-pointer active:bg-second/80"
         >
           ذخیره کردن
         </Button>
@@ -398,7 +398,6 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
                 </span>
               </Link>
             ))}
-            
           </div>
         ) : null}
       </form>

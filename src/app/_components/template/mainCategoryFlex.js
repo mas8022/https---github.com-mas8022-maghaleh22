@@ -102,7 +102,7 @@ const MainCategoryFlex = memo(() => {
         <Link
           data-aos="fade-right"
           data-aos-duration="2000"
-          href={"/products/هنر و طراحی"}
+          href={"/products/هنر طراحی"}
           className="size-60 p-[1rem] flex flex-col items-center justify-center gap-8 shadow-lg bg-gray-400/30 dark:bg-gray-700/70 rounded-[30px] active:scale-80"
         >
           <Image
@@ -113,7 +113,7 @@ const MainCategoryFlex = memo(() => {
             alt="دسته بندی ها"
           />
           <span className="text-black text-[1.35rem] md:text-[1.3rem] dark:text-first">
-            هنر و طراحی
+            هنر طراحی
           </span>
         </Link>
       </div>

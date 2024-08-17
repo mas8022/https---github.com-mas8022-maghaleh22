@@ -27,7 +27,7 @@ const CommentsSlider = memo(({ comments }) => {
       {comments?.length
         ? comments.map((item) => (
             <SwiperSlide key={item._id}>
-              <CommentBox commentData={item} />
+              <CommentBox {...item} />
             </SwiperSlide>
           ))
         : null}

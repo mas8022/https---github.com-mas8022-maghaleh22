@@ -1,10 +1,10 @@
 import mongoose, { Schema } from "mongoose";
-import "@/models/user";
+import userModel from "@/models/user";
 
 const schema = new Schema(
   {
     user: {
-      type: mongoose.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
@@ -15,17 +15,14 @@ const schema = new Schema(
     publish: {
       type: Boolean,
       required: true,
-      default: false,
     },
     like: {
       type: Number,
       required: true,
-      default: 0,
     },
     disLike: {
       type: Number,
       required: true,
-      default: 0,
     },
   },
   {

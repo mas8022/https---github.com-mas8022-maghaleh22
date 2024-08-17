@@ -38,10 +38,12 @@ const Cart = memo(({ productData, btnMode }) => {
           <span className="text-[13px] text-black/60 dark:text-first/60 self-start">
             {author.name}
           </span>
-          <span className="text-[13px] text-black/60 dark:text-first/60 mt-2">
-            {hour} ساعت و {minute} دقیقه
-          </span>
-          {sellCount !== 0 && (
+          {hour && minute ? (
+            <span className="text-[13px] text-black/60 dark:text-first/60 mt-2">
+              {hour} ساعت و {minute} دقیقه
+            </span>
+          ) : null}
+        
             <div className="flex items-end justify-start gap-2 self-start">
               <Image
                 src={"/images/student.svg"}
@@ -54,15 +56,19 @@ const Cart = memo(({ productData, btnMode }) => {
                 {sellCount}
               </span>
             </div>
-          )}
+     
         </div>
 
-        <div className="flex flex-col items-end gap-4">
-          <p className="text-end w-[10rem] text-[1.3rem] text-black/80 dark:text-first/80 font-light">
-            <span className="line-through">{price.toLocaleString()}</span>{" "}
-            <span>{discountPrice.toLocaleString()}</span>
-            تومان
-          </p>
+        <div className="flex flex-col items-end gap-4 justify-start">
+          {price === 0 ? (
+            <p className="text-3xl h-[3.85rem] font-bold text-green-500 dark:text-green-300">رایگان</p>
+          ) : (
+            <p className="text-end w-[10rem] text-[1.3rem] text-black/80 dark:text-first/80 font-light">
+              <span className="line-through">{price.toLocaleString()}</span>{" "}
+              <span>{discountPrice.toLocaleString()}</span>
+              تومان
+            </p>
+          )}
           {btnMode === "draft" ? (
             <Link
               href={`/coWorker/draftedProject/${_id}`}

@@ -32,22 +32,22 @@ async function MeId() {
       return false;
     }
 
-    const userId = await userModel.findOne(
+    const userIdObject = await userModel.findOne(
       {
         $or: [
-          { email: tokenPayload?.email },
-          { email: tokenPayload?.email.email },
+          { email: tokenPayload.email },
+          { email: tokenPayload.email.email },
         ],
       },
       "_id"
     );
+    const userId = userIdObject._id;
 
     if (userId) {
       return userId;
     } else {
       return false;
     }
-    
   } catch (error) {
     return false;
   }
@@ -76,7 +76,6 @@ async function isMe() {
     } else {
       return false;
     }
-    
   } catch (error) {
     return false;
   }
