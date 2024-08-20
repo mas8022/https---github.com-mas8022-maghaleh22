@@ -31,7 +31,7 @@
     scroll-behavior: smooth;
     font-family: yekBold;
   }
-  ::-webkit-scrollbar {
+  body::-webkit-scrollbar {
     display: none;
   }
   body {
@@ -170,11 +170,17 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #f00000;
+    background: linear-gradient(30deg, #ff9831, #ff5900);
     border-radius: 4px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background-color: #009dff;
+    background-color: #0000001b;
+    margin-top: 10px;
+    border-radius: 20px;
+  }
+  .dark .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #00000044;
+  
   }
 
   /* scroll-webkit css end */

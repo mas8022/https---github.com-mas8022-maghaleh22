@@ -1,23 +1,32 @@
 "use client";
+import useToggle from "@/utils/toggle";
 import useConvertTime from "@/utils/useConvertTime";
 import useDiscountPrice from "@/utils/useDiscountPrice";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import Image from "next/image";
 import Link from "next/link";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 const MainSearch = memo(() => {
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
 
-  const searchHandler = () => {
+  const searchHandler = (e) => {
+    toggleOpen(e);
+
     if (search.trim()) {
       fetch(`/api/searchProducts/${search}`)
         .then((res) => res.json())
         .then((data) => setProducts(data));
     }
   };
+  const [isOpen, toggleOpen] = useToggle("MainSearchList");
 
+  useEffect(() => {
+    if (!isOpen) {
+      setProducts([]);
+    }
+  }, [isOpen]);
 
   return (
     <div className="w-full flex flex-col rounded-3xl items-center">
@@ -27,7 +36,7 @@ const MainSearch = memo(() => {
         </p>
         <div className="md:w-1/2 w-[70%] h-16 flex overflow-hidden rounded-lg">
           <button
-            onClick={searchHandler}
+            onClick={(e) => searchHandler(e)}
             className="ld:w-1/6 w-2/6 h-full bg-second text-first xxm:text-[1.5rem] text-[1.4rem] font-light active:bg-second/50"
           >
             جستجو
