@@ -30,22 +30,24 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
   };
 
   const disLikeComment = () => {
-    const disLikeCount = like - 1;
+    const disLikeCount = like + 1;
     executeDisLikeAction(
-      fetch(
-        `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ disLikeCount }),
-        }
-      ),
-      (currentState) => currentState - 1,
+      () =>
+        fetch(
+          `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ disLikeCount }),
+          }
+        ),
+      (currentState) => currentState + 1,
       (currentState, actionResult) =>
-        !actionResult ? currentState : currentState - 1
+        !actionResult ? currentState : currentState + 1
     );
+    return executeDisLikeAction;
   };
 
   return (
