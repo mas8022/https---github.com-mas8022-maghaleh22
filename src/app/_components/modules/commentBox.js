@@ -1,17 +1,16 @@
 "use client";
+import useProState from "@/utils/useOptimistic";
 import Image from "next/image";
-import React, { memo, useCallback } from "react";
-import { useProState } from "top-react/useProState/useProState";
+import React, { memo } from "react";
 
 const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
-  const [likeExecuteAction, likeCountOptimistic] = useProState(like);
-  const [disLikeExecuteAction, disLikeCountOptimistic] = useProState(disLike);
+  const [likes, executeLikeAction, pendingLike] = useProState(like);
+  const [disLikes, executeDisLikeAction, pendingDisLike] = useProState(disLike);
 
-  const likeComment = useCallback(() => {
-    likeExecuteAction((currentValue, isOptimistic) => {
-      const likeCount = currentValue + 1;
-
-      if (!isOptimistic) {
+  const likeComment = () => {
+    const likeCount = like + 1;
+    executeLikeAction(
+      () =>
         fetch(
           `/api/siteImprovementComments/${_id}/likeSiteImprovementComments`,
           {
@@ -21,33 +20,33 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
             },
             body: JSON.stringify({ likeCount }),
           }
-        );
-      }
+        ),
+      (currentState) => currentState + 1,
+      (currentState, actionResult) =>
+        !actionResult ? currentState : currentState + 1
+    );
 
-      return likeCount;
-    });
-  }, [likeExecuteAction]);
+    return executeLikeAction;
+  };
 
-  const disLikeComment = useCallback(() => {
-    disLikeExecuteAction((currentValue, isOptimistic) => {
-      const disLikeCount = currentValue + 1;
-
-      if (!isOptimistic) {
-        fetch(
-          `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ disLikeCount }),
-          }
-        );
-      }
-
-      return disLikeCount;
-    });
-  }, [disLikeExecuteAction]);
+  const disLikeComment = () => {
+    const disLikeCount = like - 1;
+    executeDisLikeAction(
+      fetch(
+        `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ disLikeCount }),
+        }
+      ),
+      (currentState) => currentState - 1,
+      (currentState, actionResult) =>
+        !actionResult ? currentState : currentState - 1
+    );
+  };
 
   return (
     <div className="p-12 flex flex-col gap-12 items-center justify-between overflow-hidden rounded-3xl shadow-lg dark:shadow-2xl">
@@ -67,10 +66,10 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
         {comment}
       </p>
       <div className="w-full flex justify-end gap-6">
-        <div onClick={likeComment}>
+        <button onClick={likeComment} disabled={pendingLike}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
-              {likeCountOptimistic}
+              {likes}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,11 +86,11 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
               />
             </svg>
           </div>
-        </div>
-        <div onClick={disLikeComment}>
+        </button>
+        <button onClick={disLikeComment} disabled={pendingDisLike}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
-              {disLikeCountOptimistic}
+              {disLikes}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +107,7 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
               />
             </svg>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );
