@@ -6,16 +6,16 @@ import useSanitizeInput from "@/utils/useSanitizeInput";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
 
-const CommentsBox = memo(() => {
+const CommentsBox = memo(({ productId }) => {
   const [comment, setComment] = useState("");
 
   const sendComment = () => {
-    fetch("/api/sendproductComment", {
+    fetch("/api/sendProductComment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ comment }),
+      body: JSON.stringify({ comment, productId }),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -26,7 +26,7 @@ const CommentsBox = memo(() => {
         } else {
           toast.error("عملیات ناموفق بوده");
         }
-        sendComment("");
+        setComment("");
       });
   };
 

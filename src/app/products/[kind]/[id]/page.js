@@ -23,7 +23,7 @@ export default function page() {
 
         <AuthorBox />
         <Hr />
-        <CommentsBox />
+        <CommentsBox productId={"66a95351ec24bcc36ae0b851"} />
 
         <Hr />
       </div>

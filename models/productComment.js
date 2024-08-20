@@ -2,6 +2,10 @@ import mongoose, { Schema } from "mongoose";
 
 const schema = new Schema(
   {
+    productId: {
+      type: mongoose.Types.ObjectId,
+      ref: "Product",
+    },
     commenter: {
       type: mongoose.Types.ObjectId,
       ref: "User",

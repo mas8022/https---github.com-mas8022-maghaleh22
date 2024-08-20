@@ -12,9 +12,10 @@ export async function POST(req) {
       });
     }
 
-    const { comment } = await req.json();
+    const { comment, productId } = await req.json();
 
     await productCommentModel.create({
+      productId,
       commenter: me._id,
       commenterText: comment,
       publish: false,
