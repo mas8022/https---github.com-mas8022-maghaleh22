@@ -1,5 +1,5 @@
 "use client";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import TagsBox from "./tagsBox";
 import Comment from "./comment";
 import useSanitizeInput from "@/utils/useSanitizeInput";
@@ -8,9 +8,10 @@ import toast from "react-hot-toast";
 
 const CommentsBox = memo(({ productId }) => {
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
 
   const sendComment = () => {
-    fetch("/api/sendProductComment", {
+    fetch(`/api/productComment/${productId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,6 +30,16 @@ const CommentsBox = memo(({ productId }) => {
         setComment("");
       });
   };
+
+  useEffect(() => {
+    fetch(`/api/productComment/${productId}`)
+      .then((res) => res.json())
+      .then((result) => setComments(result));
+  }, []);
+
+  useEffect(() => {
+    console.log(comments);
+  }, [comments]);
 
   return (
     <div className="w-full flex flex-col ld:flex-row items-center sm:items-start gap-10">
@@ -52,14 +63,13 @@ const CommentsBox = memo(({ productId }) => {
             <span className="text-[2rem] font-bold dark:text-first">نظرات</span>
           </div>
           <span className="text-[1.4rem] dark:text-first">
-            تعداد نظرات (21)
+            تعداد نظرات ({comments.length})
           </span>
         </div>
 
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments?.length
+          ? comments.map((item) => <Comment {...item} key={item._id} />)
+          : null}
       </div>
 
       <div className="w-full ld:w-1/3 flex flex-col gap-16">
