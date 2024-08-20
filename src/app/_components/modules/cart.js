@@ -23,7 +23,7 @@ const Cart = memo(({ productData, btnMode }) => {
   return (
     <div className="w-[32rem] h-[32.5rem] bg-first dark:bg-[#374151] flex flex-col shadow-md rounded-xl overflow-hidden">
       <Image
-        src={cover ? cover : "/images/teacher.jpg"}
+        src={cover ? cover : "/images/productDefaultCover.jpg"}
         alt="product Image"
         width={320}
         height={230}

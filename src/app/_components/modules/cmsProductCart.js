@@ -6,7 +6,7 @@ const CmsProductCart = memo(() => {
   return (
     <div className="w-[32rem] bg-first dark:bg-[#0d141f]/50 flex flex-col shadow-md pb-9 rounded-xl overflow-hidden">
       <Image
-        src={"/images/teacher.jpg"}
+        src={"/images/productDefaultCover.jpg"}
         alt="product Image"
         width={320}
         height={230}

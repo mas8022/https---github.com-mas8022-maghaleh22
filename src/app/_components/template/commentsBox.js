@@ -1,10 +1,34 @@
+"use client";
 import React, { memo, useState } from "react";
 import TagsBox from "./tagsBox";
 import Comment from "./comment";
 import useSanitizeInput from "@/utils/useSanitizeInput";
+import swal from "sweetalert";
+import toast from "react-hot-toast";
 
 const CommentsBox = memo(() => {
   const [comment, setComment] = useState("");
+
+  const sendComment = () => {
+    fetch("/api/sendproductComment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ comment }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.status === 201) {
+          swal({ icon: "success", text: result.message });
+        } else if (result.status === 404) {
+          swal({ icon: "error", text: result.message });
+        } else {
+          toast.error("عملیات ناموفق بوده");
+        }
+        sendComment("");
+      });
+  };
 
   return (
     <div className="w-full flex flex-col ld:flex-row items-center sm:items-start gap-10">
@@ -52,6 +76,12 @@ const CommentsBox = memo(() => {
             className="w-full h-56 py-4 px-6 text-2xl dark:!text-first dark:bg-[#0d141f]/35 rounded-xl"
             placeholder="ایجاد پرسش یا نظر جدید..."
           />
+          <button
+            onClick={sendComment}
+            className="w-full py-4 text-2xl bg-second/70 !text-first active:bg-second/55 cursor-pointer rounded-lg"
+          >
+            ارسال نظر
+          </button>
         </div>
         <TagsBox />
       </div>

@@ -11,7 +11,7 @@ async function Me() {
     {
       $or: [
         { email: tokenPayload?.email },
-        { email: tokenPayload?.email.email },
+        { email: tokenPayload?.email?.email },
       ],
     },
     "-__v"

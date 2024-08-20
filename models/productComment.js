@@ -11,6 +11,10 @@ const schema = new Schema(
       type: String,
       required: true,
     },
+    publish: {
+      type: Boolean,
+      required: true,
+    },
   },
   {
     timestamps: true,
