@@ -1,7 +1,6 @@
 "use client";
-import useLocalStorage from "../modules/localStore";
 import { memo, useEffect } from "react";
-
+import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
 const ThemeToggle = memo(() => {
   const [theme, setTheme] = useLocalStorage("theme", "light");
 

@@ -1,53 +1,59 @@
 "use client";
 import Image from "next/image";
-import React, { memo, useOptimistic } from "react";
+import React, { memo, useCallback } from "react";
+import { useProState } from "top-react/useProState/useProState";
 
-const CommentBox = memo(({ _id, comment, user, like, disLike } ) => {
+const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
+  const [likeExecuteAction, likeCountOptimistic] = useProState(like);
+  const [disLikeExecuteAction, disLikeCountOptimistic] = useProState(disLike);
 
-  const [likeCountOptimistic, increaseLikeCountOptimistic] = useOptimistic(
-    like,
-    (currentLikeCount) => currentLikeCount + 1
-  );
+  const likeComment = useCallback(() => {
+    likeExecuteAction((currentValue, isOptimistic) => {
+      const likeCount = currentValue + 1;
 
-  const [dislikeCountOptimistic, increaseDisLikeCountOptimistic] =
-    useOptimistic(
-      disLike,
-      (currentDisLikeCount) => currentDisLikeCount + 1
-    );
-
-  const likeComment = () => {
-    increaseLikeCountOptimistic();
-
-    fetch(`/api/siteImprovementComments/${_id}/likeSiteImprovementComments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  };
-
-  const disLikeComment = () => {
-    increaseDisLikeCountOptimistic();
-    fetch(
-      `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      if (!isOptimistic) {
+        fetch(
+          `/api/siteImprovementComments/${_id}/likeSiteImprovementComments`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ likeCount }),
+          }
+        );
       }
-    );
-  };
+
+      return likeCount;
+    });
+  }, [likeExecuteAction]);
+
+  const disLikeComment = useCallback(() => {
+    disLikeExecuteAction((currentValue, isOptimistic) => {
+      const disLikeCount = currentValue + 1;
+
+      if (!isOptimistic) {
+        fetch(
+          `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ disLikeCount }),
+          }
+        );
+      }
+
+      return disLikeCount;
+    });
+  }, [disLikeExecuteAction]);
 
   return (
     <div className="p-12 flex flex-col gap-12 items-center justify-between overflow-hidden rounded-3xl shadow-lg dark:shadow-2xl">
       <div className="flex flex-col gap-4 items-center justify-between">
         <Image
-          src={
-            user?.profile
-              ? user.profile
-              : "/images/profile.jpg"
-          }
+          src={user?.profile ? user.profile : "/images/profile.jpg"}
           width={100}
           height={100}
           alt="عکس نظر دهنده"
@@ -85,7 +91,7 @@ const CommentBox = memo(({ _id, comment, user, like, disLike } ) => {
         <div onClick={disLikeComment}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
-              {dislikeCountOptimistic}
+              {disLikeCountOptimistic}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

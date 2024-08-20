@@ -3,11 +3,12 @@ import siteImprovementCommentModel from "@/models/siteImprovementComments";
 import connectToDb from "@/configs/db";
 
 export async function POST(req, { params }) {
+  const { likeCount } = await req.json();
   try {
     connectToDb();
     await siteImprovementCommentModel.findOneAndUpdate(
       { _id: params.id },
-      { $inc: { like: 1 } }
+      { like: likeCount }
     );
 
     return Response.json({ message: "با موفقیت لایک شد", status: 200 });

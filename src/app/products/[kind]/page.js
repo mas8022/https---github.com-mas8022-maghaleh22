@@ -4,7 +4,7 @@ import SideFilterMobile from "../../_components/template/sideFilter";
 import Cart from "../../_components/modules/cart";
 import SideFilterPC from "../../_components/template/sideFilterPc";
 import Hr from "../../_components/modules/hr";
-import useLocalStorage from "../../_components/modules/localStore";
+import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 
 export default function products({ kind }) {

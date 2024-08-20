@@ -52,10 +52,10 @@
   }
 
   img {
-    width: 100%; /* or any specific value */
+    width: 100%;
     height: auto;
-    object-fit: contain; /* or cover, depending on your needs */
-}
+    object-fit: contain;
+  }
 
   /* ck editor css start */
 
@@ -163,38 +163,21 @@
 
   /* ck editor css end */
 
-  /* Ue css start */
-
-  @keyframes shimmer {
-    0% {
-      background-position: 0px 0;
-    }
-    100% {
-      background-position: 600px 0;
-    }
+  /* scroll-webkit css start */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
 
-  .loading-box {
-    background-image: linear-gradient(
-      to right,
-      #eee 0%,
-      #fafafa 20%,
-      #eee 100%
-    );
-    animation: shimmer 1s infinite linear;
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #f00000;
+    border-radius: 4px;
   }
-  
-  .dark .loading-box {
-    background-image: linear-gradient(
-      to right,
-      #001122 0%,
-      #0b2034 20%,
-      #001122 100%
-    );
-    animation: shimmer 1s infinite linear;
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #009dff;
   }
 
-  /* Ue css end */
+  /* scroll-webkit css end */
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

@@ -1,6 +1,6 @@
 "use client";
 import React, { memo, useEffect } from "react";
-import useLocalStorage from "../modules/localStore";
+import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
 const Side = memo(({ children, sideBarName, cls }) => {
   const [sideFlag, setSideFlag] = useLocalStorage(sideBarName, false);
 

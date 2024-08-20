@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-
+import "@/models/author"
 const schema = new Schema({
   group: {
     type: String,

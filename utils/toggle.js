@@ -1,5 +1,5 @@
 "use client";
-import useLocalStorage from '../src/app/_components/modules/localStore'
+import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
 import React, { useCallback, useEffect } from "react";
 
 const useToggle = (keyName) => {

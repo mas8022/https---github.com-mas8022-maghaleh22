@@ -1,6 +1,6 @@
 "use client";
 import React, { memo, useEffect } from "react";
-import useLocalStorage from "../modules/localStore";
+import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
 
 const SideFilterMobile = memo(({ filter, setFilter }) => {
   const [sideFlag, setSideFlag] = useLocalStorage("sidebarFilterFlag", false);
