@@ -35,7 +35,7 @@ const Side = memo(({ children, sideBarName, cls }) => {
       </svg>
 
       <div
-        className={`w-[21rem] h-screen bg-first shadow-2xl fixed top-0 transition-all ease-in-out duration-[0.4s] z-[1000] ${
+        className={`w-[21rem] h-screen bg-first shadow-2xl fixed top-0 transition-all ease-in-out duration-[0.4s] z-[1002] ${
           sideFlag ? "right-0" : "-right-[30rem]"
         }`}
       >
@@ -44,7 +44,7 @@ const Side = memo(({ children, sideBarName, cls }) => {
       <div
         className={
           sideFlag
-            ? "bgActive w-full h-full z-0 bg-black/20 fixed top-0 left-0"
+            ? "bgActive w-full h-full z-[1001] bg-black/20 fixed top-0 left-0"
             : "hidden"
         }
       ></div>

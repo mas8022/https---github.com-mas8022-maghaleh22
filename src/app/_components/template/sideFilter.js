@@ -27,7 +27,7 @@ const SideFilterMobile = memo(({ filter, setFilter }) => {
       </div>
 
       <div
-        className={`w-[21rem] lg:w-96 h-screen bg-first dark:bg-[#1e293b] shadow-2xl text-2xl text-black font-light fixed top-0 transition-all ease-in-out duration-[0.4s] z-[1000] ${
+        className={`w-[21rem] lg:w-96 h-screen bg-first dark:bg-[#1e293b] shadow-2xl text-2xl text-black font-light fixed top-0 transition-all ease-in-out duration-[0.4s] z-[1002] ${
           sideFlag ? "right-0" : "-right-[30rem]"
         }`}
       >
@@ -83,7 +83,7 @@ const SideFilterMobile = memo(({ filter, setFilter }) => {
       <div
         className={
           sideFlag
-            ? "bgActive w-full h-full z-0 bg-black/20 fixed top-0 left-0"
+            ? "bgActive w-full h-full z-[1001] bg-black/20 fixed top-0 left-0"
             : "hidden"
         }
       ></div>

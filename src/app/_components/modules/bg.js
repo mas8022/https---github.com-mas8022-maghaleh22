@@ -17,7 +17,7 @@ const Bg = memo(({active, setActive}) => {
     <div
       className={
         active
-          ? "bgActive w-full h-full z-0 bg-black/20 fixed top-0 left-0 backdrop-blur-[1px] transition-all duration-1000"
+          ? "bgActive w-full h-full bg-black/20 fixed top-0 left-0 backdrop-blur-[1px] transition-all duration-1000 z-[1001]"
           : "hidden transition-all duration-1000"
       }
     ></div>

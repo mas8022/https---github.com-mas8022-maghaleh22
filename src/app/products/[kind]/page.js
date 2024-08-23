@@ -50,7 +50,7 @@ export default function products({ params }) {
             <div className="w-full flex justify-center">
               <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
                 {products.map((item) => (
-                  <Cart productData={item} />
+                  <Cart productData={item} key={item._id}/>
                 ))}
               </div>
             </div>
