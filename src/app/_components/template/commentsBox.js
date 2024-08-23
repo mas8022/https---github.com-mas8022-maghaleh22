@@ -37,10 +37,6 @@ const CommentsBox = memo(({ productId }) => {
       .then((result) => setComments(result));
   }, []);
 
-  useEffect(() => {
-    console.log(comments);
-  }, [comments]);
-
   return (
     <div className="w-full flex flex-col ld:flex-row items-center sm:items-start gap-10">
       <div className="w-full ld:w-2/3 flex flex-col justify-between gap-8 items-center px-12 py-8 pb-12 rounded-3xl overflow-hidden shadow-lg dark:shadow-2xl">

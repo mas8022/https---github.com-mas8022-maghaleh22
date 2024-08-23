@@ -6,8 +6,13 @@ import React, { memo, useMemo } from "react";
 const pathDataRoute = [
   {
     path: "products",
+    valuePath: "محصولات",
+    href: "/products/همه محصولات",
+  },
+  {
+    path: "همه محصولات",
     valuePath: "همه محصولات",
-    href: "/products",
+    href: "/products/همه محصولات",
   },
   {
     path: "نرم افزار و فناوری اطلاعات",
@@ -22,7 +27,7 @@ const pathDataRoute = [
   {
     path: "کسب و کار",
     valuePath: "کسب و کار",
-    href: "/products/business/کسب و کار",
+    href: "/products/کسب و کار",
   },
   {
     path: "کودک و نوجوان",

@@ -2,10 +2,18 @@
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import useToggle from "../../../../utils/toggle";
 import React, { memo, useState } from "react";
-
+import { useRouter } from "next/navigation";
 const InputSearchNav = memo(() => {
+  const router = useRouter();
   const [isOpen, toggleOpen] = useToggle("inputSearchNavActivation");
   const [search, setSearch] = useState("");
+
+  const sendDataUrlSearch = () => {
+    if (search.trim()) {
+      router.replace(`/products/${search}`);
+    }
+    setSearch("");
+  };
 
   return (
     <div
@@ -33,6 +41,7 @@ const InputSearchNav = memo(() => {
         className="h-10 sm:h-12 w-8 bg-second/0 flex items-center justify-center rounded-full"
       >
         <svg
+          onClick={sendDataUrlSearch}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

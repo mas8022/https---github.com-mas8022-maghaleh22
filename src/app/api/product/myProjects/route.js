@@ -28,8 +28,6 @@ export async function POST(req) {
 
     const articleVideoSrc = await CloudStoringFile(articleVideo);
 
-    // get product to access the comments , publish, sellcount, and calculate the daration
-
     connectToDb();
     await productModel.create({
       group,

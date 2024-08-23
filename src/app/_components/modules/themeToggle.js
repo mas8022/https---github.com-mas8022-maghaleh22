@@ -20,7 +20,7 @@ const ThemeToggle = memo(() => {
     <button
       theme={theme}
       onClick={toggleTheme}
-      className="p-4 rounded-full bg-second/10 flex items-center justify-center overflow-hidden cursor-pointer"
+      className="p-[0.85rem] rounded-full bg-second/10 flex items-center justify-center overflow-hidden cursor-pointer"
     >
       {theme === "light" ? (
         <svg

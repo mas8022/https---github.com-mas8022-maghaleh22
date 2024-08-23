@@ -30,7 +30,10 @@ const Navbar = memo(() => {
           </svg>
 
           <ul className="w-[23rem] absolute right-0 rounded-xl top-full mt-4 bg-first dark:bg-[#1f2937] shadow-md p-6 flex flex-col gap-y-1 border-y-2 border-y-second invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:mt-2 child:cursor-pointer child-hover:bg-second/30 child:rounded-lg child:pr-4 child:h-12 child:flex child:items-center pb-16 delay-100 child:dark:text-first">
-            <Link href={"/products/نرم افزار و فناوری اطلاعات"}>نرم افزار و فناوری اطلاعات</Link>
+            <Link href={"/products/همه محصولات"}>همه محصولات</Link>
+            <Link href={"/products/نرم افزار و فناوری اطلاعات"}>
+              نرم افزار و فناوری اطلاعات
+            </Link>
             <Link href={"/products/اقتصاد و حسابداری"}>اقتصاد و حسابداری</Link>
             <Link href={"/products/کسب و کار"}>کسب و کار</Link>
             <Link href={"/products/کودک و نوجوان"}>کودک و نوجوان</Link>
@@ -46,7 +49,7 @@ const Navbar = memo(() => {
 
       <SidBar />
 
-      <div className="flex gap-4 sm:gap-8 md:gap-10 items-center">
+      <div className="flex gap-3 sm:gap-5 md:gap-7 items-center">
         <InputSearchNav />
         <ThemeToggle />
         <ProfileBtn />

@@ -9,7 +9,16 @@ const SideFilterPC = memo(({ filter, setFilter }) => {
           filter === "all" && " bg-blue-600/10 rounded-xl cursor-pointer "
         }`}
       >
-        همه محصولات
+        محصولات این دسته
+      </div>
+      <div
+        onClick={() => setFilter("freeProducts")}
+        className={`w-full h-14 border-b-[1px] border-b-first text-2xl dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+          filter === "freeProducts" &&
+          " bg-blue-600/10 rounded-xl cursor-pointer "
+        }`}
+      >
+        محصولات رایگان
       </div>
       <div
         onClick={() => setFilter("bestSellers")}
@@ -28,15 +37,7 @@ const SideFilterPC = memo(({ filter, setFilter }) => {
       >
         ارزان ترین
       </div>
-      <div
-        onClick={() => setFilter("mostVisited")}
-        className={`w-full h-14 border-b-[1px] border-b-first text-2xl dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-          filter === "mostVisited" &&
-          " bg-blue-600/10 rounded-xl cursor-pointer "
-        }`}
-      >
-        پر بازدید ترین
-      </div>
+
       <div
         onClick={() => setFilter("expensive")}
         className={`w-full h-14 border-b-[1px] border-b-first text-2xl dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
@@ -44,14 +45,6 @@ const SideFilterPC = memo(({ filter, setFilter }) => {
         }`}
       >
         گران ترین
-      </div>
-      <div
-        onClick={() => setFilter("favorites")}
-        className={`w-full h-14 border-b-[1px] border-b-first text-2xl dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-          filter === "favorites" && " bg-blue-600/10 rounded-xl cursor-pointer "
-        }`}
-      >
-        محبوب ترین
       </div>
     </div>
   );

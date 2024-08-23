@@ -21,7 +21,7 @@ const SideFilterMobile = memo(({ filter, setFilter }) => {
     <>
       <div
         onClick={() => setSideFlag(true)}
-        className="text-[1.3rem] text-second md:hidden w-24 h-12 bg-second/10 flex items-center justify-center rounded-md"
+        className="w-full h-20 text-[1.3rem] text-second md:hidden bg-second/10 flex items-center justify-center rounded-md"
       >
         بر اساس
       </div>
@@ -38,7 +38,16 @@ const SideFilterMobile = memo(({ filter, setFilter }) => {
               filter === "all" && " bg-blue-600/10 rounded-xl cursor-pointer "
             }`}
           >
-            همه محصولات
+            محصولات این دسته
+          </div>
+          <div
+            onClick={() => setFilter("freeProducts")}
+            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
+              filter === "freeProducts" &&
+              " bg-blue-600/10 rounded-xl cursor-pointer "
+            }`}
+          >
+            محصولات رایگان
           </div>
           <div
             onClick={() => setFilter("bestSellers")}
@@ -58,15 +67,7 @@ const SideFilterMobile = memo(({ filter, setFilter }) => {
           >
             ارزان ترین
           </div>
-          <div
-            onClick={() => setFilter("mostVisited")}
-            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-              filter === "mostVisited" &&
-              " bg-blue-600/10 rounded-xl cursor-pointer "
-            }`}
-          >
-            پر بازدید ترین
-          </div>
+
           <div
             onClick={() => setFilter("expensive")}
             className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
@@ -75,15 +76,6 @@ const SideFilterMobile = memo(({ filter, setFilter }) => {
             }`}
           >
             گران ترین
-          </div>
-          <div
-            onClick={() => setFilter("favorites")}
-            className={`w-full h-14 dark:text-first pr-4 flex items-center active:scale-[99%] cursor-pointer ${
-              filter === "favorites" &&
-              " bg-blue-600/10 rounded-xl cursor-pointer "
-            }`}
-          >
-            محبوب ترین
           </div>
         </div>
       </div>
