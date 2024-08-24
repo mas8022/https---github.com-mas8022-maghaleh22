@@ -20,7 +20,6 @@ export async function POST(req, { params }) {
       });
     }
 
-
     const isValidPassword = await verifyPassword(password, user.password);
     if (!isValidPassword) {
       return Response.json({

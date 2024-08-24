@@ -4,14 +4,6 @@ export async function POST(req) {
   try {
     const { searchParam, filter } = await req.json();
 
-    console.log(
-      "search: ",
-      decodeURIComponent(searchParam),
-      "      ",
-      "filter: ",
-      filter
-    );
-
     const search = decodeURIComponent(searchParam);
 
     let productArray = [];
@@ -25,7 +17,7 @@ export async function POST(req) {
       "اموزش زبان",
       "هنر طراحی",
     ];
-    
+
     if (search === "همه محصولات") {
       productArray = await productModel
         .find({}, "group title cover duration sellCount price discount")

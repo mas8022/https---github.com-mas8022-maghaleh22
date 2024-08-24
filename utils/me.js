@@ -2,20 +2,21 @@ import { cookies } from "next/headers";
 import userModel from "../models/user";
 import connectToDb from "../configs/db";
 import { verifyToken } from "./authTools";
+import ResetToken from "./resetToken";
 
 async function Me() {
   connectToDb();
+  await ResetToken();
   const token = cookies().get("token")?.value;
   const tokenPayload = verifyToken(token, process.env.privateKey);
+
   const user = await userModel.findOne(
     {
-      $or: [
-        { email: tokenPayload?.email },
-        { email: tokenPayload?.email?.email },
-      ],
+      $or: [{ email: tokenPayload?.userEmail }, { email: tokenPayload?.email }],
     },
     "-__v"
   );
+
   if (user) {
     return user;
   } else {
@@ -26,6 +27,7 @@ async function Me() {
 async function MeId() {
   try {
     connectToDb();
+    await ResetToken();
     const token = cookies().get("token")?.value;
     const tokenPayload = verifyToken(token, process.env.privateKey);
     if (!tokenPayload) {
@@ -35,8 +37,8 @@ async function MeId() {
     const userIdObject = await userModel.findOne(
       {
         $or: [
-          { email: tokenPayload.email },
-          { email: tokenPayload.email.email },
+          { email: tokenPayload?.userEmail },
+          { email: tokenPayload?.email },
         ],
       },
       "_id"

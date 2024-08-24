@@ -1,15 +1,16 @@
 "use client";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import toast from "react-hot-toast";
-import Uploader from "../../_components/modules/uploader";
-import Hr from "../../_components/modules/hr";
-import { logoutHandler } from "../../../../utils/authTools";
+
+import Uploader from "../_components/modules/uploader";
 import useSanitizeInput from "@/utils/useSanitizeInput";
+import { logoutHandler } from "@/utils/authTools";
+import Hr from "../_components/modules/hr";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-export default function page({ params }) {
+export default function page() {
   const [loading, setLoading] = useState(false);
   const [fileData, setFileData] = useState("");
 
@@ -33,27 +34,41 @@ export default function page({ params }) {
     onSubmit: (values, { setSubmitting }) => {
       setLoading(true);
       setTimeout(async () => {
-        await fetch(`/api/editProfile/${params.id}`, {
+        await fetch(`/api/editProfile`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(values),
-        }).then((res) => {
-          if (res.ok) {
-            location.pathname = "/";
-          } else {
-            toast.error("اینترنت خود را چک کنید");
-          }
-          setLoading(false);
-        });
-        values.fullName = "";
-        values.email = "";
-        values.phone = "";
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.status === 200) {
+              toast.success(result.message);
+            } else {
+              toast.error(result.message);
+            }
+            setLoading(false);
+          });
         setSubmitting(false);
       }, 3000);
     },
   });
+
+  useEffect(() => {
+    fetch(`/api/me`)
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          editProfile.setFieldValue("fullName", result.fullName);
+          editProfile.setFieldValue("email", result.email);
+          editProfile.setFieldValue("phone", result.phone);
+        }
+        if (result?.profile) {
+          setFileData(result.profile);
+        }
+      });
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center">

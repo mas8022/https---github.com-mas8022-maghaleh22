@@ -76,7 +76,7 @@ const ProfileBtn = memo(() => {
                     </svg>
                   </Link>
                 ) : null}
-                <Link href={`/profile/${"cgf5esad"}`}>
+                <Link href={`/profile`}>
                   پروفایل
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
