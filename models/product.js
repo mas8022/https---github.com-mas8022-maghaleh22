@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import "@/models/author"
+import authorModel from "@/models/author";
+
 const schema = new Schema({
   group: {
     type: String,

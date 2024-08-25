@@ -1,17 +1,24 @@
 import connectToDb from "@/configs/db";
 import userModel from "@/models/user";
 import { generateRefreshToken, generateToken } from "@/utils/authTools";
+import CloudStoringFile from "@/utils/cloudStoringFile";
 import { MeId } from "@/utils/me";
 import { cookies } from "next/headers";
 
 export async function POST(req) {
-  
   try {
-    const { fullName, email, phone } = await req.json();
-    
+    const formData = await req.formData();
+
+    const fullName = formData.get("fullName");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const file = formData.get("file");
+
+    const fileAddress = await CloudStoringFile(file);
+
     connectToDb();
     const userId = await MeId();
-    
+
     if (!userId) {
       return Response.json({ message: "", status: 404 });
     }
@@ -20,10 +27,16 @@ export async function POST(req) {
       { email },
       process.env.refreshPrivateKey
     );
-    
+
     await userModel.findOneAndUpdate(
       { _id: userId },
-      { fullName, email, phone, refreshToken }
+      {
+        fullName,
+        email,
+        phone,
+        refreshToken,
+        profile: fileAddress,
+      }
     );
 
     const newAccessToken = generateToken({ email }, process.env.privateKey);
@@ -44,7 +57,6 @@ export async function POST(req) {
       status: 200,
     });
   } catch (error) {
-    
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

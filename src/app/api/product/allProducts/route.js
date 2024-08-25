@@ -1,46 +1,45 @@
+import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 
 export async function POST(req) {
   try {
     const { searchParam, filter } = await req.json();
-
     const search = decodeURIComponent(searchParam);
+
+    await connectToDb();
 
     let productArray = [];
 
-    const wordsArray = [
-      "همه محصولات",
-      "نرم افزار و فناوری اطلاعات",
-      "اقتصاد و حسابداری",
-      "کسب و کار",
-      "کودک و نوجوان",
-      "اموزش زبان",
-      "هنر طراحی",
-    ];
-
-    if (search === "همه محصولات") {
-      productArray = await productModel
-        .find({}, "group title cover duration sellCount price discount")
-        .populate("author")
-        .lean();
-    } else if (!wordsArray.includes(search)) {
-      productArray = await productModel
-        .find(
-          {
-            title: { $regex: search, $options: "i" },
-          },
-          "group title cover duration sellCount price discount"
-        )
-        .populate("author");
-    } else if (wordsArray.includes(search)) {
-      productArray = await productModel
-        .find(
-          { group: search },
-          "group title cover duration sellCount price discount"
-        )
-        .populate("author")
-        .lean();
-    }
+    productArray = await productModel.aggregate([
+      {
+        $match: {
+          tags: { $regex: new RegExp(search, "i") },
+        },
+      },
+      {
+        $lookup: {
+          from: "authors",
+          localField: "author",
+          foreignField: "_id",
+          as: "author",
+        },
+      },
+      {
+        $unwind: "$author",
+      },
+      {
+        $project: {
+          group: 1,
+          title: 1,
+          cover: 1,
+          duration: 1,
+          sellCount: 1,
+          price: 1,
+          discount: 1,
+          author: { name: 1 },
+        },
+      },
+    ]);
 
     if (filter === "freeProducts") {
       productArray = productArray.filter((item) => item.price === 0);
@@ -52,8 +51,13 @@ export async function POST(req) {
       productArray = productArray.sort((a, b) => b.price - a.price);
     }
 
-    return Response.json({ status: 200, data: productArray });
+    return new Response(JSON.stringify({ status: 200, data: productArray }), {
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (error) {
-    return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
+    return new Response(
+      JSON.stringify({ message: "اینترنت خود را چک کنید", status: 500 }),
+      { headers: { "Content-Type": "application/json" } }
+    );
   }
 }

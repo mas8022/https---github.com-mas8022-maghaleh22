@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import toast from "react-hot-toast";
-
 import Uploader from "../_components/modules/uploader";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import { logoutHandler } from "@/utils/authTools";
@@ -12,13 +11,14 @@ const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function page() {
   const [loading, setLoading] = useState(false);
-  const [fileData, setFileData] = useState("");
+  const [profile, setProfile] = useState("");
 
   const editProfile = useFormik({
     initialValues: {
       fullName: "",
       email: "",
       phone: "",
+      file: "",
     },
     validate: (values) => {
       const errors = {};
@@ -33,13 +33,18 @@ export default function page() {
     },
     onSubmit: (values, { setSubmitting }) => {
       setLoading(true);
+
       setTimeout(async () => {
+        const formData = new FormData();
+        formData.append("fullName", values.fullName);
+        formData.append("email", values.email);
+        formData.append("phone", values.phone);
+        formData.append("file", values.file);
+
         await fetch(`/api/editProfile`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
+
+          body: formData,
         })
           .then((res) => res.json())
           .then((result) => {
@@ -65,7 +70,7 @@ export default function page() {
           editProfile.setFieldValue("phone", result.phone);
         }
         if (result?.profile) {
-          setFileData(result.profile);
+          setProfile(result.profile);
         }
       });
   }, []);
@@ -73,10 +78,18 @@ export default function page() {
   return (
     <div className="flex flex-col items-center justify-center">
       <Uploader
-        customclassName="size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-[url('/images/profile.jpg')] bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer"
+        customclassName={`bg-[url("/images/profile.jpg")] size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer`}
         label={"ویرایش"}
-        setFileData={setFileData}
+        formHandler={editProfile}
+        name="file"
       />
+      {/* <Uploader
+        customclassName={`bg-[url("${
+          profile ? profile : "/images/profile.jpg"
+        }")] size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer`}
+        formHandler={editProfile}
+        name="file"
+      /> */}
       <div className="mt-[6rem] bg-second/30 dark:bg-black/30 rounded-2xl w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] flex flex-col gap-8 items-center">
         <form
           onSubmit={editProfile.handleSubmit}

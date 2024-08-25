@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { memo } from "react";
 
 const Cart = memo(({ productData, btnMode }) => {
+  
   const {
     _id,
     group,
