@@ -12,7 +12,7 @@ const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 export default function page() {
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState("");
-
+  
   const editProfile = useFormik({
     initialValues: {
       fullName: "",
@@ -73,23 +73,19 @@ export default function page() {
           setProfile(result.profile);
         }
       });
+
   }, []);
+
+
 
   return (
     <div className="flex flex-col items-center justify-center">
       <Uploader
-        customclassName={`bg-[url("/images/profile.jpg")] size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer`}
-        label={"ویرایش"}
+      profile={profile}
+        customclassName={`size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer`}
         formHandler={editProfile}
         name="file"
       />
-      {/* <Uploader
-        customclassName={`bg-[url("${
-          profile ? profile : "/images/profile.jpg"
-        }")] size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer`}
-        formHandler={editProfile}
-        name="file"
-      /> */}
       <div className="mt-[6rem] bg-second/30 dark:bg-black/30 rounded-2xl w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] flex flex-col gap-8 items-center">
         <form
           onSubmit={editProfile.handleSubmit}

@@ -34,7 +34,6 @@ async function ResetAuthorToken() {
 
   const newToken = generateToken({ email }, process.env.authorPrivateKey);
 
-  await cookies().delete("author-token");
   cookies().set("author-token", newToken, {
     httpOnly: true,
     path: "/",

@@ -2,10 +2,9 @@ import useConvertTime from "@/utils/useConvertTime";
 import useDiscountPrice from "@/utils/useDiscountPrice";
 import Image from "next/image";
 import Link from "next/link";
-import React, { memo } from "react";
+import React from "react";
 
-const Cart = memo(({ productData, btnMode }) => {
-  
+const Cart = ({ productData, btnMode }) => {
   const {
     _id,
     group,
@@ -44,25 +43,26 @@ const Cart = memo(({ productData, btnMode }) => {
               {hour} ساعت و {minute} دقیقه
             </span>
           ) : null}
-        
-            <div className="flex items-end justify-start gap-2 self-start">
-              <Image
-                src={"/images/student.svg"}
-                width={50}
-                height={50}
-                alt="تعداد دانشجو"
-                className="size-10 object-cover dark:invert"
-              />
-              <span className="text-[1.4rem] font-light dark:text-first">
-                {sellCount}
-              </span>
-            </div>
-     
+
+          <div className="flex items-end justify-start gap-2 self-start">
+            <Image
+              src={"/images/student.svg"}
+              width={50}
+              height={50}
+              alt="تعداد دانشجو"
+              className="size-10 object-cover dark:invert"
+            />
+            <span className="text-[1.4rem] font-light dark:text-first">
+              {sellCount}
+            </span>
+          </div>
         </div>
 
         <div className="flex flex-col items-end gap-4 justify-start">
           {price === 0 ? (
-            <p className="text-3xl h-[3.85rem] font-bold text-green-500 dark:text-green-300">رایگان</p>
+            <p className="text-3xl h-[3.85rem] font-bold text-green-500 dark:text-green-300">
+              رایگان
+            </p>
           ) : (
             <p className="text-end w-[10rem] text-[1.3rem] text-black/80 dark:text-first/80 font-light">
               <span className="line-through">{price.toLocaleString()}</span>{" "}
@@ -96,6 +96,6 @@ const Cart = memo(({ productData, btnMode }) => {
       </div>
     </div>
   );
-});
+};
 
 export default Cart;

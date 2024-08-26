@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import connectToDb from "../configs/db";
 import authorModel from "../models/author";
 import { verifyToken } from "./authTools";
+import ResetAuthorToken from "./resetAuthorToken";
 
 async function Author() {
   try {
@@ -66,6 +67,7 @@ async function isAuthor() {
 async function GetAuthorId() {
 
   try {
+    await ResetAuthorToken()
     const token = cookies().get("author-token")?.value;
     
     const tokenPayload = verifyToken(token, process.env.authorPrivateKey);

@@ -14,16 +14,25 @@ import siteImprovementCommentsModel from "@/models/siteImprovementComments";
 const Home = async () => {
   connectToDb();
   const freeProducts = await productModel
-    .find({ price: 0 }, "title cover duration sellCount price discount group")
+    .find(
+      { price: 0, publish: true },
+      "title cover duration sellCount price discount group"
+    )
     .populate("author", "name")
     .sort({ _id: -1 });
   const newProducts = await productModel
-    .find({}, "title cover duration sellCount price discount group")
+    .find(
+      { publish: true },
+      "title cover duration sellCount price discount group"
+    )
     .populate("author", "name")
     .sort({ _id: -1 })
     .limit(6);
   const popularProducts = await productModel
-    .find({}, "title cover duration sellCount price discount group")
+    .find(
+      { publish: true },
+      "title cover duration sellCount price discount group"
+    )
     .populate("author", "name")
     .sort({ sellCount: -1 })
     .limit(6);

@@ -8,7 +8,6 @@ import Button from "./Button";
 import GetVideoDuration from "./getVideoDuration";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import Image from "next/image";
 
 const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
@@ -340,14 +339,14 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
         />
         <div className="w-full flex sm:flex-row flex-col items-center gap-8">
           <Uploader
-            generateProductFormik={generateProductFormik}
+            formHandler={generateProductFormik}
             label="در صورت علاقه فیلم اموزشی خود را اپلود کنید"
             name="articleVideo"
             customclassName="xm:w-2/3 w-full h-24 !rounded-3xl flex items-center justify-center !text-[1.4rem] sm:!text-[1.7rem] !font-light cursor-pointer !text-first !bg-second/60 !hover:bg-second/80"
           />
           <div className="w-1/3 flex flex-col gap-2 items-center">
             <Uploader
-              generateProductFormik={generateProductFormik}
+              formHandler={generateProductFormik}
               label="کاور مقاله"
               name="cover"
               customclassName="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second/70 text-first cursor-pointer active:bg-second/80"

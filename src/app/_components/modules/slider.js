@@ -1,12 +1,10 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Cart from "./cart";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 const Sliders = ({ productsData }) => {
-  
-
   return (
     <Swiper
       breakpoints={{
