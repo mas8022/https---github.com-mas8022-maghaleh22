@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import Title from "../../_components/template/title";
-// import Cart from "../../_components/modules/cart";
+import Cart from "../../_components/modules/cart";
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import { GetAuthorId } from "@/utils/author";
@@ -15,8 +15,9 @@ const page = memo(async () => {
       { author: authorId, publish: true },
       "title cover duration sellCount price discount"
     )
-    .populate("author", "name");
-
+    .populate("author", "name")
+    .sort({ _id: -1 })
+    .lean();
 
   return (
     <div className="w-full">
@@ -25,9 +26,13 @@ const page = memo(async () => {
       <div className="w-full flex justify-center">
         {products?.length ? (
           <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-            {/* {products.map((item) => (
-              <Cart btnMode={"edit"} productsData={item} />
-            ))} */}
+            {products.map((item) => (
+              <Cart
+                btnMode={"edit"}
+                productData={JSON.parse(JSON.stringify(item))}
+                key={item._id}
+              />
+            ))}
           </div>
         ) : (
           <div className="w-full flex flex-col gap-8 items-center justify-center">

@@ -67,9 +67,7 @@ const Home = async () => {
         <CommentsSlider
           comments={JSON.parse(JSON.stringify(siteImprovementComments))}
         />
-        <Hr />
       </div>
-      <Hr />
     </>
   );
 };

@@ -64,7 +64,7 @@
     @apply text-black p-10;
   }
   .root .contentProduct {
-    @apply text-black p-10;
+    @apply text-black p-2;
   }
   .root
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
@@ -96,10 +96,7 @@
     @apply text-[1.7rem] font-light;
   }
   .root .contentProduct p {
-    @apply text-[1.7rem] font-light;
-  }
-  .root .contentProduct p {
-    @apply text-[1.7rem] font-light;
+    @apply xm:text-[1.7rem] text-[1.5rem] font-light text-justify;
   }
   .root
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
@@ -177,7 +174,7 @@
     @apply text-[1.7rem] font-light text-first;
   }
   .dark .contentProduct p {
-    @apply text-[1.7rem] font-light text-first;
+    @apply xm:text-[1.7rem] text-[1.5rem] font-light text-first text-justify;
   }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline

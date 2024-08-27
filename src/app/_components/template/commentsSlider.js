@@ -22,7 +22,7 @@ const CommentsSlider = memo(({ comments }) => {
       }}
       modules={[Autoplay]}
       loop={true}
-      className="!p-2"
+      className="!p-2 !pb-[12rem]"
     >
       {comments?.length
         ? comments.map((item) => (
