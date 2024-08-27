@@ -92,6 +92,8 @@ const Footer = memo(() => {
               src={"/images/logo.png"}
               width={100}
               height={100}
+            priority={true}
+
               alt="site logo"
               className="size-28 object-cover rounded-3xl"
             />

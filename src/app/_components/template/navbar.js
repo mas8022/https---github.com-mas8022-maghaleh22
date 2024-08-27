@@ -56,10 +56,12 @@ const Navbar = memo(() => {
 
         <Link href={"/"}>
           <Image
-            src={"/images/logo.png"}
+            src="/images/logo.png"
+            blurDataURL="/images/logo.png"
             alt="site logo"
             width={60}
             height={60}
+            placeholder="blur"
             className="w-[3.5rem] h-[3.5rem] md:w-[5rem] md:h-[5rem] cursor-pointer"
           />
         </Link>

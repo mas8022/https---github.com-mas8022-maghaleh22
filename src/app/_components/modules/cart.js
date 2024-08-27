@@ -25,8 +25,10 @@ const Cart = ({ productData, btnMode }) => {
       <Image
         src={cover ? cover : "/images/productDefaultCover.jpg"}
         alt="product Image"
-        width={320}
-        height={230}
+        width={250}
+        height={200}
+        placeholder="blur"
+        blurDataURL={cover ? cover : "/images/productDefaultCover.jpg"}
         className="w-full h-60 mb-5 object-cover"
       />
       <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1 dark:text-first">
@@ -46,7 +48,7 @@ const Cart = ({ productData, btnMode }) => {
 
           <div className="flex items-end justify-start gap-2 self-start">
             <Image
-              src={"/images/student.svg"}
+              src="/images/student.svg"
               width={50}
               height={50}
               alt="تعداد دانشجو"

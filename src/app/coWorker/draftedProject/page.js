@@ -13,12 +13,12 @@ const page = memo(async () => {
 
   const products = await productModel
     .find(
-      { author: authorId, publish: false },
+      { ...(authorId && { author: authorId }), publish: true },
+
       "title cover duration sellCount price discount"
     )
     .populate("author", "name")
     .sort({ _id: -1 });
-
 
   return (
     <div className="w-full">
