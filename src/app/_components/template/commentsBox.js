@@ -6,9 +6,8 @@ import useSanitizeInput from "@/utils/useSanitizeInput";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
 
-const CommentsBox = memo(({ productId }) => {
+const CommentsBox = memo(({ comments, tags }) => {
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState([]);
 
   const sendComment = () => {
     fetch(`/api/productComment/${productId}`, {
@@ -30,12 +29,6 @@ const CommentsBox = memo(({ productId }) => {
         setComment("");
       });
   };
-
-  useEffect(() => {
-    fetch(`/api/productComment/${productId}`)
-      .then((res) => res.json())
-      .then((result) => setComments(result));
-  }, []);
 
   return (
     <div className="w-full flex flex-col ld:flex-row items-center sm:items-start gap-10">
@@ -65,7 +58,8 @@ const CommentsBox = memo(({ productId }) => {
 
         {comments?.length
           ? comments.map((item) => <Comment {...item} key={item._id} />)
-          : null}
+          : <div className="w-full h-80 bg-second/10 text-second text-4xl flex items-center justify-center">
+            نظری ثبت نشده است ...</div>}
       </div>
 
       <div className="w-full ld:w-1/3 flex flex-col gap-16">
@@ -89,7 +83,7 @@ const CommentsBox = memo(({ productId }) => {
             ارسال نظر
           </button>
         </div>
-        <TagsBox />
+        <TagsBox tags={tags} />
       </div>
     </div>
   );

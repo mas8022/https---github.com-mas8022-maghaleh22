@@ -63,9 +63,15 @@
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
     @apply text-black p-10;
   }
+  .root .contentProduct {
+    @apply text-black p-10;
+  }
   .root
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     h2 {
+    @apply text-[3rem] text-blue-600;
+  }
+  .root .contentProduct h2 {
     @apply text-[3rem] text-blue-600;
   }
   .root
@@ -73,9 +79,15 @@
     h3 {
     @apply text-[2.6rem] text-blue-500;
   }
+  .root .contentProduct h3 {
+    @apply text-[2.6rem] text-blue-500;
+  }
   .root
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     h4 {
+    @apply text-[2rem] text-blue-500;
+  }
+  .root .contentProduct h4 {
     @apply text-[2rem] text-blue-500;
   }
   .root
@@ -83,9 +95,18 @@
     p {
     @apply text-[1.7rem] font-light;
   }
+  .root .contentProduct p {
+    @apply text-[1.7rem] font-light;
+  }
+  .root .contentProduct p {
+    @apply text-[1.7rem] font-light;
+  }
   .root
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     a {
+    @apply text-blue-600 cursor-pointer;
+  }
+  .root .contentProduct a {
     @apply text-blue-600 cursor-pointer;
   }
   .root
@@ -94,10 +115,16 @@
     li {
     @apply mr-6;
   }
+  .root .contentProduct ol li {
+    @apply mr-6;
+  }
   .root
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     ol
     li::marker {
+    @apply text-[1.4rem] font-light text-black/60 mr-8;
+  }
+  .root .contentProduct ol li::marker {
     @apply text-[1.4rem] font-light text-black/60 mr-8;
   }
   .root
@@ -105,6 +132,9 @@
     ol
     li
     span {
+    @apply text-[1.4rem] font-light text-black/60;
+  }
+  .root .contentProduct ol li span {
     @apply text-[1.4rem] font-light text-black/60;
   }
   /* //////////////////// */
@@ -116,9 +146,13 @@
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
     @apply text-first bg-[#1e293b] p-10;
   }
+
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     h2 {
+    @apply text-[3rem] text-blue-600;
+  }
+  .dark .contentProduct h2 {
     @apply text-[3rem] text-blue-600;
   }
   .dark
@@ -126,19 +160,31 @@
     h3 {
     @apply text-[2.6rem] text-blue-500;
   }
+  .dark .contentProduct h3 {
+    @apply text-[2.6rem] text-blue-500;
+  }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     h4 {
     @apply text-[2rem] text-blue-500;
   }
+  .dark .contentProduct h4 {
+    @apply text-[2rem] text-blue-500;
+  }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     p {
-    @apply text-[1.7rem] font-light;
+    @apply text-[1.7rem] font-light text-first;
+  }
+  .dark .contentProduct p {
+    @apply text-[1.7rem] font-light text-first;
   }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     a {
+    @apply text-blue-600 cursor-pointer;
+  }
+  .dark .contentProduct a {
     @apply text-blue-600 cursor-pointer;
   }
   .dark
@@ -147,18 +193,27 @@
     li {
     @apply mr-6;
   }
+  .dark .contentProduct ol li {
+    @apply mr-6;
+  }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     ol
     li::marker {
-    @apply text-[1.4rem] font-light text-first/70 mr-8;
+    @apply text-[1.4rem] font-light text-first/60 mr-8;
+  }
+  .dark .contentProduct ol li::marker {
+    @apply text-[1.4rem] font-light text-first/60 mr-8;
   }
   .dark
     .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline
     ol
     li
     span {
-    @apply text-[1.4rem] font-light text-first/70;
+    @apply text-[1.4rem] font-light text-first;
+  }
+  .dark .contentProduct ol li span {
+    @apply text-[1.4rem] font-light text-first;
   }
 
   /* ck editor css end */
@@ -180,7 +235,6 @@
   }
   .dark .custom-scrollbar::-webkit-scrollbar-track {
     background-color: #00000044;
-  
   }
 
   /* scroll-webkit css end */

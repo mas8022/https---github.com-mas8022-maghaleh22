@@ -1,29 +1,32 @@
-"use client";
 import React from "react";
-import Player from "../../..//_components/modules/player";
 import Hr from "../../../_components/modules/hr";
 import AuthorBox from "../../../_components/template/authorBox";
 import CommentsBox from "../../../_components/template/commentsBox";
 import ContentArticle from "../../../_components/modules/contentArticle";
 import Title from "../../../_components/template/title";
-export default function page() {
+import dynamic from "next/dynamic";
+import productModel from "@/models/product";
+const Player = dynamic(() => import("../../..//_components/modules/player"), {
+  ssr: false,
+});
+
+export default async function page({ params }) {
+  const { _id, title, author, articleText, articleVideo, comments, tags } =
+    await productModel.findOne({ _id: params.id });
+
   return (
     <>
       <div>
         <Hr />
-        <Title title={"سر تیتر مقاله"} />
-        <Player
-          url={
-            "https://media.istockphoto.com/id/1486884503/fr/vid%C3%A9o/animation-3d-de-la-technologie-web-shield-html5.mp4?s=mp4-640x640-is&k=20&c=7xF84YP-NJ3zQDy06kUMF1b7-s0F_4GNwIEGHszX_Ns="
-          }
-        />
+        <Title title={title} />
+        <Player url={articleVideo[0]} />
         <Hr />
-        <ContentArticle />
+        <ContentArticle content={articleText} />
         <Hr />
 
-        <AuthorBox />
+        <AuthorBox {...author} />
         <Hr />
-        <CommentsBox productId={"66a95351ec24bcc36ae0b851"} />
+        <CommentsBox comments={comments} tags={tags} />
 
         <Hr />
       </div>

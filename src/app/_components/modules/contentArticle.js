@@ -1,15 +1,20 @@
-"use client";
-import React, { memo } from "react";
-import DOMPurify from "dompurify";
+import { JSDOM } from "jsdom";
+import createDOMPurify from "dompurify";
 
-const ContentArticle = memo(() => {
+const window = new JSDOM("").window;
+const DOMPurify = createDOMPurify(window);
+
+const ContentArticle = ({ content = "" }) => {
+  const sanitizedHTML = DOMPurify.sanitize(content);
+
   return (
     <div
-      className="w-full"
+      className="w-full contentProduct"
       dangerouslySetInnerHTML={{
-        __html: DOMPurify.sanitize("<div>mohammad</div>"),
+        __html: sanitizedHTML,
       }}
     ></div>
   );
-});
+};
+
 export default ContentArticle;
