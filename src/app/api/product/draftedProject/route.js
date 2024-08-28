@@ -21,39 +21,51 @@ export async function POST(req) {
     const cover = formData.get("cover");
     const articleText = formData.get("articleText");
     const articleVideo = formData.get("articleVideo");
-    const duration = formData.get("duration");
+    let duration = formData.get("duration");
 
-    tags = JSON.parse(tags);
+    if (typeof tags === "string") {
+      tags = JSON.parse(tags);
+    }
 
-    const coverSrc = await CloudStoringFile(cover);
+    let coverSrc = cover;
+    if (cover instanceof Blob) {
+      coverSrc = await CloudStoringFile(cover);
+    }
 
-    const articleVideoSrc = await CloudStoringFile(articleVideo);
-
-    const product = await productModel.findOne({ _id: id });
+    let articleVideoSrc = articleVideo;
+    if (articleVideo instanceof Blob) {
+      articleVideoSrc = await CloudStoringFile(articleVideo);
+    }
 
     connectToDb();
-    await productModel.create({
-      group,
-      title,
-      price: price ? price : 0,
-      author,
-      articleText,
-      comments: product ? product.comments : [],
-      publish: false,
-      sellCount: 0,
-      discount: discount ? discount : 0,
-      tags,
-      cover: coverSrc,
-      articleVideo: product ? [...product.articleVideo] : articleVideoSrc,
-      duration,
-    });
+    const product = await productModel.findOne({ _id: id }).lean();
+
+    await productModel.updateOne(
+      { _id: id },
+      {
+        group,
+        title,
+        price: price ? price : 0,
+        author,
+        articleText,
+        comments: product ? product.comments : [],
+        publish: false,
+        sellCount: 0,
+        discount: discount ? discount : 0,
+        tags,
+        cover: coverSrc,
+        articleVideo: product?.articleVideo?.includes(articleVideoSrc) ? null : [...product.articleVideo, articleVideoSrc],
+        duration,
+      }
+    );
 
     return Response.json({
-      message:
-        "محصول با موفقیت فرستاده شد در صورت تایید مقاله از سمت سایت بعد از یک الی دو روز به شما از طریق ایمیل اطلاع داده خواهد شد",
+      message: "محصول با موفقیت فرستاده شد...",
       status: 201,
     });
   } catch (error) {
+    console.log("====> ", error);
+    
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

@@ -5,7 +5,9 @@ const GetVideoDuration = memo(({ setDuration, file }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    if (file && file.type.startsWith("video/")) {
+    if (!file) return;
+
+    if (file.type && file.type.startsWith("video/")) {
       const video = videoRef.current;
 
       if (video) {

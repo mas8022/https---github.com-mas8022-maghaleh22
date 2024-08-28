@@ -10,8 +10,6 @@ export async function POST(req) {
 
     let productArray = [];
 
-    console.log("search: ", search);
-
     const mainCategories = [
       "همه محصولات",
       "نرم افزار و فناوری اطلاعات",
