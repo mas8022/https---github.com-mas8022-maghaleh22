@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideFilterMobile from "../../_components/template/sideFilter";
 import Cart from "../../_components/modules/cart";
 import SideFilterPC from "../../_components/template/sideFilterPc";

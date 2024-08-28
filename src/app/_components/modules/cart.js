@@ -88,7 +88,7 @@ const Cart = ({ productData, btnMode }) => {
             </Link>
           ) : (
             <Link
-              href={`/products/${group}/${_id}`}
+              href={`/products/${group}/sessions/${_id}`}
               className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 dark:border-second bg-second active:bg-first dark:active:bg-first/0 active:border-second active:text-second rounded-lg"
             >
               مشاهده

@@ -1,11 +1,10 @@
 "use client";
 import Plyr from "plyr-react";
 import "plyr-react/plyr.css";
-import { memo, useEffect } from "react";
-import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
+import { memo, useEffect, useState } from "react";
 
 const Player = memo(({ videoSRCes = [], auto }) => {
-  const [url, setUrl] = useLocalStorage(`videoMemorize`, videoSRCes[0]);
+  const [url, setUrl] = useState(videoSRCes[0]);
 
   const plyrProps = {
     source: {

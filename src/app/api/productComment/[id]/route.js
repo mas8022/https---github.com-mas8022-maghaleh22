@@ -1,7 +1,7 @@
 import productCommentModel from "@/models/productComment";
 import { Me } from "@/utils/me";
 
-export async function POST(req, { params }) {
+export async function POST(req) {
   try {
     const me = await Me();
 
@@ -27,8 +27,6 @@ export async function POST(req, { params }) {
       status: 201,
     });
   } catch (error) {
-    console.log("=====> ", error);
-    
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }
