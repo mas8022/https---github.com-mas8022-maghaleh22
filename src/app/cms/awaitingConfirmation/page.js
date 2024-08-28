@@ -7,7 +7,7 @@ import "@/models/author";
 const page = async () => {
   connectToDb();
   const products = await productModel
-    .find({ publish: false }, "title price discount cover duration")
+    .find({ status: "publish" }, "title price discount cover duration")
     .populate("author", "name")
     .lean();
 

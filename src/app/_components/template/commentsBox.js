@@ -1,21 +1,24 @@
 "use client";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 import TagsBox from "./tagsBox";
 import Comment from "./comment";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
+import Button from "../modules/Button";
 
-const CommentsBox = memo(({ comments, tags }) => {
+const CommentsBox = memo(({ _id, comments, tags }) => {
   const [comment, setComment] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const sendComment = () => {
-    fetch(`/api/productComment/${productId}`, {
+    setLoader(true);
+    fetch(`/api/productComment/${_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ comment, productId }),
+      body: JSON.stringify({ comment, productId: _id }),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -27,6 +30,7 @@ const CommentsBox = memo(({ comments, tags }) => {
           toast.error("عملیات ناموفق بوده");
         }
         setComment("");
+        setLoader(false);
       });
   };
 
@@ -56,10 +60,13 @@ const CommentsBox = memo(({ comments, tags }) => {
           </span>
         </div>
 
-        {comments?.length
-          ? comments.map((item) => <Comment {...item} key={item._id} />)
-          : <div className="w-full h-80 bg-second/10 text-second text-4xl flex items-center justify-center">
-            نظری ثبت نشده است ...</div>}
+        {comments?.length ? (
+          comments.map((item) => <Comment {...item} key={item._id} />)
+        ) : (
+          <div className="w-full h-80 bg-second/10 text-second text-4xl flex items-center justify-center">
+            نظری ثبت نشده است ...
+          </div>
+        )}
       </div>
 
       <div className="w-full ld:w-1/3 flex flex-col gap-16">
@@ -76,12 +83,12 @@ const CommentsBox = memo(({ comments, tags }) => {
             className="w-full h-56 py-4 px-6 text-2xl dark:!text-first dark:bg-[#0d141f]/35 rounded-xl"
             placeholder="ایجاد پرسش یا نظر جدید..."
           />
-          <button
-            onClick={sendComment}
-            className="w-full py-4 text-2xl bg-second/70 !text-first active:bg-second/55 cursor-pointer rounded-lg"
-          >
-            ارسال نظر
-          </button>
+          <Button
+            label="ارسال نظر"
+            onclick={sendComment}
+            loader={loader}
+            customclass="w-full py-4 text-2xl bg-second/70 !text-first active:bg-second/55 cursor-pointer rounded-lg"
+          ></Button>
         </div>
         <TagsBox tags={tags} />
       </div>

@@ -35,7 +35,7 @@ export async function POST(req) {
       author,
       articleText,
       comments: [],
-      publish: false,
+      status: "publish",
       sellCount: 0,
       discount: discount ? discount : 0,
       tags,

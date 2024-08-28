@@ -22,10 +22,10 @@ export async function POST(req) {
 
     if (mainCategories.includes(search)) {
       if (search === "همه محصولات") {
-        productArray = await productModel.find({ publish: true });
+        productArray = await productModel.find({ status: "publish" });
       } else {
         productArray = await productModel.find({
-          publish: true,
+          status: "publish",
           group: search,
         });
       }

@@ -8,11 +8,15 @@ const Button = memo(
     label = "",
     customclass = "",
     loader = false,
-    func = () => {},
+    onclick = () => {},
     children,
   }) => {
     return (
-      <button type={buttonType} onClick={() => func()} className={customclass}>
+      <button
+        type={buttonType}
+        onClick={onclick}
+        className={`flex items-center justify-center ${customclass}`}
+      >
         {loader ? (
           <MoonLoader size={20} color="#fff" />
         ) : children ? (

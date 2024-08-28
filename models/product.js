@@ -34,8 +34,8 @@ const schema = new Schema({
     type: [String],
     required: true,
   },
-  publish: {
-    type: Boolean,
+  status: {
+    type: String,
     required: true,
   },
   sellCount: {

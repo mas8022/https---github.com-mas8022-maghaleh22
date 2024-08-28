@@ -16,33 +16,35 @@ const Home = async () => {
 
   const freeProducts = await productModel
     .find(
-      { price: 0, publish: true },
+      { price: 0, status: "publish" },
       "title cover duration sellCount price discount group"
     )
     .populate("author", "name")
-    .sort({ _id: -1 });
+    .sort({ _id: -1 }).lean()
+
   const newProducts = await productModel
     .find(
-      { publish: true },
+      { status: "publish" },
       "title cover duration sellCount price discount group"
     )
     .populate("author", "name")
     .sort({ _id: -1 })
-    .limit(6);
+    .limit(6).lean()
+
   const popularProducts = await productModel
     .find(
-      { publish: true },
+      { status: "publish" },
       "title cover duration sellCount price discount group"
     )
     .populate("author", "name")
     .sort({ sellCount: -1 })
-    .limit(6);
+    .limit(6).lean()
 
   const siteImprovementComments = await siteImprovementCommentsModel
-    .find({ publish: true }, "comment like disLike")
+    .find({ status: "publish" }, "comment like disLike")
     .populate("user", "fullName profile")
     .sort({ _id: -1 })
-    .limit(6);
+    .limit(6).lean()
 
   return (
     <>

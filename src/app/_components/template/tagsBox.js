@@ -10,13 +10,13 @@ const TagsBox = memo(({ tags }) => {
 
         {tags?.length
           ? tags.map((item, index) => (
-              <>
-                <div className="w-3 h-3" key={index}></div>
+              <div key={index}>
+                <div className="w-3 h-3"></div>
 
-                <span className="text-[1.4rem] font-bold text-black/50">
+                <span className="text-[1.4rem] font-bold text-black/50 dark:text-first/70">
                   #{item}
                 </span>
-              </>
+              </div>
             ))
           : null}
       </div>

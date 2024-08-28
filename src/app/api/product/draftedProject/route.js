@@ -49,7 +49,7 @@ export async function POST(req) {
         author,
         articleText,
         comments: product ? product.comments : [],
-        publish: false,
+        status: "publish",
         sellCount: 0,
         discount: discount ? discount : 0,
         tags,
@@ -64,7 +64,6 @@ export async function POST(req) {
       status: 201,
     });
   } catch (error) {
-    console.log("====> ", error);
     
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }

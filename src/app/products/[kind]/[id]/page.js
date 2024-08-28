@@ -11,20 +11,20 @@ const Player = dynamic(() => import("../../..//_components/modules/player"), {
 });
 
 export default async function page({ params }) {
-  const { _id, title, author, articleText, articleVideo, comments, tags } =
-    await productModel.findOne({ _id: params.id });
+  const { title, author, articleText, articleVideo, comments, tags } =
+    await productModel.findOne({ _id: params.id }).lean();
 
   return (
     <>
       <div>
         <Hr />
         <Title title={title} />
-        <Player url={articleVideo[0]} />
+        <Player videoSRCes={JSON.parse(JSON.stringify(articleVideo))} />
         <Hr />
-        <ContentArticle content={articleText} />
+        <ContentArticle content={JSON.parse(JSON.stringify(articleText))} />
         <Hr />
 
-        <AuthorBox {...author} />
+        {author?.profile && author?.bio && <AuthorBox {...author} />}
         <Hr />
         <CommentsBox comments={comments} tags={tags} />
 
