@@ -8,12 +8,15 @@ import Button from "./Button";
 import GetVideoDuration from "./getVideoDuration";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
 const WorkTool = memo(({ apiPath, initialValues = null }) => {
+
+  const router = useRouter();
   const [articleText, setArticleText] = useState(
     initialValues ? initialValues.articleText : ""
   );
@@ -131,11 +134,39 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
                 title: result.message,
               });
             }
+            router.refresh();
           });
         setSubmitting(false);
       }, 3000);
     },
   });
+
+  const sendProductForConfirmation = () => {
+    const productID = initialValues._id;
+
+    swal({
+      icon: "info",
+      text: "ایا مقاله شما به پایان رسید و می خواهید به مدیر سایت بدید جهت تایید ؟",
+      buttons: ["لغو", "ارسال"],
+    }).then((res) => {
+      if (res) {
+        fetch("/api/sendProductForConfirmation", {
+          method: "POST",
+          body: JSON.stringify({ productID }),
+        })
+          .then((res) => res.json())
+          .then(
+            (result) =>
+              result.status === 200 &&
+              swal({
+                icon: "success",
+                title: "با موفقیت انجام شد",
+                text: result.message,
+              })
+          );
+      }
+    });
+  };
 
   return (
     <div className="w-full pb-20 pt-5 flex flex-col gap-16">
@@ -367,16 +398,22 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
         >
           ذخیره کردن
         </Button>
-        <div className="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second text-first cursor-pointer active:bg-second/80">
-          ارسال مقاله
+        <div
+          onClick={sendProductForConfirmation}
+          className="w-full h-24 rounded-3xl flex items-center justify-center sm:text-[1.9rem] text-[1.6rem] font-bold bg-second text-first cursor-pointer active:bg-second/80"
+        >
+          {initialValues?.status === "wait"
+            ? "لغو ارسال مقاله"
+            : " ارسال مقاله"}
         </div>
 
         {initialValues?.articleVideo?.length ? (
           <div className="w-full">
-            {initialValues.articleVideo.map((item) => (
+            {initialValues.articleVideo.map((item, index) => (
               <Link
                 href={`/preview/${item}`}
                 className="px-8 py-5 rounded-lg flex flex-col ld:flex-row items-center gap-8 justify-between border-2 border-black/40 dark:border-first/40"
+                key={index}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

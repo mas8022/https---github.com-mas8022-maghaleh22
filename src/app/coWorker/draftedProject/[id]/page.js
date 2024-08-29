@@ -7,7 +7,10 @@ const page = memo(async ({ params }) => {
 
   return (
     <div className="w-full">
-      <WorkTool apiPath={"draftedProject"} initialValues={product} />
+      <WorkTool
+        apiPath={"draftedProject"}
+        initialValues={JSON.parse(JSON.stringify(product))}
+      />
     </div>
   );
 });

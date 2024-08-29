@@ -49,7 +49,7 @@ export async function POST(req) {
         author,
         articleText,
         comments: product ? product.comments : [],
-        status: "publish",
+        status: "draft",
         sellCount: 0,
         discount: discount ? discount : 0,
         tags,
@@ -60,7 +60,7 @@ export async function POST(req) {
     );
 
     return Response.json({
-      message: "محصول با موفقیت فرستاده شد...",
+      message: "محصول با موفقیت فرستاده ذخیره شد",
       status: 201,
     });
   } catch (error) {

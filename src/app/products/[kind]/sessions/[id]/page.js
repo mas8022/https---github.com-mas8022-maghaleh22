@@ -11,7 +11,6 @@ const Player = dynamic(() => import("../../../../_components/modules/player"), {
 });
 
 export default async function page( {params} ) {
-  console.log("params: ", params);
   
   const { title, author, articleText, articleVideo, comments, tags } =
     await productModel.findOne({ _id: params.id }).lean();
