@@ -1,5 +1,5 @@
 "use client";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 import TagsBox from "./tagsBox";
 import Comment from "./comment";
 import useSanitizeInput from "@/utils/useSanitizeInput";
@@ -7,18 +7,19 @@ import swal from "sweetalert";
 import toast from "react-hot-toast";
 import Button from "../modules/Button";
 
-const CommentsBox = memo(({ _id, comments, tags }) => {
+const CommentsBox = memo(({ productId, comments, tags }) => {
+
   const [comment, setComment] = useState("");
   const [loader, setLoader] = useState(false);
 
   const sendComment = () => {
     setLoader(true);
-    fetch(`/api/productComment/${_id}`, {
+    fetch(`/api/productComment/${productId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ comment, productId: _id }),
+      body: JSON.stringify({ comment, productId }),
     })
       .then((res) => res.json())
       .then((result) => {

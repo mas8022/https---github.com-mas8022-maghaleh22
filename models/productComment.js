@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import productModel from "@/models/product";
+import userModel from "@/models/user";
 
 const schema = new Schema(
   {

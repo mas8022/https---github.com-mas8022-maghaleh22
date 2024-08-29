@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import authorModel from "@/models/author";
+import commentModel from "@/models/productComment"
 
 const schema = new Schema({
   group: {
