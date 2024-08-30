@@ -75,7 +75,10 @@ export default function page() {
           value={login.values.email}
           placeholder="ایمیل"
         />
-        {login.touched.email && login.errors.email && login.errors.email}
+        {login.touched.email && login.errors.email && (
+          <span className="text-xl text-red-600">{login.errors.email}</span>
+        )}
+
         <input
           className="w-full rounded-lg border-0 px-[1.5rem] text-[1.3rem] bg-white dark:bg-[#1e293b] text-black/70 dark:text-[#e2e8f0]"
           id="password"
@@ -88,10 +91,9 @@ export default function page() {
           value={login.values.password}
           placeholder="رمز عبور"
         />
-        {login.touched.password &&
-          login.errors.password &&
-          login.errors.password}
-
+        {login.touched.password && login.errors.password && (
+          <span className="text-xl text-red-600">{login.errors.password}</span>
+        )}
         <button
           type="submit"
           className="w-full rounded-lg border-0 h-[4.5rem] text-[1.8rem] bg-second active:bg-second/70 text-white flex items-center justify-center"

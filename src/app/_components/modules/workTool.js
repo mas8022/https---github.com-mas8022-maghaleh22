@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { memo, useReducer, useState } from "react";
+import { memo, useEffect, useReducer, useState } from "react";
 import SelectBox from "./selectBox";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import Uploader from "./uploader";
@@ -9,13 +9,11 @@ import GetVideoDuration from "./getVideoDuration";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
 const WorkTool = memo(({ apiPath, initialValues = null }) => {
-
   const router = useRouter();
   const [articleText, setArticleText] = useState(
     initialValues ? initialValues.articleText : ""

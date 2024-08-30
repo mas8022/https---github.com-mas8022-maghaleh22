@@ -27,7 +27,7 @@ const page = () => {
         errors.email = "ایمیل تان را به درستی وارد کنید";
       } else if (values.password.length > 15 || values.password.length < 8) {
         errors.password = "رمز عبور شما باید بین 8 تا 15 کاراکتر داشته باشد";
-      } else if (isNaN(values.phone)) {
+      } else if (isNaN(values.phone) || !values.phone.trim()) {
         errors.phone = "شماره موبایل تان را به درستی وارد کنید";
       } else if (!values.check) {
         errors.check =
@@ -87,9 +87,9 @@ const page = () => {
           value={signUp.values.fullName}
           placeholder="نام و نام خانوادگی"
         />
-        {signUp.touched.fullName &&
-          signUp.errors.fullName &&
-          signUp.errors.fullName}
+        {signUp.touched.fullName && signUp.errors.fullName && (
+          <span className="text-xl text-red-600">{signUp.errors.fullName}</span>
+        )}
         <input
           className="w-full rounded-lg bg-white dark:bg-[#1e293b] px-[1.5rem] text-[1.3rem] text-black/70 dark:text-[#e2e8f0]"
           id="email"
@@ -102,7 +102,9 @@ const page = () => {
           value={signUp.values.email}
           placeholder="ایمیل"
         />
-        {signUp.touched.email && signUp.errors.email && signUp.errors.email}
+        {signUp.touched.email && signUp.errors.email && (
+          <span className="text-xl text-red-600">{signUp.errors.email}</span>
+        )}
         <input
           className="w-full rounded-lg bg-white dark:bg-[#1e293b] px-[1.5rem] text-[1.3rem] text-black/70 dark:text-[#e2e8f0]"
           id="password"
@@ -115,9 +117,9 @@ const page = () => {
           value={signUp.values.password}
           placeholder="رمز عبور"
         />
-        {signUp.touched.password &&
-          signUp.errors.password &&
-          signUp.errors.password}
+        {signUp.touched.password && signUp.errors.password && (
+          <span className="text-xl text-red-600">{signUp.errors.password}</span>
+        )}
         <input
           className="w-full rounded-lg bg-white dark:bg-[#1e293b] px-[1.5rem] text-[1.3rem] text-black/70 dark:text-[#e2e8f0]"
           id="phone"
@@ -130,7 +132,9 @@ const page = () => {
           value={signUp.values.phone}
           placeholder="شماره موبایل"
         />
-        {signUp.touched.phone && signUp.errors.phone && signUp.errors.phone}
+        {signUp.touched.phone && signUp.errors.phone && (
+          <span className="text-xl text-red-600">{signUp.errors.phone}</span>
+        )}
         <div className="w-full h-[2rem] px-[0.5rem] flex items-center gap-4">
           <p className="text-[1.2rem] dark:text-first">
             ایا موافق با{" "}
@@ -150,7 +154,9 @@ const page = () => {
             className="size-[1.5rem]"
           />
         </div>
-        {signUp.touched.check && signUp.errors.check && signUp.errors.check}
+        {signUp.touched.check && signUp.errors.check && (
+          <span className="text-xl text-red-600">{signUp.errors.check}</span>
+        )}
         <button
           type="submit"
           className="w-full rounded-lg border-0 h-20 bg-second/80 text-[1.8rem] active:bg-second/50 text-first flex items-center justify-center"
