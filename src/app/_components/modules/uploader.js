@@ -3,7 +3,7 @@ import React, { memo } from "react";
 import { MoonLoader } from "react-spinners";
 const Uploader = memo(
   ({
-    profile = null,
+    profile = "",
     name = "",
     label = "",
     customclassName = "",

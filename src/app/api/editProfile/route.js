@@ -20,7 +20,7 @@ export async function POST(req) {
     const userId = await MeId();
 
     if (!userId) {
-      return Response.json({ message: "", status: 404 });
+      return Response.json({ message: "همچین کاربری وجود ندارد", status: 404 });
     }
 
     const refreshToken = generateRefreshToken(

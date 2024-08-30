@@ -65,11 +65,10 @@ async function isAuthor() {
 }
 
 async function GetAuthorId() {
-
   try {
-    await ResetAuthorToken()
+    await ResetAuthorToken();
     const token = cookies().get("author-token")?.value;
-    
+
     const tokenPayload = verifyToken(token, process.env.authorPrivateKey);
     if (!tokenPayload) {
       return false;
@@ -87,7 +86,6 @@ async function GetAuthorId() {
     );
 
     const authorId = author?._id;
-    
 
     if (authorId) {
       return authorId;

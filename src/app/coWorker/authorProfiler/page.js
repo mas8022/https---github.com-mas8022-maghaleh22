@@ -1,15 +1,18 @@
 "use client";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { MoonLoader } from "react-spinners";
 import Uploader from "../../_components/modules/uploader";
 import { logoutHandler } from "@/utils/authTools";
 import useSanitizeInput from "@/utils/useSanitizeInput";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 const page = memo(() => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [fileData, setFileData] = useState("");
+  const [profile, setProfile] = useState(null);
 
   const editProfile = useFormik({
     initialValues: {
@@ -19,7 +22,7 @@ const page = memo(() => {
     },
     validate: (values) => {
       const errors = {};
-      if (!values.fullName.trim() || !isNaN(values.fullName)) {
+      if (!values?.fullName?.trim() || !isNaN(values?.fullName)) {
         errors.fullName = "نام تان را به درستی وارد کنید";
       } else if (!emailRegex.test(values.email)) {
         errors.email = "ایمیل تان را به درستی وارد کنید";
@@ -30,21 +33,28 @@ const page = memo(() => {
     },
     onSubmit: (values, { setSubmitting }) => {
       setLoading(true);
+      const formData = new FormData();
+
+      formData.append("name", values.fullName);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("file", values.file);
+
       setTimeout(async () => {
-        await fetch(`/api/editProfile/${params.id}`, {
+        await fetch(`/api/author`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }).then((res) => {
-          if (res.ok) {
-            location.pathname = "/";
-          } else {
-            toast.error("اینترنت خود را چک کنید");
-          }
-          setLoading(false);
-        });
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.status === 200) {
+              toast.success(result.message);
+              router.refresh();
+            } else {
+              toast.error(result.message);
+            }
+            setLoading(false);
+          });
         values.fullName = "";
         values.email = "";
         values.phone = "";
@@ -53,12 +63,27 @@ const page = memo(() => {
     },
   });
 
+  useEffect(() => {
+    fetch("/api/author")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 200) {
+          editProfile.setFieldValue("fullName", data.data.name);
+          editProfile.setFieldValue("email", data.data.email);
+          editProfile.setFieldValue("phone", data.data.phone);
+          setProfile(data.data?.profile || "");
+        }
+      });
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center">
       <Uploader
+        name="file"
+        formHandler={editProfile}
+        profile={profile}
         customclassName="size-[20rem] rounded-full !z-10 overflow-hidden bg-[url('/images/profile.jpg')] bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer"
         label={"ویرایش"}
-        setFileData={setFileData}
       />
       <div className="mt-[6rem] bg-second/30 dark:bg-black/30 rounded-2xl w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] flex flex-col gap-8 items-center">
         <form
