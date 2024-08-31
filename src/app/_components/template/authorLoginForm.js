@@ -72,9 +72,9 @@ const AuthorLoginForm = memo(({ setFormMode }) => {
         value={authorLogin.values.email}
         placeholder="ایمیل"
       />
-      {authorLogin.touched.email &&
-        authorLogin.errors.email &&
-        authorLogin.errors.email}
+      {authorLogin.touched.email && authorLogin.errors.email && (
+        <span className="text-xl text-red-600">{authorLogin.errors.email}</span>
+      )}
 
       <input
         className="w-full rounded-lg border-0 px-[1.5rem] text-[1.3rem] bg-white dark:bg-[#1e293b] text-black/70 dark:text-[#e2e8f0]"
@@ -88,9 +88,11 @@ const AuthorLoginForm = memo(({ setFormMode }) => {
         value={authorLogin.values.password}
         placeholder="رمز عبور"
       />
-      {authorLogin.touched.password &&
-        authorLogin.errors.password &&
-        authorLogin.errors.password}
+      {authorLogin.touched.password && authorLogin.errors.password && (
+        <span className="text-xl text-red-600">
+          {authorLogin.errors.password}
+        </span>
+      )}
 
       <button
         type="submit"

@@ -3,7 +3,6 @@ import React, { memo, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { MoonLoader } from "react-spinners";
 import Uploader from "../../_components/modules/uploader";
-import { logoutHandler } from "@/utils/authTools";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -75,6 +74,25 @@ const page = memo(() => {
         }
       });
   }, []);
+
+  function logoutHandler() {
+    fetch("/api/logoutAuthor", {
+      method: "POST",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          toast.success(result.message);
+          setTimeout(() => {
+            location.pathname = "/";
+          }, 2000);
+        } else {
+          toast.error(result.message);
+        }
+      });
+  }
 
   return (
     <div className="flex flex-col items-center justify-center">

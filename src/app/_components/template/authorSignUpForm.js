@@ -20,16 +20,16 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
     },
     validate: (values) => {
       const errors = {};
-      if (!values.phone.trim() || isNaN(values.phone)) {
-        errors.phone = "شماره همراهتان را به درستی وارد کنید";
-      } else if (!values.name.trim() || !isNaN(values.name)) {
+      if (!values.name.trim() || !isNaN(values.name)) {
         errors.name = "نام تان را به درستی وارد کنید";
       } else if (!emailRegex.test(values.email)) {
         errors.email = "ایمیل تان را به درستی وارد کنید";
+      } else if (!values.phone.trim() || isNaN(values.phone)) {
+        errors.phone = "شماره همراهتان را به درستی وارد کنید";
       } else if (values.password.length > 15 || values.password.length < 8) {
         errors.password = "رمز عبور شما باید بین 8 تا 15 کاراکتر داشته باشد";
       } else if (!values.job.trim()) {
-        errors.password = "تخصص مورد نظرتان را بنویسید در یک الی سه کلمه";
+        errors.job = "تخصص مورد نظرتان را بنویسید در یک الی سه کلمه";
       } else if (!values.ruleImage) {
         errors.ruleImage = "عکس قوانین تایید شده را بارگذاری کنید";
       }
@@ -98,9 +98,11 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
           value={authorSignUp.values.name}
           placeholder="نام و نام خانوادگی"
         />
-        {authorSignUp.touched.name &&
-          authorSignUp.errors.name &&
-          authorSignUp.errors.name}
+        {authorSignUp.touched.name && authorSignUp.errors.name && (
+          <span className="text-xl text-red-600">
+            {authorSignUp.errors.name}
+          </span>
+        )}
         <input
           className="w-full rounded-lg border-0 px-[1.5rem] text-[1.3rem] bg-white dark:bg-[#1e293b] text-black/70 dark:text-[#e2e8f0]"
           id="email"
@@ -113,9 +115,11 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
           value={authorSignUp.values.email}
           placeholder="ایمیل"
         />
-        {authorSignUp.touched.email &&
-          authorSignUp.errors.email &&
-          authorSignUp.errors.email}
+        {authorSignUp.touched.email && authorSignUp.errors.email && (
+          <span className="text-xl text-red-600">
+            {authorSignUp.errors.email}
+          </span>
+        )}
         <input
           className="w-full rounded-lg border-0 px-[1.5rem] text-[1.3rem] bg-white dark:bg-[#1e293b] text-black/70 dark:text-[#e2e8f0]"
           id="phone"
@@ -128,9 +132,11 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
           value={authorSignUp.values.phone}
           placeholder="شماره همراه"
         />
-        {authorSignUp.touched.phone &&
-          authorSignUp.errors.phone &&
-          authorSignUp.errors.phone}
+        {authorSignUp.touched.phone && authorSignUp.errors.phone && (
+          <span className="text-xl text-red-600">
+            {authorSignUp.errors.phone}
+          </span>
+        )}
         <input
           className="w-full rounded-lg border-0 px-[1.5rem] text-[1.3rem] bg-white dark:bg-[#1e293b] text-black/70 dark:text-[#e2e8f0]"
           id="password"
@@ -144,9 +150,11 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
           placeholder="رمز عبور"
         />
 
-        {authorSignUp.touched.password &&
-          authorSignUp.errors.password &&
-          authorSignUp.errors.password}
+        {authorSignUp.touched.password && authorSignUp.errors.password && (
+          <span className="text-xl text-red-600">
+            {authorSignUp.errors.password}
+          </span>
+        )}
         <input
           className="w-full rounded-lg border-0 px-[1.5rem] text-[1.3rem] bg-white dark:bg-[#1e293b] text-black/70 dark:text-[#e2e8f0]"
           id="job"
@@ -160,9 +168,11 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
           placeholder="نام تخصص"
         />
 
-        {authorSignUp.touched.job &&
-          authorSignUp.errors.job &&
-          authorSignUp.errors.job}
+        {authorSignUp.touched.job && authorSignUp.errors.job && (
+          <span className="text-xl text-red-600">
+            {authorSignUp.errors.job}
+          </span>
+        )}
         <label
           htmlFor="fileInput"
           className="w-full bg-second/70 text-first text-[1.5rem] font-light rounded-lg flex items-center justify-center"
@@ -178,9 +188,11 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
             hidden
           />
         </label>
-        {authorSignUp.touched.ruleImage &&
-          authorSignUp.errors.ruleImage &&
-          authorSignUp.errors.ruleImage}
+        {authorSignUp.touched.ruleImage && authorSignUp.errors.ruleImage && (
+          <span className="text-xl text-red-600">
+            {authorSignUp.errors.ruleImage}
+          </span>
+        )}
 
         <button
           type="submit"

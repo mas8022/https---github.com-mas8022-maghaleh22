@@ -36,17 +36,8 @@ const page = memo(async () => {
             ))}
           </div>
         ) : (
-          <div className="w-full flex flex-col gap-8 items-center justify-center">
-            <Image
-              src="/images/sad.svg"
-              width={50}
-              height={50}
-              alt="ناموجود"
-              className="size-96 opacity-10 dark:invert"
-            />
-            <span className="text-2xl text-black/60 dark:text-first/60">
-              محصولی در این قسمت وجود ندارد
-            </span>
+          <div className="w-full h-56 flex items-center justify-center border-y-2 border-second/70 bg-second/15 dark:bg-second/5 text-second text-4xl rounded-lg">
+            محصولی در این قسمت وجود ندارد
           </div>
         )}
       </div>
