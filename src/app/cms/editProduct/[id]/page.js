@@ -1,26 +1,18 @@
-"use client";
+import connectToDb from "@/configs/db";
 import WorkTool from "@/src/app/_components/modules/workTool";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo } from "react";
+import productModel from "@/models/product";
 
-const page = memo(({ params }) => {
+const page = memo(async ({ params }) => {
   const productId = params.id;
-  const [product, setProduct] = useState({});
-
-  const fetchProduct = () => {
-    fetch(`/api/product/cms/${productId}/getProduct`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data));
-  };
-
-  useEffect(() => {
-    fetchProduct();
-  }, []);
+  connectToDb();
+  const product = await productModel.findOne({ _id: productId }).exec();
 
   return (
     <div className="w-full">
       <WorkTool
         initialValues={JSON.parse(JSON.stringify(product))}
-        apiPath={`cms/${_id}/editProduct`}
+        apiPath={`cms/${product._id}/editProduct`}
       />
     </div>
   );

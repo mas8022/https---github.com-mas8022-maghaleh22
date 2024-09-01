@@ -40,7 +40,7 @@ export async function POST(req) {
     connectToDb();
     const product = await productModel.findOne({ _id: id }).lean();
 
-    await productModel.updateOne(
+    await productModel.findOneAndUpdate(
       { _id: id },
       {
         group,
@@ -54,7 +54,9 @@ export async function POST(req) {
         discount: discount ? discount : 0,
         tags,
         cover: coverSrc,
-        articleVideo: product?.articleVideo?.includes(articleVideoSrc) ? null : [...product.articleVideo, articleVideoSrc],
+        articleVideo: product?.articleVideo?.includes(articleVideoSrc)
+          ? null
+          : [...product.articleVideo, articleVideoSrc],
         duration,
       }
     );
@@ -64,7 +66,6 @@ export async function POST(req) {
       status: 201,
     });
   } catch (error) {
-    
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

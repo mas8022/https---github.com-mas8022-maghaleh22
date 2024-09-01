@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { memo, useEffect, useReducer, useState } from "react";
+import { memo, useReducer, useState } from "react";
 import SelectBox from "./selectBox";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import Uploader from "./uploader";
@@ -14,9 +14,6 @@ const Editor = dynamic(() => import("../modules/ck"), {
 });
 
 const WorkTool = memo(({ apiPath, initialValues = null }) => {
-  useEffect(() => {
-    console.log("initialValues: ", initialValues);
-  },[initialValues]);
   const router = useRouter();
   const [articleText, setArticleText] = useState(
     initialValues ? initialValues.articleText : ""
@@ -143,7 +140,18 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
   });
 
   const sendProductForConfirmation = () => {
-    const productID = initialValues._id;
+    const formData = new FormData();
+
+    formData.append("id", initialValues ? initialValues._id : "");
+    formData.append("group", generateProductFormik.values.group);
+    formData.append("title", generateProductFormik.values.title);
+    formData.append("price", generateProductFormik.values.price);
+    formData.append("articleText", articleText);
+    formData.append("articleVideo", generateProductFormik.values.articleVideo);
+    formData.append("tags", JSON.stringify(states.tags));
+    formData.append("discount", generateProductFormik.values.discount);
+    formData.append("cover", generateProductFormik.values.cover);
+    formData.append("duration", duration);
 
     swal({
       icon: "info",
@@ -153,7 +161,7 @@ const WorkTool = memo(({ apiPath, initialValues = null }) => {
       if (res) {
         fetch("/api/sendProductForConfirmation", {
           method: "POST",
-          body: JSON.stringify({ productID }),
+          body: formData,
         })
           .then((res) => res.json())
           .then(
