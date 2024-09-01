@@ -37,7 +37,9 @@ export async function POST(req) {
       const id = formData.get("id");
       const group = formData.get("group");
       const title = formData.get("title");
-      const price = formData.get("price");
+      let price = formData.get("price");
+      price = Number(price);
+
       let articleText = formData.get("articleText");
       const articleVideo = formData.get("articleVideo");
       let tags = formData.get("tags");
@@ -46,6 +48,7 @@ export async function POST(req) {
       discount = Number(discount);
       const cover = formData.get("cover");
       let duration = formData.get("duration");
+      duration = Number(duration);
 
       if (typeof tags === "string") {
         tags = JSON.parse(tags);
@@ -61,6 +64,7 @@ export async function POST(req) {
       }
 
       const product = await productModel.findOne({ _id: id }, "-author");
+      console.log("database: ", product);
 
       console.log({
         group,
@@ -85,9 +89,10 @@ export async function POST(req) {
           discount: discount ? discount : 0,
           tags,
           cover: coverSrc,
-          articleVideo: product?.articleVideo?.includes(articleVideoSrc)
-            ? null
-            : [...product.articleVideo, articleVideoSrc],
+          articleVideo:
+            product.articleVideo && articleVideoSrc
+              ? [...product.articleVideo, articleVideoSrc]
+              : [],
           duration,
         }
       );

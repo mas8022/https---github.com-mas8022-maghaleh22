@@ -1,9 +1,12 @@
 import React from "react";
 import CmsProductCart from "../_components/modules/cmsProductCart";
 import productModel from "@/models/product";
+import connectToDb from "@/configs/db";
 
 const cmsProducts = async () => {
-  const products = await productModel
+  let products = [];
+  connectToDb();
+  products = await productModel
     .find(
       { status: "publish" },
       "title price author sellCount discount cover duration group"

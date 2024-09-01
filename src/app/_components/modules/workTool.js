@@ -13,7 +13,7 @@ const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
-const WorkTool = memo(({ apiPath, initialValues = null }) => {
+const WorkTool = memo(({ apiPath = "", initialValues = null }) => {
   const router = useRouter();
   const [articleText, setArticleText] = useState(
     initialValues ? initialValues.articleText : ""

@@ -10,10 +10,7 @@ const page = memo(async ({ params }) => {
 
   return (
     <div className="w-full">
-      <WorkTool
-        initialValues={JSON.parse(JSON.stringify(product))}
-        apiPath={`cms/${product._id}/editProduct`}
-      />
+      <WorkTool initialValues={JSON.parse(JSON.stringify(product))} />
     </div>
   );
 });
