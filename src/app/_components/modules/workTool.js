@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { memo, useReducer, useState } from "react";
+import { memo, useEffect, useReducer, useState } from "react";
 import SelectBox from "./selectBox";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import Uploader from "./uploader";
@@ -14,6 +14,9 @@ const Editor = dynamic(() => import("../modules/ck"), {
 });
 
 const WorkTool = memo(({ apiPath, initialValues = null }) => {
+  useEffect(() => {
+    console.log("initialValues: ", initialValues);
+  },[initialValues]);
   const router = useRouter();
   const [articleText, setArticleText] = useState(
     initialValues ? initialValues.articleText : ""

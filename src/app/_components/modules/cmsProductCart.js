@@ -95,7 +95,7 @@ const CmsProductCart = memo(({ productData }) => {
         </div>
 
         <Link
-          href={"/products/software/sfdsadfdfds"}
+          href={`/cms/editProduct/${_id}`}
           className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg"
         >
           ویرایش

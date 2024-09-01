@@ -25,7 +25,7 @@ const ProfileBtn = memo(() => {
           setMe(false);
         }
       });
-  }, []);
+  }, [slideProfile]);
 
   return (
     <>
