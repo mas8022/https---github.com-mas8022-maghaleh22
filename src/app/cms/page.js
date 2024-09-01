@@ -1,7 +1,17 @@
 import React from "react";
 import CmsProductCart from "../_components/modules/cmsProductCart";
+import productModel from "@/models/product";
 
-const cmsProducts = () => {
+const cmsProducts = async () => {
+  const products = await productModel
+    .find(
+      { status: "publish" },
+      "title price author sellCount discount cover duration group"
+    )
+    .populate("author", "name")
+    .sort({ _id: -1 })
+    .lean();
+
   return (
     <div className="w-full">
       <div className="w-full pb-12 border-b-[1px] border-b-second/50 flex justify-end">
@@ -31,23 +41,14 @@ const cmsProducts = () => {
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
         <div className="w-full flex justify-center">
           <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
-            <CmsProductCart />
+            {products?.length
+              ? products.map((item) => (
+                  <CmsProductCart
+                    productData={JSON.parse(JSON.stringify(item))}
+                    key={item._id}
+                  />
+                ))
+              : null}
           </div>
         </div>
       </div>

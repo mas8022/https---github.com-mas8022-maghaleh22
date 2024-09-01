@@ -20,7 +20,8 @@ const Home = async () => {
       "title cover duration sellCount price discount group"
     )
     .populate("author", "name")
-    .sort({ _id: -1 }).lean()
+    .sort({ _id: -1 })
+    .lean();
 
   const newProducts = await productModel
     .find(
@@ -29,7 +30,8 @@ const Home = async () => {
     )
     .populate("author", "name")
     .sort({ _id: -1 })
-    .limit(6).lean()
+    .limit(6)
+    .lean();
 
   const popularProducts = await productModel
     .find(
@@ -38,13 +40,15 @@ const Home = async () => {
     )
     .populate("author", "name")
     .sort({ sellCount: -1 })
-    .limit(6).lean()
+    .limit(6)
+    .lean();
 
   const siteImprovementComments = await siteImprovementCommentsModel
-    .find({ status: "publish" }, "comment like disLike")
+    .find({ publish: true }, "comment like disLike")
     .populate("user", "fullName profile")
     .sort({ _id: -1 })
-    .limit(6).lean()
+    .limit(6)
+    .lean();
 
   return (
     <>

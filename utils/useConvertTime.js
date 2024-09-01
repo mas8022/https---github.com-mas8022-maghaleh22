@@ -8,7 +8,7 @@ const useConvertTime = (time) => {
 
   const hourHint = String(pureHour).replace(regexAfterHint, "$1");
 
-  const minute = Math.floor(Number(`0.${hourHint}`) * 60);
+  const minute = String(Math.floor(Number(`0.${hourHint}`) * 60));
 
   return { hour, minute };
 };
