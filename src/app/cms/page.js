@@ -1,28 +1,41 @@
-import React from "react";
+"use client";
+import React, { useEffect, useMemo, useState } from "react";
 import CmsProductCart from "../_components/modules/cmsProductCart";
-import productModel from "@/models/product";
-import connectToDb from "@/configs/db";
 
-const cmsProducts = async () => {
-  let products = [];
-  connectToDb();
-  products = await productModel
-    .find(
-      { status: "publish" },
-      "title price author sellCount discount cover duration group"
-    )
-    .populate("author", "name")
-    .sort({ _id: -1 })
-    .lean();
+const cmsProducts = () => {
+  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const getProduct = () => {
+    fetch(`/api/cms/getProducts`)
+      .then((res) => res.json())
+      .then((data) => data && setProducts(data));
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, []);
+
+  useMemo(() => {
+    if (!search) {
+      return getProduct();
+    }
+    const productArray = products.filter((item) =>
+      item.title.includes(search.trim())
+    );
+    setProducts(productArray);
+  }, [search]);
 
   return (
     <div className="w-full">
       <div className="w-full pb-12 border-b-[1px] border-b-second/50 flex justify-end">
         <div className="navbar flex h-14 items-center justify-end gap-4 border-[2px] border-gray-800/20 dark:border-first/60 dark:border-[1px] pl-4 py-1 rounded-md">
           <input
-            className="pr-4 h-full w-[20rem] sm:w-[30rem] bg-black/0 text-[1.3rem] pl-2 focus:outline-none outline-none dark:text-first font-light"
             type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="دنبال چه دوره ای هستین؟..."
+            className="pr-4 h-full w-[20rem] sm:w-[30rem] bg-black/0 text-[1.3rem] pl-2 focus:outline-none outline-none dark:text-first font-light"
           />
 
           <svg
@@ -31,7 +44,7 @@ const cmsProducts = async () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-10 active:scale-95 cursor-pointer dark:invert"
+            className="size-10 dark:invert"
           >
             <path
               strokeLinecap="round"
@@ -43,16 +56,20 @@ const cmsProducts = async () => {
       </div>
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
         <div className="w-full flex justify-center">
-          <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
-            {products?.length
-              ? products.map((item) => (
-                  <CmsProductCart
-                    productData={JSON.parse(JSON.stringify(item))}
-                    key={item._id}
-                  />
-                ))
-              : null}
-          </div>
+          {products?.length ? (
+            <div className="grid grid-cols-1 lgg:grid-cols-2  2xl:grid-cols-3 gap-8">
+              {products.map((item) => (
+                <CmsProductCart
+                  productData={JSON.parse(JSON.stringify(item))}
+                  key={item._id}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="w-full h-56 flex items-center justify-center border-y-2 border-second/70 bg-second/15 dark:bg-second/5 text-second text-4xl rounded-lg">
+              محصولی در این قسمت وجود ندارد
+            </div>
+          )}
         </div>
       </div>
     </div>

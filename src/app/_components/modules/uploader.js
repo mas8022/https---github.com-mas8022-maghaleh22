@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { memo } from "react";
 import { MoonLoader } from "react-spinners";
 const Uploader = memo(
@@ -13,8 +14,10 @@ const Uploader = memo(
     return (
       <label className={`relative ${customclassName}`}>
         {profile && (
-          <img
+          <Image
             src={profile}
+            width={300}
+            height={300}
             alt="not found"
             className="absolute size-full object-cover !border-0 !outline-none !ring-0"
           />

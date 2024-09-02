@@ -62,8 +62,8 @@ export default function page() {
     },
   });
 
-  const fetchProfileData = () => {
-    fetch(`/api/me`)
+  const fetchProfileData =  () => {
+     fetch(`/api/me`)
       .then((res) => res.json())
       .then((result) => {
         if (result) {

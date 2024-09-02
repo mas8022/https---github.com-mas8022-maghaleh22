@@ -33,9 +33,6 @@ export async function POST(req) {
       process.env.refreshPrivateKey
     );
 
-
-    console.log("phone: ",phone);
-
     if (fileAddress) {
       await userModel.findOneAndUpdate(
         { _id: userId },
