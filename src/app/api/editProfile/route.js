@@ -14,7 +14,12 @@ export async function POST(req) {
     const phone = formData.get("phone");
     const file = formData.get("file");
 
-    const fileAddress = await CloudStoringFile(file);
+    
+
+    let fileAddress = null;
+    if (!!file) {
+      fileAddress = await CloudStoringFile(file);
+    }
 
     connectToDb();
     const userId = await MeId();
@@ -28,16 +33,31 @@ export async function POST(req) {
       process.env.refreshPrivateKey
     );
 
-    await userModel.findOneAndUpdate(
-      { _id: userId },
-      {
-        fullName,
-        email,
-        phone,
-        refreshToken,
-        profile: fileAddress,
-      }
-    );
+
+    console.log("phone: ",phone);
+
+    if (fileAddress) {
+      await userModel.findOneAndUpdate(
+        { _id: userId },
+        {
+          fullName,
+          email,
+          phone,
+          refreshToken,
+          profile: fileAddress,
+        }
+      );
+    } else {
+      await userModel.findOneAndUpdate(
+        { _id: userId },
+        {
+          fullName,
+          email,
+          phone,
+          refreshToken,
+        }
+      );
+    }
 
     const newAccessToken = generateToken({ email }, process.env.privateKey);
 

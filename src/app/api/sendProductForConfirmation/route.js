@@ -64,19 +64,6 @@ export async function POST(req) {
       }
 
       const product = await productModel.findOne({ _id: id }, "-author");
-      console.log("database: ", product);
-
-      console.log({
-        group,
-        title,
-        price,
-        articleText,
-        discount,
-        tags,
-        coverSrc,
-        articleVideoSrc,
-        duration,
-      });
 
       await productModel.findOneAndUpdate(
         { _id: id },

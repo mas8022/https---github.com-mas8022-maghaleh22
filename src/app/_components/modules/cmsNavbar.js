@@ -2,16 +2,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Side from "./side";
 import ThemeToggle from "./themeToggle";
 
 const CmsNavbar = memo(() => {
+  const [manager, setManager] = useState({});
   const segment = useSelectedLayoutSegment();
 
   const isActive = (path = null) => {
     return segment === path ? "bg-black/10 dark:bg-first/5" : "";
   };
+
+  useEffect(() => {
+    fetch("/api/me")
+      .then((res) => res.json())
+      .then((result) => setManager(result));
+  }, []);
+
 
   return (
     <div className="nav w-full h-28 bg-first dark:bg-[#0d141f] shadow-xl flex items-center justify-between py-4 sm:px-12 px-6">
@@ -204,19 +212,19 @@ const CmsNavbar = memo(() => {
       <div className="flex items-center gap-6">
         <div className="flex flex-col items-end gap-1">
           <p className="sm:text-[1.5rem] text-[1.37rem] text-black/80 dark:text-first">
-            علی قاسمی
+            {manager?.fullName}
           </p>
           <p className="sm:text-[1.3rem] text-[1.1rem] font-light text-black/60 dark:text-first/50">
-            aliGhasemi@gmail.com
+            {manager?.email}
           </p>
         </div>
         <Link href="/cms/profiler">
           <Image
-            src={"/images/profile.jpg"}
+            src={manager?.profile || "/images/profile.jpg"}
             width={100}
             height={100}
             alt="عکس ادمین"
-            className="sm:size-20 size-16 rounded-full"
+            className="sm:size-20 size-16 rounded-full object-cover"
           />
         </Link>
       </div>

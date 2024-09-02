@@ -1,20 +1,24 @@
 "use client";
-import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
+import toast from "react-hot-toast";
+import { useFormik } from "formik";
 import Uploader from "../../_components/modules/uploader";
 import { logoutHandler } from "@/utils/authTools";
+import Hr from "../../_components/modules/hr";
+import useSanitizeInput from "@/utils/useSanitizeInput";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-export default function page({ params }) {
+export default function page() {
   const [loading, setLoading] = useState(false);
-  const [fileData, setFileData] = useState("");
+  const [profile, setProfile] = useState("");
+
   const editProfile = useFormik({
     initialValues: {
       fullName: "",
       email: "",
-      password: "",
       phone: "",
+      file: "",
     },
     validate: (values) => {
       const errors = {};
@@ -22,8 +26,6 @@ export default function page({ params }) {
         errors.fullName = "نام تان را به درستی وارد کنید";
       } else if (!emailRegex.test(values.email)) {
         errors.email = "ایمیل تان را به درستی وارد کنید";
-      } else if (values.password.length > 15 && values.password.length < 5) {
-        errors.password = "پسورد حداقل بین 8 تا 15 کاراکتر باید باشد";
       } else if (isNaN(values.phone)) {
         errors.phone = "شماره موبایل تان را به درستی وارد کنید";
       }
@@ -31,36 +33,61 @@ export default function page({ params }) {
     },
     onSubmit: (values, { setSubmitting }) => {
       setLoading(true);
+
       setTimeout(async () => {
-        await fetch("/api/cms/profiler", {
+        const formData = new FormData();
+        formData.append("fullName", values.fullName);
+        formData.append("email", values.email);
+        formData.append("phone", values.phone);
+        formData.append("file", values.file);
+
+        await fetch(`/api/editProfile`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }).then((res) => {
-          if (res.ok) {
-            location.pathname = "/cms";
-          } else {
-            toast.error("اینترنت خود را چک کنید");
-          }
-          setLoading(false);
-        });
-        values.fullName = "";
-        values.email = "";
-        values.password = "";
-        values.phone = "";
+
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.status === 200) {
+              toast.success(result.message);
+            } else {
+              toast.error(result.message);
+            }
+            setLoading(false);
+          });
+
         setSubmitting(false);
+        fetchProfileData();
       }, 3000);
     },
   });
 
+  const fetchProfileData = () => {
+    fetch(`/api/me`)
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          editProfile.setFieldValue("fullName", result.fullName);
+          editProfile.setFieldValue("email", result.email);
+          editProfile.setFieldValue("phone", result.phone);
+        }
+        if (result?.profile) {
+          setProfile(result.profile);
+        }
+      });
+  };
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-center py-10">
+    <div className="flex flex-col items-center justify-center">
       <Uploader
-        customclassName="size-[20rem] rounded-full !z-10 overflow-hidden bg-[url('/images/profile.jpg')] bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer"
-        label={"ویرایش"}
-        setFileData={setFileData}
+        profile={profile}
+        customclassName={`size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer`}
+        formHandler={editProfile}
+        name="file"
       />
       <div className="mt-[6rem] bg-second/30 dark:bg-black/30 rounded-2xl w-[100%] sm:w-[70%] md:w-[60%] lg:w-[45%] p-[2rem] sm:p-[3rem] md:sm:p-[5rem]  py-[4rem] flex flex-col gap-8 items-center">
         <form
@@ -72,7 +99,10 @@ export default function page({ params }) {
             id="fullName"
             name="fullName"
             type="text"
-            onChange={editProfile.handleChange}
+            onChange={(e) => {
+              const sanitizedValue = useSanitizeInput(e.target.value);
+              editProfile.setFieldValue("fullName", sanitizedValue);
+            }}
             value={editProfile.values.fullName}
             placeholder="نام و نام خانوادگی"
           />
@@ -84,7 +114,10 @@ export default function page({ params }) {
             id="email"
             name="email"
             type="text"
-            onChange={editProfile.handleChange}
+            onChange={(e) => {
+              const sanitizedValue = useSanitizeInput(e.target.value);
+              editProfile.setFieldValue("email", sanitizedValue);
+            }}
             value={editProfile.values.email}
             placeholder="ایمیل"
           />
@@ -94,24 +127,15 @@ export default function page({ params }) {
 
           <input
             className="w-full rounded-lg bg-white dark:bg-[#1e293b] border-0 h-16 px-[1.5rem] text-[1.3rem] text-black/70"
-            id="password"
-            name="password"
-            type="text"
-            onChange={editProfile.handleChange}
-            value={editProfile.values.password}
-            placeholder="شماره همراه"
-          />
-          {editProfile.touched.password &&
-            editProfile.errors.password &&
-            editProfile.errors.password}
-          <input
-            className="w-full rounded-lg bg-white dark:bg-[#1e293b] border-0 h-16 px-[1.5rem] text-[1.3rem] text-black/70"
             id="phone"
             name="phone"
             type="text"
-            onChange={editProfile.handleChange}
+            onChange={(e) => {
+              const sanitizedValue = useSanitizeInput(e.target.value);
+              editProfile.setFieldValue("phone", sanitizedValue);
+            }}
             value={editProfile.values.phone}
-            placeholder="شماره همراه"
+            placeholder="شماره موبایل"
           />
           {editProfile.touched.phone &&
             editProfile.errors.phone &&
@@ -135,6 +159,8 @@ export default function page({ params }) {
           خروج از حساب
         </button>
       </div>
+
+      <Hr />
     </div>
   );
 }
