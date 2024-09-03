@@ -8,6 +8,7 @@ import ThemeToggle from "./themeToggle";
 
 const CmsNavbar = memo(() => {
   const [manager, setManager] = useState({});
+  const [messageLength, setMessageLength] = useState(0);
   const segment = useSelectedLayoutSegment();
 
   const isActive = (path = null) => {
@@ -18,8 +19,11 @@ const CmsNavbar = memo(() => {
     fetch("/api/me")
       .then((res) => res.json())
       .then((result) => setManager(result));
-  }, []);
 
+    fetch("/api/cms/getContactUsMessage")
+      .then((res) => res.json())
+      .then((data) => setMessageLength(data));
+  }, []);
 
   return (
     <div className="nav w-full h-28 bg-first dark:bg-[#0d141f] shadow-xl flex items-center justify-between py-4 sm:px-12 px-6">
@@ -189,8 +193,13 @@ const CmsNavbar = memo(() => {
 
         <Link
           href="/cms/cmsNotif"
-          className="sm:size-20 size-14 bg-black/10 dark:bg-first/5 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first transition-all duration-200"
+          className="relative sm:size-20 size-14 bg-black/10 dark:bg-first/5 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first transition-all duration-200"
         >
+          {messageLength ? (
+            <div className="absolute sm:-top-2 sm:left-12 -top-4 left-9 size-7 flex items-center justify-center rounded-full text-xl bg-red-900 text-first">
+              {messageLength}
+            </div>
+          ) : null}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

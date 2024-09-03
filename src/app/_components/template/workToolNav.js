@@ -103,7 +103,7 @@ const WorkToolNav = memo(() => {
           className="relative sm:size-20 size-14 bg-second/10 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first/5 transition-all duration-200"
         >
           {messageLength ? (
-            <div className="absolute sm:-top-2 sm:left-12 -top-4 left-9 size-7 flex items-center justify-center rounded-full text-xl bg-red-600/50 text-first">
+            <div className="absolute sm:-top-2 sm:left-12 -top-4 left-9 size-7 flex items-center justify-center rounded-full text-xl bg-red-900 text-first">
               {messageLength}
             </div>
           ) : null}
