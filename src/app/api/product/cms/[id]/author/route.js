@@ -25,8 +25,6 @@ export async function POST(req, { params }) {
 export async function DELETE(req, { params }) {
   try {
     const authorId = params.id;
-    console.log("params: ", authorId);
-
     connectToDb();
     await authorModel.findOneAndDelete({ _id: authorId });
 

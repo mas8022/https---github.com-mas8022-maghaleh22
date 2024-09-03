@@ -10,8 +10,7 @@ export async function DELETE(req, { params }) {
       { _id: commentId },
       { isAnswer: true }
     );
-
-    return Response.json({ message: "حذف شد", status: 200 });
+    return Response.json({ message: "پیام پاک شد", status: 200 });
   } catch (error) {
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
