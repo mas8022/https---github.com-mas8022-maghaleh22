@@ -16,7 +16,7 @@ const cmsProducts = () => {
     getProduct();
   }, []);
 
-  useMemo(() => {
+  useEffect(() => {
     if (!search) {
       return getProduct();
     }

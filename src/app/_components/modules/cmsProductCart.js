@@ -31,7 +31,7 @@ const CmsProductCart = memo(({ productData }) => {
       buttons: ["لغو", "تایید"],
     }).then((response) => {
       if (response) {
-        fetch(`/api/product/cms/${id}/deleteProduct`, { method: "POST" })
+        fetch(`/api/product/cms/${id}/deleteProduct`, { method: "DELETE" })
           .then((res) => res.json())
           .then((result) => {
             if (result.status === 200) {
@@ -61,7 +61,7 @@ const CmsProductCart = memo(({ productData }) => {
       <div className="w-full flex justify-between px-10 items-center gap-2 mb-12">
         <div className="flex flex-col items-start gap-3">
           <span className="text-[13px] text-black/60 dark:text-first/60">
-            {author.name}
+            {author?.name}
           </span>
           {Number(hour) || Number(minute) ? (
             <span className="text-[13px] text-black/60 dark:text-first/60">

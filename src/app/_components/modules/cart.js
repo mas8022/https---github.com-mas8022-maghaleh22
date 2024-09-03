@@ -38,7 +38,7 @@ const Cart = ({ productData, btnMode }) => {
       <div className="w-full flex justify-between px-10 items-center gap-2">
         <div className="flex flex-col items-center gap-3">
           <span className="text-[13px] text-black/60 dark:text-first/60 self-start">
-            {author.name}
+            {author?.name}
           </span>
           {hour && minute ? (
             <span className="text-[13px] text-black/60 dark:text-first/60 mt-2">

@@ -15,7 +15,7 @@ const Uploader = memo(
       <label className={`relative ${customclassName}`}>
         {profile && (
           <Image
-            src={profile}
+            src={profile?.trim() || "/images/profile.jpg"}
             width={300}
             height={300}
             alt="not found"

@@ -1,7 +1,7 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 
-export async function POST(req, { params }) {
+export async function DELETE(req, { params }) {
   try {
     const productId = params.id;
 
