@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import {
   usePathname,
   useRouter,
@@ -12,6 +12,7 @@ const WorkToolNav = memo(() => {
   const router = useRouter();
 
   const [isAuthor, setIsAuthor] = useState(false);
+  const [messageLength, setMessageLength] = useState(0);
 
   const segment = useSelectedLayoutSegment();
 
@@ -26,6 +27,40 @@ const WorkToolNav = memo(() => {
   }
 
   useEffect(() => {
+    fetch("/api/cms/authorReceiveMessage/getAll")
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          setMessageLength(result.data);
+        }
+      });
+
+    fetch("/api/resetAuthorToken")
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          setIsAuthor(true);
+        } else {
+          router.replace("/coWorker/employment");
+        }
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/cms/authorReceiveMessage/getAll")
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result.status === 200) {
+          setMessageLength(result.data);
+        }
+      });
+
     fetch("/api/resetAuthorToken")
       .then((res) => {
         return res.json();
@@ -65,8 +100,13 @@ const WorkToolNav = memo(() => {
       <div className="h-full flex items-center gap-8">
         <Link
           href={"/coWorker/authorNotification"}
-          className="sm:size-20 size-14 bg-second/10 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first/5 transition-all duration-200"
+          className="relative sm:size-20 size-14 bg-second/10 rounded-full flex items-center justify-center cursor-pointer active:scale-95 active:bg-first/5 transition-all duration-200"
         >
+          {messageLength ? (
+            <div className="absolute sm:-top-2 sm:left-12 -top-4 left-9 size-7 flex items-center justify-center rounded-full text-xl bg-red-600/50 text-first">
+              {messageLength}
+            </div>
+          ) : null}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
