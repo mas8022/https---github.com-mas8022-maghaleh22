@@ -1,15 +1,15 @@
 "use client";
 import { useFormik } from "formik";
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import toast from "react-hot-toast";
-import Uploader from "../_components/modules/uploader";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import { logoutHandler } from "@/utils/authTools";
+import Uploader from "../_components/modules/uploader";
 import Hr from "../_components/modules/hr";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-export default function page() {
+export default function page({ params }) {
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState("");
 

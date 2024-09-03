@@ -16,7 +16,6 @@ export async function GET() {
     );
 
     const messageLength = messages.length;
-    console.log(messageLength);
 
     return Response.json({ data: messageLength, status: 200 });
   } catch (error) {
