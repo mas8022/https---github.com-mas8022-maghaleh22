@@ -3,10 +3,12 @@ import useConvertTime from "@/utils/useConvertTime";
 import useDiscountPrice from "@/utils/useDiscountPrice";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { memo } from "react";
 import toast from "react-hot-toast";
 
 const CmsProductCart = memo(({ productData }) => {
+  const router = useRouter();
   const {
     _id,
     title,
@@ -39,6 +41,7 @@ const CmsProductCart = memo(({ productData }) => {
             } else {
               toast.error(result.message);
             }
+            router.refresh();
           });
       }
     });
