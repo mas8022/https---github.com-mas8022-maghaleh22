@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthorCart from "../../_components/modules/authorCart";
 
 const page = () => {
@@ -34,7 +34,7 @@ const page = () => {
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="دنبال چه دوره ای هستین؟..."
+            placeholder="دنبال چه نویسنده ای هستین؟..."
             className="pr-4 h-full w-[20rem] sm:w-[30rem] bg-black/0 text-[1.3rem] pl-2 focus:outline-none outline-none dark:text-first font-light"
           />
 

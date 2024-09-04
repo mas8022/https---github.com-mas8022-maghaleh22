@@ -28,7 +28,7 @@ export async function DELETE(req, { params }) {
     connectToDb();
     await authorModel.findOneAndDelete({ _id: authorId });
 
-    return Response.json({ message: "نویسنده با موفقیت حذف شد", status: 200 });
+    return Response.json({ message: "نویسنده حذف شد", status: 200 });
   } catch (error) {
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }

@@ -5,8 +5,7 @@ export async function GET() {
   try {
     connectToDb();
     const authors = await authorModel
-      .find({ permission: true }, "name job profile")
-      .sort({ _id: -1 })
+      .find({ permission: false }, "name job profile")
       .lean();
 
     return Response.json(authors);

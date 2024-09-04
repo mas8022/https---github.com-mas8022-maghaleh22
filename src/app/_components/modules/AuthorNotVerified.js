@@ -3,20 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { memo } from "react";
 import toast from "react-hot-toast";
+import swal from "sweetalert";
 import { useRouter } from "next/navigation";
-const AuthorCart = memo(({ authorData }) => {
+
+const AuthorNotVerified = memo(({ authorData }) => {
   const router = useRouter();
   const { _id, name, job, profile } = authorData;
 
-  const deleteAuthor = (id) => {
+  const confirmAuthor = (id) => {
     swal({
       icon: "warning",
       title: "هشدار...",
-      text: "ایا از حذف نویسنده مطمعنین؟",
+      text: "ایا از تایید نویسنده مطمعنین؟",
+
       buttons: ["لغو", "تایید"],
     }).then((response) => {
       if (response) {
-        fetch(`/api/product/cms/${id}/author`, { method: "DELETE" })
+        fetch(`/api/cms/confirmAuthors/${id}`, { method: "PUT" })
           .then((res) => res.json())
           .then((result) => {
             if (result.status === 200) {
@@ -30,28 +33,15 @@ const AuthorCart = memo(({ authorData }) => {
     });
   };
 
-  const sendMessage = (id) => {
+  const deleteAuthor = (id) => {
     swal({
       icon: "warning",
       title: "هشدار...",
-      text: "ایا از ارسال پیام مطمعنین؟",
-      content: {
-        element: "input",
-        attributes: {
-          placeholder: "پیام خود را بنویسید...",
-          type: "text",
-        },
-      },
+      text: "ایا از حذف نویسنده مطمعنین؟",
       buttons: ["لغو", "تایید"],
     }).then((response) => {
       if (response) {
-        fetch(`/api/product/cms/${id}/author`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ message: response }),
-        })
+        fetch(`/api/product/cms/${id}/author`, { method: "DELETE" })
           .then((res) => res.json())
           .then((result) => {
             if (result.status === 200) {
@@ -90,16 +80,16 @@ const AuthorCart = memo(({ authorData }) => {
             مشاهده
           </Link>
           <div
-            onClick={() => sendMessage(_id)}
+            onClick={() => confirmAuthor(_id)}
             className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg cursor-pointer"
           >
-            ارسال پیام
+            تایید
           </div>
           <div
             onClick={() => deleteAuthor(_id)}
             className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg cursor-pointer"
           >
-            حذف
+            مسدود
           </div>
         </div>
       </div>
@@ -107,4 +97,4 @@ const AuthorCart = memo(({ authorData }) => {
   );
 });
 
-export default AuthorCart;
+export default AuthorNotVerified;
