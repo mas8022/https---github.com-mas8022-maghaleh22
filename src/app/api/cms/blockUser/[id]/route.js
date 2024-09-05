@@ -9,8 +9,6 @@ export async function PUT(req, { params }) {
 
     return Response.json({ message: "کاربر بلاک شد", status: 200 });
   } catch (error) {
-    console.log("====> ", error);
-
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

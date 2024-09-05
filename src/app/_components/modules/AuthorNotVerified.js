@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 const AuthorNotVerified = memo(({ authorData }) => {
   const router = useRouter();
-  const { _id, name, job, profile } = authorData;
+  const { _id, name, job, profile, ruleImage } = authorData;
 
   const confirmAuthor = (id) => {
     swal({
@@ -74,10 +74,13 @@ const AuthorNotVerified = memo(({ authorData }) => {
         </p>
         <div className="w-full flex items-center justify-between gap-2 child:shadow-sm">
           <Link
-            href={`/author-bio/${_id}`}
-            className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg"
+            target="_blank"
+            href={ruleImage}
+            download="downloaded_image.jpg"
           >
-            مشاهده
+            <button className="w-32 h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg cursor-pointer">
+              بررسی
+            </button>
           </Link>
           <div
             onClick={() => confirmAuthor(_id)}

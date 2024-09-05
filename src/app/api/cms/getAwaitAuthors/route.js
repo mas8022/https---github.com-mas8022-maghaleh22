@@ -5,7 +5,7 @@ export async function GET() {
   try {
     connectToDb();
     const authors = await authorModel
-      .find({ permission: false }, "name job profile")
+      .find({ permission: false }, "name job profile ruleImage")
       .lean();
 
     return Response.json(authors);

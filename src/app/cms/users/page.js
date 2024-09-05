@@ -18,8 +18,6 @@ const page = memo(() => {
 
   useEffect(() => {
     if (!search.trim()) {
-      console.log("yes");
-
       return getAllUsers();
     }
     const usersArray = users.filter((item) =>
