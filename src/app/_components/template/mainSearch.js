@@ -72,7 +72,7 @@ const MainSearch = memo(() => {
                     </h2>
                     <div className="flex xxd:flex-row flex-wrap gap-5">
                       <p className="text-xl text-black/60 dark:text-first/60 font-light">
-                        نام استاد: {item.author.name}
+                        نام استاد: {item.author?.name}
                       </p>
                       {item.duration ? (
                         <p className="text-xl text-black/60 dark:text-first/60 font-light">{`ساعت تدریس:  ${

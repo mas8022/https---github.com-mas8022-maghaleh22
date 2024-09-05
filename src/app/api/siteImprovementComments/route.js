@@ -18,6 +18,7 @@ export async function POST(req) {
       status: "publish",
       like: 0,
       disLike: 0,
+      publish: false,
     });
 
     return Response.json({
@@ -26,6 +27,8 @@ export async function POST(req) {
       status: 201,
     });
   } catch (error) {
+    console.log("=====>", error);
+
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }
