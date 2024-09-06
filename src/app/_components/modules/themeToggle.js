@@ -1,19 +1,26 @@
 "use client";
-import { memo, useEffect } from "react";
-import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
+import { useTheme } from "next-themes";
+import { memo, useEffect, useState } from "react";
+
 const ThemeToggle = memo(() => {
-  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const { theme, setTheme } = useTheme();
+
+  const [first, setFirst] = useState(false);
 
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
+    setFirst(true);
+  }, []);
+
+  if (!first) {
+    return null;
+  }
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   };
 
   return (

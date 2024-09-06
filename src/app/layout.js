@@ -6,6 +6,7 @@ import "./globals.css";
 import ThemeToggle from "./_components/modules/themeToggle";
 import { Toaster } from "react-hot-toast";
 import BreadCrumb from "./_components/modules/breadCrumb";
+import { ThemeProvider } from "next-themes";
 
 export const metadata = {
   title: "MAGHALEH",
@@ -14,19 +15,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="root">
+    <html lang="en" className="root" suppressHydrationWarning>
       <body className="bg-first dark:bg-[#1e293b]">
-        <ThemeToggle />
-        <Navbar />
-        <Discount />
-        <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] sm:pt-16 md:pt-16 lgg:pt-20">
-          <BreadCrumb />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeToggle />
+          <Navbar />
+          <Discount />
+          <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] sm:pt-16 md:pt-16 lgg:pt-20">
+            <BreadCrumb />
 
-          {children}
-          <Scroller />
-        </div>
-        <Footer />
-        <Toaster position="bottom-left" reverseOrder={false} />
+            {children}
+            <Scroller />
+          </div>
+          <Footer />
+          <Toaster position="bottom-left" reverseOrder={false} />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -30,6 +30,7 @@ const MainSearch = memo(() => {
 
   return (
     <div className="w-full flex flex-col rounded-3xl items-center">
+  
       <div className="w-full py-10 pb-14 border-y-1 border-y-second/90 bg-second/10 flex flex-col gap-12 items-center justify-center rounded-3xl">
         <p className="md:text-[2.5rem] text-[2rem] font-light text-black/60 dark:text-first">
           دنبال چه اموزشی هستید؟
