@@ -25,7 +25,7 @@ const Side = memo(({ children, sideBarName, cls }) => {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className={`w-12 h-12 dark:invert ${cls}`}
+        className={`w-12 h-12 dark:stroke-white ${cls}`}
       >
         <path
           strokeLinecap="round"

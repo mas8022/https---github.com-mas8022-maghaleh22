@@ -44,7 +44,7 @@ const page = memo(() => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-10 active:scale-95 cursor-pointer dark:invert"
+            className="size-10 active:scale-95 cursor-pointer dark:stroke-white"
           >
             <path
               strokeLinecap="round"

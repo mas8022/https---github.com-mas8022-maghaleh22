@@ -47,7 +47,7 @@ const InputSearchNav = memo(() => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="cursor-pointer sm:size-10 size-7 active:scale-95 dark:invert"
+          className="cursor-pointer sm:size-10 size-7 active:scale-95 dark:stroke-white"
         >
           <path
             strokeLinecap="round"

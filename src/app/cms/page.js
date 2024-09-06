@@ -44,7 +44,7 @@ const cmsProducts = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-10 dark:invert"
+            className="size-10 dark:stroke-white"
           >
             <path
               strokeLinecap="round"

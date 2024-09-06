@@ -113,7 +113,7 @@ const WorkToolNav = memo(() => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="sm:size-10 size-8 dark:invert"
+            className="sm:size-10 size-8 dark:stroke-white"
           >
             <path
               strokeLinecap="round"

@@ -34,7 +34,6 @@ const Editor = memo(({ articleText, setArticleText }) => {
               "blockQuote",
               "link",
               "numberedList",
-              "imageUpload",
             ],
           }}
           data={articleText}
