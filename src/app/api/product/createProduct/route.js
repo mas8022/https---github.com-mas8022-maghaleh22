@@ -5,12 +5,12 @@ import CloudStoringFile from "@/utils/cloudStoringFile";
 export async function POST(req) {
   try {
     const author = await GetAuthorId();
-    if (!author) {
+    if (!!!author) {
       return Response.json({ message: "لطفا مجددا تلاش فرمایید", status: 400 });
     }
 
     const formData = await req.formData();
-    
+
     const group = formData.get("group");
     const title = formData.get("title");
     const price = formData.get("price");
@@ -35,7 +35,7 @@ export async function POST(req) {
       author,
       articleText,
       comments: [],
-      status: "publish",
+      status: "draft",
       sellCount: 0,
       discount: discount ? discount : 0,
       tags,
@@ -50,6 +50,8 @@ export async function POST(req) {
       status: 201,
     });
   } catch (error) {
+    console.log("====>", error);
+
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }

@@ -8,13 +8,11 @@ import Button from "./Button";
 import GetVideoDuration from "./getVideoDuration";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
 const WorkTool = memo(({ apiPath = "", initialValues = null }) => {
-  const router = useRouter();
   const [articleText, setArticleText] = useState(
     initialValues ? initialValues.articleText : ""
   );
@@ -132,7 +130,6 @@ const WorkTool = memo(({ apiPath = "", initialValues = null }) => {
                 title: result.message,
               });
             }
-            router.refresh();
           });
         setSubmitting(false);
       }, 3000);

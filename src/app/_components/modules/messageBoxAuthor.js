@@ -47,7 +47,7 @@ const MessageBoxAuthor = memo(({ messageData }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="size-8 dark:invert"
+                  className="size-8 dark:stroke-white"
                 >
                   <path
                     strokeLinecap="round"
