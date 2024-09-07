@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.623.0",
+    "@aws-sdk/client-s3": "^3.645.0",
     "@ckeditor/ckeditor5-basic-styles": "^43.1.0",
     "@ckeditor/ckeditor5-build-classic": "^43.1.0",
     "@ckeditor/ckeditor5-core": "^43.1.0",

@@ -50,7 +50,6 @@ export async function POST(req) {
       status: 201,
     });
   } catch (error) {
-    console.log("====>", error);
 
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }

@@ -18,7 +18,7 @@ const SelectBox = memo(({ formikInstance }) => {
           label="نرم افزار و فناوری اطلاعات"
         />
         <option value="اقتصاد و حسابداری" label="اقتصاد و حسابداری" />
-        <option value="گسب و کار" label="گسب و کار" />
+        <option value="کسب و کار" label="کسب و کار" />
         <option value="کودک و نوجوان" label="کودک و نوجوان" />
         <option value="اموزش زبان" label="اموزش زبان" />
         <option value="هنر طراحی" label="هنر طراحی" />

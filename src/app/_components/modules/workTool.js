@@ -8,11 +8,13 @@ import Button from "./Button";
 import GetVideoDuration from "./getVideoDuration";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 const Editor = dynamic(() => import("../modules/ck"), {
   ssr: false,
 });
 
 const WorkTool = memo(({ apiPath = "", initialValues = null }) => {
+  const router = useRouter();
   const [articleText, setArticleText] = useState(
     initialValues ? initialValues.articleText : ""
   );
@@ -130,6 +132,7 @@ const WorkTool = memo(({ apiPath = "", initialValues = null }) => {
                 title: result.message,
               });
             }
+            router.refresh();
           });
         setSubmitting(false);
       }, 3000);
@@ -161,15 +164,16 @@ const WorkTool = memo(({ apiPath = "", initialValues = null }) => {
           body: formData,
         })
           .then((res) => res.json())
-          .then(
-            (result) =>
-              result.status === 200 &&
+          .then((result) => {
+            if (result.status === 200) {
               swal({
                 icon: "success",
                 title: "با موفقیت انجام شد",
                 text: result.message,
-              })
-          );
+              });
+              router.refresh();
+            }
+          });
       }
     });
   };
@@ -427,7 +431,7 @@ const WorkTool = memo(({ apiPath = "", initialValues = null }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="size-12 dark:invert opacity-80"
+                  className="size-12 dark:stroke-white opacity-80"
                 >
                   <path
                     strokeLinecap="round"
