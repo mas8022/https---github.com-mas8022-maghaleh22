@@ -31,6 +31,8 @@ const AuthorBox = memo(({ _id, name, job, profile, bio }) => {
 
         <Image
           src={profile || "/images/profile.jpg"}
+          placeholder="blur"
+          blurDataURL={profile || "/images/profile.jpg"}
           width={100}
           height={100}
           alt="author image"

@@ -132,6 +132,8 @@ const ContactUsBoxForm = memo(() => {
         <div className="lgg:w-full flex items-center gap-6">
           <Image
             src={"/images/instagram-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/instagram-svgrepo-com.svg"}
             width={100}
             height={100}
             alt="instagram"
@@ -139,6 +141,8 @@ const ContactUsBoxForm = memo(() => {
           />
           <Image
             src={"/images/twitter-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/twitter-svgrepo-com.svg"}
             width={100}
             height={100}
             alt="twitter"
@@ -146,6 +150,8 @@ const ContactUsBoxForm = memo(() => {
           />
           <Image
             src={"/images/telegram-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/telegram-svgrepo-com.svg"}
             width={100}
             height={100}
             alt="telegram"

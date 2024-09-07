@@ -52,11 +52,13 @@ const CmsProductCart = memo(({ productData }) => {
       <Image
         src={cover || "/images/productDefaultCover.jpg"}
         alt="product Image"
-        width={320}
-        height={230}
-        priority={true}
-        className="w-full h-60 mb-5 object-cover"
+        width={250}
+        height={200}
+        placeholder="blur"
+        blurDataURL={cover || "/images/productDefaultCover.jpg"}
+        className="w-full h-auto mb-5 object-cover"
       />
+
       <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1 dark:text-first">
         {title}
       </h2>

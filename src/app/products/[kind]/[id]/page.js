@@ -13,19 +13,15 @@ const Player = dynamic(() => import("../../../_components/modules/player"), {
 
 export default async function page({ params }) {
   const { _id, title, author, articleText, articleVideo, tags } =
-    await productModel
-      .findOne({ _id: params.id })
-      .populate("comments")
-
-      .lean();
+    await productModel.findOne({ _id: params.id }).populate("comments").lean();
 
   const comments = await productCommentModel
     .find({
       productId: _id,
       publish: true,
-    }).populate("commenter", "email profile")
+    })
+    .populate("commenter", "email profile")
     .lean();
-
 
   return (
     <>

@@ -16,6 +16,8 @@ const Discount = memo(() => {
         <div className="w-full px-6 sm:px-[5rem] md:px-[10rem] xl:px-[15rem] flex items-center justify-between">
           <Image
             src={"/images/discount-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/discount-svgrepo-com.svg"}
             width={100}
             height={100}
             alt="discount"
@@ -30,6 +32,8 @@ const Discount = memo(() => {
           >
             <Image
               src={"/images/multiplication-svgrepo-com.svg"}
+              placeholder="blur"
+              blurDataURL={"/images/multiplication-svgrepo-com.svg"}
               width={100}
               height={100}
               alt="close"

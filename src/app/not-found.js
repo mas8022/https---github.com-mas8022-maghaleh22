@@ -15,6 +15,8 @@ const Page = memo(() => {
           width={1000}
           height={1000}
           alt="این صفحه وجود ندارد"
+          placeholder="blur"
+          blurDataURL={"/images/404.png"}
           className="size-[20rem]"
         />
       </div>

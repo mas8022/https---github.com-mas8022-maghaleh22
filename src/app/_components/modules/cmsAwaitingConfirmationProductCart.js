@@ -42,12 +42,15 @@ const CmsAwaitingConfirmationProductCart = ({ productData }) => {
   return (
     <div className="w-[32rem] bg-first dark:bg-[#0d141f]/50 flex flex-col shadow-md pb-9 rounded-xl overflow-hidden">
       <Image
-        src={!cover ? cover : "/images/productDefaultCover.jpg"}
+        src={cover || "/images/productDefaultCover.jpg"}
         alt="product Image"
-        width={320}
-        height={230}
+        placeholder="blur"
+        blurDataURL={cover || "/images/productDefaultCover.jpg"}
+        width={250}
+        height={200}
         className="w-full h-60 mb-5 object-cover"
       />
+
       <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1 dark:text-first">
         {title}
       </h2>

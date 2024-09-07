@@ -23,12 +23,12 @@ const Cart = ({ productData, btnMode }) => {
   return (
     <div className="w-[32rem] h-[32.5rem] bg-first dark:bg-[#374151] flex flex-col shadow-md rounded-xl overflow-hidden">
       <Image
-        src={cover ? cover : "/images/productDefaultCover.jpg"}
+        src={cover || "/images/productDefaultCover.jpg"}
         alt="product Image"
         width={250}
         height={200}
         placeholder="blur"
-        blurDataURL={cover ? cover : "/images/productDefaultCover.jpg"}
+        blurDataURL={cover || "/images/productDefaultCover.jpg"}
         className="w-full h-60 mb-5 object-cover"
       />
       <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1 dark:text-first">
@@ -49,6 +49,8 @@ const Cart = ({ productData, btnMode }) => {
           <div className="flex items-end justify-start gap-2 self-start">
             <Image
               src="/images/student.svg"
+              placeholder="blur"
+              blurDataURL={"/images/student.svg"}
               width={50}
               height={50}
               alt="تعداد دانشجو"

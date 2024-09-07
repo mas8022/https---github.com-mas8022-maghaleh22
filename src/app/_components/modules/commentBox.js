@@ -55,6 +55,8 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
       <div className="flex flex-col gap-4 items-center justify-between">
         <Image
           src={user?.profile ? user.profile : "/images/profile.jpg"}
+          placeholder="blur"
+          blurDataURL={user?.profile ? user.profile : "/images/profile.jpg"}
           width={100}
           height={100}
           alt="عکس نظر دهنده"

@@ -17,6 +17,8 @@ const Uploader = memo(
         {image && (
           <Image
             src={profile?.trim() || "/images/profile.jpg"}
+            placeholder="blur"
+            blurDataURL={profile?.trim() || "/images/profile.jpg"}
             width={300}
             height={300}
             alt="not found"

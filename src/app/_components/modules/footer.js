@@ -90,6 +90,8 @@ const Footer = memo(() => {
           <div className="flex gap-8">
             <Image
               src={"/images/logo.png"}
+              placeholder="blur"
+              blurDataURL={"/images/logo.png"}
               width={100}
               height={100}
               priority={true}
@@ -112,6 +114,8 @@ const Footer = memo(() => {
             <Link href={"/"}>
               <Image
                 src={"/images/480687.png"}
+                placeholder="blur"
+                blurDataURL={"/images/480687.png"}
                 width={100}
                 height={100}
                 alt="نماد اعتماد الکترونیک"
@@ -121,6 +125,8 @@ const Footer = memo(() => {
             <Link href={"/"}>
               <Image
                 src={"/images/1-min.jpg"}
+                placeholder="blur"
+                blurDataURL={"/images/1-min.jpg"}
                 width={100}
                 height={100}
                 alt="ساماندهی"

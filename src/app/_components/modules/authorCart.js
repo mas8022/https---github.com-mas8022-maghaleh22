@@ -72,6 +72,8 @@ const AuthorCart = memo(({ authorData }) => {
         alt="product Image"
         width={320}
         height={230}
+        placeholder="blur"
+        blurDataURL={profile?.trim() || "/images/productDefaultCover.jpg"}
         className="size-52 rounded-full shadow-md object-cover mb-2 border-1 border-second/50"
       />
       <h2 className="px-10 text-[15px] font-bold mb-12 line-clamp-1 dark:text-first">

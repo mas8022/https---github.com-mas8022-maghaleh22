@@ -253,6 +253,8 @@ const CmsNavbar = memo(() => {
         <Link href="/cms/profiler">
           <Image
             src={manager?.profile || "/images/profile.jpg"}
+            placeholder="blur"
+            blurDataURL={manager?.profile || "/images/profile.jpg"}
             width={100}
             height={100}
             alt="عکس ادمین"

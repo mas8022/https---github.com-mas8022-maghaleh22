@@ -8,7 +8,11 @@ const Comment = memo(({ commenter, commenterText, createdAt }) => {
     <div className="w-full bg-black/5 dark:bg-black/10 flex flex-col p-4 gap-1 rounded-lg overflow-hidden">
       <div className="w-full flex items-center gap-8">
         <Image
-          src={commenter.profile ? commenter.profile : "/images/profile.jpg"}
+          src={commenter?.profile ? commenter?.profile : "/images/profile.jpg"}
+          placeholder="blur"
+          blurDataURL={
+            commenter?.profile ? commenter?.profile : "/images/profile.jpg"
+          }
           width={100}
           height={100}
           alt="commenter Image"
@@ -20,7 +24,7 @@ const Comment = memo(({ commenter, commenterText, createdAt }) => {
       </div>
       <div className="w-full flex items-center justify-between">
         <span className="self-end text-black/50 dark:text-first/50 text-[1rem] sm:text-[1.2rem] font-light sm:font-medium">
-          {commenter.email}
+          {commenter?.email}
         </span>
         <span className="self-end text-[1rem] sm:text-[1.3rem] dark:text-first font-light sm:font-medium">
           {date}

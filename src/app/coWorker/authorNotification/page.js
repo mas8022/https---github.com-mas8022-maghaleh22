@@ -6,10 +6,9 @@ import { GetAuthorId } from "@/utils/author";
 
 const page = memo(async () => {
   const authorId = await GetAuthorId();
-
   const messages = await AuthorReceiveMessageModel.find(
     {
-      author: authorId,
+      ...(authorId && { author: authorId }),
       seen: false,
     },
     "-author -seen -__v"

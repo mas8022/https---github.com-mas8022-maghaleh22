@@ -15,6 +15,8 @@ const Ad = memo(() => {
         >
           <Image
             src={"/images/ad2.png"}
+            placeholder="blur"
+            blurDataURL={"/images/ad2.png"}
             width={300}
             height={300}
             alt="ویژگی های سایت"
@@ -31,6 +33,8 @@ const Ad = memo(() => {
         >
           <Image
             src={"/images/ad3.png"}
+            placeholder="blur"
+            blurDataURL={"/images/ad3.png"}
             width={300}
             height={300}
             alt="ویژگی های سایت"
@@ -47,6 +51,8 @@ const Ad = memo(() => {
         >
           <Image
             src={"/images/ad4.png"}
+            placeholder="blur"
+            blurDataURL={"/images/ad4.png"}
             width={300}
             height={300}
             alt="ویژگی های سایت"
@@ -63,6 +69,8 @@ const Ad = memo(() => {
         >
           <Image
             src={"/images/ad1.png"}
+            placeholder="blur"
+            blurDataURL={"/images/ad1.png"}
             width={300}
             height={300}
             alt="ویژگی های سایت"

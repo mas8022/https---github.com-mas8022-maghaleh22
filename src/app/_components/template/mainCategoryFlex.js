@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Aos from "../modules/aos";
 
-
 const MainCategoryFlex = memo(() => {
   return (
     <div className="flex items-center w-full">
@@ -17,6 +16,8 @@ const MainCategoryFlex = memo(() => {
         >
           <Image
             src={"/images/imac-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/imac-svgrepo-com.svg"}
             width={120}
             height={120}
             className="size-28 dark:invert"
@@ -35,6 +36,8 @@ const MainCategoryFlex = memo(() => {
         >
           <Image
             src={"/images/envelope-stats-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/envelope-stats-svgrepo-com.svg"}
             width={120}
             height={120}
             className="size-28 dark:invert"
@@ -53,6 +56,8 @@ const MainCategoryFlex = memo(() => {
         >
           <Image
             src={"/images/job-desktop-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/job-desktop-svgrepo-com.svg"}
             width={120}
             height={120}
             className="size-28 dark:invert"
@@ -71,6 +76,8 @@ const MainCategoryFlex = memo(() => {
         >
           <Image
             src={"/images/birdhouse-svgrepo-com.svg"}
+            placeholder="blur"
+            blurDataURL={"/images/birdhouse-svgrepo-com.svg"}
             width={120}
             height={120}
             className="size-28 dark:invert"

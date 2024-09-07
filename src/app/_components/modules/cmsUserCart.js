@@ -25,7 +25,7 @@ const CmsUserCart = memo(({ userData }) => {
             } else {
               toast.error(result.message);
             }
-            router.refresh()
+            router.refresh();
           });
       }
     });
@@ -35,6 +35,8 @@ const CmsUserCart = memo(({ userData }) => {
     <div className="w-[32rem] h-[32.5rem] py-10 bg-first dark:bg-[#0d141f]/50 flex flex-col items-center shadow-md">
       <Image
         src={profile?.trim() || "/images/profile.jpg"}
+        placeholder="blur"
+        blurDataURL={profile?.trim() || "/images/profile.jpg"}
         alt="product Image"
         width={320}
         height={230}
