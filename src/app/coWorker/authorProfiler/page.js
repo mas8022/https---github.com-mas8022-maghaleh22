@@ -5,6 +5,7 @@ import { MoonLoader } from "react-spinners";
 import Uploader from "../../_components/modules/uploader";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import toast from "react-hot-toast";
+import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
@@ -76,27 +77,35 @@ const page = memo(() => {
   }, []);
 
   function logoutHandler() {
-    fetch("/api/logoutAuthor", {
-      method: "POST",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((result) => {
-        if (result.status === 200) {
-          toast.success(result.message);
-          setTimeout(() => {
-            location.pathname = "/";
-          }, 2000);
-        } else {
-          toast.error(result.message);
-        }
-      });
+    swal({
+      icon: "warning",
+      title: "هشدار...",
+      text: "ایا مطمعنین که میخواهید از حسابتان خارج شوید",
+      buttons: ["لغو", "تایید"],
+    }).then((response) => {
+      if (response) {
+        fetch("/api/logoutAuthor", {
+          method: "POST",
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.status === 200) {
+              toast.success(result.message);
+              setTimeout(() => {
+                location.pathname = "/";
+              }, 2000);
+            } else {
+              toast.error(result.message);
+            }
+          });
+      }
+    });
   }
 
   return (
     <div className="flex flex-col items-center justify-center">
       <Uploader
+        image={true}
         name="file"
         formHandler={editProfile}
         profile={profile}

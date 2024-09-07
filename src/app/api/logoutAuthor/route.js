@@ -2,6 +2,7 @@ const { cookies } = require("next/headers");
 
 export async function POST() {
   try {
+
     cookies().delete("author-token");
     cookies().delete("author-refresh-token");
     return Response.json({

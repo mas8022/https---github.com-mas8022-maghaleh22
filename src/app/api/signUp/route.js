@@ -13,6 +13,15 @@ export async function POST(req) {
     connectToDb();
     const { fullName, email, password, phone, check } = await req.json();
 
+    const userEmail = await userModel.findOne({ email });
+
+    if (userEmail) {
+      return Response.json(
+        { message: "این ادرس ایمیل قبلا ثبت نام شده است" },
+        { status: 403 }
+      );
+    }
+
     if (!fullName.trim() || !isNaN(fullName)) {
       return Response.json(
         { message: "نام تان را به درستی وارد کنید" },

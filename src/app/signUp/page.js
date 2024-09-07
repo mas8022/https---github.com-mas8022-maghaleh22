@@ -55,6 +55,8 @@ const page = () => {
               setTimeout(() => {
                 location.pathname = "/";
               }, 2000);
+            } else if (result.status === 403) {
+              toast.error(result.message);
             } else {
               toast.error(result.message);
             }

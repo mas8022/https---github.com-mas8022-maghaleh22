@@ -51,16 +51,22 @@ const AuthorSignUpForm = memo(({ setFormMode }) => {
         await fetch("/api/authorSignUp", {
           method: "POST",
           body: formData,
-        }).then((res) => {
-          if (res.ok) {
-            location.pathname = "/coWorker";
-          } else {
-            toast.error("اینترنت خود را چک کنید");
-          }
-          setLoading(false);
-        });
-        values.email = "";
-        values.password = "";
+        })
+          .then((res) => res.json())
+          .then((result) => {
+
+            if (result.status === 201) {
+              values.email = "";
+              values.password = "";
+              location.pathname = "/coWorker";
+            } else if (result.status === 403) {
+              toast.error(result.message);
+            } else {
+              toast.error(result.message);
+            }
+            setLoading(false);
+          });
+
         setSubmitting(false);
       }, 3000);
     },

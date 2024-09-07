@@ -4,6 +4,7 @@ import React, { memo } from "react";
 import { MoonLoader } from "react-spinners";
 const Uploader = memo(
   ({
+    image = false,
     profile = "",
     name = "",
     label = "",
@@ -13,7 +14,7 @@ const Uploader = memo(
   }) => {
     return (
       <label className={`relative ${customclassName}`}>
-        {profile && (
+        {image && (
           <Image
             src={profile?.trim() || "/images/profile.jpg"}
             width={300}

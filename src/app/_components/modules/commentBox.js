@@ -61,7 +61,7 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
           className="size-40 object-cover border-2 border-second/70 rounded-full"
         />
         <span className="text-[1.5rem] font-light text-black/60 dark:text-first">
-          {user.fullName}
+          {user?.fullName}
         </span>
       </div>
       <p className="w-full p-7 bg-black/5 dark:bg-black/15 rounded-3xl text-black/90 dark:text-first/70 text-[1.4rem] font-light text-center">

@@ -62,8 +62,8 @@ export default function page() {
     },
   });
 
-  const fetchProfileData =  () => {
-     fetch(`/api/me`)
+  const fetchProfileData = () => {
+    fetch(`/api/me`)
       .then((res) => res.json())
       .then((result) => {
         if (result) {
@@ -84,6 +84,7 @@ export default function page() {
   return (
     <div className="flex flex-col items-center justify-center">
       <Uploader
+        image={true}
         profile={profile}
         customclassName={`size-[20rem] mt-20 sm:mt-0 rounded-full !z-10 overflow-hidden bg-center bg-cover bg-no-repeat active:scale-95 shadow-lg cursor-pointer`}
         formHandler={editProfile}

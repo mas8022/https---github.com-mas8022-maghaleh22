@@ -1,5 +1,7 @@
 import { compare, hash } from "bcryptjs";
 import toast from "react-hot-toast";
+import swal from "sweetalert";
+
 const { sign, verify } = require("jsonwebtoken");
 
 function generateToken(data, processEnvKey) {
@@ -45,23 +47,34 @@ async function verifyPassword(password, hashedPassword) {
 }
 
 function logoutHandler() {
-  fetch("/api/logout", {
-    method: "POST",
-  })
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      if (result.status === 200) {
-        toast.success(result.message);
-        setTimeout(() => {
-          location.pathname = "/"
-        }, 2000);
-      } else {
-        toast.error(result.message);
-      }
-    });
+  swal({
+    icon: "warning",
+    title: "هشدار...",
+    text: "ایا مطمعنین که میخواهید از حسابتان خارج شوید",
+    buttons: ["لغو", "تایید"],
+  }).then((response) => {
+    if (response) {
+      fetch("/api/logout", {
+        method: "POST",
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((result) => {
+          if (result.status === 200) {
+            toast.success(result.message);
+            setTimeout(() => {
+              location.pathname = "/";
+            }, 2000);
+          } else {
+            toast.error(result.message);
+          }
+        });
+    }
+  });
 }
+
+
 
 export {
   generateToken,
