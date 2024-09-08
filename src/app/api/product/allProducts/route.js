@@ -5,8 +5,7 @@ export async function POST(req) {
   try {
     const { searchParam, filter } = await req.json();
     const search = decodeURIComponent(searchParam).trim();
-
-    await connectToDb();
+    connectToDb();
 
     let productArray = [];
 
@@ -30,36 +29,15 @@ export async function POST(req) {
         });
       }
     } else {
-      productArray = await productModel.aggregate([
-        {
-          $match: {
-            tags: { $regex: new RegExp(search, "i") },
-          },
-        },
-        {
-          $lookup: {
-            from: "authors",
-            localField: "author",
-            foreignField: "_id",
-            as: "author",
-          },
-        },
-        {
-          $unwind: "$author",
-        },
-        {
-          $project: {
-            group: 1,
-            title: 1,
-            cover: 1,
-            duration: 1,
-            sellCount: 1,
-            price: 1,
-            discount: 1,
-            author: { name: 1 },
-          },
-        },
-      ]);
+      productArray = await productModel
+        .find({
+          $or: [
+            { tags: { $regex: new RegExp(search, "i") } },
+            { title: { $regex: new RegExp(search, "i") } },
+          ],
+        })
+        .populate("author", "name")
+        .select("group title cover duration sellCount price discount author");
     }
 
     if (filter === "freeProducts") {

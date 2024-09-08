@@ -13,6 +13,7 @@ export default function products({ params }) {
   const [loader, setLoader] = useState(true);
 
   const fetchProducts = () => {
+    
     fetch("/api/product/allProducts", {
       method: "POST",
       headers: {
