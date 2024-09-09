@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { memo } from "react";
+import React, { memo, Suspense } from "react";
 import Link from "next/link";
 import SidBar from "./sidbar";
 import InputSearchNav from "./inputSearchNav";
@@ -52,6 +52,7 @@ const Navbar = memo(() => {
       <div className="flex gap-3 sm:gap-5 md:gap-7 items-center">
         <InputSearchNav />
         <ThemeToggle />
+
         <ProfileBtn />
 
         <Link href={"/"}>

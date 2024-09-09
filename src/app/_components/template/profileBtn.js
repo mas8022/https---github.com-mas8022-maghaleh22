@@ -1,15 +1,17 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useDeferredValue, useEffect, useState } from "react";
 import Bg from "../modules/bg";
 import { logoutHandler } from "../../../../utils/authTools";
+import { MoonLoader } from "react-spinners";
 
 const ProfileBtn = memo(() => {
   const [slideProfile, setSlideProfile] = useState(false);
   const [me, setMe] = useState(false);
   const [isPending, setIsPendingMe] = useState(false);
   const [roll, setRollMe] = useState("USER");
+  const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
     fetch("/api/resetToken")
@@ -24,10 +26,13 @@ const ProfileBtn = memo(() => {
         } else {
           setMe(false);
         }
+        setFetched(true);
       });
   }, [slideProfile]);
 
-  return (
+  return !fetched ? (
+    <MoonLoader size={30} color="#f97316" />
+  ) : (
     <>
       {me ? (
         <>
