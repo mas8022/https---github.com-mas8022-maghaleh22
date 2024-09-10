@@ -9,14 +9,18 @@ import { MeId } from "@/utils/me";
 const page = async () => {
   connectToDb();
   const meId = await MeId();
-  const user = await userModel
-    .findOne({ _id: meId }, "_id")
-    .populate(
-      "myProducts",
-      "cover title author price discount sellCount duration"
-    )
+  let products = [];
 
-  const products = user.myProducts;
+  if (meId) {
+    const user = await userModel
+      .findOne({ _id: meId }, "_id")
+      .populate(
+        "myProducts",
+        "cover title author price discount sellCount duration"
+      );
+
+    products = user.myProducts;
+  }
 
   return (
     <div className="w-full bg-first dark:bg-[#1e293b]">

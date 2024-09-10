@@ -6,7 +6,7 @@ function connectToDb() {
       return false;
     } else {
       mongoose.connect(
-        "mongodb://root:eNLx53XD5qqNBdm3uchTEkq4@fitz-roy.liara.cloud:32074/my-app?authSource=admin"
+        "mongodb://root:9u9fk8lK21aNxA8u7qVJyNF6@fitz-roy.liara.cloud:32979/my-app?authSource=admin&replicaSet=rs0&directConnection=true"
       );
     }
   } catch (error) {
