@@ -3,7 +3,6 @@ import userModel from "@/models/user";
 import { MeId } from "@/utils/me";
 export async function PUT(req, { params }) {
   try {
-    console.log("run");
     connectToDb();
     const meId = await MeId();
 
@@ -21,8 +20,6 @@ export async function PUT(req, { params }) {
 
     return Response.json({ message: "محصول خریداری شد", status: 200 });
   } catch (error) {
-    console.log("=====> ", error);
-
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }
