@@ -28,10 +28,14 @@ export default async function page({ params }) {
 
   const meId = await MeId();
 
-  const isBuy = await userModel.findOne({
-    _id: meId,
-    myProducts: { $in: [_id] },
-  });
+  let isBuy = false;
+
+  if (meId) {
+    isBuy = await userModel.findOne({
+      _id: meId,
+      myProducts: { $in: [_id] },
+    });
+  }
 
   return (
     <>
