@@ -7,6 +7,9 @@ import Title from "../../../_components/template/title";
 import dynamic from "next/dynamic";
 import productModel from "@/models/product";
 import productCommentModel from "@/models/productComment";
+import BuyProductBtn from "@/src/app/_components/template/buyProductBtn";
+import { MeId } from "@/utils/me";
+import userModel from "@/models/user";
 const Player = dynamic(() => import("../../../_components/modules/player"), {
   ssr: false,
 });
@@ -23,12 +26,24 @@ export default async function page({ params }) {
     .populate("commenter", "email profile")
     .lean();
 
+  const meId = await MeId();
+
+  const isBuy = await userModel.findOne({
+    _id: meId,
+    myProducts: { $in: [_id] },
+  });
+
   return (
     <>
       <div>
         <Hr />
         <Title title={title} />
-        <Player videoSRCes={JSON.parse(JSON.stringify(articleVideo))} />
+        {isBuy ? (
+          <Player videoSRCes={JSON.parse(JSON.stringify(articleVideo))} />
+        ) : (
+          <BuyProductBtn productId={JSON.parse(JSON.stringify(_id))} />
+        )}
+
         <Hr />
         <ContentArticle content={JSON.parse(JSON.stringify(articleText))} />
         <Hr />

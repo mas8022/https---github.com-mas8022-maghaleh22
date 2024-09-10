@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import productModel from "@/models/product";
 
 const schema = {
   fullName: {
@@ -33,6 +34,12 @@ const schema = {
   profile: {
     type: String,
   },
+  myProducts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 };
 
 const model = mongoose.models?.User || mongoose.model("User", schema);

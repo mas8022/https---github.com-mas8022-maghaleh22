@@ -10,6 +10,7 @@ import "@/models/author";
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import siteImprovementCommentsModel from "@/models/siteImprovementComments";
+import userModel from "@/models/user";
 
 const Home = async () => {
   connectToDb();
