@@ -4,10 +4,12 @@ import connectToDb from "@/configs/db";
 
 export async function POST(req, { params }) {
   try {
+    const { disLikeCount } = await req.json();
+
     connectToDb();
     await siteImprovementCommentModel.findOneAndUpdate(
       { _id: params.id },
-      { $inc: { disLike: 1 } }
+      { disLike: disLikeCount }
     );
 
     return Response.json({ message: "با موفقیت دیس لایک شد", status: 200 });

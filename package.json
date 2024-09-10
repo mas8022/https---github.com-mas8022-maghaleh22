@@ -32,10 +32,10 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-spinners": "^0.13.8",
-    "sharp": "^0.33.4",
+    "sharp": "^0.33.5",
     "sweetalert": "^2.1.2",
     "swiper": "^11.1.12",
-    "top-react": "^1.0.17"
+    "top-react": "^1.0.18"
   },
   "devDependencies": {
     "@next/swc-win32-x64-msvc": "^14.2.8",

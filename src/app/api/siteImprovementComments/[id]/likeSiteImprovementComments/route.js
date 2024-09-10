@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
 import siteImprovementCommentModel from "@/models/siteImprovementComments";
 import connectToDb from "@/configs/db";
 
 export async function POST(req, { params }) {
-  const { likeCount } = await req.json();
+  const  {likeCount}  = await req.json();
+  
   try {
     connectToDb();
     await siteImprovementCommentModel.findOneAndUpdate(

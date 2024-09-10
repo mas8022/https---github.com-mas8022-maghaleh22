@@ -1,54 +1,37 @@
 "use client";
-import useProState from "@/utils/useOptimistic";
 import Image from "next/image";
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
-  const [likes, executeLikeAction, pendingLike] = useProState(like);
-  const [disLikes, executeDisLikeAction, pendingDisLike] = useProState(disLike);
+  const [likes, setLike] = useState(like || 0);
+  const [disLikes, setDisLikes] = useState(disLike || 0);
 
-  const likeComment = () => {
-    const likeCount = like + 1;
-    executeLikeAction(
-      () =>
-        fetch(
-          `/api/siteImprovementComments/${_id}/likeSiteImprovementComments`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ likeCount }),
-          }
-        ),
-      (currentState) => currentState + 1,
-      (currentState, actionResult) =>
-        !actionResult ? currentState : currentState + 1
-    );
+  useEffect(() => {
+    if (like !== likes) {
+      fetch(`/api/siteImprovementComments/${_id}/likeSiteImprovementComments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ likeCount: likes }),
+      });
+    }
+  }, [likes]);
 
-    return executeLikeAction;
-  };
-
-  const disLikeComment = () => {
-    const disLikeCount = like + 1;
-    executeDisLikeAction(
-      () =>
-        fetch(
-          `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ disLikeCount }),
-          }
-        ),
-      (currentState) => currentState + 1,
-      (currentState, actionResult) =>
-        !actionResult ? currentState : currentState + 1
-    );
-    return executeDisLikeAction;
-  };
+  useEffect(() => {
+    if (disLike !== disLikes) {
+      fetch(
+        `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ disLikeCount: disLikes }),
+        }
+      );
+    }
+  }, [disLikes]);
 
   return (
     <div className="p-12 flex flex-col gap-12 items-center justify-between overflow-hidden rounded-3xl shadow-lg dark:shadow-2xl">
@@ -70,7 +53,7 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
         {comment}
       </p>
       <div className="w-full flex justify-end gap-6">
-        <button onClick={likeComment} disabled={pendingLike}>
+        <button onClick={() => setLike((p) => p + 1)}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
               {likes}
@@ -91,7 +74,7 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
             </svg>
           </div>
         </button>
-        <button onClick={disLikeComment} disabled={pendingDisLike}>
+        <button onClick={() => setDisLikes((p) => p + 1)}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
               {disLikes}
