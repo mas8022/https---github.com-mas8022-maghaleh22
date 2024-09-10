@@ -5,6 +5,12 @@ export async function PUT(req, { params }) {
   try {
     connectToDb();
     const meId = await MeId();
+    if (!meId) {
+      return Response.json({
+        message: "اول در سایت ثبت نام کنید",
+        status: 404,
+      });
+    }
 
     const ProductId = params.id;
     await userModel.findOneAndUpdate(
@@ -15,8 +21,6 @@ export async function PUT(req, { params }) {
         },
       }
     );
-    
-    
 
     return Response.json({ message: "محصول خریداری شد", status: 200 });
   } catch (error) {
