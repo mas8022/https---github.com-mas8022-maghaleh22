@@ -14,7 +14,7 @@ const page = async () => {
     .populate(
       "myProducts",
       "cover title author price discount sellCount duration"
-    );
+    )
 
   const products = user.myProducts;
 
