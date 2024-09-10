@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import React, { memo } from "react";
 import Hr from "../../_components/modules/hr";

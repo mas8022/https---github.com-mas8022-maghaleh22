@@ -4,7 +4,6 @@ import Cart from "../../_components/modules/cart";
 import productModel from "@/models/product";
 import connectToDb from "@/configs/db";
 import { GetAuthorId } from "@/utils/author";
-import Image from "next/image";
 
 const page = memo(async () => {
   connectToDb();

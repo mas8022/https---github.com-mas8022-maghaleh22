@@ -1,3 +1,4 @@
+"use client"
 import React, { memo } from "react";
 import Hr from "../_components/modules/hr";
 import ContactUsBoxForm from "../_components/template/contactUsBoxForm";
