@@ -5,6 +5,7 @@ import Hr from "../_components/modules/hr";
 import connectToDb from "@/configs/db";
 import userModel from "@/models/user";
 import { MeId } from "@/utils/me";
+import TextBox from "../_components/modules/textBox";
 
 const page = async () => {
   connectToDb();
@@ -30,9 +31,7 @@ const page = async () => {
           {products?.length ? (
             products.map((item) => <Cart productData={item} key={item._id} />)
           ) : (
-            <div className="w-full h-56 flex items-center justify-center border-y-2 border-second/70 bg-second/15 dark:bg-second/5 text-second text-4xl rounded-lg">
-              محصولی در این قسمت وجود ندارد
-            </div>
+           <TextBox text="محصولی در این قسمت وجود ندارد"/>
           )}
         </div>
       </div>

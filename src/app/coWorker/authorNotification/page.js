@@ -3,6 +3,7 @@ import Title from "../../_components/template/title";
 import MessageBoxAuthor from "../../_components/modules/messageBoxAuthor";
 import AuthorReceiveMessageModel from "@/models/AuthorReceiveMessage";
 import { GetAuthorId } from "@/utils/author";
+import TextBox from "../../_components/modules/textBox";
 
 const page = memo(async () => {
   const authorId = await GetAuthorId();
@@ -27,9 +28,7 @@ const page = memo(async () => {
           ))}
         </div>
       ) : (
-        <div className="w-full h-56 flex items-center justify-center border-y-2 border-second/70 bg-second/15 dark:bg-second/5 text-second text-4xl rounded-lg">
-          پیامی در این قسمت وجود ندارد
-        </div>
+        <TextBox text="پیامی در این قسمت وجود ندارد" />
       )}
     </div>
   );

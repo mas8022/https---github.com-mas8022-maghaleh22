@@ -22,6 +22,7 @@ const FooterCommentBox = memo(() => {
               title: "با موفقیت ارسال شد",
               text: result.message,
             });
+            setComment("")
           } else if (result.status === 401) {
             swal({
               icon: "error",

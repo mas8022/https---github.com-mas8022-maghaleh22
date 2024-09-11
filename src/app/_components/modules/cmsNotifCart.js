@@ -34,7 +34,7 @@ const CmsNotifCart = memo(({ commentData }) => {
     <div className="w-[32rem] py-10 bg-first dark:bg-[#0d141f]/50 flex flex-col items-center shadow-md">
       <p className="text-[15px] font-bold mb-12 dark:text-first">{fullName}</p>
 
-      <div className="w-full flex flex-col items-end gap-12 px-8">
+      <div className="w-full flex flex-col items-center gap-12 px-8">
         <p className="text-[1.3rem] font-light text-black/60 line-clamp-1 self-center dark:text-first/80">
           {phone}
         </p>

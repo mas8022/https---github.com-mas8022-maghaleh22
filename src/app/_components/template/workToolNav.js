@@ -8,7 +8,7 @@ import {
   useSelectedLayoutSegment,
 } from "next/navigation";
 
-const WorkToolNav = memo(() => {
+const WorkToolNav = () => {
   const router = useRouter();
 
   const [isAuthor, setIsAuthor] = useState(false);
@@ -134,6 +134,6 @@ const WorkToolNav = memo(() => {
       </div>
     </div>
   ) : null;
-});
+};
 
 export default WorkToolNav;

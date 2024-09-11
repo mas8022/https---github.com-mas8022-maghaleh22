@@ -10,7 +10,7 @@ const SidBar = memo(() => {
   return (
     <>
       <Side sideBarName={"sidBarActivation"} cls={"ld:hidden"}>
-        <div className="w-full h-full flex flex-col justify-between p-[4rem] px-[3rem] dark:bg-[#1e293b]">
+        <div className="w-full h-full flex flex-col gap-[30rem] p-[4rem] px-[3rem] dark:bg-[#1e293b]">
           <ul className="text-[1.4rem] flex flex-col gap-6 child:text-black child:dark:text-first">
             <Link href={"/"} className="flex gap-2">
               <svg

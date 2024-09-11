@@ -6,7 +6,7 @@ import React, { memo, useEffect, useState } from "react";
 import Side from "./side";
 import ThemeToggle from "./themeToggle";
 
-const CmsNavbar = memo(() => {
+const CmsNavbar = () => {
   const [manager, setManager] = useState({});
   const [messageLength, setMessageLength] = useState(0);
   const segment = useSelectedLayoutSegment();
@@ -16,13 +16,14 @@ const CmsNavbar = memo(() => {
   };
 
   useEffect(() => {
+    fetch("/api/cms/getContactUsMessage")
+      .then((res) => res.json())
+      .then((data) => {
+        setMessageLength(data);
+      });
     fetch("/api/me")
       .then((res) => res.json())
       .then((result) => setManager(result));
-
-    fetch("/api/cms/getContactUsMessage")
-      .then((res) => res.json())
-      .then((data) => setMessageLength(data));
   }, []);
 
   return (
@@ -264,5 +265,5 @@ const CmsNavbar = memo(() => {
       </div>
     </div>
   );
-});
+};
 export default CmsNavbar;

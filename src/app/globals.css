@@ -273,3 +273,8 @@
 .hidden-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.swal-text {
+  text-align: center !important;
+}
+
