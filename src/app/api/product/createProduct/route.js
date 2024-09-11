@@ -2,6 +2,7 @@ import { GetAuthorId } from "@/utils/author";
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import CloudStoringFile from "@/utils/cloudStoringFile";
+import { revalidatePath } from "next/cache";
 export async function POST(req) {
   try {
     const author = await GetAuthorId();
@@ -44,13 +45,14 @@ export async function POST(req) {
       duration,
     });
 
+    revalidatePath("/cms/awaitingConfirmation");
+
     return Response.json({
       message:
         "محصول با موفقیت فرستاده شد در صورت تایید مقاله از سمت سایت بعد از یک الی دو روز به شما از طریق ایمیل اطلاع داده خواهد شد",
       status: 201,
     });
   } catch (error) {
-
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
   }
 }
