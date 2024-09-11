@@ -45,7 +45,7 @@ export async function POST(req) {
       duration,
     });
 
-    revalidatePath("/cms/awaitingConfirmation");
+    revalidatePath("/coWorker/draftedProject");
 
     return Response.json({
       message:

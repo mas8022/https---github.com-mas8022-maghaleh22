@@ -35,7 +35,7 @@ const page = memo(() => {
           اموزشی خود مقاله خود را جهت بررسی برای ما بفرستید و درصورت تایید از
           سمت ما ان را در سایت منتشر می کنیم و به شما اطلاع خواهیم داد
         </div>
-        <WorkTool apiPath={"createProduct"} />
+        <WorkTool apiPath={"createProduct"} sendBtn={false} />
       </div>
     )
   );

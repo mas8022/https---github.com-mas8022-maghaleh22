@@ -39,6 +39,28 @@ const CmsAwaitingConfirmationProductCart = ({ productData }) => {
     });
   };
 
+  const deleteProduct = (id) => {
+    swal({
+      icon: "warning",
+      title: "هشدار...",
+      text: "ایا از حذف مقاله مطمعنین؟",
+      buttons: ["لغو", "تایید"],
+    }).then((response) => {
+      if (response) {
+        fetch(`/api/product/cms/${id}/deleteProduct`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.status === 200) {
+              toast.success(result.message);
+            } else {
+              toast.error(result.message);
+            }
+            router.refresh();
+          });
+      }
+    });
+  };
+
   return (
     <div className="w-[32rem] bg-first dark:bg-[#0d141f]/50 flex flex-col shadow-md pb-9 rounded-xl overflow-hidden">
       <Image
@@ -85,6 +107,12 @@ const CmsAwaitingConfirmationProductCart = ({ productData }) => {
           className="w-full h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg cursor-pointer"
         >
           تایید
+        </div>
+        <div
+          onClick={() => deleteProduct(_id)}
+          className="w-full h-14 flex items-center justify-center text-first text-[1.5rem] font-light border-1 bg-second active:bg-first active:border-second active:text-second rounded-lg cursor-pointer"
+        >
+          حذف
         </div>
       </div>
     </div>

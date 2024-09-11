@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
+import { revalidatePath } from "next/cache";
 
 export async function GET() {
   try {
@@ -10,6 +11,8 @@ export async function GET() {
         "title price author discount cover duration group"
       )
       .lean();
+      
+    revalidatePath("/cms/awaitingConfirmation");
 
     return Response.json(products);
   } catch (error) {
