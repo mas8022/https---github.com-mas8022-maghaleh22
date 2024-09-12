@@ -1,5 +1,6 @@
 import productCommentModel from "@/models/productComment";
 import { Me } from "@/utils/me";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
   try {
@@ -21,6 +22,8 @@ export async function POST(req) {
       publish: false,
     });
 
+    revalidatePath("/", "layout");
+    
     return Response.json({
       message:
         "پیام شما دریافت شد و پس از بررسی ثبت خواهد شد. از اینکه دیدگاه خود را با ما به اشتراک گذاشتید سپاسگزاریم.",

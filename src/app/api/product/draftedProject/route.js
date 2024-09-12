@@ -2,6 +2,7 @@ import connectToDb from "@/configs/db";
 import { GetAuthorId } from "@/utils/author";
 import CloudStoringFile from "@/utils/cloudStoringFile";
 import productModel from "@/models/product";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
   try {
@@ -60,6 +61,8 @@ export async function POST(req) {
         duration,
       }
     );
+
+    revalidatePath("/", "layout");
 
     return Response.json({
       message: "محصول با موفقیت فرستاده ذخیره شد",

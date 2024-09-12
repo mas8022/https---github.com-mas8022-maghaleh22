@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import productCommentModel from "@/models/productComment";
+import { revalidatePath } from "next/cache";
 
 export async function PUT(req, { params }) {
   try {
@@ -9,6 +10,7 @@ export async function PUT(req, { params }) {
       { _id: commentId },
       { publish: true }
     );
+    revalidatePath("/", "layout");
 
     return Response.json({ message: "کامنت تایید شد", status: 200 });
   } catch (error) {
@@ -23,6 +25,7 @@ export async function DELETE(req, { params }) {
     await productCommentModel.findOneAndDelete({
       _id: commentId,
     });
+    revalidatePath("/", "layout");
 
     return Response.json({ message: "کامنت حذف شد", status: 200 });
   } catch (error) {

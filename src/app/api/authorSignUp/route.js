@@ -7,6 +7,7 @@ import CloudStoringFile from "../../../../utils/cloudStoringFile";
 import { cookies } from "next/headers";
 import connectToDb from "../../../../configs/db";
 import authorModel from "@/models/author";
+import { revalidatePath } from "next/cache";
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export async function POST(req) {
@@ -78,6 +79,8 @@ export async function POST(req) {
       permission: false,
       refreshToken,
     });
+
+    revalidatePath("/", "layout");
 
     return Response.json({
       message: "author signup successfully",

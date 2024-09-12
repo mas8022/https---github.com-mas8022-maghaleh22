@@ -1,6 +1,7 @@
 import authorModel from "@/models/author";
 import { Author, GetAuthorId } from "@/utils/author";
 import CloudStoringFile from "@/utils/cloudStoringFile";
+import { revalidatePath } from "next/cache";
 
 export async function GET() {
   try {
@@ -41,6 +42,7 @@ export async function POST(req) {
       }
     );
 
+    revalidatePath("/", "layout");
     return Response.json({ message: "با موفقیت انجام شد", status: 200 });
   } catch (error) {
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });

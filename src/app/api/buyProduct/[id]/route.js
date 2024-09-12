@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import userModel from "@/models/user";
 import { MeId } from "@/utils/me";
+import { revalidatePath } from "next/cache";
 export async function PUT(req, { params }) {
   try {
     connectToDb();
@@ -21,6 +22,9 @@ export async function PUT(req, { params }) {
         },
       }
     );
+
+    revalidatePath("/", "layout");
+
 
     return Response.json({ message: "محصول خریداری شد", status: 200 });
   } catch (error) {

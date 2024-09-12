@@ -12,11 +12,8 @@ export async function PUT(req, { params }) {
       { status: "publish" }
     );
 
-    const paths = ["/", "/cms"];
-    for (const path of paths) {
-      revalidatePath(path);
-    }
-    
+    revalidatePath("/", "layout");
+
     return Response.json({ message: "محصول با موفقیت منتشر شد", status: 200 });
   } catch (error) {
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });

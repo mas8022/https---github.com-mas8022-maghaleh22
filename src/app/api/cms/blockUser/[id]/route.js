@@ -1,11 +1,14 @@
 import connectToDb from "@/configs/db";
 import userModel from "@/models/user";
+import { revalidatePath } from "next/cache";
 
 export async function PUT(req, { params }) {
   const userId = params.id;
   try {
     connectToDb();
     await userModel.findOneAndUpdate({ _id: userId }, { roll: "BLOCK" });
+    
+    revalidatePath("/", "layout");
 
     return Response.json({ message: "کاربر بلاک شد", status: 200 });
   } catch (error) {

@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import contactUsMessageModel from "@/models/contactUsMessage";
+import { revalidatePath } from "next/cache";
 
 export async function DELETE(req, { params }) {
   try {
@@ -10,6 +11,9 @@ export async function DELETE(req, { params }) {
       { _id: commentId },
       { isAnswer: true }
     );
+    
+    revalidatePath("/", "layout");
+
     return Response.json({ message: "پیام پاک شد", status: 200 });
   } catch (error) {
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });

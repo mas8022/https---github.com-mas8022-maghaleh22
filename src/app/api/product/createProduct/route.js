@@ -45,7 +45,7 @@ export async function POST(req) {
       duration,
     });
 
-    revalidatePath("/coWorker/draftedProject");
+    revalidatePath("/", "layout");
 
     return Response.json({
       message:

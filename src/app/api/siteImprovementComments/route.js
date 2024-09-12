@@ -1,5 +1,7 @@
 import { MeId } from "../../../../utils/me";
 import siteImprovementCommentModel from "../../../../models/siteImprovementComments";
+import { revalidatePath } from "next/cache";
+
 export async function POST(req) {
   try {
     const meId = await MeId();
@@ -21,6 +23,8 @@ export async function POST(req) {
       publish: false,
     });
 
+    revalidatePath("/", "layout");
+    
     return Response.json({
       message:
         "ممنون از نظر شما! هدف ما همیشه بهبود خدمات و رضایت شماست. اگر نکته‌ای برای بهبود دارید، لطفاً با ما در میان بگذارید",

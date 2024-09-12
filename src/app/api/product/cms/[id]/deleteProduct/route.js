@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
+import { revalidatePath } from "next/cache";
 
 export async function DELETE(req, { params }) {
   try {
@@ -7,6 +8,8 @@ export async function DELETE(req, { params }) {
 
     connectToDb();
     await productModel.findOneAndDelete({ _id: productId });
+
+    revalidatePath("/", "layout");
 
     return Response.json({ message: "محصول با موفقیت حذف شد", status: 200 });
   } catch (error) {

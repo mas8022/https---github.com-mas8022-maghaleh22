@@ -1,8 +1,13 @@
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
-import  { generateRefreshToken, generateToken, verifyPassword } from '../../../../utils/authTools'
+import {
+  generateRefreshToken,
+  generateToken,
+  verifyPassword,
+} from "../../../../utils/authTools";
 import authorModel from "../../../../models/author";
 import connectToDb from "../../../../configs/db";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
   try {
@@ -39,8 +44,6 @@ export async function POST(req) {
       });
     }
 
-
-
     const refreshToken = generateRefreshToken(
       { email },
       process.env.authorRefreshPrivateKey
@@ -61,8 +64,6 @@ export async function POST(req) {
       process.env.authorPrivateKey
     );
 
-
-
     await cookies().delete("author-token");
     cookies().set("author-token", newAccessToken, {
       httpOnly: true,
@@ -75,6 +76,8 @@ export async function POST(req) {
       path: "/",
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
+
+    revalidatePath("/", "layout");
 
     return Response.json({ message: "با موفقیت وارد شدید", status: 200 });
   } catch (error) {

@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import CloudStoringFile from "@/utils/cloudStoringFile";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
   try {
@@ -17,6 +18,9 @@ export async function POST(req) {
           status: "draft",
         }
       );
+
+      revalidatePath("/", "layout");
+
       return Response.json({
         message:
           "محصول با موفقیت از فهرست بازبینیه مقاله های مدیر سایت خارج شد",
@@ -29,6 +33,9 @@ export async function POST(req) {
           status: "wait",
         }
       );
+
+      revalidatePath("/", "layout");
+
       return Response.json({
         message: "محصول با موفقیت جهت تایید از سمت مدیر سایت فرستاده شد",
         status: 200,
@@ -83,6 +90,8 @@ export async function POST(req) {
           duration,
         }
       );
+
+      revalidatePath("/", "layout");
 
       return Response.json({
         message: "محصول با موفقیت ویرایش شد",

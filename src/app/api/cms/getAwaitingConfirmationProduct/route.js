@@ -11,8 +11,6 @@ export async function GET() {
         "title price author discount cover duration group"
       )
       .lean();
-      
-    revalidatePath("/cms/awaitingConfirmation");
 
     return Response.json(products);
   } catch (error) {

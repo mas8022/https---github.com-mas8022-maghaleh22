@@ -6,8 +6,9 @@ import {
   generateToken,
   verifyPassword,
 } from "../../../../utils/authTools";
+import { revalidatePath } from "next/cache";
 
-export async function POST(req, { params }) {
+export async function POST(req) {
   try {
     connectToDb();
     const { email, password } = await req.json();
@@ -55,6 +56,8 @@ export async function POST(req, { params }) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
+    revalidatePath("/", "layout");
+    
     return Response.json({
       message: "با موفقیت وارد حساب قبل خود شدید",
       status: 200,
