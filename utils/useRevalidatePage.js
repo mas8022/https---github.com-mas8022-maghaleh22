@@ -1,6 +1,6 @@
 import { readdirSync, existsSync } from "fs";
-
 import path from "path";
+import { revalidatePath } from "next/cache";
 
 const getPagePaths = (dir, rootDir) => {
   let paths = [];
@@ -25,29 +25,38 @@ const getPagePaths = (dir, rootDir) => {
   return paths;
 };
 
-const useRevalidatePage = (customPath) => {
+const useRevalidatePage = () => {
   if (typeof window === "undefined") {
-    let trimmedPaths = null;
-    if (typeof customPath === "string") {
-      trimmedPaths = [customPath];
-    } else {
-      const appDirectoryInSrc = path.join(process.cwd(), "src", "app");
-      const appDirectoryRoot = path.join(process.cwd(), "app");
+    // اطمینان از اجرای کد در سرور
+    const appDirectoryInSrc = path.join(process.cwd(), "src", "app");
+    const appDirectoryRoot = path.join(process.cwd(), "app");
 
-      const appDirectory = existsSync(appDirectoryInSrc)
-        ? appDirectoryInSrc
-        : appDirectoryRoot;
+    const appDirectory = existsSync(appDirectoryInSrc)
+      ? appDirectoryInSrc
+      : appDirectoryRoot;
 
-      const paths = getPagePaths(appDirectory, appDirectory);
+    const paths = getPagePaths(appDirectory, appDirectory);
 
-      trimmedPaths = paths
-        .map((p) => p.replace(/^\/src\/app/, ""))
-        .map((p) => p.replace(/\/page$/, ""))
-        .map((p) => (p.endsWith("/") ? p.slice(0, -1) : p));
+    const trimmedPaths = paths.map((p) =>
+      p
+        .replace(/^\/src\/app/, "")
+        .replace(/\/page$/, "")
+        .replace(/\/$/, "")
+    );
+
+    const validPaths = trimmedPaths.filter((p) => p && p !== "/");
+
+    if (existsSync(path.join(appDirectory, "page.js"))) {
+      validPaths.push("/");
     }
 
-    trimmedPaths.forEach((path) => {
-      revalidatePath(path);
+    return false;
+    validPaths.forEach((path) => {
+      try {
+        revalidatePath(path);
+      } catch (error) {
+        console.error(`Failed to revalidate path: ${path}`, error);
+      }
     });
   }
 };

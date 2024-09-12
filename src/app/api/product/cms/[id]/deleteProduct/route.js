@@ -2,7 +2,6 @@ import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import { useRevalidatePage } from "@/utils/useRevalidatePage";
 
-
 export async function DELETE(req, { params }) {
   try {
     const productId = params.id;
@@ -10,7 +9,7 @@ export async function DELETE(req, { params }) {
     connectToDb();
     await productModel.findOneAndDelete({ _id: productId });
 
-    useRevalidatePage()
+    useRevalidatePage();
 
     return Response.json({ message: "محصول با موفقیت حذف شد", status: 200 });
   } catch (error) {

@@ -2,7 +2,7 @@ import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import CloudStoringFile from "@/utils/cloudStoringFile";
 import { useRevalidatePage } from "@/utils/useRevalidatePage";
-
+import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
   try {
@@ -20,7 +20,7 @@ export async function POST(req) {
         }
       );
 
-      useRevalidatePage()
+      revalidatePath();
 
       return Response.json({
         message:
@@ -35,7 +35,7 @@ export async function POST(req) {
         }
       );
 
-      useRevalidatePage()
+      revalidatePath();
 
       return Response.json({
         message: "محصول با موفقیت جهت تایید از سمت مدیر سایت فرستاده شد",
@@ -92,7 +92,7 @@ export async function POST(req) {
         }
       );
 
-      useRevalidatePage()
+      useRevalidatePage();
 
       return Response.json({
         message: "محصول با موفقیت ویرایش شد",

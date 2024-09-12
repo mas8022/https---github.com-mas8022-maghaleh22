@@ -3,7 +3,7 @@ import { GetAuthorId } from "@/utils/author";
 import CloudStoringFile from "@/utils/cloudStoringFile";
 import productModel from "@/models/product";
 import { useRevalidatePage } from "@/utils/useRevalidatePage";
-
+import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
   try {
@@ -63,7 +63,7 @@ export async function POST(req) {
       }
     );
 
-    useRevalidatePage()
+    useRevalidatePage();
 
     return Response.json({
       message: "محصول با موفقیت فرستاده ذخیره شد",
