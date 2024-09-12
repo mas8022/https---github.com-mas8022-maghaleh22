@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function PUT(req, { params }) {
   try {
@@ -12,7 +13,7 @@ export async function PUT(req, { params }) {
       { status: "publish" }
     );
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "محصول با موفقیت منتشر شد", status: 200 });
   } catch (error) {

@@ -1,7 +1,8 @@
 import connectToDb from "@/configs/db";
 import authorModel from "@/models/author";
 import AuthorReceiveMessage from "@/models/AuthorReceiveMessage";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function POST(req, { params }) {
   try {
@@ -17,7 +18,7 @@ export async function POST(req, { params }) {
       seen: false,
     });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "پیام ارسال شد", status: 200 });
   } catch (error) {
@@ -31,7 +32,7 @@ export async function DELETE(req, { params }) {
     connectToDb();
     await authorModel.findOneAndDelete({ _id: authorId });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
     
     return Response.json({ message: "نویسنده حذف شد", status: 200 });
   } catch (error) {

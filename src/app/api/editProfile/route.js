@@ -3,7 +3,8 @@ import userModel from "@/models/user";
 import { generateRefreshToken, generateToken } from "@/utils/authTools";
 import CloudStoringFile from "@/utils/cloudStoringFile";
 import { MeId } from "@/utils/me";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 import { cookies } from "next/headers";
 
 export async function POST(req) {
@@ -70,7 +71,7 @@ export async function POST(req) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({
       message: "با موفقیت حساب کاربریتان ویرایش شد",

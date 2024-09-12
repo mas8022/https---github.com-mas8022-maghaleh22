@@ -1,7 +1,8 @@
 import connectToDb from "@/configs/db";
 import userModel from "@/models/user";
 import { MeId } from "@/utils/me";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 export async function PUT(req, { params }) {
   try {
     connectToDb();
@@ -23,7 +24,7 @@ export async function PUT(req, { params }) {
       }
     );
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
 
     return Response.json({ message: "محصول خریداری شد", status: 200 });

@@ -1,7 +1,8 @@
 import connectToDb from "@/configs/db";
 import AuthorReceiveMessageModel from "@/models/AuthorReceiveMessage";
 import { GetAuthorId } from "@/utils/author";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function PUT(req, { params }) {
   const messageId = params.id;
@@ -17,7 +18,7 @@ export async function PUT(req, { params }) {
       { seen: true }
     );
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "پیام حذف شد", status: 200 });
   } catch (error) {

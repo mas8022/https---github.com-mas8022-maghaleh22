@@ -1,6 +1,6 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
-import { revalidatePath } from "next/cache";
+
 
 export async function GET() {
   try {

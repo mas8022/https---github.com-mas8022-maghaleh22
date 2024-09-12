@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function POST(req) {
   try {
@@ -51,7 +52,7 @@ export async function POST(req) {
       productArray = productArray.sort((a, b) => b.price - a.price);
     }
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return new Response(JSON.stringify({ status: 200, data: productArray }), {
       headers: { "Content-Type": "application/json" },

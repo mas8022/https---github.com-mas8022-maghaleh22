@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import userModel from "@/models/user";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function PUT(req, { params }) {
   const userId = params.id;
@@ -8,7 +9,7 @@ export async function PUT(req, { params }) {
     connectToDb();
     await userModel.findOneAndUpdate({ _id: userId }, { roll: "BLOCK" });
     
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "کاربر بلاک شد", status: 200 });
   } catch (error) {

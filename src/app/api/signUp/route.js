@@ -6,7 +6,8 @@ import {
   generateToken,
   hashPassword,
 } from "../../../../utils/authTools";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export async function POST(req) {
@@ -79,7 +80,7 @@ export async function POST(req) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({
       message: "ثبت نام شما با موفقیت انجام شد",

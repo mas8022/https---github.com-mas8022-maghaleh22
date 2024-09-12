@@ -1,4 +1,5 @@
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 const { cookies } = require("next/headers");
 
@@ -7,7 +8,7 @@ export async function POST() {
     cookies().delete("token");
     cookies().delete("refresh-token");
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({
       message: "با موفقیت از حساب تان خارج شدید",

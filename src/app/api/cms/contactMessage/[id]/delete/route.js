@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import contactUsMessageModel from "@/models/contactUsMessage";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function DELETE(req, { params }) {
   try {
@@ -12,7 +13,7 @@ export async function DELETE(req, { params }) {
       { isAnswer: true }
     );
     
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "پیام پاک شد", status: 200 });
   } catch (error) {

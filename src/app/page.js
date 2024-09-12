@@ -13,7 +13,6 @@ import siteImprovementCommentsModel from "@/models/siteImprovementComments";
 
 const Home = async () => {
   connectToDb();
-
   const freeProducts = await productModel
     .find(
       { price: 0, status: "publish" },

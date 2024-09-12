@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function DELETE(req, { params }) {
   try {
@@ -9,7 +10,7 @@ export async function DELETE(req, { params }) {
     connectToDb();
     await productModel.findOneAndDelete({ _id: productId });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "محصول با موفقیت حذف شد", status: 200 });
   } catch (error) {

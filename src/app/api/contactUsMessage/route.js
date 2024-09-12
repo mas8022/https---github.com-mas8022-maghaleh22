@@ -1,4 +1,5 @@
-import { revalidatePath } from "next/cache";
+
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 import connectToDb from "../../../../configs/db";
 import ContactUsMessageModel from "../../../../models/contactUsMessage";
 
@@ -22,7 +23,7 @@ export async function POST(req) {
       isAnswer: false,
     });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
     
     return Response.json({
       message:

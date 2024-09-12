@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import siteImprovementCommentModel from "@/models/siteImprovementComments";
 import connectToDb from "@/configs/db";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function POST(req, { params }) {
   try {
@@ -13,7 +14,7 @@ export async function POST(req, { params }) {
       { disLike: disLikeCount }
     );
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
     
     return Response.json({ message: "با موفقیت دیس لایک شد", status: 200 });
   } catch (error) {

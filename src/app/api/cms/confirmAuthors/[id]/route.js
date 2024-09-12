@@ -1,6 +1,7 @@
 import connectToDb from "@/configs/db";
 import authorModel from "@/models/author";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function PUT(req, { params }) {
   try {
@@ -8,7 +9,7 @@ export async function PUT(req, { params }) {
     connectToDb();
     await authorModel.findOneAndUpdate({ _id: authorId }, { permission: true });
     
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "نویسنده تایید شد", status: 200 });
   } catch (error) {

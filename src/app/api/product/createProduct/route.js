@@ -2,7 +2,8 @@ import { GetAuthorId } from "@/utils/author";
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
 import CloudStoringFile from "@/utils/cloudStoringFile";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 export async function POST(req) {
   try {
     const author = await GetAuthorId();
@@ -45,7 +46,7 @@ export async function POST(req) {
       duration,
     });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({
       message:

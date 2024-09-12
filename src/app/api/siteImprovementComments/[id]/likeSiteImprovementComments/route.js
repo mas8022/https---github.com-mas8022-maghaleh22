@@ -1,6 +1,7 @@
 import siteImprovementCommentModel from "@/models/siteImprovementComments";
 import connectToDb from "@/configs/db";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function POST(req, { params }) {
   const  {likeCount}  = await req.json();
@@ -12,7 +13,7 @@ export async function POST(req, { params }) {
       { like: likeCount }
     );
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "با موفقیت لایک شد", status: 200 });
   } catch (error) {

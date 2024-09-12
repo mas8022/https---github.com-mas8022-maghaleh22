@@ -7,7 +7,8 @@ import {
 import authorModel from "../../../../models/author";
 import connectToDb from "../../../../configs/db";
 import { cookies } from "next/headers";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function POST(req) {
   try {
@@ -77,7 +78,7 @@ export async function POST(req) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
 
     return Response.json({ message: "با موفقیت وارد شدید", status: 200 });
   } catch (error) {

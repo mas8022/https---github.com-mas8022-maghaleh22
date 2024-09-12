@@ -1,6 +1,7 @@
 import productCommentModel from "@/models/productComment";
 import { Me } from "@/utils/me";
-import { revalidatePath } from "next/cache";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
+
 
 export async function POST(req) {
   try {
@@ -22,7 +23,7 @@ export async function POST(req) {
       publish: false,
     });
 
-    revalidatePath("/", "layout");
+    useRevalidatePage()
     
     return Response.json({
       message:
