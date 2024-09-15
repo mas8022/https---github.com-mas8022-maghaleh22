@@ -80,7 +80,7 @@ export async function POST(req) {
       expires: new Date().getTime() + 15 * 24 * 60 * 60 * 1000,
     });
 
-    useRevalidatePage()
+    useRevalidatePage();
 
     return Response.json({
       message: "ثبت نام شما با موفقیت انجام شد",
