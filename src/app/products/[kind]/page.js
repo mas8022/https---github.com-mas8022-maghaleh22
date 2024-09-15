@@ -4,7 +4,7 @@ import SideFilterMobile from "../../_components/template/sideFilter";
 import Cart from "../../_components/modules/cart";
 import SideFilterPC from "../../_components/template/sideFilterPc";
 import Hr from "../../_components/modules/hr";
-import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
+import { useLocalStorage } from "mas22/useLocalStorage/useLocalStorage";
 import { MoonLoader } from "react-spinners";
 
 export default function products({ params }) {

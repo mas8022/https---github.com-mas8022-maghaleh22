@@ -7,6 +7,7 @@ import {
   hashPassword,
 } from "../../../../utils/authTools";
 import { useRevalidatePage } from "@/utils/useRevalidatePage";
+import { revalidatePath } from "next/cache";
 
 const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
@@ -58,7 +59,7 @@ export async function POST(req) {
       process.env.refreshPrivateKey
     );
 
-    const users = await userModel.find({}, "_id");
+    const admin = await userModel.findOne({ roll: "ADMIN" }, "_id");
 
     await userModel.create({
       fullName,
@@ -67,7 +68,7 @@ export async function POST(req) {
       phone,
       check,
       refreshToken,
-      roll: users?.length ? "USER" : "ADMIN",
+      roll: !!admin ? "USER" : "ADMIN",
     });
 
     cookies().set("token", token, {
@@ -81,6 +82,7 @@ export async function POST(req) {
     });
 
     useRevalidatePage();
+    revalidatePath("/cms/users");
 
     return Response.json({
       message: "ثبت نام شما با موفقیت انجام شد",

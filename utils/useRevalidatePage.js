@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/server";
+import { revalidatePath } from "next/cache";
 
 const useRevalidatePage = () => {
   // revalidatePath("/", "layout");

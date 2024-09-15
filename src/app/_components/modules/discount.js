@@ -1,5 +1,5 @@
 "use client";
-import { useLocalStorage } from "top-react/useLocalStorage/useLocalStorage";
+import { useLocalStorage } from "mas22/useLocalStorage/useLocalStorage";
 import Image from "next/image";
 import React, { memo } from "react";
 
