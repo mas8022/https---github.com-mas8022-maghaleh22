@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 
 export async function GET() {
   try {
@@ -12,6 +13,9 @@ export async function GET() {
       .populate("author", "name")
       .sort({ _id: -1 })
       .lean();
+
+      useRevalidatePage();
+
 
     return Response.json(products);
   } catch (error) {

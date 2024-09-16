@@ -1,4 +1,5 @@
 import productModel from "@/models/product";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 
 export async function GET(req, { params }) {
   try {
@@ -7,6 +8,8 @@ export async function GET(req, { params }) {
     const products = await productModel.find({
       title: { $regex: textSearch, $options: "i" },
     }).populate("author", "name")
+    
+    useRevalidatePage();
 
     return new Response(JSON.stringify(products));
   } catch (error) {

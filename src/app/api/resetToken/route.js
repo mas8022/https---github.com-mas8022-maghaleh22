@@ -1,8 +1,11 @@
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 import ResetToken from "../../../../utils/resetToken";
 
 export async function GET() {
   try {
     const userRoll = await ResetToken();
+    
+    useRevalidatePage();
 
     return Response.json({
       message: "reset token success",

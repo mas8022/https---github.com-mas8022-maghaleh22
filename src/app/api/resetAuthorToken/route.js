@@ -1,3 +1,4 @@
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 import { isAuthor } from "../../../../utils/author";
 import ResetAuthorToken from "../../../../utils/resetAuthorToken";
 
@@ -7,6 +8,7 @@ export async function GET() {
 
     const author = await isAuthor();
     
+    useRevalidatePage();
 
     if (!author) {
       return Response.json({ message: "author not found", status: 404 });

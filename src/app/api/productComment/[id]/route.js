@@ -46,6 +46,8 @@ export async function GET(req, { params }) {
         "commenterText createdAt"
       )
       .populate("commenter", "email profile");
+      
+      useRevalidatePage();
 
     return Response.json(comments);
   } catch (error) {

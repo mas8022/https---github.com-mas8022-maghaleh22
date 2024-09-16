@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import userModel from "@/models/user";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 
 export async function GET() {
   try {
@@ -9,6 +10,7 @@ export async function GET() {
       .sort({ _id: -1 })
       .lean();
 
+      useRevalidatePage();
 
     return Response.json(users);
   } catch (error) {

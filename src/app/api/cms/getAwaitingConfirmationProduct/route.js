@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import productModel from "@/models/product";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 
 
 export async function GET() {
@@ -11,6 +12,9 @@ export async function GET() {
         "title price author discount cover duration group"
       )
       .lean();
+
+      useRevalidatePage();
+
 
     return Response.json(products);
   } catch (error) {

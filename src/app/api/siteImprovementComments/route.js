@@ -1,5 +1,6 @@
 import { MeId } from "../../../../utils/me";
 import siteImprovementCommentModel from "../../../../models/siteImprovementComments";
+import connectToDb from "@/configs/db";
 import { useRevalidatePage } from "@/utils/useRevalidatePage";
 
 export async function POST(req) {
@@ -14,10 +15,10 @@ export async function POST(req) {
     }
 
     const { comment } = await req.json();
+    connectToDb();
     await siteImprovementCommentModel.create({
       user: meId,
       comment,
-      status: "publish",
       like: 0,
       disLike: 0,
       publish: false,

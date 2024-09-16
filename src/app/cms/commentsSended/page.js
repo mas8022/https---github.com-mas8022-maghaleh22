@@ -13,8 +13,6 @@ const page = () => {
 
   return (
     <div>
-   
-
       <div className="w-full  flex flex-col items-end gap-40 py-[5rem] md:pr-14">
         <div className="w-full flex justify-center">
           {comments?.length ? (

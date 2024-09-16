@@ -1,5 +1,6 @@
 import connectToDb from "@/configs/db";
 import siteImprovementCommentModel from "@/models/siteImprovementComments";
+import { useRevalidatePage } from "@/utils/useRevalidatePage";
 
 export async function GET() {
   try {
@@ -8,6 +9,9 @@ export async function GET() {
       .find({ publish: false }, "comment")
       .populate("user", "fullName email")
       .lean();
+
+      useRevalidatePage();
+
 
     return Response.json(comments);
   } catch (error) {

@@ -14,6 +14,9 @@ export async function GET() {
       phone: author.phone,
     };
 
+    useRevalidatePage();
+
+
     return Response.json({ status: 200, data: author });
   } catch (error) {
     return Response.json({ message: "اینترنت خود را چک کنید", status: 500 });
