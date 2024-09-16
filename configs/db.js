@@ -6,7 +6,7 @@ function connectToDb() {
       return false;
     } else {
       mongoose.connect(
-        "mongodb://localhost:27017/maghaleh"
+        "mongodb://root:1utaXT2eKDRKsttwbxyOOufW@tirich-mir.liara.cloud:30274/my-app?authSource=admin&replicaSet=rs0&directConnection=true"
       );
     }
   } catch (error) {
