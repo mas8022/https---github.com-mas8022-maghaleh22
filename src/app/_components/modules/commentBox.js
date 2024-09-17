@@ -13,8 +13,6 @@ const CommentBox = memo(({ _id, comment, user }) => {
       .then((res) => res.json())
       .then((data) => {
         if (!!data) {
-          console.log(data);
-
           setLike(data.like);
           setDislikes(data.disLike);
         }
