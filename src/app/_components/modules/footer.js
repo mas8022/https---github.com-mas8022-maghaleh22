@@ -14,37 +14,37 @@ const Footer = memo(() => {
                 دسته بندی ها
               </p>
               <Link
-                href={"/products/software"}
+                href={"/products/نرم افزار و فناوری اطلاعات"}
                 className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
               >
                 نرم افزار و فناوری اطلاعات
               </Link>
               <Link
-                href={"/products/economics"}
+                href={"/products/اقتصاد و حسابداری"}
                 className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
               >
                 اقتصاد و حسابداری
               </Link>
               <Link
-                href={"/products/business"}
+                href={"/products/کسب و کار"}
                 className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
               >
                 کسب و کار
               </Link>
               <Link
-                href={"/products/teenager"}
+                href={"/products/کودک و نوجوان"}
                 className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
               >
                 کودک و نوجوان
               </Link>
               <Link
-                href={"/products/language"}
+                href={"/products/اموزش زبان"}
                 className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
               >
                 اموزش زبان
               </Link>
               <Link
-                href={"/products/art"}
+                href={"/products/هنر طراحی"}
                 className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
               >
                 هنر طراحی
@@ -74,7 +74,7 @@ const Footer = memo(() => {
                 تماس با ما
               </Link>
               <Link
-                href={"aboutUs"}
+                href={"/aboutUs"}
                 className="text-[1.4rem] lg:text-[1.7rem] text-black/90 cursor-pointer active:text-black/20 font-light"
               >
                 درباره ما

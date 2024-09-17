@@ -1,18 +1,29 @@
 "use client";
 import useSanitizeInput from "@/utils/useSanitizeInput";
 import useToggle from "../../../../utils/toggle";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 const InputSearchNav = memo(() => {
   const router = useRouter();
   const [isOpen, toggleOpen] = useToggle("inputSearchNavActivation");
   const [search, setSearch] = useState("");
+  const searchIcon = useRef();
 
   const sendDataUrlSearch = () => {
+    searchIcon.current.focus();
     if (search.trim()) {
       router.replace(`/products/${search}`);
     }
     setSearch("");
+  };
+
+  const sendDataUrlSearchWithEnter = (e) => {
+    if (e.key === "Enter") {
+      if (search.trim()) {
+        router.replace(`/products/${search}`);
+      }
+      setSearch("");
+    }
   };
 
   return (
@@ -30,6 +41,8 @@ const InputSearchNav = memo(() => {
         onChange={(e) => {
           setSearch(useSanitizeInput(e.target.value));
         }}
+        ref={searchIcon}
+        onKeyDown={(e) => sendDataUrlSearchWithEnter(e)}
         placeholder="چه اموزشی..."
         className={`${
           isOpen ? "w-full" : "w-0"
