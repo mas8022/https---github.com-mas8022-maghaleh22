@@ -1,37 +1,46 @@
 "use client";
 import Image from "next/image";
-import React, { memo, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { memo, useDeferredValue, useEffect, useState } from "react";
 
-const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
-  const [likes, setLike] = useState(like || 0);
-  const [disLikes, setDisLikes] = useState(disLike || 0);
-
-  useEffect(() => {
-    if (like !== likes) {
-      fetch(`/api/siteImprovementComments/${_id}/likeSiteImprovementComments`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ likeCount: likes }),
-      });
-    }
-  }, [likes]);
+const CommentBox = memo(({ _id, comment, user }) => {
+  const router = useRouter();
+  const [like, setLike] = useState(0);
+  const [disLike, setDislikes] = useState(0);
 
   useEffect(() => {
-    if (disLike !== disLikes) {
-      fetch(
-        `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ disLikeCount: disLikes }),
+    fetch(`/api/getLikeAndDisLike/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!!data) {
+          console.log(data);
+
+          setLike(data.like);
+          setDislikes(data.disLike);
         }
-      );
-    }
-  }, [disLikes]);
+      });
+  });
+
+  const likeHandler = async () => {
+    setLike((p) => p + 1);
+    await fetch(
+      `/api/siteImprovementComments/${_id}/likeSiteImprovementComments`,
+      {
+        method: "POST",
+      }
+    );
+  };
+
+  const disLikeHandler = async () => {
+    setDislikes((p) => p + 1);
+
+    await fetch(
+      `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
+      {
+        method: "POST",
+      }
+    );
+  };
 
   return (
     <div className="p-12 flex flex-col gap-12 items-center justify-between overflow-hidden rounded-3xl shadow-lg dark:shadow-2xl">
@@ -53,10 +62,10 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
         {comment}
       </p>
       <div className="w-full flex justify-end gap-6">
-        <button onClick={() => setLike((p) => p + 1)}>
+        <button onClick={likeHandler}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
-              {likes}
+              {like}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,10 +83,10 @@ const CommentBox = memo(({ _id, comment, user, like, disLike }) => {
             </svg>
           </div>
         </button>
-        <button onClick={() => setDisLikes((p) => p + 1)}>
+        <button onClick={disLikeHandler}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
-              {disLikes}
+              {disLike}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

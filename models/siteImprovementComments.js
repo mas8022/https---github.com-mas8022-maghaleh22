@@ -16,14 +16,6 @@ const schema = new Schema(
       type: Boolean,
       required: true,
     },
-    like: {
-      type: Number,
-      required: true,
-    },
-    disLike: {
-      type: Number,
-      required: true,
-    },
   },
   {
     timestamps: true,
