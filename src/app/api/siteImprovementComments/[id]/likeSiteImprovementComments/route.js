@@ -7,14 +7,18 @@ export async function POST(req, { params }) {
     const commentId = params.id;
     const meId = await MeId();
 
+    if (!meId) {
+      return Response({ message: "ابتدا در سایت ثبتان کنید", status: 400 });
+    }
+
     const likeBefore = await likeModel.findOne({
       userLiked: meId,
       siteImprovementComment: commentId,
-    });
+    },"_id");
+    console.log(likeBefore);
 
-
-    if (likeBefore) {
-      return Response({ message: "لایک کرده بودید" });
+    if (!!likeBefore) {
+      return Response.json({ message: "لایک کرده بودید", status: 400 });
     }
 
     await likeModel.create({

@@ -2,13 +2,14 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { memo, useDeferredValue, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const CommentBox = memo(({ _id, comment, user }) => {
   const router = useRouter();
   const [like, setLike] = useState(0);
   const [disLike, setDislikes] = useState(0);
 
-  useEffect(() => {
+  const getLikeAndDisLike = () => {
     fetch(`/api/getLikeAndDisLike/${_id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -17,27 +18,53 @@ const CommentBox = memo(({ _id, comment, user }) => {
           setDislikes(data.disLike);
         }
       });
-  });
+  };
 
-  const likeHandler = async () => {
+  useEffect(() => {
+    getLikeAndDisLike();
+  }, []);
+
+  const likeHandler = async (id) => {
     setLike((p) => p + 1);
     await fetch(
-      `/api/siteImprovementComments/${_id}/likeSiteImprovementComments`,
+      `/api/siteImprovementComments/${id}/likeSiteImprovementComments`,
       {
         method: "POST",
       }
-    );
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.status === 200) {
+          toast.success(result.message);
+        } else if (result.status === 400) {
+          toast.error(result.message);
+        } else {
+          toast.error(result.message);
+        }
+      });
+    getLikeAndDisLike();
   };
 
-  const disLikeHandler = async () => {
+  const disLikeHandler = async (id) => {
     setDislikes((p) => p + 1);
 
     await fetch(
-      `/api/siteImprovementComments/${_id}/dislikeSiteImprovementComments`,
+      `/api/siteImprovementComments/${id}/dislikeSiteImprovementComments`,
       {
         method: "POST",
       }
-    );
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.status === 200) {
+          toast.success(result.message);
+        } else if (result.status === 400) {
+          toast.error(result.message);
+        } else {
+          toast.error(result.message);
+        }
+      });
+    getLikeAndDisLike();
   };
 
   return (
@@ -60,7 +87,7 @@ const CommentBox = memo(({ _id, comment, user }) => {
         {comment}
       </p>
       <div className="w-full flex justify-end gap-6">
-        <button onClick={likeHandler}>
+        <button onClick={() => likeHandler(_id)}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
               {like}
@@ -81,7 +108,7 @@ const CommentBox = memo(({ _id, comment, user }) => {
             </svg>
           </div>
         </button>
-        <button onClick={disLikeHandler}>
+        <button onClick={() => disLikeHandler(_id)}>
           <div className="bg-black/5 dark:bg-black/15 rounded-full flex items-center p-4 gap-2">
             <span className="text-[1.2rem] font-light text-black/60 dark:text-first/60">
               {disLike}

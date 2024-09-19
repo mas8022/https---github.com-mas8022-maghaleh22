@@ -5,16 +5,23 @@ import { MeId } from "@/utils/me";
 export async function POST(req, { params }) {
   try {
     const commentId = params.id;
-    
+
     const meId = await MeId();
 
-    const likeBefore = await disLikeModel.findOne({
-      userDisLiked: meId,
-      siteImprovementComment: commentId,
-    });
+    if (!meId) {
+      return Response({ message: "ابتدا در سایت ثبتان کنید", status: 400 });
+    }
 
-    if (likeBefore) {
-      return Response({ message: "دیس لایک کرده بودید" });
+    const likeBefore = await disLikeModel.findOne(
+      {
+        userDisLiked: meId,
+        siteImprovementComment: commentId,
+      },
+      "_id"
+    );
+
+    if (!!likeBefore) {
+      return Response.json({ message: "دیس لایک کرده بودید" });
     }
 
     await disLikeModel.create({
