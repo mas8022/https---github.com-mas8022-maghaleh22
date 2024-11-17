@@ -9,7 +9,7 @@ export async function POST(req, { params }) {
     const meId = await MeId();
 
     if (!meId) {
-      return Response({ message: "ابتدا در سایت ثبتان کنید", status: 400 });
+      return Response.json({ message: "ابتدا در سایت ثبت نام کنید", status: 400 });
     }
 
     const likeBefore = await disLikeModel.findOne(
